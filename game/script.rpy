@@ -17,8 +17,8 @@ label start:
 
     e "You've created a new Ren'Py game."
 
-    show flandre at left
-    show patchy at right
+    show flandre at right
+    show patchy at left
 
     e "Once you add a story, pictures, and music, you can release it to the world!"
 
