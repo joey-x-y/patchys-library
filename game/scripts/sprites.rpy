@@ -7,14 +7,20 @@ transform sprite_set:
 transform sprite_set_placeholder:
     zoom 0.5
 
-layeredimage patchy:
+layeredimage pat:
     at sprite_set
 
     always:
         pp + "patchy.png"
 
-layeredimage flandre:
+layeredimage flan:
     at sprite_set_placeholder
 
     always:
         pp + "placeholder_flandre.png"
+
+layeredimage rem:
+    at sprite_set_placeholder
+
+    always:
+        pp + "placeholder_patchy.png"
