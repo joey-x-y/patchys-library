@@ -7,26 +7,32 @@ label day1:
     return
     
 label day1_forest:
-    scene bg forest
+    scene bg_forest
 
-    show remilia at left
-    show flandre at right
+    play music bgm_forest fadein 2.0
 
-    "Remilia lands and sets down Flandre, then catches her breath."
+    r "Flandre, I can't fly you anymore. I'm really sorry."
 
-    r "I... can't carry you anymore. I'm really sorry."
+    play sound sfx_forest_land
 
-    f "It's ok."
+    "Remilia drops down from the air and catches her breath. Flandre jumps down from her back."
 
-    r "But we need to keep moving, trees aren't good enough shelter from the sun. It cuts through the leaves."
+    f "It's fine, don't push yourself too hard."
 
-    "Flandre nods, and they walk through the dark forest."
+    r "We need to keep moving, trees aren't good enough shelter from the sun. It will cut through the leaves."
+
+    "Flandre nods as Remilia takes her hand."
+
+    play sound sfx_forest_footsteps
+    with forest_walk_fade
 
     f "Sis... I'm getting really tired. I need a break."
 
     r "I know, but we're running out of time. We have to keep going."
 
-    "Flandre sits down hard."
+    play sound sfx_forest_land 
+
+    "Flandre plops to the ground."
 
     f "I can't."
 
@@ -36,13 +42,11 @@ label day1_forest:
 
     r "Here. Rabbit."
 
-    f "Thank you."
-
-    "Flandre eats half of the rabbit before stopping."
+    "Flandre snatches it and devours it, but stops halfway through."
 
     f "Here's the rest."
 
-    r "Keep it. I'll be alright."
+    r "I'll be alright."
 
     f "No you won't. You're hungry too."
 
@@ -76,9 +80,10 @@ label day1_forest:
 
     r "Most likely animal hunters. Don't worry."
 
-    f "I hope so."
+    "Flandre grabs Remilia's hand as they begin walking."
 
-    "They walk for a while."
+    play sound sfx_forest_footsteps
+    with forest_walk_fade
 
     r "Oh?"
 
@@ -88,21 +93,28 @@ label day1_forest:
 
     f "What if someone scary is in there?"
 
-    "Remilia walks to the door and opens it."
+    play sound sfx_forest_land
+
+    "Remilia steps to the door and grabs the handle."
 
     r "Look at the sky, Flandre. We are out of options."
 
-    "Flandre looks over at the gold horizon."
+    "Flandre looks over to the gold horizon."
 
     r "Let's go. I'll keep you safe, don't worry."
 
     "The edge of the sun begins to rise, stinging her vampire face."
 
-    "Then, they enter together."
+    "Then, they enter the mysterious building together."
 
     return
 
 label day1_library:
+    stop music fadeout 2.0
+
+label test:
+    call scene_transition_fade("bg_library")
+
     "They step into a large library. Bookshelves cover the walls, and a large staircase lies straight ahead,"
 
     "Flandre leans to Remilia's ear."

@@ -17,6 +17,8 @@ define p = DynamicCharacter(magician_name, color="#ff67ff")
 
 label start:
 
+    call test
+
     call day1
     call day2
     call day3
