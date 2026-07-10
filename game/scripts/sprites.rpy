@@ -1,26 +1,23 @@
-define pp = "images/"
+define cp = "images/characters/"
 
 transform sprite_set:
     zoom 0.22
     # yoffset -100
 
-transform sprite_set_placeholder:
-    zoom 0.5
-
 layeredimage pat:
     at sprite_set
 
     always:
-        pp + "patchy.png"
+        cp + "patchy.png"
 
 layeredimage flan:
-    at sprite_set_placeholder
+    at sprite_set
 
     always:
-        pp + "placeholder_flandre.png"
+        cp + "placeholder_flandre.png"
 
 layeredimage rem:
-    at sprite_set_placeholder
+    at sprite_set
 
     always:
-        pp + "placeholder_patchy.png"
+        cp + "placeholder_patchy.png"
