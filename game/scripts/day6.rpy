@@ -9,27 +9,35 @@ label day6_morning:
 
     "Flandre jumps out from her coffin."
 
-    f "You ready, sis? Wake up!"
+    f "Why am I so hungry...?"
 
-    r "Ugh, so loud."
+    "She goes straight to the rabbits, crunching away."
 
-    "Remilia opens her coffin."
+    "Remilia slowly rises."
 
-    r "I'm..."
+    r "Eating so loudly so—"
 
-    "Remilia freezes in place."
+    f "Sorry, I'm just starving. Want one?"
 
-    f "Uh, what?"
+    "Flandre continues eating for a few moments."
+
+    f "Uh, do you?"
+
+    "Flandre turns to a crying Remilia."
+
+    f "What? What's wrong?!"
+
+    "Remilia averts her eyes."
+
+    f "Remi?!"
 
     r "..."
 
-    "Remilia becomes teary-eyed."
-
-    f "Remi?! What is it!"
-
     "Flandre reaches behind to her wings and grabs them."
 
-    f "Uh, Remi, is something..."
+    f "Uh, Remi, something is..."
+
+    "Remilia looks back."
 
     r "Your wings are gone."
 
@@ -37,13 +45,13 @@ label day6_morning:
 
     "Flandre rubs her hand along the empty wing stem."
 
-    "Remilia slowly approaches Flandre."
+    "Remilia takes a deep breath, then slowly approaches Flandre."
 
-    r "Hey, Flandre."
+    r "Hey, Flan—."
 
     "Suddenly, a large red sword appears in Flandre's hand and begins to glow."
 
-    r "Flandre, no!"
+    r "No, stop!"
 
     "Remilia flies over and grabs Flandre. Flandre swings her sword around as Remilia holds her in place."
 
@@ -51,7 +59,9 @@ label day6_morning:
 
     f "No! No! No! Shut up!"
 
-    r "Please! Calm down."
+    "Flandre throws elbows at Remilia's stomach."
+
+    r "Calm down! Please!"
 
     f "I want my wings back!"
 
@@ -63,11 +73,11 @@ label day6_morning:
 
     f "They're gone! I'll never fly again!"
 
-    "Flandre shoves Remilia onto her back, then jumps into her coffin."
+    "Flandre shoves Remilia onto the ground, then jumps into her coffin."
 
-    "Remilia sits up and stares silently."
+    "Remilia coughs hard on the floor, holding her stomach. After her breath stabilizes, she sits up and stares at Flandre silently."
 
-    "After ten minutes, Remilia stands."
+    "After ten minutes, Remilia stand up."
 
     r "Flandre?"
 
@@ -79,47 +89,49 @@ label day6_morning:
 
     r "Um, I'll be right back, ok?"
 
-    "Remilia goes to the library."
+    "Remilia steps out to the front hall, then drops to a knee."
 
-    p "He—"
+    r "Ow... she's so strong. Ah, I don't have time to be hurt right now!"
 
-    r "Patchouli. Please come."
+    "She stands up after a moment and flies through the study door."
 
-    p "Oh, well, ok? Is something amiss?"
+    r "Patchouli! Come!"
 
-    "Remilia already left the library."
+    p "Is something amiss?"
+
+    r "Hurry up!"
+
+    "Remilia flies out."
 
     p "Hmm."
 
-    "Patchouli flies behind Remilia into the bedroom. Flandre is leaning back in her coffin."
-
-    p "What's going on in here?"
+    "Patchouli flies behind Remilia into the bedroom. Flandre is leaning back in her coffin, blankly staring at the ceiling. Her gaze snaps to them as they enter."
 
     f "Go away! Leave me alone!"
 
-    p "Um... what?"
+    p "Um..."
 
     r "Flandre... she wants to help you."
 
     f "Leave me alone!"
 
-    "Flandre turns and curls, showing her wings in the air."
+    "Flandre turns and curls herself into a ball, revealing her wings."
 
-    p "...Oh. What?"
+    p "...What?"
 
-    r "Yes... she's not taking it well."
+    r "Yeah... she's not taking it well."
 
     p "Damn it! They're already gone?"
 
-    r "Uh, hey, Patch?"
+    r "Uh, hey, Patchouli?"
 
     p "What can I—"
 
-    "She quickly flies out of the room while she's speaking."
+    "She quickly flies out of the room mid-sentence."
 
     r "Hey!"
 
-    "Remilia follows into the library and finds Patchouli breathing heavily on the floor."
+    "Remilia looks back and forth between the door and Flandre's deadly glare, then flies off to the study. There, she finds Patchouli breathing heavily on the floor."
 
     r "What are you doing?"
 
@@ -133,13 +145,13 @@ label day6_morning:
 
     r "Stop! Just sit down!"
 
-    "She drops Patchouli onto her chair."
+    "She drops Patchouli onto her chair, then sits across from her. Patchouli breathes hard for a full minute before recovering."
 
     p "Sorry."
 
-    "Remilia sits and looks at the door and back a few times."
+    "Remilia looks to the door and back a few times."
 
-    "She lets out a deep breath, drops her head, and a few tears appear."
+    "She lets out a deep breath then drops her head. Tears appear."
 
     r "Darn it."
 
@@ -155,35 +167,53 @@ label day6_morning:
 
     r "Can't you do something?"
 
-    p "Do what?"
+    p "Do what?!"
 
     r "Never mind. Sorry."
 
-    p "No, no, I'm sorry. I screwed up."
+    "Patchouli crosses her arms and looks down."
 
-    "Remilia curls up in her seat and buries her face."
+    p "...No, I'm sorry. I screwed up."
+
+    "Remilia curls into a ball and buries her face."
 
     r "It was never even your problem to begin with. This is all my fault."
 
-    p "But I made it my problem..."
+    p "I made it my problem."
 
-    "Patchouli looks over to the curled up Remilia, then looks down."
+    "Patchouli looks over to Remilia, then looks back down."
 
-    "She slowly floats over to her."
+    "She takes a deep breath, then slowly floats over in front of her."
 
     p "Um... Remilia?"
 
-    "Remilia peeks up. Then suddenly grabs onto Patchouli."
+    "Remilia peeks up, then suddenly latches onto Patchouli."
 
-    r "I'm sorry, Patchy!"
+    r "I'm sorry Patchy!"
 
-    "She cries heavily, directly into her."
+    "She cries directly into Patchouli's chest."
 
     p "U-um, uh..."
 
     "After a moment, Patchouli gently puts her arms around, and finds herself crying as well."
 
-    "Time passes. Remilia slowly disconnects."
+    r "I'm so useless."
+
+    p "You're not."
+
+    r "Not enough."
+
+    p "You are."
+
+    "Remilia squeezes."
+
+    r "I let this all happen in the first place! I'm too weak..."
+
+    p "..."
+
+    "They hold on to each other silently for a long time."
+
+    "Eventually, Remilia gently let's go."
 
     r "Uh, sorry. Thanks. Um, yeah."
 
@@ -191,63 +221,67 @@ label day6_morning:
 
     r "I, uh, feel a little better. Thank you."
 
-    p "Sure, I, am, didn't know what I was doing."
+    p "Yeah, um, yeah. Right. I don't know what I'm doing."
 
     r "Ha, me neither."
 
-    "Remilia walks away, circling the room."
+    "Remilia walks away, circling the room. Patchouli sits back down."
 
-    r "So... what now? Ugh, I already asked that."
+    r "So... what now? Ugh, I already asked you that."
 
-    p "Should you go back to your sister?"
+    p "Shouldn't you go back to your sister?"
 
     r "I doubt that's a good idea, she prefers time alone in these situations. I don't want to make her snap."
 
     p "Oh."
 
-    r "Please don't blame yourself. You have already done more for us than anyone ever has."
+    "Patchouli brings up her legs, tucking her knees into her chest."
 
-    p "I have not done what I intended to do. I want to fix those wings."
+    r "Don't blame yourself for any of this. You have already done more for us than anyone ever has."
+
+    p "But I have not done what was promised."
+
+    r "You tried your best. I could tell."
+
+    p "I don't care. I want to fix those wings."
 
     r "Mm, any ideas?"
 
-    p "I don't know."
+    p "No."
 
-    r "Is there something you need to study? Should I get you a book?"
+    r "Is there anything you need to study? Shall I fetch you a book?"
 
     p "There really isn't anything to study. I don't know. I need to think."
 
-    r "Ok. Want me to leave you alone?"
+    r "Understood. Want me to leave you alone?"
 
-    p "No."
+    p "No. Stay."
 
-    r "Ok."
+    "Remilia sits back down."
 
-    "Hours pass in silence, with Remilia occasionally pacing, and Patchouli skimming books, thinking, and putting them away."
+    "Hours pass in silence, with Remilia occasional pacing, and Patchouli skimming books, thinking, and putting them away."
 
-    r "Um, anything?"
+    r "Hey, need anything?"
 
-    p "Not quite."
-
-    r "Can I help?"
-
-    p "Mm, I'm not sure."
+    p "I'm not sure."
 
     r "Hmm."
 
-    "Remilia goes over to Patchouli."
+    "Remilia walks over to Patchouli."
 
     r "Here."
 
-    p "Um, what?"
+    p "...What?"
+
+    "Remilia puts her hands to her chest, turning to the side and sticking her wing out."
 
     r "I present to you, the pride and soul of all vampires. My gorgeous wings. You wanted to study them. Here you go."
 
-    p "Oh. You're finally letting Patchy touch your wings?"
+    "Patchouli stands and smiles."
+
+    p "Oh, I see. You're finally letting Patchy touch your wings?"
 
     r "Shut up! I'm never calling you that again. Just do it already."
-
-    p "Hmm, ok."
 
     "Patchouli grabs the wings, and thoroughly touches them, feeling each individual part."
 
@@ -257,19 +291,17 @@ label day6_morning:
 
     r "Ugh."
 
-    "Patchouli eventually lets go."
+    "Ten minutes pass. Then thirty."
 
-    p "Thank you."
+    r "How long..."
 
-    r "Finally! I hope you understand the elegance of wings now."
+    p "Hey, Remilia?"
 
-    p "Sure."
+    r "What!"
 
-    r "Did that help at all?"
+    p "May I ask a few questions about how wings work?"
 
-    p "Yes, actually. It also gave me a few questions."
-
-    r "Oh, ask me anything about wings."
+    r "Fine. My wealth of knowledge makes me the most qualified. You could not have found anyone better."
 
     p "What exactly is their function?"
 
@@ -283,23 +315,43 @@ label day6_morning:
 
     r "Um... they are sensitive... help with balance... hmm. I think that's it."
 
-    p "Do they have an effect on vampires' abilities? Outside of flight?"
+    p "How sensitive?"
+
+    "Patchouli squeezes."
+
+    r "Very! Now stop it!"
+
+    p "Heh, sorry."
+
+    r "You're evil..."
+
+    p "Do they have an effect on a vampire's abilities? Outside of flight?"
 
     r "No. Flandre can do what she normally does, but her balance is poor."
 
-    p "Ok. Interesting. Thank you. I have more to think about now."
+    p "Hm. Interesting. I have a lot more to look into now."
 
-    r "Of course. I'll help however I can."
+    r "Then let go already!"
 
-    p "Thank you. For now, I think I should think alone."
+    p "Oh. Sorry."
 
-    r "Ok."
+    "Patchouli lets go."
 
-    "Remilia looks to the door."
+    r "Finally! I hope you understand the elegance of wings now."
 
-    r "It might be time to talk to Flandre."
+    p "I do. Thank you."
 
-    p "Ok."
+    "Remilia faces Patchouli with a smug smile."
+
+    r "That was a privilege that nobody else in this world has ever experienced. Remember that."
+
+    p "I will."
+
+    "Remilia's smile drops as she looks to the door,"
+
+    r "It might be time for me to talk to Flandre."
+
+    p "Mm. Good luck."
 
     "Remilia slowly walks to the door. She looks back and forth between the door and the room."
 
@@ -311,13 +363,13 @@ label day6_morning:
 
     p "Would I be helpful?"
 
-    r "Actually, never mind. That was stupid. I'll go now."
+    r "No, never mind. This is silly of me. I'll go now."
 
-    "She quickly steps out of the room. She stands outside the door and takes a slow, deep breath."
+    "She quickly steps out of the room and takes a slow, deep breath."
 
-    r "Ok, let's go."
+    r "I have to face her eventually."
 
-    "She walks down the stairs, and eventually makes it to the hall, outside the bedroom door."
+    "She slowly walks down the stairs, and eventually makes it to the bedroom door."
 
     "She puts her hand on the doorknob and pauses."
 
@@ -339,28 +391,28 @@ label day6_morning:
 
     f "I am worried. Shut up."
 
-    r "Ok. Sorry."
+    r "Right. Sorry."
 
     f "Stop apologizing."
 
-    r "Ok."
+    r "I will."
 
     f "Never apologize again."
 
-    r "Ok. So— So then I will stop."
+    r "I will. So— So yeah, I'll stop."
 
     f "You can let go now."
 
-    r "Ok."
+    r "Right, of course."
 
-    "Remilia moves to her own coffin."
+    "Remilia steps back."
 
     f "If you blame yourself again, I'll hit you."
 
-    r "Um, ok."
+    r "Right."
 
-    f "Good night."
+    "Flandre closes her coffin lid."
 
-    "Flandre closes her coffin lid. Remilia does the same, falling asleep instantly."
+    "Remilia exhales heavily then enters her own, falling asleep instantly."
 
     return

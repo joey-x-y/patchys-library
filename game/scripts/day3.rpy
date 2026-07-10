@@ -6,63 +6,75 @@ label day3:
     return
 
 label day3_morning:
-    "The sisters rise from their coffins."
+    "They both open their coffins. Flandre hops out onto the bed."
 
-    f "Hi Remi!"
+    f "Remi! Get up!"
 
-    r "Hello."
+    "Remilia slowly sits up."
+
+    r "It's a bit early for yelling..."
 
     f "I slept the whole night!"
 
-    r "Wow, are they still numb?"
+    r "Oh, wonderful, are they still numb?"
 
     f "Mostly. It's fading a little."
 
-    r "Ok. Let's go visit the library."
+    r "Hm. We'll go see that librarian soon."
 
-    f "Ok!"
+    f "No, let's go now!"
 
-    "They travel to the library and find Patchouli sitting at the table with a stack of books."
+    r "Geez, hold on."
 
-    f "Hi Patchy!"
+    "Remilia slowly crawls out of her coffin and stands up. Flandre grabs and drags her out of the room, all the way to Patchouli's study."
 
-    p "Um, hi."
+    "Flandre flings the door open."
 
-    r "Her name is Patchouli."
+    f "Patchy! I need more numbness."
 
-    f "That's kind of hard to say. I like Patchy."
-
-    p "I guess it works."
-
-    f "Can I have more numbness?"
-
-    p "Sure."
+    p "Uh, yeah, sure."
 
     "She casts the spell once again."
 
     f "Yay."
 
-    r "How come it lasted longer this time?"
+    r "Her name is Patchouli."
 
-    p "I was a little tired last time. Launching lasers is a lot of work."
+    f "That's too long, so it's Patchy now."
+
+    p "It works."
+
+    r "How come the numbing effect lasted longer this time? It didn't last the night previously."
+
+    p "I was tired. Launching lasers is a lot of work."
 
     r "I'm sure it was. Though you had no problem spamming them."
 
-    p "When your opponent's knees are buckling right in front of you, it's only natural to speed up the attack, no?"
+    "Patchouli crosses her arms with a smug smile."
+
+    p "Of course not. When your opponent's knees are buckling, it's only natural to speed up the attack, no?"
 
     r "I guess so. Someday I'll show you the true power of my Gungnir, when I'm not half-dead."
 
     f "Stop talking about fighting. I don't wanna fight more."
 
-    r "We aren't fighting yet, just planning for a rematch."
+    r "We aren't fighting yet, just planning our rematch."
 
     p "Rematch declined."
 
     r "Oh, come on."
 
-    p "I've been doing a lot of research on various possibilities, like poisons, certain spells, anything that can make wounds heal differently. I'll craft some potions to try soon. As for the possibility of deterioration, I haven't found anything specific. Could I see your wings, Flandre?"
+    f "Good."
 
-    f "Um, deterioration?"
+    "Patchouli leans back forward, looking to Flandre."
+
+    p "I've been doing research on what might be blocking your regeneration. There are various possibilities, like poisons, wound-blocking magic, sun-specific afflictions. I'll craft some potions to try on you tomorrow."
+
+    f "Thanks."
+
+    p "As for the possibility of deterioration, I haven't found anything specific. Could I see your wings?"
+
+    f "Huh, what, deterioration?"
 
     p "Yes. I want to check and see if they've changed."
 
@@ -76,65 +88,61 @@ label day3_morning:
 
     p "No change."
 
+    "Flandre leaps forward and spins back around to face Patchouli."
+
     f "Thank goodness. Surely they can't get worse."
 
-    p "I'll keep checking just in case. Remilia pointed out some change, so I want to verify."
+    p "I'll keep checking on it. Remilia pointed out some change, so I want to monitor closely."
 
     f "What? When?"
 
     p "Yesterday."
 
-    "Flandre looks to Remilia, who has an uncomfortable look on her face."
+    "Flandre looks over at an uncomfortable Remilia, crossing her arms with a glare."
 
-    f "So you did notice something yesterday? That's what you talked to Patchouli about, then."
+    f "So, you did notice something yesterday? That's what you talked to Patchouli about, then."
 
     r "Um, yes. I—"
 
     f "Why did you lie?"
 
-    r "I just wanted to be sure before I say anything."
+    r "I just wanted to be sure before I said anything."
+
+    "Flandre points to her back."
 
     f "They are *my* wings! I want to know everything!"
 
     r "I'm sorry."
 
-    f "Anything else I need to know?"
+    f "Anything else I should know?"
 
-    r "No. I just thought the holes might be slightly bigger, but I'm not certain. I wanted to be more sure before I gave you the idea of your wings deteriorating."
+    r "No. I just thought the holes might be slightly bigger, but I'm not certain. I wanted to be sure before making you worry."
 
-    f "Well I'm a part of this too, so just tell me. I can check on the holes."
+    f "Well I'm a part of this too, so tell me."
 
-    r "Ok. Sorry."
+    r "Right. Sorry."
 
-    "Flandre sighs."
-
-    f "So, do you need to study the wings again?"
-
-    p "Not right now. I still have some research to do."
-
-    f "Ok."
-
-    "Flandre leaves the library, leaving the two alone. Remilia sighs."
+    "Flandre sighs, then leaves the room. Remilia lets out a sigh of her own as she drops into a chair at Patchouli's table."
 
     p "Sorry."
 
-    r "That's just how it is. I should've handled it better."
+    r "That's just how it is. I suppose I handled it poorly."
 
     p "Yeah."
 
     r "You don't have to agree."
 
-    p "You're not going to go follow her?"
+    p "Are you leaving her alone?"
 
-    r "No, I'll give her some time."
+    r "For now. I'll give her time. I still need to keep an eye on you."
 
-    p "Ok."
+    p "Mm."
 
-    "Patchouli looks back down at her books."
+    "Patchouli looks back down at her books. Remilia watches for a while, before breaking the silence."
 
-    r "So, are you confident you can fix the wings?"
+    r "Are you confident you can fix the wings?"
 
-    p "Fairly so. There almost certainly is some kind of solution. I've solved far more difficult issues than this."
+    p "Fairly so. There almost certainly is some kind of solution. I've solved far more difficult problems than this."
 
     r "Good. You seem very experienced with magic."
 
@@ -144,11 +152,11 @@ label day3_morning:
 
     p "It means I was created as a Magician. Unlike others, I didn't need to transform."
 
-    r "Um... ok."
+    r "Um... got it."
 
     p "Perhaps I'll educate you on what Magicians are later."
 
-    r "Sure. That might be interesting."
+    "Patchouli points over her shoulder, behind herself."
 
     p "Now could you grab me that vial over there?"
 
@@ -158,23 +166,27 @@ label day3_morning:
 
     p "Not really."
 
-    r "Why not? I believe it would be a great honor."
+    "Remilia spreads her arms and wings wide."
 
-    p "No. Please grab it, I'd rather not exert myself."
+    r "Why not? I believe it would be a great honor to serve a vampire like me."
+
+    p "No. Please grab it for me. I'd rather not exert myself."
 
     r "Oh, fine."
 
-    "She grabs the vial and brings it over."
+    "She stands and fetches the vial, bringing it over to the table."
 
-    p "Good, thanks."
+    p "Thank you."
 
     r "It was only a few steps away."
 
-    p "I am not one for physical activity. I stick to my strengths."
+    p "I am not one for physical labor. I stick to my strengths."
 
-    "Remilia grumbles as she sits down at the table and starts observing Patchouli."
+    r "I'm no laborer..."
 
-    "The magician moves between different books scattered across the table, jotting notes on occasion. Every once in a while, a smile flashes for a moment before returning to her usual deadpan expression."
+    "Remilia grumbles as she sits back down. She silently observes Patchouli."
+
+    "The magician moves between different books scattered across the table, jotting notes on occasion. Every once in a while, a smile flashes for a moment, before returning to her usual deadpan expression."
 
     "Remilia reaches towards one of the notes."
 
@@ -184,6 +196,8 @@ label day3_morning:
 
     "Blood flies from Remilia's finger towards the table, but a spark erupts from the table, evaporating it. Patchouli does not react."
 
+    "Remilia looks at her hand in awe."
+
     r "Did you do that?"
 
     p "Mm."
@@ -192,71 +206,57 @@ label day3_morning:
 
     "Remilia pouts as her fingertip regenerates. She continues her silent observation."
 
-    "Eventually, the books all close."
+    "Eventually, the books all close at the same time."
 
-    p "I'm done for today. Could you go get Flandre? I want to do a check before I'm done."
+    p "I'm done. Could you get Flandre? I want to check something."
 
-    r "Ok."
+    "Remilia nods and flies out into the hall. Flandre is sitting down at the bottom floor doing nothing, with a few books scattered around. Remilia drops down in front of her."
 
-    "Remilia leaves the library. Flandre is sitting down in the front hall, and Remilia flies over."
-
-    r "Hi Flandre."
+    r "Hey."
 
     f "Hi."
 
     r "Patchouli wants to check your wings again."
 
-    f "Ok."
-
-    "Flandre stands up. Remilia reaches out her arms."
+    "Flandre stands up, and Remilia reaches out her arms towards her."
 
     r "I can fly you up."
 
     f "No."
 
-    r "Oh, ok."
+    r "Um, ok. Sorry."
 
-    "Flandre walks up the stairs and into the library, with Remilia following behind."
+    f "It's fine. I'm not really mad anymore."
 
-    f "Hi Patchy."
+    r "Oh. Good."
 
-    p "Hello. May I see your wings?"
+    "Flandre walks up the stairs and into the study, Remilia follows behind."
 
-    f "Yes."
+    f "Delivery. Flan wings."
 
-    "Flandre walks up to Patchouli and turns."
+    "Flandre walks up to the stone-faced Patchouli and presents her back."
 
-    p "Hmm. The same. Good. How's the numbness?"
+    p "They look the same. Good. Still numb?"
 
-    f "Still there."
+    f "Yeah."
 
     p "How long did the previous one last?"
 
-    f "Nearly 'til morning. It was starting to wear off though."
-
-    p "Ok."
+    f "Nearly 'till morning. It was starting to wear off though."
 
     "Patchouli recasts the spell."
 
-    p "It should be good until next time I see you."
+    p "Now it should be good until next time I see you."
 
     f "Oh, thanks!"
 
-    p "Tomorrow I'll have things to try. I'll need you here all night."
+    p "I have things to try tomorrow. I'll need you here all night."
 
-    "Flandre salutes."
+    "Flandre spins and salutes."
 
     f "Yes ma'am!"
 
-    p "Uh, don't call me that. I'm not an old youkai."
-
-    f "A yo...? Yeah, ok. Patchy it is."
-
-    p "Good. That is all."
-
-    f "Ok. Bye!"
-
-    "The sisters leave the library and travel to their room. They sit around their daily dead chicken."
+    "The sisters leave to their room. They sit around their daily dead chicken."
 
     r "I'm sorry about before, Flandre."
 
@@ -268,25 +268,37 @@ label day3_morning:
 
     r "Um... sorry."
 
-    f "I know. Stop talking about that. I'm worried about my wings, not you."
+    "Flandre points at Remilia."
 
-    r "Oh, ok."
+    f "I know. Stop talking about that. Give me a chicken leg if you want forgiveness."
 
-    f "I don't want them to disappear forever."
+    "Remilia grabs the chicken's leg and hands it over."
+
+    r "Here, ma'am."
+
+    f "Thank you, my servant. The dark meat is all mine today."
+
+    r "Oh, come on."
+
+    "Flandre chomps into it."
+
+    f "I'm just upset about my wings. I don't want to lose them."
 
     r "Patchouli said she's confident she can restore them."
 
     f "Does she really mean it? Is she telling the truth?"
 
-    r "Yes, I am fairly confident. She has been honest the whole time. I've been watching her very closely."
+    r "Yes, I am sure. She's been consistently honest, and appears competent. I've been watching her very closely."
 
-    f "Hmm. Ok."
+    "Remilia looks to the side."
 
     r "I'm the only one that's been... not so straightforward."
 
+    "Flandre tosses the bone onto Remilia's lap."
+
     f "Ha, it sounds like you're the one defending Patchy now."
 
-    r "Um, I wouldn't say that. But I do think she's trustworthy now."
+    r "Uh, I wouldn't say that. But I do think she's trustworthy now."
 
     f "Ok. I believe you."
 
@@ -300,12 +312,18 @@ label day3_morning:
 
     f "Thanks for trusting someone for me."
 
-    r "Uh, sure."
+    r "Mhm."
 
-    "Flandre jumps into her coffin."
+    "Flandre jumps over to her coffin."
 
     f "I'm tired now. Bye."
 
-    r "Bye."
+    r "You forgot something."
 
-    "They retire for the day."
+    "Remilia tosses the bone at her. Flandre catches it, tosses it into Remilia's coffin, then hides into her own."
+
+    r "Ugh."
+
+    "Remilia empties her coffin and sleeps."
+
+    return

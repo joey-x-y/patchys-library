@@ -27,3 +27,5 @@
 
 # vscode-specific files.
 .vscode/
+
+extra/

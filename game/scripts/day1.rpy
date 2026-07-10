@@ -12,37 +12,45 @@ label day1_forest:
     show remilia at left
     show flandre at right
 
-    "Remilia and Flandre are walking through the forest at night."
+    "Remilia lands and sets down Flandre, then catches her breath."
 
-    f "Sis... I'm really tired."
+    r "I... can't carry you anymore. I'm really sorry."
 
-    r "I know. But the sun will rise soon, we can't be outside for that."
+    f "It's ok."
+
+    r "But we need to keep moving, trees aren't good enough shelter from the sun. It cuts through the leaves."
+
+    "Flandre nods, and they walk through the dark forest."
+
+    f "Sis... I'm getting really tired. I need a break."
+
+    r "I know, but we're running out of time. We have to keep going."
 
     "Flandre sits down hard."
 
     f "I can't."
 
-    r "Alright."
+    r "Ok, then a short break."
 
-    "Remilia grabs a rabbit and brings it to Flandre."
+    "Remilia hunts a rabbit and brings it to Flandre."
 
-    r "Here."
+    r "Here. Rabbit."
 
     f "Thank you."
 
-    "Flandre dives into the rabbit, devouring its flesh and blood. She stops halfway through."
+    "Flandre eats half of the rabbit before stopping."
 
     f "Here's the rest."
 
-    r "Keep it. I'll be ok."
+    r "Keep it. I'll be alright."
 
-    f "I know you're hungry."
+    f "No you won't. You're hungry too."
 
     r "You need it more. Please eat it."
 
     f "Fine."
 
-    "She finishes the rabbit."
+    "Remilia watches Flandre finish the rabbit."
 
     r "How are your wings, Flandre?"
 
@@ -54,21 +62,25 @@ label day1_forest:
 
     r "I see."
 
-    "Remilia looks off to the sky. Subtle shades of pink are visible."
+    "Remilia looks off to the sky. The purple foreglow of sunrise begins to show."
 
-    r "Flandre, we are running out of time. We need to find shelter."
+    r "Flandre, we are running out of time. Let's go."
 
-    f "Ok."
+    f "Ok..."
 
-    "Remilia stands up. Flandre follows."
+    "Remilia stands up, Flandre follows."
 
-    r "I think if we go this way, we'll find some caves."
+    r "There must be some kind of shelter. Hunters build cabins out here."
+
+    f "Vampire hunters?"
+
+    r "Most likely animal hunters. Don't worry."
 
     f "I hope so."
 
     "They walk for a while."
 
-    r "Hmm?"
+    r "Oh?"
 
     "Among the trees, they find an old-looking building."
 
@@ -84,21 +96,14 @@ label day1_forest:
 
     r "Let's go. I'll keep you safe, don't worry."
 
-    hide remilia with easeoutleft
-
     "The edge of the sun begins to rise, stinging her vampire face."
 
-    f "Ok."
-
-    hide flandre with easeoutleft
-
-    "They enter the library."
+    "Then, they enter together."
 
     return
 
-
 label day1_library:
-    "The room is dark and barren. A large staircase is visible straight ahead."
+    "They step into a large library. Bookshelves cover the walls, and a large staircase lies straight ahead,"
 
     "Flandre leans to Remilia's ear."
 
@@ -108,31 +113,27 @@ label day1_library:
 
     r "Let's take a look. Try to keep quiet."
 
-    f "Ok."
-
     "They take a few steps into the room."
 
     "Clack."
 
-    "Something fires at Remilia's face, but she summons her spear to block at the last moment."
+    "Something fires at Remilia's neck, but she summons her spear to block at the last moment."
 
-    r "Stay behind me Flandre!"
+    r "Get behind me!"
 
-    "Clack. Clack. Clack."
+    "An onslaught of attacks comes from various directions."
 
-    "An onslaught of attack comes from various directions."
-
-    "It stops. Then a purple figure appears in the air. A mass of crystals appear around her and begin to glow. Orange on her left, blue on the right."
+    "The attacks stop as a purple figure appears in the air. A mass of crystals appear around her and begin to glow. Yellow on her left, blue on the right."
 
     "Remilia lifts her spear, charging it up in response."
 
-    "The crystals fire beams of light and water. Remilia meets them with a flash of energy from her spear. The attacks cancel each other out."
+    "The crystals fire beams of light and water, Remilia meets them with a flash of energy from her spear. The attacks cancel each other out."
 
-    "Remilia's knee buckles for a moment. Flandre holds Remilia from behind, stabilizing her. The magician watches intently."
+    "Remilia's knees buckles for a moment. Flandre holds Remilia from behind, stabilizing her. The magician watches intently."
 
     p "Leave, monsters."
 
-    r "We can't. We just need a place to stay for the day."
+    r "We can't! We just need shelter for the day."
 
     "The crystals begin charging again."
 
@@ -140,7 +141,7 @@ label day1_library:
 
     r "Damn it."
 
-    "Remilia charges her spear again, and the beams collide. Remilia nearly goes limp in Flandre's arms, breathing heavily."
+    "Remilia charges her spear again, and the beams collide. Remilia nearly goes limp in Flandre's arms, heavily breathing."
 
     f "Sis..."
 
@@ -150,9 +151,15 @@ label day1_library:
 
     f "Sis, no!"
 
-    "Flandre steps in front of Remilia's body."
+    "Flandre steps in front of Remilia's body and begins to summon a sword. The magician charges her crystals."
 
-    "The crystals stop charging, and the mage slowly floats down."
+    f "Hah!"
+
+    "The red slash collides with the lasers, splitting them in half and making them hit the ground next to the sisters."
+
+    "Flandre drops to her knees, breathing frantically."
+
+    "The magician studies her for a few moments, then slowly floats down."
 
     p "It appears neither of you can fight anymore."
 
@@ -162,77 +169,68 @@ label day1_library:
 
     f "We had to! The sun will kill us!"
 
-    p "Hmm."
-
-    "The mage studies them for a moment."
+    p "Hmm..."
 
     p "I've never seen vampires before. I want to study you. On that condition, you may stay."
 
-    f "Fine."
+    f "Fine!"
 
     "A door opens behind Patchouli."
 
-    p "Your rooms will be in there."
+    p "Your rooms will be in there. Go on."
 
     "Flandre slowly picks up Remilia and leans her onto herself, but buckles and drops to her knee."
 
-    f "I don't think... I can make it."
+    f "I don't think... I can walk."
 
-    p "Can't you fly?"
+    p "Hm. I suppose you are rather exhausted."
 
-    f "Not anymore."
+    "Suddenly they begin floating in the air."
 
-    p "Hmm. Fine then."
+    f "Whoa."
 
-    "Suddenly they float into the air and move through the door. The magician follows them in."
+    "They move through the door with the magician following closely behind."
+
     return
 
 label day1_end:
     "They enter a hall with one door."
 
-    "She stretches out her arms. A loud sound comes, and the hallway extends slightly. Two doors appear."
+    "She casts a spell, and two doors appear."
 
-    p "Those are your rooms."
+    p "These will be your rooms. One for each of you."
 
-    "They float into one of them, and the sisters get placed on the floor."
+    f "Please don't separate me from my sister."
 
-    "The magician leans on the wall."
+    p "Very well."
 
-    p "That's all I'll do for you today. Rest well, I need healthy subjects. You're useless right now."
+    "They float into one room and gently land on the floor."
 
-    f "Um... I can't sleep."
+    "The magician gives a long exhale."
 
-    p "Why?"
+    p "That's all I'll do for you today. Rest well, I need healthy subjects."
 
-    f "My wings. They burn."
+    f "Um... I can't sleep. My wings... they burn."
 
-    p "Huh. Bring them over here."
+    p "Hm. Bring them here."
 
-    f "Um, ok."
-
-    "Flandre stumbles over to her, and shows her back."
+    "Flandre stumbles over, showing her back."
 
     r "What do you plan on doing to them?"
 
     f "Sis, you're awake!"
 
-    r "I was the whole time. I just couldn’t move."
+    r "I was the whole time. I just couldn't move."
 
-    p "Then you should understand the situation. I am studying. Please be quiet."
+    p "Then you should understand the situation. I am studying a vampire, as agreed. Don't distract me."
 
-    r "Fine."
+    "Remilia sits up and stares her down."
 
-    "Remilia sits up and stares at the magician as she studies the wings."
+    "The magician studies the wings for a moment."
 
-    p "I could numb it."
-
-    f "Please. Anything."
-
-    "A flash of light appears."
+    p "I numbed it."
 
     f "Yay! Thank you!"
-
-    "The magician takes a deep breath."
 
     p "Is that all?"
 
@@ -242,7 +240,9 @@ label day1_end:
 
     f "Sorry, never mind."
 
-    r "No, it's important. Vampires gain their energy much quicker inside one. If you want your test subjects to be at full strength, you should bring some."
+    p "Then I belie—"
+
+    r "No, it's important. Vampires recover far quicker inside one. If you want your test subjects to be at full health, you should bring some."
 
     p "Ugh..."
 
@@ -254,37 +254,50 @@ label day1_end:
 
     f "Um, we're hungry. Sorry."
 
-    "Patchouli is already floating towards the door."
+    p "I'll warp something later."
 
-    p "I'll just warp something later."
-
-    "Patchouli opens the door then pauses, leaning on the doorknob."
+    "She stops at the door."
 
     p "By the way, if you try anything, you'll explode. So don't."
 
-    "The door closes."
+    "She leaves, and Remilia sighs."
 
-    r "How are your wings? Did she do anything strange?"
+    r "What a ridiculous situation."
+
+    f "But we have shelter."
+
+    r "We do, thank goodness."
+
+    "Remilia stands and stretches."
+
+    r "How are your wings doing? Did she do anything strange?"
 
     f "Nope! I can't feel them! It's great! I can finally—"
 
-    "Thump. Remilia drops to the floor."
+    "Remilia drops to the floor."
 
-    f "Ah!"
+    f "Ah, Remi!"
 
-    "Flandre rushes to Remilia."
+    "She runs over."
 
     f "You passed out? Ugh, I told you to eat."
 
-    "Flandre picks her up and drops her into a coffin."
+    "Flandre picks her up and drops her into a coffin. She sits on the edge of the bed."
 
     f "We really need food..."
 
     "After a few moments, a dead chicken appears on the table."
 
-    "She grabs the chicken, cuts the throat, and feeds the blood to Remilia."
+    f "Oh, it's here!"
+
+    "She feeds Remilia the chicken's blood."
 
     f "Take care of yourself too. Stupid sis."
 
-    "She eats the rest of the chicken, then jumps into the other coffin. She passes out instantly."
+    "Flandre finishes the chicken, then jumps into the other coffin."
+
+    f "I can finally..."
+
+    "She passes out instantly."
+
     return

@@ -2,66 +2,75 @@ label day7:
 
     call day7_morning
 
+    call epilogue
 
     return
 
 label day7_morning:
 
-    "The sisters rise from their coffins."
+    "Remilia rises from her coffin, and Flandre opens her immediately after."
 
-    "Flandre walks to the door, and opens it."
+    r "Um, hello, Flandre. How are you feeling?"
+
+    f "Bad. But calmer now. I'm sorry for hurting you."
+
+    "Remilia stands and puts her hands on her hips."
+
+    r "Don't worry, I'm durable. I can bounce back from a few elbows."
+
+    f "Heh, would that still be true if I hit you hard?"
+
+    r "Uh... didn't you?"
+
+    "Flandre gets up and walks to the door."
 
     r "Going already?"
 
     f "Yes."
 
-    "She leaves, and Remilia follows behind. They begin walking up the stairs."
+    "She leaves, and Remilia chases behind. They begin walking up the stairs."
 
-    r "Hey."
-
-    f "I just want to hurry up and go. I've laid around enough."
-
-    r "Don't push yourself, how is your balance?"
+    r "Hey, how's your balance?"
 
     f "Manageable enough. I am fine."
 
-    r "Alright."
+    "They arrive at the study. Patchouli looks up from her mountain of books and scrolls."
 
-    "They enter the library."
-
-    p "Hello Flandre, and Remilia."
+    p "Ah, hello Flandre."
 
     f "Hi."
 
-    p "I'm sorry about the wings."
+    p "I'm, um, sorry about your wings."
 
     f "Don't apologize for it. How are things now?"
 
-    p "I am... thinking."
+    p "I have been... thinking."
 
     f "About what?"
 
-    p "I was trying to fix the wings, but now I have to think about how they could be replaced entirely."
+    p "I was trying to restore your wings, but now I have to think about how they could be replaced in their entirety."
 
-    f "Huh. Is there a way to fix my wing regeneration?"
+    f "Huh. New wings? How's that work?"
 
-    p "I don't know. Even though Remilia let me study the wing anatomy, I'm not sure how to replicate it."
+    p "I don't know. Even though Remilia let me study wing anatomy, I don't know how I could replicate it."
 
-    r "Hey."
+    r "Hey!"
 
     f "You what about anata what?"
 
-    p "I got a feel of Remilia's wings, taking note of how the wing flaps and stem felt. I tried to be thorough so I can fully understand them."
+    p "I got a feel of Remilia's wings, taking note of how the flaps and stem feel and connect with each other. I touched them as thoroughly as I could to try and fully understand them."
 
-    "Flandre looks over to Remilia."
-
-    f "Whoa."
+    "A shocked Flandre looks over to a tomato-faced Remilia."
 
     r "Shut up!"
 
+    f "But I haven't made fun of you yet."
+
     p "I would like to touch them more, if that's ok?"
 
-    r "I am not such an indecent vampire! I don't do that on command!"
+    "Remilia flinches away from Patchouli."
+
+    r "I am not such an indecent vampire! I don't do such uncouth things on request!"
 
     f "I shouldn't leave you two alone together."
 
@@ -77,7 +86,7 @@ label day7_morning:
 
     p "I must say, it is rather nice."
 
-    r "Are you doing this on purpose?"
+    r "Are you doing this to me on purpose?"
 
     p "Forbidden knowledge has an appeal."
 
@@ -95,31 +104,31 @@ label day7_morning:
 
     r "Ugh..."
 
-    "Patchouli stands with her eyes closed, unresponsive."
+    "Patchouli stands with her eyes closed and arms folded, unresponsive."
 
     f "Looks like a yes."
 
-    r "I showed her so she can understand wings more, to help her fix yours. That's all."
+    "Remilia walks in front of Flandre and waves her arms."
 
-    f "Sure."
+    r "I showed her so she can understand wings more, to help with fixing yours. That is all. Understand?"
 
-    r "Please just stop. We should focus on the wings."
+    f "Sure. Whatever you say."
 
-    f "Fine. I was ju—"
+    r "Oh... how—"
 
     p "But that doesn't even matter!"
 
-    "Patchouli smiles."
+    "Patchouli suddenly hovers into the air with a smile, making the vampires jump."
 
     f "Huh?"
 
     p "I don't have to make vampire wings!"
 
-    "She flies off to a bookshelf."
+    "She flies off, and Flandre reaches out her arm in Patchouli's direction."
 
     f "Patchy, wait! But I want wings!"
 
-    "She flies back with multiple crystals."
+    "She returns with multiple crystals."
 
     p "I can just attach magic crystals!"
 
@@ -141,55 +150,55 @@ label day7_morning:
 
     f "No! Use Remi!"
 
-    r "No. Pain exists."
+    r "No. Regeneration doesn't prevent pain."
 
-    p "I can numb your full body."
+    p "I can numb your body."
 
-    r "No! That's insane!"
+    r "No! You're insane!"
 
-    p "Fair enough. I do believe you know how to use magical energy, Flandre?"
+    p "Fair enough."
 
-    f "Yeah! I can do this!"
+    "Patchouli exhales and turns to Flandre."
+
+    p "Enough goofing off. Flandre, I do believe you know how to use magical energy, right?"
+
+    f "Yeah! Like this!"
 
     "She summons her sword."
 
-    r "Hey, put that away!"
+    r "Put that away!"
 
     f "Sorry."
 
     "The sword disappears."
 
-    p "Perfect, you can! This should work. Just give me some time."
+    p "Perfect! This should work, just give me some time."
 
     f "Ok!"
 
-    r "Need help?"
+    r "Do you want any help?"
 
     "Patchouli grabs Remilia's shoulders."
 
-    p "Of course you can! I'll need you to do some things for me."
+    p "Yup! I'll work you hard."
 
-    r "Right. Of course I will."
+    r "Mm. Right."
 
-    p "Good. Shall we?"
+    f "So touchy. Bleh."
 
-    f "So touchy."
+    "Over the next few hours, Patchouli imbues various magical crystals as Remilia runs around gathering materials. Flandre lies on the ground reading about mercury."
 
-    "Over the next few hours, Patchouli imbues various magical crystals as Remilia runs around gathering materials. Flandre continues to read about mercury."
+    p "Got it! This is stable! I think. Now for a test. Hold this, Remilia."
 
-    p "I got it! This is stable! Now for a test. Hold this, Remilia."
-
-    r "Sure."
-
-    "She grabs the crystal."
+    "She takes the crystal."
 
     p "Now, put a little energy into it."
 
-    "Remilia slowly floats."
+    "Remilia slowly floats into the air."
 
-    r "Whoa."
+    r "Whoa. Neat."
 
-    p "Perfect. Now we attach these onto Flandre's stems."
+    p "Perfect. Now, we just attach these to Flandre's stems."
 
     r "That's incredible!"
 
@@ -199,25 +208,27 @@ label day7_morning:
 
     p "I believe I have solved the problem."
 
-    f "Yay!"
+    "Flandre leaps into the air."
 
-    "Patchouli grabs the crystal, and Remilia touches back to the ground."
+    f "Yay! Yay!"
 
-    r "Truly. This is incredible."
+    "Patchouli swipes the crystal from Remilia's hand, making her drop."
 
-    p "Um, yes. Thank you. Now Flandre, please lay down on the table, and I will attach them."
+    r "That was truly incredible. You're phenomenal."
+
+    p "Ehem, yes, of course. Now lie down, Flandre. I will attach them."
 
     f "Ok!"
 
     "She jumps face-first onto the table."
 
-    r "Don't break the table."
+    r "Don't damage the table."
 
     f "Don't ruin the moment."
 
     r "Fine, fine."
 
-    "Patchouli floats over Flandre. One by one, she places a crystal onto a wing stem, a flash appears, then it sticks. Eventually, she's done and floats away."
+    "Patchouli floats over Flandre. One by one, she places a crystal onto a wing stem, casts a spell, and it sticks. Eventually, she's done and floats away."
 
     p "Ok, Flandre. Slowly, stand up. Very carefully."
 
@@ -229,11 +240,11 @@ label day7_morning:
 
     p "Wait, no, hold on. Don't move."
 
-    "Patchouli flies over, and applies another spell."
+    "Patchouli flies over and applies another spell."
 
     p "Ok, continue."
 
-    "Patchouli flies back as Flandre stands all the way up, the crystals stay in place."
+    "Patchouli flies back next to Remilia as Flandre stands all the way up, the crystals stay in place."
 
     p "How's your balance?"
 
@@ -245,13 +256,9 @@ label day7_morning:
 
     p "Please relax. Now, just apply the smallest amount of magical energy—"
 
-    f "Ah!"
-
     "Flandre shoots to the ceiling."
 
     p "Gently!"
-
-    f "Oh, sorry."
 
     "She slowly floats down."
 
@@ -259,13 +266,13 @@ label day7_morning:
 
     "Flandre starts flipping in the air."
 
-    f "Awesome! Amazing! Absolutely Astonishing!"
+    f "Awesome! Amazing! Absolutely astonishing!"
 
     p "Good."
 
     f "I can fly! I can fly!"
 
-    "She zooms around the library."
+    "She zooms around the room, faster than their eyes can follow."
 
     p "Hey!"
 
@@ -273,41 +280,47 @@ label day7_morning:
 
     "Remilia walks up to Patchouli."
 
-    p "I guess no—"
+    p "I guess not. I trust you'll clean any messes."
 
-    "Remilia hugs Patchouli and kisses her."
+    "Remilia's gaze flicks to the side and back to Patchouli a few times, her face steadily turning red."
 
-    p "Mm?"
+    p "Uh, wha—"
 
-    "Remilia pulls away after a few moments. Her eyes have tears."
+    "Remilia lunges into Patchouli, grabbing and kissing her."
 
-    r "Thank you! I... uh... oh. What did I just...?"
+    p "Mmm?"
 
-    "Patchouli looks at Remilia's eyes."
+    "Remilia pulls back after a few moments, looking into Patchouli's eyes. Her eyes are teary."
 
-    p "You kissed me?"
+    r "Thank you Patchy! I... uh... oh. What did I just...?"
+
+    "Patchouli looks back into her eyes."
+
+    p "You just kissed me?"
 
     r "Yes, sorry. I don't know why I did that. Sorry."
 
-    "Patchouli goes in for a kiss."
+    "Remilia starts to let go, but Patchouli pulls her in for another kiss."
 
-    p "It was nice."
+    "They hold it for ten seconds before separating again."
+
+    r "Uh, uh..."
+
+    p "This is nice."
 
     r "Uh, yes."
 
-    "They stand silently for a while."
+    "They stand silently."
 
-    r "Um... can I do it again?"
+    r "Hey, um... is it ok if we do it again?"
 
-    p "Yes."
+    p "Mhm."
 
-    "They kiss again. Flandre hovers over them."
+    "They go back in for another. Flandre hovers over them."
 
     f "The moment I look away."
 
-    "They separate fast."
-
-    p "Oh, sorry."
+    "They jump apart."
 
     r "She was just, checking something!"
 
@@ -315,60 +328,136 @@ label day7_morning:
 
     p "Three."
 
-    r "Patchy... Don't tell her."
+    f "How many before today?"
+
+    p "Zero, sadly."
+
+    r "Patchy, don't tell her."
 
     f "Patchy?"
 
     r "Oh, I mean... damn it."
 
-    f "You two are stealing my spotlight. Stand there and watch my new moves! You can stare into each other's eyes later!"
+    f "You two are stealing my spotlight. Stand there and watch my new moves! You can drown in each other's eyes later!"
 
     r "Ok, sorry."
 
-    "The two of them stand and talk in the library, as the energetic Flandre flies at high speeds."
+    "The two lovebirds stand together as Flandre zips around at dangerous speeds."
 
-    "Finally, Flandre lands in front of them."
+    return
+
+label epilogue:
+
+    "Finally, Flandre crash lands into a chair."
 
     f "I'm tired."
 
-    "A fridge appears next to the table."
-
-    p "There you go."
+    "Patchouli summons a dead chicken on Flandre's lap."
 
     f "Yay!"
 
-    "She pulls the rest of the rabbits out and devours them."
+    "She instantly dives into her new meal."
 
-    "Patchouli sits next to Remilia."
+    "Then, a couch appears."
+
+    p "I believe you wanted a couch?"
+
+    r "Yes!"
+
+    "Remilia dives into the couch, letting her wings spread across the whole thing. Then she sits up."
+
+    p "Glad you like it."
+
+    "Remilia pats the spot next to her."
+
+    r "Come here. But don't you dare sit on my wing."
+
+    "Patchouli joins her. Remilia immediately leans into her."
 
     r "Thank you. I can't thank you enough."
 
-    p "Mhm."
+    p "It was my pleasure. It made for a good story."
+
+    r "Mhm."
 
     "Remilia looks over to a staring Flandre."
 
-    r "Please stop staring at us."
+    r "Stop staring."
 
     f "Sorry."
 
     r "No you're not."
 
-    f "Hehe."
+    f "Hehe. You're married now."
 
-    "Flandre leans into her chair, then immediately falls asleep."
+    r "No we are not!"
+
+    "Flandre leans back, then immediately falls asleep. The chicken remains fall to the floor."
 
     r "Geez, such a handful."
 
     p "Some energy is nice."
 
-    r "Yeah."
+    r "Yeah. It is."
 
-    "Tea appears at the table."
+    p "You are rather bold, stealing my lips like a prince from a fairytale."
 
-    p "Want some?"
+    r "I uh, yeah. Sorry."
 
-    r "Yes, please."
+    p "You do not need to apologize. I truly did enjoy that."
 
-    "They drink tea together, as Flandre stays in her deep slumber."
+    r "Um, good. Are we, um, you know? I guess... a thing?"
+
+    p "I don't know."
+
+    r "Then... I wanna be. So we are."
+
+    p "I have no opposition to that."
+
+    "Remilia tugs at her, pulling herself close."
+
+    "Then, Remilia's wings wrap around Patchouli."
+
+    r "Good. You're mine."
+
+    "They stick together silently for a few minutes."
+
+    p "I want to show you something. I believe it will be to your liking."
+
+    "Remilia's face turns scarlet."
+
+    r "W-what do you mean?"
+
+    "Patchouli grins widely."
+
+    p "I brought something very special when I set out to build this mansion. I've been storing it in the basement, waiting for the perfect occasion."
+
+    r "U-um, what is it?"
+
+    "A crate appears on the table."
+
+    p "An ancient wine."
+
+    "Remilia leaps from the couch to the table."
+
+    r "How ancient?!"
+
+    p "Hey, come back here! I will serve us in a civil manner."
+
+    r "Hmph, fine."
+
+    "Remilia sits back down, then Patchouli pulls her in."
+
+    p "I'll serve you after you wrap me with your wings again."
+
+    r "Gladly."
+
+    "As the wings wrap around Patchouli, the crate lid flies off to the floor. Large wine bottles float up and out, lining the table."
+
+    p "Now, shall we discuss the future over some wine?"
+
+    r "Yes!"
+
+    "As Flandre sleeps after her wing celebration, the new couple drink wine together throughout the night."
 
     return

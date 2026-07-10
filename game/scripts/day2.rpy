@@ -9,98 +9,110 @@ label day2_morning:
     
     "Remilia rises out of her coffin and stretches."
 
-    r "I finally feel rested."
+    r "I feel rested. Finally."
 
     "She looks over to Flandre's coffin."
 
-    r "She's still asleep. I should think of a way out of here."
+    r "She's still asleep. Now how can I get us out of here?"
 
-    "Flandre rises out of the other coffin."
+    "Flandre's coffin opens."
 
     f "No, I'm awake."
 
     r "Oh. How did you sleep?"
 
-    f "Ok. I slept a little, but the pain came back. I was just lying for a while."
+    f "Fine. I slept a little, but the pain came back. It was comfy inside so I didn't wanna get up."
 
-    r "Oh."
+    r "You could've woken me up."
 
-    f "Don't try to escape. We'll explode."
+    f "No, you needed sleep."
 
-    r "She's bluffing. Besides, she can't take me at full power anyway."
+    r "Ok, fair enough. I was exhausted."
+
+    f "And don't try to escape. We'll explode."
+
+    r "She's bluffing. Besides, she can't take me at full power. It would be a slaughter."
 
     f "Please don't. I don't think she'll harm us if we don't do anything."
 
     r "We're her test subjects. Who knows what she'll do."
 
-    f "Please, sis. I'm tired of moving every night. And I want my wings numbed again."
+    f "Please, sis. I'm tired of moving every night. I want my wings numbed again."
 
-    r "Ok, fine. But don't be careless. This is hostile territory."
+    r "Alright, fine. I won't do anything."
+
+    r "But don't be careless. This is hostile territory."
 
     f "I'll be careful."
 
-    r "Good."
+    r "Good. Thank you."
 
-    "Flandre hops up."
+    "Flandre hops out of her coffin."
 
     f "I'm gonna ask her to numb my wings now."
 
-    "Remilia hops quickly after her."
+    "Remilia flies after her."
 
-    r "Hey, wait, don't go alone. You just said you'd be careful!"
+    r "Hey, wait, don't go alone! You just said you'd be careful."
 
     f "Yeah, let's go together."
 
-    "They step into the hallway. A voice resounds."
+    "Remilia sighs as they step into the hallway. A voice resounds."
 
     p "Go up the stairs."
 
     f "Whoa, cool."
 
-    r "Great. We're being watched."
+    r "She's watching us. Great."
 
-    "They step out of the hall, back to the front room. Remilia stares at the door for a moment before approaching the staircase."
+    "They step out of the hall, back to the front room. Remilia stares at the exit for a moment before approaching the staircase."
 
     r "I can fly you up."
 
-    f "Um, it's ok. You don't have to. Let's walk."
+    f "Um, no thanks. You don't have to. Let's walk."
 
-    r "Ok."
+    "Remilia nods and follows Flandre to the stairs."
 
-    "Flandre walks up the stairs. Remilia continues to follow."
+    "She looks around as she ascends. Books everywhere, along with fancy chandeliers lining the ceiling."
 
-    "Remilia looks around as she ascends. The front hall is dark again. Lantern light comes from the top of the stairs. Various paintings cover the walls."
+    r "You think she's read all those?"
 
-    "They reach the top, and a large door is in front of them."
+    f "No. Too many."
+
+    r "I bet."
+
+    "They reach the top, approaching a large door."
 
     p "You may enter."
 
-    "Remilia grabs Flandre's hand. They walk through the door."
-    
+    "Remilia grabs Flandre's hand, and they walk through the door together."
+
     return
 
 label day2_library:
-    "They enter a library. Bookshelves line the room. In front of them is Patchouli, sitting at a table."
+    "They step into a large room lined with even more books. Patchouli sits in front of them at a large desk."
 
-    p "Welcome."
+    p "Welcome to my study."
 
-    f "Hi."
+    f "Whoa, cool!"
 
     r "Would you numb Flandre's wings again?"
 
-    p "Sure. I'll make it last longer this time. Come here."
+    p "Sure. I can make it last longer this time. Come here."
 
     "Flandre walks over, and the magician casts the spell."
 
-    f "Thanks, um... what's your name?"
+    f "Thank you... uh, what's your name?"
 
     $ magician_name = real_magician_name
 
     p "Patchouli."
 
-    f "Thanks, Patchouli! I'm Flandre Scarlet, that's my sister Remilia Scarlet!"
+    f "Thank you, Patchouli! I'm Flandre Scarlet, that's my cranky sister Remilia Scarlet!"
 
-    p "Mhm."
+    p "Well met, Scarlets."
+
+    "Remilia steps forward."
 
     r "What do you intend on doing with us?"
 
@@ -108,23 +120,31 @@ label day2_library:
 
     r "What exactly do you mean by that?"
 
-    f "Stop being so rude."
+    "Flandre tugs the back of Remilia's shirt."
 
-    r "I need to know. I will only tolerate so much. I have dignity I wish to maintain."
+    f "You're being rude, sis."
 
-    p "I'm not a mad magician, I won't do anything too harsh. I just want to understand vampires more. I've never seen one. It's very interesting. Why does sunlight hurt them when they are so durable? There's a lot of questions."
+    r "I must know. I will only tolerate so much. I have dignity I wish to maintain."
 
-    r "So we're just here to entertain you?"
+    p "I'm not a mad magician, I won't do anything too harsh. I just want to understand vampires more. I've never seen one. It's very interesting. Why does simple sunlight hurt them when they are so durable? There's a lot of questions."
 
-    p "Hmm, I guess so."
+    r "So we're your entertainment?"
+
+    p "Hmm. Yeah."
 
     r "Great."
 
-    p "My first question is about healing. Vampires heal themselves right?"
+    "Flandre gently tugs Remilia's shirt, and she steps back next to her."
+
+    f "You can ask stuff now."
+
+    p "So I shall. The first question is about healing. Vampires heal themselves, correct?"
 
     r "Yes, if they rest."
 
     p "Is Flandre not a vampire?"
+
+    "Flandre raises her hand."
 
     f "I am!"
 
@@ -132,25 +152,31 @@ label day2_library:
 
     f "Uh, yeah."
 
-    r "She didn't sleep all day, your numb spell didn't last long enough."
+    r "She didn't sleep enough, your numb spell was too short."
 
     f "No, that's not it. Don't blame her. They haven't healed at all, no matter what."
 
     p "What caused it?"
 
-    f "Um... well, a knife. It burned."
+    "Flandre crosses her arms and looks down."
 
-    p "What kind of knife was it?"
+    f "Um... well, a blade. It burned."
+
+    p "What kind of blade was it?"
 
     f "Uh... I don't know!"
 
+    "Remilia gently puts her hands on Flandre's shoulders."
+
     r "That's quite enough."
 
-    p "Ok. That gives me ideas, at least."
+    p "I suppose it is. I have an idea now."
 
-    f "Can you... fix it?"
+    "Flandre looks back up at Patchouli."
 
-    p "Hmm... I don't know. That would make for an interesting project."
+    f "Um... if it's ok, do you think you can fix it? Please?"
+
+    p "Hmm... that would make for an interesting project."
 
     r "That's a good idea. A good vampiric study."
 
@@ -158,13 +184,13 @@ label day2_library:
 
     r "What?! I thought you wanted to!"
 
-    p "The way you say things... it's kind of annoying."
+    p "The way you suggest things... it's kind of annoying..."
 
     r "How so?"
 
-    f "Sis, please be quiet. Let me ask."
+    f "Sis, be quiet."
 
-    "Remilia almost speaks, but stops."
+    "Flandre steps forward out of Remilia's grip. Remilia mouth opens, but quickly closes again."
 
     f "Patchouli, could you please try? The pain... I hate it. Please. I'll help however you want."
 
@@ -172,27 +198,31 @@ label day2_library:
 
     r "Please help my sister."
 
-    p "Alright. I'll do it."
+    "Patchouli sighs."
 
-    f "Thank you!"
+    p "Very well. I'll do it."
 
-    p "I'm going to analyze your wings. Lay on the table."
+    "Flandre hops in the air."
 
-    f "Ok."
+    f "Yay! Thank you!"
 
-    "Flandre hops up on the table and lies on her face. Patchouli floats over."
+    p "I'll analyze your wings. Lay on the table."
 
-    r "Please don't do anything weird."
+    f "Ok!"
+
+    "Flandre hops up on the table and lies on her face. Patchouli floats over her."
+
+    r "Please don't do anything weird to her."
 
     p "Like what?"
 
-    r "Um, I don't know."
+    r "Uh... I don't know."
 
-    p "Then you can go do whatever you want. But don't break anything. And don't disturb me."
+    p "In that case, you are free to go do whatever you want. But don't break anything. And don't disturb me."
 
     r "I'm not leaving her alone."
 
-    p "Ok. You can read a book if you'd like. But don't damage it, or you'll explode."
+    p "Fair enough. You can grab a book if you'd like. Don't damage any, or you'll explode."
 
     r "Explode how?"
 
@@ -202,73 +232,79 @@ label day2_library:
 
 label day2_end:
     
-    p "Alright, I'm done."
+    "Patchouli drops out of the air, onto her feet."
+
+    p "I'm done."
 
     r "Are they fixed?"
 
     p "No, I'm tired."
 
-    r "Did you learn anything from all that stuff you did?"
+    "Remilia pushes off the wall she was leaning on, approaching Patchouli."
 
-    "She yawns. Flandre hops off the table."
+    r "Did you learn anything useful?"
 
-    p "Yes. These wings won't heal themselves, they were cut by something abnormal. I must figure out exactly what that is."
+    "Patchouli yawns. Flandre hops off the table and starts doing stretches on the ground."
 
-    "She walks off deeper into the library."
+    p "These wings won't heal themselves, they were cut by something abnormal. I must figure out exactly what that abnormality is."
+
+    "She walks off deeper into the room."
 
     r "Hey, what now?"
 
     p "Do whatever."
 
-    r "Ugh, alright then."
+    r "Ugh, alright then. Hey, Flan—hey where are you?"
 
-    f "I bet she has some cool books!"
+    "She looks to where she was, but she's gone."
 
-    "Flandre pulls a book off a shelf."
+    f "Huh? It's all symbols?"
 
-    f "It's all symbols?"
+    "Flandre is at a bookshelf, with a stack of books next to her."
 
-    "She puts it back."
+    f "Bleh. This stuff is too complicated."
 
-    f "Never mind. This stuff is too complicated."
+    "Remilia walks over to her."
 
-    r "How do your wings feel now?"
+    r "What are you doing?"
+
+    f "Reading. Or, trying."
+
+    r "Right. How are your wings feeling?"
 
     f "Numb."
 
-    r "So you didn't feel anything that whole time then?"
+    r "Can I check them?"
 
-    f "Nope."
-
-    r "Ok. Let me see."
+    f "Yeah."
 
     "Remilia goes behind Flandre and observes the wings."
 
     r "They are... hmm."
 
-    f "Um, are they fine? No, the same?"
+    f "Um, are they good? I mean, still the same?"
 
     r "...Yeah. Same."
 
-    "Remilia walks back in front of her."
+    "Flandre turns around."
 
     f "Are you sure?"
 
     r "I'm pretty sure."
 
-    f "Well, ok then."
+    f "Well, ok. I'm gonna find a readable book now."
 
-    "Flandre looks around."
+    r "Alright, I'm going to talk to the librarian."
 
-    f "I'm gonna find a readable book."
+    f "Patchouli?"
 
-    r "Ok. I'm going to talk to the librarian."
+    r "Yeah, sure."
 
     f "About what?"
 
-    r "Just ask a few questions."
+    r "I want to ask a few questions."
 
-    f "Are you sure?"
+    f "That's all?"
 
     r "Yes."
 
@@ -276,31 +312,33 @@ label day2_end:
 
     r "I don't plan on it."
 
-    f "If you make her change her mind again... don't."
+    f "If you make her change her mind again... just don't."
 
-    r "I won't. I'll be careful about that. I'll be right back, ok?"
+    r "I won't. I'll be careful about that. I'll be right back, alright?"
 
     f "Fine."
 
-    "Flandre walks to the bookshelves."
+    "Flandre runs over to more bookshelves, as Remilia walks deeper into the room."
 
-    "Remilia walks into the library and finds Patchouli."
+    "Patchouli is sitting at a table, looking at the many open books in front of her."
 
-    p "Hello."
-
-    r "Hi. Um, can I ask some more questions?"
+    r "Hey, um, can I ask some more questions?"
 
     p "Sure."
 
-    r "Did Flandre's wing change at all while you were studying them?"
+    "Her attention stays down in her books as she responds."
+
+    r "Did Flandre's wings change at all while you were studying them?"
 
     p "No."
 
-    r "Um, are you absolutely certain?"
+    r "Are you absolutely certain?"
 
     p "Yes. I would have noticed change."
 
-    r "Well... they looked differently last time I checked."
+    r "Well... they looked different last time I checked."
+
+    "Patchouli finally looks up."
 
     p "When was that?"
 
@@ -310,35 +348,47 @@ label day2_end:
 
     r "Really? Why?"
 
-    p "If something can't heal itself, slow deterioration is not unusual."
+    p "If something can block regeneration, it is not unusual for it to cause slow deterioration as well."
 
     r "I see."
 
-    p "Do you know anything about the injury that Flandre didn't say?"
+    p "Thank you for sharing that, it is useful information."
+
+    "Remilia crosses her arms and smiles."
+
+    r "Of course."
+
+    p "Do you know anything else that Flandre couldn't say?"
+
+    "Remilia smile drops."
 
     r "No."
 
-    p "Ok."
+    p "I see."
 
-    r "And don't push her about it."
+    r "And don't ask her about it again."
 
     p "I won't."
 
     r "Good."
 
-    "Patchouli stands up."
+    "Remilia's smile returns as Patchouli stands up."
 
-    p "I'm going to check something."
+    p "Mind if I check something?"
 
-    r "Ok. Go ahead."
+    r "Go right ahead."
 
-    "Patchouli grabs Remilia's wings. Remilia quickly leaps across the room, out of her grip."
+    "Patchouli grabs Remilia's wing."
 
-    r "Hey! What are you doing?"
+    r "Huh, wait, hey!"
+
+    "Remilia quickly leaps across the room, out of her grip."
+
+    r "What are you doing, fiend?"
 
     p "Checking your wings."
 
-    r "Don't touch them like that!"
+    r "Hands off!"
 
     p "But you said go ahead?"
 
@@ -346,9 +396,13 @@ label day2_end:
 
     p "Oh. Sorry."
 
-    r "Don't just touch a vampire's wing like that."
+    r "Don't just touch a vampire's wing like that. Understand?"
 
-    f "What are you doing?"
+    p "But I've been touching Flandre's."
+
+    r "That's clinical. It's obviously different."
+
+    f "What are you two doing?"
 
     "Remilia jumps."
 
@@ -356,23 +410,23 @@ label day2_end:
 
     p "I'm learning vampire etiquette."
 
-    r "She touched my wing without a care in the world."
+    r "She touched my wing without a care in the world. Heathen."
 
     f "Oh. Is that one of those weird things you were worried about, sis?"
 
     r "No. Never mind, this is stupid."
 
-    "Remilia walks out of the library."
+    "Remilia briskly walks out of the room."
 
     f "Wait, sis!"
 
-    "She follows her out."
+    "She runs after her."
 
     f "Where are you going?"
 
     r "I'm tired. I'm going to sleep."
 
-    f "Ok. Me too, those books are confusing."
+    f "Me too, those books are confusing."
 
     r "Did you learn anything from them?"
 
@@ -384,31 +438,35 @@ label day2_end:
 
     r "Let me fly you down this time."
 
-    f "Ok."
+    f "Ok!"
 
-    "They hover over the main hall."
+    "Remilia leaps into the air over the balcony. She hovers along the ceiling, weaving between the various chandeliers."
 
     f "It's fun, seeing things from way up."
 
-    r "Yes. It is."
+    r "Indeed."
 
-    f "I can't wait for Patchouli to fix my wings. Then we can fly all over the world."
+    f "I can't wait for Patchouli to fix my wings. We'll fly all over the world!"
 
     r "I'd love that."
 
+    r "Hey, watch your foot! Don't break the chandeliers."
+
+    f "Oops."
+
     "They continue to float around the room."
 
-    f "Were you getting along with her?"
+    f "Hey, hey, were you getting along with her?"
 
     r "Um, kind of?"
 
-    f "What did you talk about?"
+    f "What did you two talk about?"
 
-    r "Just about the wings more. She seems to be getting a better idea."
+    r "Your wings. She seems to be getting a better idea of the situation."
 
     f "And then she touched yours?"
 
-    r "Yeah... then she did that. She doesn't understand vampires too well yet."
+    r "Yeah... then she did that. Her understanding of vampires is woefully inadequate."
 
     f "We have to fix that."
 
@@ -416,12 +474,20 @@ label day2_end:
 
     f "Hehe, not at all."
 
-    "They fly down to the ground at the door, then enter their room."
+    "They touch down to the ground, then walk into the bedroom together."
 
-    f "Oh, another chicken!"
+    f "Yay, another chicken!"
 
-    r "Chicken again?"
+    r "Out of everything in the forest, a chicken? Bland."
+
+    f "But the feathers are nice."
+
+    r "You aren't supposed to eat that."
+
+    f "I meant they look nice, stupid."
+
+    r "Mhm, sure."
 
     "They eat together, then go to sleep."
-    
+
     return
