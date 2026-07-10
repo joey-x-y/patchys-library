@@ -32,17 +32,19 @@ label day1_forest:
 
     play sound sfx_forest_land 
 
-    "Flandre plops to the ground."
+    "Flandre sits down hard."
 
     f "I can't."
 
-    r "Ok, then a short break."
+    r "A brief rest, then."
 
     "Remilia hunts a rabbit and brings it to Flandre."
 
-    r "Here. Rabbit."
+    r "Here."
 
-    "Flandre snatches it and devours it, but stops halfway through."
+    f "Thank you."
+
+    "Flandre devours half of it."
 
     f "Here's the rest."
 
@@ -54,9 +56,9 @@ label day1_forest:
 
     f "Fine."
 
-    "Remilia watches Flandre finish the rabbit."
+    "Flandre finishes and tosses the bones aside."
 
-    r "How are your wings, Flandre?"
+    r "How are your wings feeling?"
 
     f "They hurt."
 
@@ -66,13 +68,11 @@ label day1_forest:
 
     r "I see."
 
-    "Remilia looks off to the sky. The purple foreglow of sunrise begins to show."
+    "Remilia looks off to the sky. The purple foreglow of sunrise begins to show itself."
 
-    r "Flandre, we are running out of time. Let's go."
+    r "We are running out of time. We need to move."
 
     f "Ok..."
-
-    "Remilia stands up, Flandre follows."
 
     r "There must be some kind of shelter. Hunters build cabins out here."
 
@@ -87,7 +87,7 @@ label day1_forest:
 
     r "Oh?"
 
-    "Among the trees, they find an old-looking building."
+    "Among the trees, they find a large, old-looking building."
 
     r "Odd. But it is shelter."
 
@@ -97,13 +97,13 @@ label day1_forest:
 
     "Remilia steps to the door and grabs the handle."
 
-    r "Look at the sky, Flandre. We are out of options."
+    r "Look at the sky. We are out of options."
 
-    "Flandre looks over to the gold horizon."
+    "Flandre looks over to the horizon."
 
-    r "Let's go. I'll keep you safe, don't worry."
+    r "Let's go. I'll keep you safe."
 
-    "The edge of the sun begins to rise, stinging her vampire face."
+    "The edge of the sun begins to rise, stinging her vampiric face."
 
     "Then, they enter the mysterious building together."
 
@@ -112,12 +112,11 @@ label day1_forest:
 label day1_library:
     stop music fadeout 2.0
 
-label test:
     call scene_transition_fade("bg_library")
 
-    "They step into a large library. Bookshelves cover the walls, and a large staircase lies straight ahead,"
+    "They step into a large library. Bookshelves line the walls, and a large staircase lies straight ahead."
 
-    "Flandre leans to Remilia's ear."
+    "Flandre leans into her sister's ear."
 
     f "Do you think anyone is here?"
 
@@ -127,10 +126,12 @@ label test:
 
     "They take a few steps into the room."
 
-    "Clack."
+    play sound sfx_magic_clash_2
 
     "Something fires at Remilia's neck, but she summons her spear to block at the last moment."
 
+    play music bgm_duel fadein 2.0
+    
     r "Get behind me!"
 
     "An onslaught of attacks comes from various directions."
@@ -138,6 +139,8 @@ label test:
     "The attacks stop as a purple figure appears in the air. A mass of crystals appear around her and begin to glow. Yellow on her left, blue on the right."
 
     "Remilia lifts her spear, charging it up in response."
+
+    play sound sfx_magic_thunderous
 
     "The crystals fire beams of light and water, Remilia meets them with a flash of energy from her spear. The attacks cancel each other out."
 
@@ -153,25 +156,39 @@ label test:
 
     r "Damn it."
 
+    play sound sfx_magic_thunderous
+
     "Remilia charges her spear again, and the beams collide. Remilia nearly goes limp in Flandre's arms, heavily breathing."
 
     f "Sis..."
 
+    play sound sfx_magic_thunderous
+
     "Again, the crystals charge. The spear charges, but slowly flickers. They collide yet again."
+
+    play sound sfx_body_fall
 
     "As the crystals charge again, Remilia drops."
 
     f "Sis, no!"
 
-    "Flandre steps in front of Remilia's body and begins to summon a sword. The magician charges her crystals."
+    play sound sfx_magic_cast
+
+    "Flandre steps in front of Remilia's body and summons her sword. The magician charges her crystals."
 
     f "Hah!"
 
+    play sound sfx_magic_thunderous
+
     "The red slash collides with the lasers, splitting them in half and making them hit the ground next to the sisters."
+
+    play sound sfx_body_fall
 
     "Flandre drops to her knees, breathing frantically."
 
-    "The magician studies her for a few moments, then slowly floats down."
+    stop music fadeout 2.0
+
+    "The magician slowly floats down in front of them."
 
     p "It appears neither of you can fight anymore."
 
@@ -187,60 +204,53 @@ label test:
 
     f "Fine!"
 
-    "A door opens behind Patchouli."
+    play sound sfx_door_open
 
-    p "Your rooms will be in there. Go on."
+    p "Your room is over there. Go on."
+
+    play sound sfx_rustle_2
 
     "Flandre slowly picks up Remilia and leans her onto herself, but buckles and drops to her knee."
 
-    f "I don't think... I can walk."
-
     p "Hm. I suppose you are rather exhausted."
 
-    "Suddenly they begin floating in the air."
+    play sound sfx_magic_summon
+
+    "They suddenly float into the air."
 
     f "Whoa."
 
-    "They move through the door with the magician following closely behind."
+    call scene_transition_fade("bg_bedroom")
+
+    "They move through the door and gently land on the floor. The magician follows closely behind."
 
     return
 
 label day1_end:
-    "They enter a hall with one door."
 
-    "She casts a spell, and two doors appear."
-
-    p "These will be your rooms. One for each of you."
-
-    f "Please don't separate me from my sister."
-
-    p "Very well."
-
-    "They float into one room and gently land on the floor."
-
-    "The magician gives a long exhale."
-
-    p "That's all I'll do for you today. Rest well, I need healthy subjects."
+    p "That is all I shall do for you today. Rest well, I need healthy subjects."
 
     f "Um... I can't sleep. My wings... they burn."
 
-    p "Hm. Bring them here."
+    p "Hmm. Bring them here."
 
-    "Flandre stumbles over, showing her back."
+    "Flandre stumbles over, presenting her back."
 
-    r "What do you plan on doing to them?"
+    r "What do you plan on doing with them?"
 
     f "Sis, you're awake!"
 
     r "I was the whole time. I just couldn't move."
 
-    p "Then you should understand the situation. I am studying a vampire, as agreed. Don't distract me."
+    p "Then you should understand your situation. I am studying a vampire, as agreed. Be silent."
 
     "Remilia sits up and stares her down."
 
-    "The magician studies the wings for a moment."
+    "The magician leans in close to the wings for a few moments."
 
-    p "I numbed it."
+    play sound sfx_magic_summon
+
+    p "I numbed them."
 
     f "Yay! Thank you!"
 
@@ -258,45 +268,53 @@ label day1_end:
 
     p "Ugh..."
 
-    "She summons two coffins on the bed."
+    play sound sfx_magic_summon
+
+    "She summons two coffins onto the bed."
 
     p "No more."
 
-    "Remilia's stomach growls loudly."
+    play sound sfx_stomach_growling
+
+    r "..."
 
     f "Um, we're hungry. Sorry."
 
     p "I'll warp something later."
 
-    "She stops at the door."
+    "She walks over to the door."
 
-    p "By the way, if you try anything, you'll explode. So don't."
+    p "A word of caution. Try anything, you'll explode. So don't."
 
-    "She leaves, and Remilia sighs."
+    "Remilia sighs as the magician finally leaves them alone."
 
     r "What a ridiculous situation."
 
     f "But we have shelter."
 
-    r "We do, thank goodness."
-
     "Remilia stands and stretches."
 
-    r "How are your wings doing? Did she do anything strange?"
+    r "Indeed. How are your wings doing? Did she do anything strange?"
 
     f "Nope! I can't feel them! It's great! I can finally—"
+
+    play sound sfx_body_fall
 
     "Remilia drops to the floor."
 
     f "Ah, Remi!"
 
-    "She runs over."
+    "She runs over and kneels down beside her."
 
-    f "You passed out? Ugh, I told you to eat."
+    f "You seriously passed out? Ugh, I told you to eat."
+
+    play sound sfx_rustle_2
 
     "Flandre picks her up and drops her into a coffin. She sits on the edge of the bed."
 
     f "We really need food..."
+
+    play sound sfx_magic_summon
 
     "After a few moments, a dead chicken appears on the table."
 
@@ -307,6 +325,9 @@ label day1_end:
     f "Take care of yourself too. Stupid sis."
 
     "Flandre finishes the chicken, then jumps into the other coffin."
+
+    scene black with fade
+    play sound sfx_coffin_close
 
     f "I can finally..."
 

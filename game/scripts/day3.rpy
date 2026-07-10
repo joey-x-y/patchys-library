@@ -6,6 +6,10 @@ label day3:
     return
 
 label day3_morning:
+    play sound sfx_coffin_open
+    scene bg_bedroom with fade
+    play music bgm_library fadein 2.0
+
     "They both open their coffins. Flandre hops out onto the bed."
 
     f "Remi! Get up!"
@@ -26,13 +30,20 @@ label day3_morning:
 
     r "Geez, hold on."
 
+    scene black with fade
+
     "Remilia slowly crawls out of her coffin and stands up. Flandre grabs and drags her out of the room, all the way to Patchouli's study."
+
+    scene bg_study with fade
+    play sound sfx_door_open
 
     "Flandre flings the door open."
 
     f "Patchy! I need more numbness."
 
     p "Uh, yeah, sure."
+
+    play sound sfx_magic_summon
 
     "She casts the spell once again."
 
@@ -54,17 +65,23 @@ label day3_morning:
 
     p "Of course not. When your opponent's knees are buckling, it's only natural to speed up the attack, no?"
 
+    play music bgm_duel
+
     r "I guess so. Someday I'll show you the true power of my Gungnir, when I'm not half-dead."
 
     f "Stop talking about fighting. I don't wanna fight more."
 
     r "We aren't fighting yet, just planning our rematch."
 
+    stop music
+
     p "Rematch declined."
 
     r "Oh, come on."
 
     f "Good."
+
+    play music bgm_library fadein 2.0
 
     "Patchouli leans back forward, looking to Flandre."
 
@@ -110,7 +127,7 @@ label day3_morning:
 
     "Flandre points to her back."
 
-    f "They are *my* wings! I want to know everything!"
+    f "They are my wings! I want to know everything!"
 
     r "I'm sorry."
 

@@ -1,0 +1,51 @@
+   p "That is all I shall do for you today. Rest well, I need healthy subjects."
+
+    f "Um... I can't sleep. My wings... they burn."
+
+    p "Hmm. Bring them here."
+
+    "Flandre stumbles over, presenting her back."
+
+    r "What do you plan on doing with them?"
+
+    f "Sis, you're awake!"
+
+    r "I was the whole time. I just couldn't move."
+
+    p "Then you should understand your situation. I am studying a vampire, as agreed. Be silent."
+
+    "Remilia sits up and stares her down."
+
+    "The magician leans in close to the wings for a few moments."
+
+    play sound sfx_magic_summon
+
+    p "I numbed them."
+
+    f "Yay! Thank you!"
+
+    p "Is that all?"
+
+    f "Um... can we have coffins?"
+
+    p "...Why?"
+
+    f "Sorry, never mind."
+
+    p "Then I belie—"
+
+    r "No, it's important. Vampires recover far quicker inside one. If you want your test subjects to be at full health, you should bring some."
+
+    p "Ugh..."
+
+    play sound sfx_magic_summon
+
+    "She summons two coffins onto the bed."
+
+    p "No more."
+
+    play sound sfx_stomach_growling
+
+    r "..."
+
+    f "Um, we're hungry. Sorry."

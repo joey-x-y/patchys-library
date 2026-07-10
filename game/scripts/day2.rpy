@@ -6,6 +6,10 @@ label day2:
     return
 
 label day2_morning:
+    scene bg_bedroom with fade
+
+    play sound sfx_coffin_open
+    play music bgm_library fadein 2.0
     
     "Remilia rises out of her coffin and stretches."
 
@@ -15,19 +19,19 @@ label day2_morning:
 
     r "She's still asleep. Now how can I get us out of here?"
 
+    play sound sfx_coffin_open
+
     "Flandre's coffin opens."
 
-    f "No, I'm awake."
+    r "Or... not. How did you sleep?"
 
-    r "Oh. How did you sleep?"
-
-    f "Fine. I slept a little, but the pain came back. It was comfy inside so I didn't wanna get up."
+    f "Fine. I slept a little, but the numbness wore off. It was comfy inside so I didn't wanna get up."
 
     r "You could've woken me up."
 
     f "No, you needed sleep."
 
-    r "Ok, fair enough. I was exhausted."
+    r "Fair enough. I was exhausted."
 
     f "And don't try to escape. We'll explode."
 
@@ -57,7 +61,10 @@ label day2_morning:
 
     f "Yeah, let's go together."
 
-    "Remilia sighs as they step into the hallway. A voice resounds."
+    play sound sfx_door_open
+    call scene_transition_fade("bg_library")
+
+    "Remilia sighs as they step out of the room. A voice resounds."
 
     p "Go up the stairs."
 
@@ -65,7 +72,7 @@ label day2_morning:
 
     r "She's watching us. Great."
 
-    "They step out of the hall, back to the front room. Remilia stares at the exit for a moment before approaching the staircase."
+    "Remilia stares at the exit for a moment before approaching the staircase."
 
     r "I can fly you up."
 
@@ -85,20 +92,26 @@ label day2_morning:
 
     p "You may enter."
 
-    "Remilia grabs Flandre's hand, and they walk through the door together."
+    "Remilia grabs Flandre's hand as they enter together."
+
+
 
     return
 
 label day2_library:
+
+    call scene_transition_fade("bg_study")
     "They step into a large room lined with even more books. Patchouli sits in front of them at a large desk."
 
-    p "Welcome to my study."
+    p "This is my study."
 
     f "Whoa, cool!"
 
     r "Would you numb Flandre's wings again?"
 
-    p "Sure. I can make it last longer this time. Come here."
+    p "I suppose. I will make it last longer this time. Come here."
+
+    play sound sfx_magic_summon
 
     "Flandre walks over, and the magician casts the spell."
 
@@ -116,9 +129,11 @@ label day2_library:
 
     r "What do you intend on doing with us?"
 
-    p "Observe. Study. Stuff like that."
+    p "Observe. Study. Gather data."
 
     r "What exactly do you mean by that?"
+
+    play sound sfx_rustle_3
 
     "Flandre tugs the back of Remilia's shirt."
 
@@ -126,7 +141,7 @@ label day2_library:
 
     r "I must know. I will only tolerate so much. I have dignity I wish to maintain."
 
-    p "I'm not a mad magician, I won't do anything too harsh. I just want to understand vampires more. I've never seen one. It's very interesting. Why does simple sunlight hurt them when they are so durable? There's a lot of questions."
+    p "I'm no mad magician, I won't do anything too harsh. I just want to understand vampires more. I've never seen one. It's very interesting. Why does simple sunlight hurt them when they are so durable? There's a lot of questions."
 
     r "So we're your entertainment?"
 
@@ -134,11 +149,13 @@ label day2_library:
 
     r "Great."
 
+    play sound sfx_rustle_3
+
     "Flandre gently tugs Remilia's shirt, and she steps back next to her."
 
-    f "You can ask stuff now."
+    f "She's done. You can ask stuff now."
 
-    p "So I shall. The first question is about healing. Vampires heal themselves, correct?"
+    p "So I shall. My first question is about regeneration. Vampires regenerate themselves, correct?"
 
     r "Yes, if they rest."
 
@@ -148,13 +165,13 @@ label day2_library:
 
     f "I am!"
 
-    p "Your wings didn't heal."
+    p "Your wings aren't regenerating."
 
     f "Uh, yeah."
 
     r "She didn't sleep enough, your numb spell was too short."
 
-    f "No, that's not it. Don't blame her. They haven't healed at all, no matter what."
+    f "No, that's not it. Don't blame her. They haven't healed at all, no matter what we do."
 
     p "What caused it?"
 
@@ -231,6 +248,8 @@ label day2_library:
     return
 
 label day2_end:
+
+    call scene_transition_fade("bg_study")
     
     "Patchouli drops out of the air, onto her feet."
 
@@ -244,7 +263,7 @@ label day2_end:
 
     r "Did you learn anything useful?"
 
-    "Patchouli yawns. Flandre hops off the table and starts doing stretches on the ground."
+    "Patchouli yawns. Flandre hops off the table and starts doing stretches on the floor."
 
     p "These wings won't heal themselves, they were cut by something abnormal. I must figure out exactly what that abnormality is."
 
@@ -318,7 +337,11 @@ label day2_end:
 
     f "Fine."
 
+    scene black with fade
+
     "Flandre runs over to more bookshelves, as Remilia walks deeper into the room."
+
+    scene bg_study with fade
 
     "Patchouli is sitting at a table, looking at the many open books in front of her."
 
@@ -378,9 +401,14 @@ label day2_end:
 
     r "Go right ahead."
 
+    # show cg
+
     "Patchouli grabs Remilia's wing."
 
     r "Huh, wait, hey!"
+
+    # hide cg
+    scene bg_study
 
     "Remilia quickly leaps across the room, out of her grip."
 
@@ -420,7 +448,7 @@ label day2_end:
 
     f "Wait, sis!"
 
-    "She runs after her."
+    call scene_transition_fade("bg_library")
 
     f "Where are you going?"
 
@@ -434,13 +462,17 @@ label day2_end:
 
     r "Hm. Ok then."
 
+    play sfx_rustle_2
+
     "Remilia picks Flandre up."
 
     r "Let me fly you down this time."
 
     f "Ok!"
 
-    "Remilia leaps into the air over the balcony. She hovers along the ceiling, weaving between the various chandeliers."
+    play music bgm_emotional fadein 2.0
+
+    "Remilia leaps into the air. She hovers along the ceiling, weaving between the various chandeliers."
 
     f "It's fun, seeing things from way up."
 
@@ -476,9 +508,11 @@ label day2_end:
 
     "They touch down to the ground, then walk into the bedroom together."
 
+    call scene_transition_fade("bg_bedroom")
+
     f "Yay, another chicken!"
 
-    r "Out of everything in the forest, a chicken? Bland."
+    r "Really? Out of everything in the forest? So bland."
 
     f "But the feathers are nice."
 
@@ -489,5 +523,8 @@ label day2_end:
     r "Mhm, sure."
 
     "They eat together, then go to sleep."
+
+    scene black with fade
+    stop music fadeout 2.0
 
     return
