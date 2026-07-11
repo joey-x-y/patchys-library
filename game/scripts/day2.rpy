@@ -21,11 +21,13 @@ label day2_morning:
 
     play sound sfx_coffin_open
 
-    "Flandre's coffin opens."
+    "Flandre's coffin flies open."
+    
+    f "No, I'm awake."
 
-    r "Or... not. How did you sleep?"
+    r "Oh. How did you sleep?"
 
-    f "Fine. I slept a little, but the numbness wore off. It was comfy inside so I didn't wanna get up."
+    f "Fine. I slept a little, but the numbness wore off and woke me up. It was comfy inside so I didn't wanna get up."
 
     r "You could've woken me up."
 
@@ -39,7 +41,7 @@ label day2_morning:
 
     f "Please don't. I don't think she'll harm us if we don't do anything."
 
-    r "We're her test subjects. Who knows what she'll do."
+    r "We're her test subjects. Who knows what she'll do?"
 
     f "Please, sis. I'm tired of moving every night. I want my wings numbed again."
 
@@ -103,7 +105,7 @@ label day2_library:
     call scene_transition_fade("bg_study")
     "They step into a large room lined with even more books. Patchouli sits in front of them at a large desk."
 
-    p "This is my study."
+    p "Welcome to my study."
 
     f "Whoa, cool!"
 
@@ -127,9 +129,9 @@ label day2_library:
 
     "Remilia steps forward."
 
-    r "What do you intend on doing with us?"
+    r "What do you intend to do with us?"
 
-    p "Observe. Study. Gather data."
+    p "Observe. Study. Gather some useful data."
 
     r "What exactly do you mean by that?"
 
@@ -141,9 +143,11 @@ label day2_library:
 
     r "I must know. I will only tolerate so much. I have dignity I wish to maintain."
 
-    p "I'm no mad magician, I won't do anything too harsh. I just want to understand vampires more. I've never seen one. It's very interesting. Why does simple sunlight hurt them when they are so durable? There's a lot of questions."
+    p "I'm not a mad magician, I won't do anything too harsh. I just want to understand vampires more. I've never seen one. It's fascinating."
+    
+    p "Why does simple sunlight hurt them when they are so durable? There are many questions to be answered."
 
-    r "So we're your entertainment?"
+    r "So we are your entertainment?"
 
     p "Hmm. Yeah."
 
@@ -155,7 +159,7 @@ label day2_library:
 
     f "She's done. You can ask stuff now."
 
-    p "So I shall. My first question is about regeneration. Vampires regenerate themselves, correct?"
+    p "So I shall. For my first question, I believe vampires have the ability to regenerate themselves, correct?"
 
     r "Yes, if they rest."
 
@@ -189,19 +193,19 @@ label day2_library:
 
     p "I suppose it is. I have an idea now."
 
-    "Flandre looks back up at Patchouli."
+    "Flandre looks back up to Patchouli."
 
     f "Um... if it's ok, do you think you can fix it? Please?"
 
     p "Hmm... that would make for an interesting project."
 
-    r "That's a good idea. A good vampiric study."
+    r "Marvelous idea. It will make for a good vampiric study."
 
     p "When you put it like that... never mind."
 
     r "What?! I thought you wanted to!"
 
-    p "The way you suggest things... it's kind of annoying..."
+    p "The way you suggest things... it is rather bothersome..."
 
     r "How so?"
 
@@ -217,17 +221,17 @@ label day2_library:
 
     "Patchouli sighs."
 
-    p "Very well. I'll do it."
+    p "Very well."
 
-    "Flandre hops in the air."
+    "Flandre hops into the air."
 
     f "Yay! Thank you!"
 
     p "I'll analyze your wings. Lay on the table."
 
-    f "Ok!"
+    play sound sfx_body_fall
 
-    "Flandre hops up on the table and lies on her face. Patchouli floats over her."
+    "Flandre leaps onto the table face-first, pointing her back towards the ceiling. Patchouli floats over her."
 
     r "Please don't do anything weird to her."
 
@@ -273,31 +277,29 @@ label day2_end:
 
     p "Do whatever."
 
-    r "Ugh, alright then. Hey, Flan—hey where are you?"
+    r "Ugh, fine then. Hey, Flan—hey where are you?"
 
     "She looks to where she was, but she's gone."
 
     f "Huh? It's all symbols?"
 
-    "Flandre is at a bookshelf, with a stack of books next to her."
+    "Flandre stands at a shelf with books scattered around her. Her face is buried in a large tome."
 
     f "Bleh. This stuff is too complicated."
 
-    "Remilia walks over to her."
+    "She tosses it aside, nearly crushing her sister's foot."
 
     r "What are you doing?"
 
     f "Reading. Or, trying."
 
-    r "Right. How are your wings feeling?"
+    r "Sure you are. How do you wings feel?"
 
     f "Numb."
 
     r "Can I check them?"
 
-    f "Yeah."
-
-    "Remilia goes behind Flandre and observes the wings."
+    "Flandre turns and presents them to Remilia."
 
     r "They are... hmm."
 
@@ -311,9 +313,9 @@ label day2_end:
 
     r "I'm pretty sure."
 
-    f "Well, ok. I'm gonna find a readable book now."
+    f "Well, ok. Can you help me find a readable book?"
 
-    r "Alright, I'm going to talk to the librarian."
+    r "Not now. I'm going to talk to the librarian."
 
     f "Patchouli?"
 
@@ -339,17 +341,17 @@ label day2_end:
 
     scene black with fade
 
-    "Flandre runs over to more bookshelves, as Remilia walks deeper into the room."
+    "Flandre runs over to more bookshelves as Remilia walks deeper into the room."
 
     scene bg_study with fade
 
     "Patchouli is sitting at a table, looking at the many open books in front of her."
 
-    r "Hey, um, can I ask some more questions?"
+    r "Hey, can I ask some more questions?"
 
     p "Sure."
 
-    "Her attention stays down in her books as she responds."
+    "Her attention stays fixed on her books as she responds."
 
     r "Did Flandre's wings change at all while you were studying them?"
 
@@ -359,9 +361,9 @@ label day2_end:
 
     p "Yes. I would have noticed change."
 
-    r "Well... they looked different last time I checked."
+    r "Well... they looked different the last time I checked."
 
-    "Patchouli finally looks up."
+    "Patchouli looks up."
 
     p "When was that?"
 
@@ -381,9 +383,9 @@ label day2_end:
 
     r "Of course."
 
-    p "Do you know anything else that Flandre couldn't say?"
+    p "Do you know anything else about Flandre's injuries that she didn't tell me?"
 
-    "Remilia smile drops."
+    "Remilia's smile drops."
 
     r "No."
 
@@ -405,14 +407,14 @@ label day2_end:
 
     "Patchouli grabs Remilia's wing."
 
-    r "Huh, wait, hey!"
+    r "Huh? W-wait, hey!"
 
     # hide cg
     scene bg_study
 
     "Remilia quickly leaps across the room, out of her grip."
 
-    r "What are you doing, fiend?"
+    r "What are you doing, fiend?!"
 
     p "Checking your wings."
 
@@ -434,19 +436,21 @@ label day2_end:
 
     "Remilia jumps."
 
-    r "Oh, Flandre."
+    r "Flandre?"
 
     p "I'm learning vampire etiquette."
 
-    r "She touched my wing without a care in the world. Heathen."
+    r "This {i}heathen{/i} just touched my wing without a care in the world. As if it bore no sanctity at all."
 
     f "Oh. Is that one of those weird things you were worried about, sis?"
 
-    r "No. Never mind, this is stupid."
+    r "No! Never mind, this is stupid."
 
-    "Remilia briskly walks out of the room."
+    "Remilia flies past Flandre, out of the room."
 
     f "Wait, sis!"
+
+    "She runs after her."
 
     call scene_transition_fade("bg_library")
 
@@ -468,13 +472,13 @@ label day2_end:
 
     r "Let me fly you down this time."
 
-    f "Ok!"
+    f "Woohoo!"
 
     play music bgm_emotional fadein 2.0
 
-    "Remilia leaps into the air. She hovers along the ceiling, weaving between the various chandeliers."
+    "Remilia leaps into the air. They hover along the ceiling, weaving between the various chandeliers."
 
-    f "It's fun, seeing things from way up."
+    f "It's fun, seeing things from way up. It's been so long."
 
     r "Indeed."
 
@@ -482,13 +486,15 @@ label day2_end:
 
     r "I'd love that."
 
-    r "Hey, watch your foot! Don't break the chandeliers."
+    play sound sfx_crystals_clacking
+
+    r "Watch your foot! Don't break the chandeliers."
 
     f "Oops."
 
-    "They continue to float around the room."
+    "Remilia moves to the bookshelf-lined walls, minimizing the risk of a tragic accident."
 
-    f "Hey, hey, were you getting along with her?"
+    f "Hey hey, were you getting along with her?"
 
     r "Um, kind of?"
 
@@ -498,7 +504,7 @@ label day2_end:
 
     f "And then she touched yours?"
 
-    r "Yeah... then she did that. Her understanding of vampires is woefully inadequate."
+    r "Yeah...and then she touched mine. Her understanding of vampires is woefully inadequate."
 
     f "We have to fix that."
 
@@ -520,7 +526,7 @@ label day2_end:
 
     f "I meant they look nice, stupid."
 
-    r "Mhm, sure."
+    r "Mhm, sure you did."
 
     "They eat together, then go to sleep."
 

@@ -11,34 +11,72 @@ label day1_forest:
 
     play music bgm_forest fadein 2.0
 
-    r "Flandre, I can't fly you anymore. I'm really sorry."
+    f "Remi! Look out!"
+
+    "Remilia swerves upwards, narrowly avoiding a tree."
+
+    r "That was close."
+
+    f "Just land already! You've been flying for hours!"
+
+    r "No, no, I can still..."
+
+    "They slowly drift downward, back into the treeline."
+
+    f "Remi!"
+
+    r "Oh—"
+
+    "They blast through a wall of thin branches."
+
+    f "See! You're going to kill yourself like this!"
+
+    r "Fine."
 
     play sound sfx_forest_land
 
-    "Remilia drops down from the air and catches her breath. Flandre jumps down from her back."
+    "Remilia drops down from the air and catches her breath. Flandre steps down from her back."
 
-    f "It's fine, don't push yourself too hard."
+    f "Geez, Remi."
+
+    "Remilia takes Flandre's hand."
 
     r "We need to keep moving, trees aren't good enough shelter from the sun. It will cut through the leaves."
 
-    "Flandre nods as Remilia takes her hand."
+    f "But you're pushing yourself to death. Slow down."
+
+    r "I'm just trying to..."
+
+    "She takes a deep breath."
+
+    r "I'll be careful. Are you able to walk?"
+
+    f "I'll try."
 
     play sound sfx_forest_footsteps
     with forest_walk_fade
 
-    f "Sis... I'm getting really tired. I need a break."
+    f "Hey... I'm getting really tired. I need a break."
 
-    r "I know, but we're running out of time. We have to keep going."
+    r "We don't have time. We need to keep moving."
 
     play sound sfx_forest_land 
 
-    "Flandre sits down hard."
-
     f "I can't."
 
-    r "A brief rest, then."
+    "Remilia kneels down and places her hand on Flandre's hat."
 
-    "Remilia hunts a rabbit and brings it to Flandre."
+    r "Alright. We'll spare a few minutes."
+
+    "Remilia begins to get up, but gets pulled back down."
+
+    f "You need rest too."
+
+    r "It will just be for a moment."
+
+    "Flandre sighs and lets go."
+
+    "Remilia leaves, and quickly returns with a rabbit in hand."
 
     r "Here."
 
@@ -52,7 +90,7 @@ label day1_forest:
 
     f "No you won't. You're hungry too."
 
-    r "You need it more. Please eat it."
+    r "You need it more. Please finish it."
 
     f "Fine."
 
@@ -70,15 +108,17 @@ label day1_forest:
 
     "Remilia looks off to the sky. The purple foreglow of sunrise begins to show itself."
 
-    r "We are running out of time. We need to move."
+    r "We need to move."
 
     f "Ok..."
+
+    "Flandre grabs Remilia's hand and pulls herself up."
 
     r "There must be some kind of shelter. Hunters build cabins out here."
 
     f "Vampire hunters?"
 
-    r "Most likely animal hunters. Don't worry."
+    r "No, animal. Don't worry."
 
     "Flandre grabs Remilia's hand as they begin walking."
 
@@ -97,13 +137,9 @@ label day1_forest:
 
     "Remilia steps to the door and grabs the handle."
 
-    r "Look at the sky. We are out of options."
+    r "We have no choice. Come, I'll keep you safe."
 
-    "Flandre looks over to the horizon."
-
-    r "Let's go. I'll keep you safe."
-
-    "The edge of the sun begins to rise, stinging her vampiric face."
+    "The edge of the sun begins to rise, stinging their vampiric skin."
 
     "Then, they enter the mysterious building together."
 

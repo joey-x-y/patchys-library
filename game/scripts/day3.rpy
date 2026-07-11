@@ -1,8 +1,6 @@
 label day3:
     call day3_morning
 
-
-
     return
 
 label day3_morning:
@@ -10,17 +8,17 @@ label day3_morning:
     scene bg_bedroom with fade
     play music bgm_library fadein 2.0
 
-    "They both open their coffins. Flandre hops out onto the bed."
+    "Flandre hops out of her coffin and gives Remilia's a kick."
 
     f "Remi! Get up!"
 
     "Remilia slowly sits up."
 
-    r "It's a bit early for yelling..."
+    r "What... it's a bit early for yelling..."
 
     f "I slept the whole night!"
 
-    r "Oh, wonderful, are they still numb?"
+    r "Wonderful. Are they still numb?"
 
     f "Mostly. It's fading a little."
 
@@ -39,7 +37,7 @@ label day3_morning:
 
     "Flandre flings the door open."
 
-    f "Patchy! I need more numbness."
+    f "Patchy! More numbness please?"
 
     p "Uh, yeah, sure."
 
@@ -55,7 +53,7 @@ label day3_morning:
 
     p "It works."
 
-    r "How come the numbing effect lasted longer this time? It didn't last the night previously."
+    r "How come the numbing effect lasted longer this time? It didn't last through the night before."
 
     p "I was tired. Launching lasers is a lot of work."
 
