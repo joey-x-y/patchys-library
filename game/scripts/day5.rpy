@@ -5,27 +5,25 @@ label day5:
 
 label day5_morning:
     
-    "They both step out of their coffins."
-
-    "Remilia flies over behind Flandre right away."
+    "As Flandre steps out of her coffin, Remilia flies behind her."
 
     r "Wings look the same."
 
-    f "Thank goodness."
+    f "Phew."
 
     "Flandre gets up and pulls a rabbit out of the bag."
 
-    r "Hungry already?"
+    r "Already? We just ate before our slumber."
 
-    f "Not everyone has your tiny appetite."
+    f "Not everyone has your puny appetite."
 
-    r "Guess not. Then I'll go on ahead."
+    r "Guess not. I'll go on ahead."
 
     "Flandre's mouth is too full to respond as Remilia flies off. She finds Patchouli sitting with a book in her hands."
 
     p "Oh, you're alone today."
 
-    r "She stayed behind to eat rabbits."
+    r "She was hungry."
 
     "A minute passes with Remilia standing awkwardly at the front. Patchouli is focused on her book."
 
@@ -49,13 +47,13 @@ label day5_morning:
 
     r "Yes, like a servant. Some are obedient and serve great food, some are better off being food."
 
-    p "Something like that. On the subject of servitude, could you grab my tea set?"
+    p "Right. On the subject of servitude, could you grab my tea set?"
 
-    "Remilia stares for a few seconds, then gives a massive sigh."
+    "Remilia stares for a few seconds, then gives an exasperated sigh."
 
-    "She walks over to the tea set and carries it over, then roughly sets it down."
+    "She brings over the tea set and sets it down roughly."
 
-    r "You pour it."
+    r "You pour."
 
     "Remilia sits as Patchouli serves tea with her magic, not moving a muscle."
 
@@ -159,7 +157,7 @@ label day5_morning:
 
     r "Is it not just a magic-user?"
 
-    p "No, it is more than that. It is a separate species from human. One whose body can survive on magical energy alone. Biological needs are removed."
+    p "More than that. They are a separate species from human. One whose body can survive on magical energy alone. Biological needs are removed."
 
     r "How does that happen?"
 
@@ -201,7 +199,7 @@ label day5_morning:
 
     r "So, is solving your birth a mission of sorts?"
 
-    p "Not particularly. I just enjoy seeking knowledge, and this library allows me to do so without others meddling."
+    p "Not particularly. I simply enjoy seeking knowledge, and this library allows me to do so without others meddling."
 
     r "You sure are interested in knowledge, eh?"
 
@@ -221,9 +219,7 @@ label day5_morning:
 
     "Patchouli smiles to herself. Remilia crosses her arms and puts up her feet."
 
-    r "You really told me a lot about yourself there."
-
-    p "I did. How curious. You just looked so interested."
+    p "Does my past interest you? You look so curious."
 
     r "W-what, n-no. Not really."
 
@@ -235,7 +231,7 @@ label day5_morning:
 
     p "I haven't seen you touch a book."
 
-    r "That's not the point. It's the atmosphere. Status. A wealth of books conveys a wealth of knowledge."
+    r "That's not the point. It's the atmosphere. Status. A wealth of books convey a wealth of knowledge."
 
     p "Does that matter if you've never read them and haven't accumulated said knowledge?"
 
@@ -253,7 +249,7 @@ label day5_morning:
 
     p "Yes."
 
-    f "You two were so deeply engaged in you conversation, I didn't have the heart to interrupt it. But then boredom happened. Sorry."
+    f "You two were so deeply engaged with each other, I didn't have the heart to interrupt. But then boredom happened. What a shame."
 
     r "How long have you been here?"
 
@@ -262,6 +258,12 @@ label day5_morning:
     r "That long. Ugh."
 
     "Flandre takes a seat."
+
+    f "Your peculiar charm is overwhelming Patchy."
+
+    r "My what now? Peculiar? I am no such thing."
+
+    "Flandre aims her fingers at Patchouli."
 
     f "I'm jealous now. Don't steal my sister. I'm watching you."
 
@@ -303,7 +305,7 @@ label day5_morning:
 
     r "You'll always be my sister, Flandre. Don't worry."
 
-    f "I know. I was just picking on you."
+    f "I know. I was picking on you."
 
     r "Ah, the usual."
 

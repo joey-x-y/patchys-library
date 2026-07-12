@@ -78,7 +78,7 @@ label day2_morning:
 
     r "I can fly you up."
 
-    f "Um, no thanks. You don't have to. Let's walk."
+    f "Um, no need for that. We can walk."
 
     "Remilia nods and follows Flandre to the stairs."
 
@@ -95,8 +95,6 @@ label day2_morning:
     p "You may enter."
 
     "Remilia grabs Flandre's hand as they enter together."
-
-
 
     return
 
@@ -123,7 +121,7 @@ label day2_library:
 
     p "Patchouli."
 
-    f "Thank you, Patchouli! I'm Flandre Scarlet, that's my cranky sister Remilia Scarlet!"
+    f "Thank you Patchouli! I'm Flandre Scarlet, that's my cranky sister Remilia Scarlet!"
 
     p "Well met, Scarlets."
 
@@ -175,15 +173,15 @@ label day2_library:
 
     r "She didn't sleep enough, your numb spell was too short."
 
-    f "No, that's not it. Don't blame her. They haven't healed at all, no matter what we do."
+    f "That's not the problem. Don't blame her. They haven't healed at all, no matter what we do."
 
-    p "What caused it?"
+    p "What caused the injury?"
 
     "Flandre crosses her arms and looks down."
 
     f "Um... well, a blade. It burned."
 
-    p "What kind of blade was it?"
+    p "What kind of blade?"
 
     f "Uh... I don't know!"
 
@@ -195,11 +193,11 @@ label day2_library:
 
     "Flandre looks back up to Patchouli."
 
-    f "Um... if it's ok, do you think you can fix it? Please?"
+    f "Um... if it's not too much trouble, do you think you can fix them? Please?"
 
     p "Hmm... that would make for an interesting project."
 
-    r "Marvelous idea. It will make for a good vampiric study."
+    r "Marvelous idea. This will make for a fine vampiric study."
 
     p "When you put it like that... never mind."
 
@@ -213,11 +211,11 @@ label day2_library:
 
     "Flandre steps forward out of Remilia's grip. Remilia mouth opens, but quickly closes again."
 
-    f "Patchouli, could you please try? The pain... I hate it. Please. I'll help however you want."
+    f "Patchouli, could you try? The pain... I hate it. Please. I'll help however you want."
 
     "Remilia bows her head."
 
-    r "Please help my sister."
+    r "Please heal my sister."
 
     "Patchouli sighs."
 
@@ -225,15 +223,15 @@ label day2_library:
 
     "Flandre hops into the air."
 
-    f "Yay! Thank you!"
+    f "Yay! You're awesome!"
 
     p "I'll analyze your wings. Lay on the table."
 
     play sound sfx_body_fall
 
-    "Flandre leaps onto the table face-first, pointing her back towards the ceiling. Patchouli floats over her."
+    "Flandre dives onto the table, pointing her back towards the ceiling. Patchouli floats over her."
 
-    r "Please don't do anything weird to her."
+    r "Don't do anything weird to her."
 
     p "Like what?"
 
@@ -293,7 +291,7 @@ label day2_end:
 
     f "Reading. Or, trying."
 
-    r "Sure you are. How do you wings feel?"
+    r "Sure you are. How do your wings feel?"
 
     f "Numb."
 
@@ -313,7 +311,7 @@ label day2_end:
 
     r "I'm pretty sure."
 
-    f "Well, ok. Can you help me find a readable book?"
+    f "Well, alright then. Can you help me find a readable book?"
 
     r "Not now. I'm going to talk to the librarian."
 
@@ -373,13 +371,11 @@ label day2_end:
 
     r "Really? Why?"
 
-    p "If something can block regeneration, it is not unusual for it to cause slow deterioration as well."
+    p "If something can block regeneration, it is not unlikely for deterioration to follow."
 
     r "I see."
 
-    p "Thank you for sharing that, it is useful information."
-
-    "Remilia crosses her arms and smiles."
+    p "Thank you for sharing that. It is useful information."
 
     r "Of course."
 
@@ -424,7 +420,7 @@ label day2_end:
 
     r "I didn't mean me!"
 
-    p "Oh. Sorry."
+    p "Oh."
 
     r "Don't just touch a vampire's wing like that. Understand?"
 
@@ -440,9 +436,9 @@ label day2_end:
 
     p "I'm learning vampire etiquette."
 
-    r "This {i}heathen{/i} just touched my wing without a care in the world. As if it bore no sanctity at all."
+    r "This {i}heathen{/i} touched my wing without a care in the world. As if it bore no sanctity at all."
 
-    f "Oh. Is that one of those weird things you were worried about, sis?"
+    f "Whoa. Is that one of those weird things you were worried about, sis?"
 
     r "No! Never mind, this is stupid."
 
@@ -464,7 +460,7 @@ label day2_end:
 
     f "Mercury is cool."
 
-    r "Hm. Ok then."
+    r "Hm. Okay then."
 
     play sfx_rustle_2
 

@@ -25,7 +25,7 @@ label day1_forest:
 
     f "Remi!"
 
-    r "Oh—"
+    r "Wh—"
 
     "They blast through a wall of thin branches."
 
@@ -49,7 +49,7 @@ label day1_forest:
 
     "She takes a deep breath."
 
-    r "I'll be careful. Are you able to walk?"
+    r "I'll be careful. Can you walk?"
 
     f "I'll try."
 
@@ -58,9 +58,11 @@ label day1_forest:
 
     f "Hey... I'm getting really tired. I need a break."
 
-    r "We don't have time. We need to keep moving."
+    r "There's no time. Please push for a little longer."
 
     play sound sfx_forest_land 
+
+    "Flandre's legs buckle, and she falls back hard."
 
     f "I can't."
 
@@ -72,15 +74,15 @@ label day1_forest:
 
     f "You need rest too."
 
-    r "It will just be for a moment."
+    r "It will be just a moment."
 
     "Flandre sighs and lets go."
 
     "Remilia leaves, and quickly returns with a rabbit in hand."
 
-    r "Here."
+    r "A feast, just for you."
 
-    f "Thank you."
+    f "Thanks."
 
     "Flandre devours half of it."
 
@@ -90,7 +92,7 @@ label day1_forest:
 
     f "No you won't. You're hungry too."
 
-    r "You need it more. Please finish it."
+    r "Keep the rest. You need it more."
 
     f "Fine."
 
@@ -108,9 +110,9 @@ label day1_forest:
 
     "Remilia looks off to the sky. The purple foreglow of sunrise begins to show itself."
 
-    r "We need to move."
+    r "We cannot wait any longer. Let's go, Flandre. Take my hand."
 
-    f "Ok..."
+    f "Okay..."
 
     "Flandre grabs Remilia's hand and pulls herself up."
 
@@ -118,7 +120,7 @@ label day1_forest:
 
     f "Vampire hunters?"
 
-    r "No, animal. Don't worry."
+    r "No, the animal kind. Don't worry."
 
     "Flandre grabs Remilia's hand as they begin walking."
 
@@ -180,7 +182,7 @@ label day1_library:
 
     "The crystals fire beams of light and water, Remilia meets them with a flash of energy from her spear. The attacks cancel each other out."
 
-    "Remilia's knees buckles for a moment. Flandre holds Remilia from behind, stabilizing her. The magician watches intently."
+    "Remilia's knees buckle for a moment. Flandre holds Remilia from behind, stabilizing her. The magician watches intently."
 
     p "Leave, monsters."
 
@@ -189,8 +191,6 @@ label day1_library:
     "The crystals begin charging again."
 
     p "A shame."
-
-    r "Damn it."
 
     play sound sfx_magic_thunderous
 
@@ -354,13 +354,13 @@ label day1_end:
 
     "After a few moments, a dead chicken appears on the table."
 
-    f "Oh, it's here!"
+    f "Oh!"
 
-    "She feeds Remilia the chicken's blood."
+    "She feeds Remilia its blood."
 
     f "Take care of yourself too. Stupid sis."
 
-    "Flandre finishes the chicken, then jumps into the other coffin."
+    "Flandre finishes the meal, then jumps into the other coffin."
 
     scene black with fade
     play sound sfx_coffin_close

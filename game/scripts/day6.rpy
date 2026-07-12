@@ -11,13 +11,13 @@ label day6_morning:
 
     f "Why am I so hungry...?"
 
-    "She goes straight to the rabbits, crunching away."
+    "She goes straight to the stash of food, crunching away."
 
     "Remilia slowly rises."
 
     r "Eating so loudly so—"
 
-    f "Sorry, I'm just starving. Want one?"
+    f "I am absolutely starving. Want one?"
 
     "Flandre continues eating for a few moments."
 
@@ -87,7 +87,7 @@ label day6_morning:
 
     f "..."
 
-    r "Um, I'll be right back, ok?"
+    r "Um, I'll be right back, alright?"
 
     "Remilia steps out to the front hall, then drops to a knee."
 
@@ -135,7 +135,7 @@ label day6_morning:
 
     r "What are you doing?"
 
-    p "I want, to do, something."
+    p "I want... to do... something."
 
     r "Slow down, aren't you weak?"
 
@@ -152,8 +152,6 @@ label day6_morning:
     "Remilia looks to the door and back a few times."
 
     "She lets out a deep breath then drops her head. Tears appear."
-
-    r "Darn it."
 
     "Nobody speaks for a few minutes."
 
@@ -173,7 +171,7 @@ label day6_morning:
 
     "Patchouli crosses her arms and looks down."
 
-    p "...No, I'm sorry. I screwed up."
+    p "...No, The fault is mine. I screwed up."
 
     "Remilia curls into a ball and buries her face."
 
@@ -283,7 +281,7 @@ label day6_morning:
 
     r "Shut up! I'm never calling you that again. Just do it already."
 
-    "Patchouli grabs the wings, and thoroughly touches them, feeling each individual part."
+    "Patchouli grabs the wings, thoroughly handling them and feeling each individual part."
 
     r "Do you need to touch them like that?"
 
@@ -319,21 +317,21 @@ label day6_morning:
 
     "Patchouli squeezes."
 
-    r "Very! Now stop it!"
+    r "Very! Now stop!"
 
-    p "Heh, sorry."
+    p "I simply couldn't resist."
 
-    r "You're evil..."
+    r "What am I even doing right now..."
 
     p "Do they have an effect on a vampire's abilities? Outside of flight?"
 
     r "No. Flandre can do what she normally does, but her balance is poor."
 
-    p "Hm. Interesting. I have a lot more to look into now."
+    p "Hm. Interesting. I have much to look into now."
 
     r "Then let go already!"
 
-    p "Oh. Sorry."
+    p "Oh."
 
     "Patchouli lets go."
 

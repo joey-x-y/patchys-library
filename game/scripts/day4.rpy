@@ -12,7 +12,7 @@ label day4_morning:
 
     "Remilia's coffin swings open."
 
-    r "Oh, that's... cool."
+    r "Oh, that's... good."
 
     "Remilia freezes as she looks at Flandre."
 
@@ -28,7 +28,7 @@ label day4_morning:
 
     f "..."
 
-    "Remilia flies over behind Flandre and leans close."
+    "Remilia flies over behind Flandre and looks closely."
 
     r "The holes are a little bigger."
 
@@ -42,7 +42,7 @@ label day4_morning:
 
     "Flandre grabs onto Remilia, who flies them to the study."
 
-    r "Patchouli. It looks like her wings deteriorated."
+    r "Patchouli. I believe her wings have deteriorated."
 
     p "Oh. Let me see."
 
@@ -52,11 +52,11 @@ label day4_morning:
 
     f "Is it bad?"
 
-    p "I was expecting it soon, though more gradually. I'll look into it today."
+    p "I was expecting this soon, though more gradually. I'll look into it today."
 
     "Flandre climbs into her spot on the table. Patchouli reapplies the numb spell while looking over to Remilia."
 
-    p "You watching us all night again?"
+    p "Are you going to stand there and watch us all night again?"
 
     r "I don't believe that's necessary anymore."
 
@@ -126,11 +126,11 @@ label day4_morning:
 
     "A large mass of empty potions float into a box."
 
-    p "That's all of them.  It didn't fix your wings, but it gave interesting information. Enough to form theories."
+    p "That's all of them. Your wings aren't fixed, but I gained valuable information. Enough to form theories."
 
     f "Ooh, like what?"
 
-    p "The most likely cause is some form of poison. Your body is clearly not poisoned, but perhaps there is a residual effect in the wings."
+    p "The most likely cause is a form of poison. Your body is clearly not poisoned, but perhaps there is a residual effect in the wings."
 
     f "Poison?"
 
@@ -140,7 +140,7 @@ label day4_morning:
 
     f "Not really. I've had tiny moments where it touches me, but it just stings a tiny bit. That's all."
 
-    p "Do you know if sun wounds heal normally? Like if you stuck your arm out of a window and burned it off, would it come back?"
+    p "Do you know if sun wounds heal normally? If your arm was stuck out of a window and incinerated, would it come back?"
 
     f "Uh... I don't know. That sounds scary."
 
@@ -148,27 +148,27 @@ label day4_morning:
 
     f "No!"
 
-    p "I won't do it."
+    p "I won't."
 
     f "Phew."
 
-    "They both take a seat, and a tea set floats over. It serves both of them on it's own."
+    "They both take a seat. A tea set floats over and serves them."
 
     p "Time for a break. I shouldn't need your wings for a few days."
 
-    "Flandre nods and grabs herself tea. They drink in silence."
+    "She nods and grabs her tea. They sip in silence."
 
     "Flandre's legs slowly swing. Patchouli is still, her eyes closed but occasionally opening for a peek. Eventually, they stick to Flandre."
 
-    p "Where do you two hail from?"
+    p "Where do you two come from?"
 
     f "The noble Scarlet house!"
 
-    p "Noble house, hmm? I suppose that's why Remilia wanted to be served."
+    p "Noble house, hmm? That explains your sister's... peculiar charm."
 
-    f "She's just lazy."
+    f "Haha, that's so Remi."
 
-    p "Maybe so. What brought you into the forest?"
+    p "Indeed. What brought you two into this forest?"
 
     f "Well... humans don't like vampires. We had to leave, or kill everyone."
 
@@ -178,7 +178,7 @@ label day4_morning:
 
     "Patchouli puts a proud hand to her chest."
 
-    p "It is. Custom made by me."
+    p "Good eye. It is my creation, after all."
 
     f "Really? How did you make it?"
 
@@ -188,7 +188,7 @@ label day4_morning:
 
     p "Fine. I studied some libraries and learned how to manipulate materials to take the shape of the ideal design."
 
-    f "Wow, that's cool. How did you do the magic?"
+    f "Wow, cool. How did you do the magic?"
 
     p "It requires many years of magical study. You need to do that before you could even begin to understand."
 
@@ -206,7 +206,7 @@ label day4_morning:
 
     p "Being cautious isn't so bad."
 
-    f "I guess. But she's just been over-the-top since it happened. Like it's somehow her fault."
+    f "I guess. But it's been excessive since it happened. Like it's somehow her fault."
 
     p "Since what?"
 
@@ -222,7 +222,7 @@ label day4_morning:
 
     p "That is—"
 
-    "The door flies open."
+    "The door bursts open."
 
     r "I'm back!"
 
@@ -236,41 +236,41 @@ label day4_morning:
 
     r "Oh shut up."
 
-    "She tosses the bag down."
+    "She tosses her delivery to the floor."
 
     r "I've brought a feast. No more chickens!"
 
-    "She opens it and reveals a mass of rabbit carcasses. Flandre jumps up immediately."
+    "She opens it, revealing a mass of rabbit carcasses."
 
     f "Yay!"
 
     p "This is not what the covers are for."
 
-    "Remilia grabs a rabbit and bites into it, blood dripping down."
+    "Remilia begins her feast, causing blood to drip down her face."
 
-    "Flandre flies over to catch blood with her hands, protecting the floor."
+    "Flandre flies over and protects the floor, cupping her hands in front of her sister."
 
-    f "Sis... this is someone else's home, don't spill blood everywhere."
+    f "Sis... this is someone else's home. Come on."
 
     r "Blood is meant to be spilled, no?"
 
-    f "Ugh, I'm sorry Patchy, she is a terrible eater."
+    f "Ugh. Sorry Patchy, she is a terrible eater."
 
-    p "Please keep blood off the floor. I have not invested in mops."
+    p "Please keep the floors clean. I have not invested in mops."
 
     f "I'll do my best."
 
     p "I was talking to Remilia."
 
-    "Remilia tosses her rabbit back into the bag."
-
-    r "I'm satisfied."
+    "Remilia tosses her half-eaten mess back into the pile."
 
     f "Ugh... that's gross..."
 
-    "Flandre grabs two rabbits and takes a seat. Then, the bag of rabbits vanish."
+    r "I'm satisfied."
 
-    r "Huh? My rabbits?"
+    "Flandre grabs two fresh rabbits and takes a seat. Then, the bag vanishes."
+
+    r "Huh? My food?"
 
     p "They're in your room now."
 
@@ -282,21 +282,57 @@ label day4_morning:
 
     p "Not eavesdrop. I just know where people are."
 
-    r "Oh, good. So you weren't eavesdropping."
+    r "Oh, good. So you weren't eavesdropping after all?"
 
     p "That would be useful, but no."
 
-    f "Hey. Where should I put the rabbit bones?"
+    r "What were those lasers you fired at me? Those were cool."
 
-    p "There's a table around the corner. Those bones will be useful for future concoctions."
+    p "It was a mixture of water and sun magic."
 
-    "Flandre runs off."
+    r "Uhh... sun?"
+
+    p "Useful against vampires, but at a cost. Lasers require an undesirable level of exertion."
+
+    r "I'm sure it does. Though you had no problem spamming them."
+
+    "Patchouli crosses her arms with a big grin."
+
+    p "Of course not. When your opponent's knees are buckling, it's only natural to deliver a swift finish, no?"
+
+    play music bgm_duel
+
+    r "Bold words, book girl. Someday I'll demonstrate the true power of my Gungnir, when I'm not half-dead."
+
+    "Flandre throws a bone at Remilia's face."
+
+    f "Stop talking about fighting. I don't wanna fight more."
+
+    r "Cut that out! We're not fighting yet, just planning our rematch."
+
+    stop music
+
+    p "Rematch declined."
+
+    r "Oh, come on."
+
+    f "Good."
+
+    play music bgm_library fadein 2.0
+
+    "Patchouli points to Flandre's pile of rabbit remains."
+
+    p "Put those at the table around the corner. Those bones will be useful for future concoctions."
+
+    f "Aye!"
+
+    "She runs off."
 
     "Remilia sips tea, but pauses midway through. She slams it down."
 
     r "Hey, wait just a minute! You can teleport things, but made me grab a vial for you?"
 
-    p "Moving things with magic takes effort too."
+    p "Moving things with magic takes effort too. Not only lasers."
 
     "Flandre sprints back."
 
@@ -314,29 +350,37 @@ label day4_morning:
 
     p "After complaining."
 
-    r "Oh, be quiet."
+    r "Oh, be quiet. When we first arrived, you were groaning about providing us simple necessities like coffins."
 
-    f "I'm full. I'm sleepy now."
+    "Patchouli sighs and presses her forehead into her tome."
+
+    p "You are truly a silly creature."
+
+    r "Excuse me?"
+
+    "Flandre pulls Remilia's shirt."
+
+    f "I'm sleepy now. I ate too much."
 
     r "Fantastic. A proper meal must be followed by a proper rest. Shall we?"
 
-    f "Are you done bickering with her? I don't want to interrupt."
+    f "Finally, you two never stop bickering."
 
-    r "Yes, we're done. Come on."
+    r "Alas, that girl just keeps provoking me. Let's escape while we can."
 
-    "Remilia pulls her out and they walk down the stairs, and into their room. The bag of rabbits is in the corner."
+    "Remilia drags Flandre down the stairs to their room. The bag of furry corpses is stashed in the corner."
 
-    r "There it is, the fruit of my labor."
+    r "Delightful. The fruit of my labor."
 
-    f "Is that all you did today?"
+    f "Is chasing bunnies all you did today?"
 
-    r "No. I explored the area. It is secluded, I quite like it. Plenty of wildlife to feed off of. Patchouli has a rather clever chicken trap as well."
+    r "How rude. I thoroughly explored the area. It is pleasantly secluded. Plenty of wildlife to feed off of. Patchouli has a rather clever chicken trap as well."
 
-    f "It's a cool place to build a library."
+    f "It's a fun place to build a library."
 
     "Remilia dramatically flairs her arms out as she walks over to the bed."
 
-    r "Yes, it truly is. A lucky find, I'd keep it all to myself as well. Or perhaps it was gifted to her? I must ask her how she got her hands on such a fine place."
+    r "Truly. A lucky find. I'd keep this all to myself as well. Or perhaps it was gifted to her? I must ask her how she got her hands on such a fine place."
 
     f "She made it herself."
 
@@ -346,11 +390,13 @@ label day4_morning:
 
     f "Yup. She told me all about it. Magic and creativity!"
 
-    r "Ok. What else?"
+    r "Right. What else?"
 
     f "That's it."
 
     r "How exactly is that 'all about it'? That's hardly any information."
+
+    "Flandre leans towards Remilia."
 
     f "You're really curious."
 
@@ -358,20 +404,14 @@ label day4_morning:
 
     f "You are."
 
-    "Flandre jumps into her coffin."
-
-    f "See you tomorrow!"
-
-    "Flandre slams the coffin closed, then reopens it."
+    "Flandre jumps into her coffin and slams the lid down, then it reopens."
 
     f "Oh, um... thanks. You told me about my wings this time."
 
     r "Of course. I won't repeat the same mistake."
 
-    f "Thank you. Bye."
+    f "Mhm. See you, Remi."
 
-    "She closes the coffin, and it stays closed."
-
-    "Remilia goes to sleep."
+    "The coffin closes again, as Remilia climbs into her own."
 
     return

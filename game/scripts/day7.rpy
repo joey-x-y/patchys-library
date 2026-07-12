@@ -36,7 +36,7 @@ label day7_morning:
 
     "They arrive at the study. Patchouli looks up from her mountain of books and scrolls."
 
-    p "Ah, hello Flandre."
+    p "Ah, Flandre."
 
     f "Hi."
 
@@ -66,7 +66,9 @@ label day7_morning:
 
     f "But I haven't made fun of you yet."
 
-    p "I would like to touch them more, if that's ok?"
+    "Patchouli's head snaps to the wings."
+
+    p "I would like to touch them more. May I?"
 
     "Remilia flinches away from Patchouli."
 
@@ -144,9 +146,9 @@ label day7_morning:
 
     p "Yes, I just need to think about how to implement that without them exploding on your back."
 
-    f "Oh. That's cooler, but I don't wanna get hurt."
+    f "Oh."
 
-    p "Are you ok with trial and error? That would be fastest, and I believe your regeneration capabilities would be sufficient for survival."
+    p "Is trial and error acceptable? That would be fastest, and I believe your regeneration capabilities would be sufficient for survival."
 
     f "No! Use Remi!"
 
@@ -172,15 +174,15 @@ label day7_morning:
 
     "The sword disappears."
 
-    p "Perfect! This should work, just give me some time."
+    p "Perfect! This should work. Give me some time."
 
-    f "Ok!"
+    f "Woohoo!"
 
-    r "Do you want any help?"
+    r "Would you like any help?"
 
     "Patchouli grabs Remilia's shoulders."
 
-    p "Yup! I'll work you hard."
+    p "Yup! I'll work you to the bone."
 
     r "Mm. Right."
 
@@ -198,7 +200,7 @@ label day7_morning:
 
     r "Whoa. Neat."
 
-    p "Perfect. Now, we just attach these to Flandre's stems."
+    p "Perfect. Now, we attach these to Flandre's stems."
 
     r "That's incredible!"
 
@@ -218,8 +220,6 @@ label day7_morning:
 
     p "Ehem, yes, of course. Now lie down, Flandre. I will attach them."
 
-    f "Ok!"
-
     "She jumps face-first onto the table."
 
     r "Don't damage the table."
@@ -230,9 +230,9 @@ label day7_morning:
 
     "Patchouli floats over Flandre. One by one, she places a crystal onto a wing stem, casts a spell, and it sticks. Eventually, she's done and floats away."
 
-    p "Ok, Flandre. Slowly, stand up. Very carefully."
+    p "Listen to me closely. Stand up, slowly. Very carefully."
 
-    f "Slowly. Ok."
+    f "Slowly. Got it."
 
     "She slowly sits up. The crystals sway back and forth."
 
@@ -242,19 +242,15 @@ label day7_morning:
 
     "Patchouli flies over and applies another spell."
 
-    p "Ok, continue."
+    p "Continue."
 
     "Patchouli flies back next to Remilia as Flandre stands all the way up, the crystals stay in place."
 
-    p "How's your balance?"
+    p "How is your balance?"
 
     f "Good! Kind of."
 
-    "She jumps."
-
-    f "Woo-hoo!"
-
-    p "Please relax. Now, just apply the smallest amount of magical energy—"
+    p "Now, just apply the smallest amount of magical energy—"
 
     "Flandre shoots to the ceiling."
 
@@ -312,9 +308,9 @@ label day7_morning:
 
     "They stand silently."
 
-    r "Hey, um... is it ok if we do it again?"
+    r "Hey, um... can we... more?"
 
-    p "Mhm."
+    p "Mm."
 
     "They go back in for another. Flandre hovers over them."
 
@@ -336,11 +332,9 @@ label day7_morning:
 
     f "Patchy?"
 
-    r "Oh, I mean... damn it."
+    r "No, I meant... damn it."
 
     f "You two are stealing my spotlight. Stand there and watch my new moves! You can drown in each other's eyes later!"
-
-    r "Ok, sorry."
 
     "The two lovebirds stand together as Flandre zips around at dangerous speeds."
 
@@ -380,7 +374,7 @@ label epilogue:
 
     r "Mhm."
 
-    "Remilia looks over to a staring Flandre."
+    "Remilia looks over to a fascinated Flandre."
 
     r "Stop staring."
 
@@ -396,7 +390,7 @@ label epilogue:
 
     r "Geez, such a handful."
 
-    p "Some energy is nice."
+    p "It makes for good entertainment."
 
     r "Yeah. It is."
 
@@ -404,9 +398,9 @@ label epilogue:
 
     r "I uh, yeah. Sorry."
 
-    p "You do not need to apologize. I truly did enjoy that."
+    p "You do not need to apologize. I thoroughly enjoyed it."
 
-    r "Um, good. Are we, um, you know? I guess... a thing?"
+    r "Then, are we, um, you know? I guess... a thing?"
 
     p "I don't know."
 
@@ -414,9 +408,9 @@ label epilogue:
 
     p "I have no opposition to that."
 
-    "Remilia tugs at her, pulling herself close."
+    "Remilia pulls herself into Patchouli."
 
-    "Then, Remilia's wings wrap around Patchouli."
+    "Then, Remilia's wings envelop her."
 
     r "Good. You're mine."
 
@@ -448,7 +442,7 @@ label epilogue:
 
     "Remilia sits back down, then Patchouli pulls her in."
 
-    p "I'll serve you after you wrap me with your wings again."
+    p "I'll serve it once you wrap me with your wings again."
 
     r "Gladly."
 
