@@ -1,6 +1,7 @@
 define sp = "audio/sfx/"
 define ap = "audio/bgm/"
 define bp = "images/backgrounds/"
+define cgp = "images/cg/"
 
 # BGM __________
 
@@ -42,3 +43,6 @@ transform bg_scale:
 image bg_study = At(bp + "library.png", bg_scale)
 image bg_library = At(bp + "entrance.png", bg_scale)
 
+# CGs __________
+
+image hug = cgp + "hug.png"
