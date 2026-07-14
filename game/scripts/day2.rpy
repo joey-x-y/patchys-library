@@ -6,10 +6,12 @@ label day2:
     return
 
 label day2_morning:
-    scene bg_bedroom with fade
+    call day_transition_in()
 
     play sound sfx_coffin_open
-    play music bgm_library fadein 2.0
+
+    $ remi.face(flipped=False)
+    $ remi.show(at=[left, standheight, enterbottom()], zorder=1)
     
     "Remilia rises out of her coffin and stretches."
 
@@ -20,6 +22,9 @@ label day2_morning:
     r "She's still asleep. Now how can I get us out of here?"
 
     play sound sfx_coffin_open
+
+    $ flan.face(flipped=False)
+    $ flan.show(at=[right, standheight, enterbottom(0.5)])
 
     "Flandre's coffin flies open."
     
@@ -53,28 +58,41 @@ label day2_morning:
 
     r "Good. Thank you."
 
-    "Flandre hops out of her coffin."
+    $ flan.move(center, transition=move_fast)
 
     f "I'm gonna ask her to numb my wings now."
 
-    "Remilia flies after her."
+    play sound sfx_door_open
+    $ flan.hide(transition=dissolve)
 
-    r "Hey, wait, don't go alone! You just said you'd be careful."
+    r "Hey, wait!"
+
+    call scene_transition_fade("bg_library")
+
+    $ remi.face(flipped=True)
+    $ flan.face(flipped=False)
+
+    $ flan.show(at=[center, standheight], zorder=1, transition=dissolve)
+    $ remi.show(at=[right, standheight, enterright()])
+    
+
+    r "Don't go alone! You just said you'd be careful."
 
     f "Yeah, let's go together."
 
-    play sound sfx_door_open
-    call scene_transition_fade("bg_library")
+    r "Of course we will, don't wander off like that."
 
-    "Remilia sighs as they step out of the room. A voice resounds."
+    call generic_spell()
 
     p "Go up the stairs."
+
+    "The magician's voice echoes throughout the room."
 
     f "Whoa, cool."
 
     r "She's watching us. Great."
 
-    "Remilia stares at the exit for a moment before approaching the staircase."
+    "Remilia stares at the exit. Then, they walk to the staircase."
 
     r "I can fly you up."
 
@@ -94,6 +112,8 @@ label day2_morning:
 
     p "You may enter."
 
+    $ remi.show(center_right, transition=move_slow, zorder=1)
+
     "Remilia grabs Flandre's hand as they enter together."
 
     return
@@ -101,19 +121,47 @@ label day2_morning:
 label day2_library:
 
     call scene_transition_fade("bg_study")
-    "They step into a large room lined with even more books. Patchouli sits in front of them at a large desk."
+    "They step into yet another room lined with even more books. Patchouli sits in front at her desk large desk."
+
+    play music bgm_library fadein 2.0
+
+    $ pat.face(flipped=True)
+    $ remi.face(flipped=False)
+    $ flan.face(flipped=True)
+
+    $ pat.show(hat=False, at=[right, standheight], transition=dissolve, zorder=2)
+
+    $ remi.show(at=[left, standheight, enterleft()], zorder=1)
+    $ flan.show(at=[corner_left, standheight, enterleft()])
 
     p "Welcome to my study."
 
     f "Whoa, cool!"
 
-    r "Would you numb Flandre's wings again?"
+    r "Apply that numbing spell again, would you?"
 
-    p "I suppose. I will make it last longer this time. Come here."
+    p "One moment."
 
-    play sound sfx_magic_summon
+    $ pat.show(magic=True, transition=dissolve_fast)
+    call generic_spell()
+    $ remi.show(dirty=False)
+    $ flan.show(dirty=False)
+    with dissolve
 
-    "Flandre walks over, and the magician casts the spell."
+    p "I would appreciate it if you don't sully my carpets on your way in."
+
+    f "Yay, we're clean!"
+
+    p "Now, come here. I will make it last longer this time."
+
+    $ flan.move(center_right, transition=ease)
+
+    call generic_spell()
+
+    $ flan.show(center, zorder=1)
+    with move_slow
+
+    $ pat.show(magic=False, transition=dissolve_fast)
 
     f "Thank you... uh, what's your name?"
 
@@ -125,13 +173,24 @@ label day2_library:
 
     p "Well met, Scarlets."
 
-    "Remilia steps forward."
+    f "Where'd your cool hat go?"
+
+    p "Hm, just not in the mood for it today."
+
+    f "Aw."
+
+    $ remi.show(center_left, zorder=1.5)
+    $ flan.move(far_left)
+    with move_slow
 
     r "What do you intend to do with us?"
 
-    p "Observe. Study. Gather some useful data."
+    p "Observe. Study. Gather useful data."
 
     r "What exactly do you mean by that?"
+
+    $ flan.move(left, transition=move)
+    $ remi.move(shake(0.5))
 
     play sound sfx_rustle_3
 
@@ -153,6 +212,9 @@ label day2_library:
 
     play sound sfx_rustle_3
 
+    $ remi.move(far_left)
+    with move_slow
+
     "Flandre gently tugs Remilia's shirt, and she steps back next to her."
 
     f "She's done. You can ask stuff now."
@@ -163,15 +225,17 @@ label day2_library:
 
     p "Is Flandre not a vampire?"
 
-    "Flandre raises her hand."
+    $ flan.move(hop)
 
     f "I am!"
 
     p "Your wings aren't regenerating."
 
+    $ flan.move(small_shake())
+
     f "Uh, yeah."
 
-    r "She didn't sleep enough, your numb spell was too short."
+    r "She couldn't sleep enough, your numb spell was too short."
 
     f "That's not the problem. Don't blame her. They haven't healed at all, no matter what we do."
 
@@ -183,7 +247,12 @@ label day2_library:
 
     p "What kind of blade?"
 
+    $ flan.move(small_shake(7, 0.2))
+
     f "Uh... I don't know!"
+
+    $ remi.move(scoot_right)
+    play sound sfx_rustle_3
 
     "Remilia gently puts her hands on Flandre's shoulders."
 
@@ -209,9 +278,15 @@ label day2_library:
 
     f "Sis, be quiet."
 
+    $ remi.show(unscoot, zorder=0.5)
+    $ flan.move(center_left)
+    with move_slow
+
     "Flandre steps forward out of Remilia's grip. Remilia mouth opens, but quickly closes again."
 
     f "Patchouli, could you try? The pain... I hate it. Please. I'll help however you want."
+
+    $ remi.move(hopdown(length=0.5))
 
     "Remilia bows her head."
 
@@ -221,12 +296,13 @@ label day2_library:
 
     p "Very well."
 
-    "Flandre hops into the air."
+    $ flan.move(hop)
 
     f "Yay! You're awesome!"
 
     p "I'll analyze your wings. Lay on the table."
 
+    $ flan.move(center_right, transition=move_fast)
     play sound sfx_body_fall
 
     "Flandre dives onto the table, pointing her back towards the ceiling. Patchouli floats over her."
@@ -244,6 +320,8 @@ label day2_library:
     p "Fair enough. You can grab a book if you'd like. Don't damage any, or you'll explode."
 
     r "Explode how?"
+
+    scene black with fade
 
     "Patchouli begins her analysis with various spells and potions. Remilia stands in the corner and watches for the rest of the night."
 
@@ -436,11 +514,11 @@ label day2_end:
 
     p "I'm learning vampire etiquette."
 
-    r "This {i}heathen{/i} touched my wing without a care in the world. As if it bore no sanctity at all."
+    r "This {i}heathen{/i} touched my wing without a care. As if it were some trinket from a market stall."
 
     f "Whoa. Is that one of those weird things you were worried about, sis?"
 
-    r "No! Never mind, this is stupid."
+    r "No... Never mind. This is stupid."
 
     "Remilia flies past Flandre, out of the room."
 
@@ -462,7 +540,7 @@ label day2_end:
 
     r "Hm. Okay then."
 
-    play sfx_rustle_2
+    play sound sfx_rustle_2
 
     "Remilia picks Flandre up."
 

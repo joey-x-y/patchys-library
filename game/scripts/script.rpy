@@ -10,14 +10,14 @@ define magician_name = initial_magician_name
 
 define r = Character("Remilia", color="#4aa8ff")
 define f = Character("Flandre", color="#ff786c")
-define p = DynamicCharacter(magician_name, color="#ff67ff")
+define p = DynamicCharacter("magician_name", color="#c767ff")
 
 
 # The game starts here.
 
 label start:
 
-    call test
+    # call test
 
     call day1
     call day2
@@ -28,3 +28,17 @@ label start:
     call day7
 
     return
+
+label test:
+    scene bg_library
+
+    $ remi.show(expression="neutral", at=center)
+    $ flan.show(expression="frown", at=far_left)
+    $ pat.show(expression="neutral", at=right)
+
+
+    r "We are testing, you scoundrel!"
+
+    $ flan.move(flip)
+
+    f "WHYYHU yo ma"
