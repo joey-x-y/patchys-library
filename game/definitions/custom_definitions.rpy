@@ -24,10 +24,10 @@ define sfx_door_open = sp + "door_open.ogg"
 define sfx_forest_land = "<from 0 to 0.5>" + sp + "forest_footsteps.ogg"
 define sfx_forest_footsteps = "<volume 0.5>" + sp + "forest_footsteps.ogg"
 define sfx_magic_cast = sp + "magic_cast.ogg" # summon gungnir or lavaiten
-define sfx_magic_clash_1 = "<volume 0.4>" + sp + "magic_clash_1.ogg"
-define sfx_magic_clash_2 = "<volume 0.4>" + sp + "magic_clash_2.ogg" # sneak attack collision
+define sfx_magic_clash_1 = "<volume 0.3>" + sp + "magic_clash_1.ogg"
+define sfx_magic_clash_2 = "<volume 0.3>" + sp + "magic_clash_2.ogg" # sneak attack collision
 define sfx_magic_summon = sp + "magic_summon.ogg" # patchy generic magic
-define sfx_magic_thunderous = "<volume 0.4>" + sp + "magic_thunderous.ogg" # lazer gungnir collisions
+define sfx_magic_thunderous = "<volume 0.3>" + sp + "magic_thunderous.ogg" # lazer gungnir collisions
 define sfx_rustle_1 = sp + "rustle_1.ogg"
 define sfx_rustle_2 = sp + "rustle_2.ogg"
 define sfx_rustle_3 = sp + "rustle_3.ogg"
@@ -49,9 +49,17 @@ transform bg_scale_upper:
     xalign 0.5
     yalign 0.0
 
+transform bg_scale_tablezoom:
+    fit "contain"
+    xysize (1920, 1080)
+    zoom 1.5
+    xalign 1.0
+    yalign 1.0
+
 image bg_bedroom = At(bp + "bedroom.png", bg_scale)
 image bg_bedroom_nocoffin = At(bp + "bedroom_nocoffin.png", bg_scale)
 image bg_study = At(bp + "library.png", bg_scale)
+image bg_study_tablezoom = At(bp + "library.png", bg_scale_tablezoom)
 image bg_library = At(bp + "entrance.png", bg_scale)
 image bg_library_stairs = At(bp + "entrance.png", bg_scale_upper)
 

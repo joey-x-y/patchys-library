@@ -4,6 +4,9 @@ transform sprite_facing(flipped=False):
 transform standheight:
     ypos 1.0
 
+transform sitheight:
+    ypos 1.1
+
 transform left:
     xpos 0.3
 
@@ -30,6 +33,9 @@ transform center_left:
 
 transform center_right:
     xpos 0.6
+
+transform mid_center_right:
+    xpos 0.55
 
 transform scoot_left:
     ease 0.4 xoffset -30
@@ -91,8 +97,19 @@ transform hopdown(height=60, length=0.15):
     ease length yoffset height
     ease length yoffset 0
 
-transform hopreset():
+transform hopreset:
     yoffset 0
+
+transform closeup:
+    zoom 1.5
+    ypos 1.3
+
+transform closeuprevert:
+    zoom 1.0
+    ypos 1.0
+
+transform forceopacity:
+    alpha 1.0
 
 define move_fast = MoveTransition(0.1)
 
@@ -111,3 +128,7 @@ transform shake(magnitude=8, length=0.15):
     linear length/5.0 xoffset -magnitude/1.5 yoffset magnitude/2.0
     linear length/5.0 xoffset magnitude/1.5 yoffset -magnitude/2.0
     linear length/5.0 xoffset 0 yoffset 0
+
+transform shakereset:
+    xoffset 0
+    yoffset 0

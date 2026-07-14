@@ -4,25 +4,34 @@ label day3:
     return
 
 label day3_morning:
-    play sound sfx_coffin_open
     scene bg_bedroom with fade
     play music bgm_library fadein 2.0
+
+    $ flan.flip()
+    $ flan.show(at=[center, standheight], transition=dissolve)
 
     "Flandre hops over and shakes Remilia's coffin."
 
     f "Remi! Get up already!"
 
-    "Remilia slowly cracks open the lid."
+    play sound sfx_coffin_open
+
+    "The lid slowly cracks open, revealing the sleepy vampire within."
+
+    $ remi.flip()
+    $ remi.show(at=[left, standheight, enterbottom(speed=2)])
 
     r "What... it's too early for yelling..."
 
     f "I slept the whole night!"
 
-    r "Wonderful. Are they still numb?"
+    r "That's great. Are they still numb?"
 
     f "Mostly. It's fading a little."
 
     r "Hm. We'll go see that librarian soon."
+
+    $ flan.move(hop)
 
     f "No, let's go now!"
 
@@ -30,28 +39,43 @@ label day3_morning:
 
     scene black with fade
 
-    "Remilia slowly crawls out of her coffin and stands up. Flandre grabs and drags her out of the room, all the way to Patchouli's study."
+    "Flandre drags her out of the room, all the way to Patchouli's study."
 
     scene bg_study with fade
     play sound sfx_door_open
 
+    $ pat.show(hat=True, at=[right, standheight], transition=dissolve, zorder=1)
+
     "Flandre flings the door open."
+
+    $ flan.flip()
+    $ flan.move([offscreenleft, standheight])
+    $ flan.show(at=[center, standheight, enterleft()], zorder=2)
+    with None
+    $ pat.move(far_right, transition=move_slow)
 
     f "Patchy! More numbness!"
 
     p "Uh, yeah, sure."
 
-    play sound sfx_magic_summon
+    $ pat.show(magic=True, transition=dissolve_fast)
+    call generic_spell()
 
     "She casts the spell once again."
 
     f "Yay."
 
+    $ remi.show(at=[far_left, standheight, enterleft()], zorder=3)
+
     r "Her name is Patchouli."
 
     f "That's too long. She's Patchy now."
 
+    $ pat.show(magic=False, transition=dissolve_fast)
+
     p "It works."
+
+    $ flan.move(center_left, transition=ease)
 
     "Remilia looks to the mountain of books on Patchouli's desk."
 
@@ -59,7 +83,9 @@ label day3_morning:
 
     "Patchouli smiles."
 
-    p "Indeed. I've been doing research on what might be blocking your regeneration. There are various possibilities, like poisons, wound-blocking magic, sun-specific afflictions. I'll craft some potions to try on you tomorrow."
+    p "Indeed. I've been doing research on what might be blocking your regeneration."
+
+    p "There are various possibilities, like poisons, wound-blocking magic, sun-specific afflictions. I'll craft some potions to try on you tomorrow."
 
     f "Ooh cool, potions? What do they do?"
 
@@ -69,9 +95,12 @@ label day3_morning:
 
     p "Yes. I want to check and see if they've changed."
 
-    f "Um... here."
+    f "Um... okay."
 
-    "She walks over, and Patchouli inspects them closely."
+    $ flan.move(right, transition=move_slow)
+    $ flan.flip(transition=dissolve_fast)
+
+    "She walks over. Patchouli inspects them closely."
 
     p "Hmm."
 
@@ -79,19 +108,24 @@ label day3_morning:
 
     p "No change."
 
-    "Flandre leaps forward and spins back around to face Patchouli."
+    $ remi.show(zorder=1)
+    $ flan.move(center_left, transition=ease)
+    $ flan.flip(transition=dissolve_fast)
+    $ pat.move(right, transition=move_slow)
 
     f "Thank goodness. Surely they can't get worse."
 
-    p "I'll keep checking on it. Remilia noticed some changes, I want to monitor them closely."
+    p "I'll keep checking on it. Remilia noticed some changes, so I want to monitor them closely."
 
     f "What? When?"
 
     p "Yesterday."
 
+    $ flan.flip(transition=dissolve_fast)
+
     "Flandre crosses her arms as she glares at Remilia."
 
-    f "So, you <i>did</i> notice something yesterday? That's what you were talking to Patchouli about, then?"
+    f "So, you {i}did{/i} notice something yesterday? That's what you were talking to Patchouli about, then?"
 
     r "Um, yes. I—"
 
@@ -99,7 +133,7 @@ label day3_morning:
 
     r "I wanted to be sure before I said anything."
 
-    f "They are <i>my</i> wings! I want to know everything!"
+    f "They are {i}my{/i} wings! I want to know everything!"
 
     "Remilia averts her gaze."
 
@@ -111,11 +145,21 @@ label day3_morning:
 
     r "Right. Sorry."
 
-    "Flandre sighs, then leaves the room."
+    $ flan.move(offscreenleft, transition=move_slow)
+
+    stop music fadeout 2.0
+
+    "Flandre lets out a heavy sigh as she leaves the room."
 
     p "Apologies."
 
+    $ remi.move(center_left, transition=move_slow)
+
     "Remilia lets out a sigh of her own as she drops into a chair at Patchouli's table."
+
+    $ remi.show(sitheight, transition=move_slow)
+
+    play music bgm_emotional fadein 2.0
 
     r "That's just how it is. I suppose I handled things poorly."
 
@@ -128,6 +172,10 @@ label day3_morning:
     r "For now. I'll give her time. I still need to keep an eye on you."
 
     p "Mm."
+
+    $ pat.move(sitheight, transition=move_slow)
+
+    show layer master at table_zoom
 
     "Patchouli looks back down at her books. Remilia watches for a while, before breaking the silence."
 
@@ -143,7 +191,7 @@ label day3_morning:
 
     p "It means I was created as a Magician. Unlike others, I didn't need to transform."
 
-    r "Um... got it."
+    r "Uh... got it."
 
     p "Perhaps I'll educate you on what Magicians are later."
 
@@ -157,6 +205,8 @@ label day3_morning:
 
     p "Not really."
 
+    $ remi.move(standheight, transition=move_slow)
+
     "Remilia spreads her arms and wings wide."
 
     r "Why not? I believe it would be a great honor to serve a vampire like me."
@@ -165,9 +215,14 @@ label day3_morning:
 
     r "Oh, fine."
 
-    "She stands and fetches the vial, bringing it over to the table."
+    $ remi.move(offscreenright, transition=ease)
+    $ remi.flip()
+    $ remi.move(center_left, transition=ease)
+    $ remi.flip(transition=dissolve_fast)
 
-    p "Thank you."
+    r "Here. Satisfied?"
+
+    p "Yes. Thank you."
 
     r "It was only a few steps away."
 
@@ -175,17 +230,22 @@ label day3_morning:
 
     r "I'm no laborer..."
 
+    $ remi.move(sitheight, transition=move_slow)
+
     "Remilia grumbles as she sits back down. She silently observes Patchouli."
 
-    "The magician moves between different books scattered across the table, jotting notes on occasion. Every once in a while, a smile flashes for a moment, before returning to her usual deadpan expression."
+    "The magician moves between different books scattered across the table, jotting notes on occasion."
+
+    "Every once in a while, a smile flashes for a moment, before returning to her usual deadpan expression."
 
     "Remilia reaches towards one of the notes."
 
-    "Clack."
+    play sound sfx_magic_clash_1
+    $ remi.move(hop(height=30))
 
     r "Ow! My finger!"
 
-    "Blood flies from Remilia's finger towards the table, but a spark erupts from the table, evaporating it. Patchouli does not react."
+    "A spark vaporizes her finger instantly. As the blood flies towards the table, another spark vaporizes it, protecting the books. Patchouli does not react."
 
     "Remilia looks at her hand in awe."
 
@@ -197,13 +257,26 @@ label day3_morning:
 
     "Remilia pouts as her fingertip regenerates. She continues her silent observation."
 
+    show bg_study with fade
+
     "Eventually, the books all close at the same time."
 
-    p "I'm done. Could you get Flandre? I want to check something."
+    p "I'm done. Would you get Flandre? I want to check something."
 
-    "Remilia nods and flies out into the hall."
+    r "Sure."
+
+    $ remi.flip()
+    $ remi.move(offscreenleft, transition=move_slow)
     
-    "Flandre is sitting still, staring at the wall. A few books are scattered around her. Remilia drops down in front of her."
+
+    scene bg_library with fade
+    $ flan.flip()
+    $ flan.show(at=[right, sitheight], transition=dissolve)
+
+    "Flandre is sitting still, staring at the wall. A few books are scattered around her."
+
+    $ remi.flip()
+    $ remi.show(at=[left, standheight, enterleft()])
 
     r "Hey."
 
@@ -211,23 +284,46 @@ label day3_morning:
 
     r "Patchouli wants to check your wings again."
 
-    "Flandre stands up, and Remilia extends her arms."
+    f "Sure."
+
+    $ flan.move(standheight, transition=move_slow)
+    $ flan.flip(transition=dissolve_fast)
+
+    $ remi.move(center, transition=move_slow)
+
+    "Remilia extends her arms."
 
     r "I can fly you up."
 
-    f "No."
+    f "No. I don't want to."
 
-    r "Um... sorry."
+    r "Right. Um... sorry, about—"
 
     f "It's fine. I'm not really mad anymore."
 
     r "Oh. Good."
 
-    "Flandre walks up the stairs and into the study, Remilia follows behind."
+    $ flan.move(offscreenleft, transition=move_slow)
+
+    f "Hurry up, slow face."
+
+    $ remi.flip(transition=dissolve)
+
+    scene bg_study with fade
+
+    $ pat.show(at=[right, standheight], transition=dissolve)
+
+    $ flan.show(at=[center_left, standheight, enterleft()], flip=True)
+    $ remi.show(at=[far_left, standheight, enterleft()], flip=True)
+
+    pause 0.3
 
     f "Delivery. Flan wings."
 
-    "Flandre walks up to the stone-faced Patchouli and presents her back."
+    $ flan.move(enterforcefinish)
+    with None
+    $ flan.move(center_right, transition=move_slow)
+    $ flan.flip(transition=dissolve_fast)
 
     p "They look the same. Good. Still numb?"
 
@@ -237,7 +333,7 @@ label day3_morning:
 
     f "Nearly 'till morning. It was starting to wear off though."
 
-    "Patchouli recasts the spell."
+    call generic_spell()
 
     p "Now it should be good until next time I see you."
 
@@ -245,13 +341,23 @@ label day3_morning:
 
     p "I have many experiments ready for tomorrow. I'll need you here all night."
 
+    $ flan.move(center_left, transition=move_fast)
+    $ flan.flip(transition=dissolve_fast)
+
     "Flandre spins and salutes."
 
-    f "Yes ma'am!"
+    $ flan.move(hop(height=30))
 
-    "The sisters leave to their room and gather around their daily dead chicken."
+    f "Yes ma'am! See ya!"
 
-    r "I'm sorry about..."
+    scene bg_bedroom with fade
+
+    $ flan.show(at=[left, standheight])
+    $ remi.show(at=[center_right, standheight], flip=True, transition=dissolve)
+
+    "The sisters gather around their daily dead chicken."
+
+    r "Hey... I'm sorry about..."
 
     f "I know."
 
@@ -281,6 +387,8 @@ label day3_morning:
 
     r "I'm the only one that's been... not so straightforward."
 
+    $ remi.move(small_shake())
+
     "Flandre tosses the bone onto Remilia's lap."
 
     f "Ha, it sounds like you're the one defending Patchy now."
@@ -289,6 +397,8 @@ label day3_morning:
 
     f "I believe you."
 
+    $ flan.move(center, transition=move_slow)
+
     "Flandre leans into Remilia."
 
     f "You wouldn't lie about that. You never advocate for people."
@@ -296,6 +406,8 @@ label day3_morning:
     r "I cannot deny that."
 
     f "Thanks for trusting someone for me."
+
+    $ flan.move([far_left, floatup], transition=move_fast)
 
     "Flandre jumps into her coffin."
 
@@ -306,10 +418,15 @@ label day3_morning:
     "Remilia tosses the bone at her, but she catches and dunks it into Remilia's coffin."
     
     f "Heh."
+
+    play sound sfx_coffin_close
+    $ flan.hide(dissolve)
     
     "Flandre's coffin slams shut."
 
     r "Ugh."
+
+    scene black with fade
 
     "Remilia empties her coffin and sleeps."
 

@@ -194,8 +194,6 @@ label day1_library:
 
     "Something fires at Remilia's neck, but she summons her spear to block at the last moment."
 
-    play music bgm_duel fadein 2.0
-
     call spear_block_continuous()
 
     r "This trap won't on us, fool."
@@ -207,6 +205,8 @@ label day1_library:
     r "Stay close. I have it handled."
 
     call spear_block_barrage_end()
+
+    play music bgm_duel fadein 2.0
 
     $ pat.face(flipped=True)
     $ pat.show(magic=True, at=[standheight, floatup, corner_right, enterright(speed=1.5)])
@@ -241,7 +241,7 @@ label day1_library:
 
     call spear_lazer_clash()
 
-    "Again, the crystals charge. The spear charges, but slowly flickers. They collide yet again."
+    "Again, the lasers fire. They collide yet again."
 
     play sound sfx_body_fall
     $ remi.move(dropdown)
@@ -249,7 +249,7 @@ label day1_library:
 
     "As the crystals charge again, Remilia drops."
 
-    f "Sis, no!"
+    f "Remi, no!"
 
     play sound sfx_magic_cast
     $ flan.move(left, transition=move_fast)
@@ -262,14 +262,12 @@ label day1_library:
 
     call spear_lazer_clash(defender=flan)
 
-    "The red slash collides with the lasers, splitting them in half and making them hit the ground next to the sisters."
+    "The red slash collides with the lasers, splitting them in half. They crash into the ground next to the sisters."
 
     play sound sfx_body_fall
     $ flan.move(drophalf)
 
     "Flandre drops to her knees, breathing frantically."
-
-    stop music fadeout 2.0
 
     $ pat.move([floatdowntocenter])
     call clear_effects
@@ -285,6 +283,8 @@ label day1_library:
     f "We had to! The sun will kill us!"
 
     p "Hmm..."
+
+    stop music fadeout 2.0
 
     p "I've never seen vampires before. I want to study you. On that condition, you may stay."
 
@@ -353,15 +353,15 @@ label day1_end:
 
     $ flan.show(expression="smile")
 
-    f "Sis, you're awake!"
+    f "Remi, you're awake!"
 
-    r "I was the whole time. I just couldn't move."
+    r "Yes, I was the whole time. I just couldn't move."
 
     p "Then you should understand your situation. I am studying a vampire, as agreed. Be silent."
 
     $ remi.move(standup)
 
-    "Remilia stands up and stares her down."
+    "Remilia stands and stares her down."
 
     "The magician leans in close to the wings for a few moments."
 
@@ -374,10 +374,12 @@ label day1_end:
 
     f "Yay! Thank you!"
 
-    $ flan.move(right, transition=MoveTransition(0.3, time_warp=_warper.ease))
-    $ flan.face(flipped=False)
-
     $ pat.show(magic=False, transition=dissolve_fast)
+
+    $ flan.move(hopreset)
+    $ flan.move(right, transition=ease)
+    
+    $ flan.face(flipped=False)
 
     p "Is that all?"
 

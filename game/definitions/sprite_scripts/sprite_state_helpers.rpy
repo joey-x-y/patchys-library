@@ -107,6 +107,7 @@ init python:
             zorder=None,
             behind=None,
             reset=False,
+            flip=False,
             **changes
         ):
             """
@@ -160,6 +161,9 @@ init python:
 
             if behind is not None:
                 show_arguments["behind"] = behind
+
+            if flip:
+                self.flip()
 
             if at is not None:
 

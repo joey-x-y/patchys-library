@@ -3,6 +3,7 @@ image spear_glow = Solid("#ff2040")
 image lazer_charge_sun = Solid("#f9ffa1")
 image lazer_charge_water = Solid("#0003be")
 image impact_flash = Solid("#ffffff")
+image black_2 = Solid("#000000")
 
 init python:
     renpy.add_layer("effects", above="master")
@@ -103,6 +104,19 @@ transform point_flash(
 
     parallel:
         easeout time zoom 1.8
+
+transform room_pacing(move_speed=2.5, start_pos=0.5, distance=0.16, pivot_pause_time=0.4):
+    subpixel True 
+    block:
+        xpos start_pos
+        ease move_speed/2 xpos start_pos + distance
+
+    block:
+        pause pivot_pause_time
+        ease move_speed xpos start_pos - distance
+        pause pivot_pause_time
+        ease move_speed xpos start_pos + distance
+        repeat
 
 # transform energy_spear(
 #     x=0.33,

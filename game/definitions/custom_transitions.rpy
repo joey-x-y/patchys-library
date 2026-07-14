@@ -10,3 +10,11 @@ label day_transition_in():
     pause 1.0
     scene bg_bedroom with fade
     return
+
+transform table_zoom:
+    ease 1.0 zoom 1.3 pos (-0.3, -0.2)
+
+transform table_unzoom:
+    ease 1.0 zoom 1.0 pos (0.0, 0.0)
+
+

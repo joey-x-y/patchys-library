@@ -48,7 +48,7 @@ label day2_morning:
 
     r "We're her test subjects. Who knows what she'll do?"
 
-    f "Please, sis. I'm tired of moving every night. I want my wings numbed again."
+    f "Please, Remi. I'm tired of moving every night. I want my wings numbed again."
 
     r "Alright, fine. I won't do anything."
 
@@ -233,6 +233,7 @@ label day2_library:
 
     p "Your wings aren't regenerating."
 
+    $ flan.move(hopreset)
     $ flan.move(small_shake())
 
     f "Uh, yeah."
@@ -249,6 +250,7 @@ label day2_library:
 
     p "What kind of blade?"
 
+    $ flan.move(shakereset)
     $ flan.move(small_shake(7, 0.2))
 
     f "Uh... I don't know!"
@@ -278,7 +280,7 @@ label day2_library:
 
     r "How so?"
 
-    f "Sis, be quiet."
+    f "Just be quiet, Remi."
 
     $ remi.show(unscoot, zorder=0.5)
     $ flan.move(center_left)
@@ -304,6 +306,7 @@ label day2_library:
 
     p "I'll analyze your wings. Lay on the table."
 
+    $ flan.move(hopreset)
     $ flan.move(right, transition=move_fast)
     play sound sfx_body_fall
 
@@ -590,22 +593,25 @@ label day2_end:
     r "No... Never mind. This is stupid."
 
     $ remi.move(offscreenleft, transition=move_slow)
-
-
     $ flan.move(sprite_facing(True), transition=dissolve_fast)
-    f "Wait, sis!"
+
+    f "Wait, Remi!"
 
     $ flan.move(offscreenleft, transition=move_slow)
 
     call scene_transition_fade("bg_library_stairs")
 
-    #TODO I left off here
+    $ remi.show(at=[center_left, standheight], transition=dissolve)
+    $ flan.flip()
+    $ flan.show(at=[right, standheight, enterright()]) 
 
     f "Where are you going?"
 
+    $ remi.flip()
+
     r "I'm tired. I'm going to sleep."
 
-    f "Me too, those books are confusing."
+    f "Me too, those books are confusing. My brain was melting from knowledge overload."
 
     r "Did you learn anything from them?"
 
@@ -614,14 +620,30 @@ label day2_end:
     r "Hm. Okay then."
 
     play sound sfx_rustle_2
+    $ remi.move(center_right, transition=ease)
+    $ flan.move(floatup, transition=move_fast)
 
     "Remilia picks Flandre up."
+
+    stop music fadeout 3.0
 
     r "Let me fly you down this time."
 
     f "Woohoo!"
 
-    play music bgm_emotional fadein 2.0
+    play music bgm_title fadein 2.0
+
+    show black_2 behind r, f:
+        alpha 0.5
+
+    show black:
+        alpha 0.2
+
+    with dissolve
+
+    $ remi.show(at=[closeup, room_pacing(start_pos=0.4)])
+    $ flan.show(at=[closeup, room_pacing(start_pos=0.55)])
+    with dissolve
 
     "Remilia leaps into the air. They hover along the ceiling, weaving between the various chandeliers."
 
@@ -635,9 +657,13 @@ label day2_end:
 
     play sound sfx_crystals_clacking
 
+    show layer master at shake()
+
     r "Watch your foot! Don't break the chandeliers."
 
     f "Oops."
+
+    show bg_library behind f, r, black, black_2 with dissolve
 
     "Remilia moves to the bookshelf-lined walls, minimizing the risk of a tragic accident."
 
@@ -649,9 +675,9 @@ label day2_end:
 
     r "Your wings. She seems to be getting a better idea of the situation."
 
-    f "And then she touched yours?"
+    f "And then she touched your wings?"
 
-    r "Yeah...and then she touched mine. Her understanding of vampires is woefully inadequate."
+    r "Yeah... and then she touched my wings. Her understanding of vampires is woefully inadequate."
 
     f "We have to fix that."
 
@@ -659,25 +685,39 @@ label day2_end:
 
     f "Hehe, not at all."
 
-    "They touch down to the ground, then walk into the bedroom together."
+    $ remi.move([closeuprevert, center_left])
+    $ flan.move([closeuprevert, center_right])
+    hide black
+    hide black_2
+    with dissolve
+
+    f "That was fun! Now food."
 
     call scene_transition_fade("bg_bedroom")
+
+    $ remi.flip()
+    $ flan.show(at=[left, standheight, enterright()])
+    $ remi.show(at=[right, standheight, enterright()])
 
     f "Yay, another chicken!"
 
     r "Really? Out of everything in the forest? So bland."
 
+    $ flan.move(enterforcefinish)
+    $ flan.flip(dissolve_fast)
+
     f "But the feathers are nice."
 
-    r "You aren't supposed to eat that."
+    r "You aren't supposed to eat that part."
 
     f "I meant they look nice, stupid."
 
     r "Mhm, sure you did."
 
-    "They eat together, then go to sleep."
-
     scene black with fade
+    play sound sfx_coffin_open
     stop music fadeout 2.0
+
+    "After they devour their feathery meal, they go to sleep."
 
     return

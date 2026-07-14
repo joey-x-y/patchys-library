@@ -5,10 +5,11 @@ label day4:
     return
 
 label day4_morning:
+    call day_transition_in()
     
     "Flandre pops open her coffin and stands on the bed."
 
-    f "Hey, sis, my wings are still fully numb!"
+    f "Hey, my wings are still fully numb!"
 
     "Remilia's coffin swings open."
 
@@ -16,7 +17,7 @@ label day4_morning:
 
     "Remilia freezes as she looks at Flandre."
 
-    f "Um, sis? What is it?"
+    f "Um, Remi? What is it?"
 
     "Remilia looks away for a moment before looking back."
 
@@ -166,7 +167,7 @@ label day4_morning:
 
     p "Noble house, hmm? That explains your sister's... peculiar charm."
 
-    f "Haha, that's so Remi."
+    f "Haha, peculiar."
 
     p "Indeed. What brought you two into this forest?"
 
@@ -250,7 +251,7 @@ label day4_morning:
 
     "Flandre flies over and protects the floor, cupping her hands in front of her sister."
 
-    f "Sis... this is someone else's home. Come on."
+    f "Remi... this is someone else's home. Come on."
 
     r "Blood is meant to be spilled, no?"
 
@@ -336,7 +337,7 @@ label day4_morning:
 
     "Flandre sprints back."
 
-    f "What?! You made sis grab something for you?"
+    f "What?! You made <i>The</i> Remilia Scarlet grab something for you?"
 
     p "Yes. Her labor was much appreciated."
 

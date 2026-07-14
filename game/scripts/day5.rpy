@@ -119,7 +119,7 @@ label day5_morning:
 
     p "Huh?"
 
-    r "But in a good way, I mean. My sister is something to keep safe at all times. If servants are incapable of doing it, I have to."
+    r "But in a good way, I mean. Flandre is someone to keep safe at all times. If servants are incapable of doing it, I have to."
 
     "Patchouli takes a long sip, letting many seconds pass before responding."
 
