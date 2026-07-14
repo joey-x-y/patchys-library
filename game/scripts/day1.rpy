@@ -169,6 +169,10 @@ label day1_library:
 
     r "Let's take a look. Try to keep quiet."
 
+    $ remi.move(enterforcefinish)
+    $ flan.move(enterforcefinish)
+    with None
+
     $ remi.move(left)
     $ flan.move(far_left)
     with ease
@@ -314,7 +318,7 @@ label day1_library:
 
 label day1_end:
 
-    call scene_transition_fade("bg_bedroom")
+    call scene_transition_fade("bg_bedroom_nocoffin")
     $ pat.face(flipped=False)
     $ flan.face(flipped=False)
     $ remi.face(flipped=True)
@@ -332,6 +336,11 @@ label day1_end:
     f "Um... I can't sleep. My wings... they burn."
 
     p "Fine. Bring them here."
+
+    $ flan.move(enterforcefinish)
+    $ remi.move(enterforcefinish)
+    $ pat.move(enterforcefinish)
+    with None
 
     $ flan.move(center_left, transition=move_slow)
     $ flan.face(flipped=True, transition=dissolve_fast)
@@ -384,11 +393,15 @@ label day1_end:
 
     p "Ugh..."
 
+    $ pat.flip()
     $ pat.show(magic=True, transition=dissolve_fast)
     call generic_spell()
 
+    show bg_bedroom behind f, r, p with dissolve
+
     "She summons two coffins onto the bed."
 
+    $ pat.flip()
     $ pat.show(magic=False, transition=dissolve_fast)
 
     p "No more."
@@ -407,12 +420,13 @@ label day1_end:
     p "A word of caution. Try anything, you'll explode. So don't."
 
     $ pat.move(offscreenleft)
+    with move_slow
     $ flan.move(left)
     $ remi.move(right)
     with move_slow
     $ flan.face(flipped=True, transition=dissolve_fast)
 
-    "Remilia sighs as the magician finally leaves them alone."
+    "Remilia lets out a massive sigh."
 
     r "What a ridiculous situation."
 

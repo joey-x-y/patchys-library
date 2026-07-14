@@ -56,6 +56,11 @@ transform enterbottom(speed=1):
     alpha 0
     ease speed yoffset 0 alpha 1
 
+transform enterforcefinish():
+    yoffset 0
+    xoffset 0
+    alpha 1
+
 transform drophalf:
     ease 0.3 ypos 1.2
 
@@ -85,6 +90,9 @@ transform hop(height=60, length=0.15):
 transform hopdown(height=60, length=0.15):
     ease length yoffset height
     ease length yoffset 0
+
+transform hopreset():
+    yoffset 0
 
 define move_fast = MoveTransition(0.1)
 

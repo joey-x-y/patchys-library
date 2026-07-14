@@ -58,7 +58,7 @@ label day2_morning:
 
     r "Good. Thank you."
 
-    $ flan.move(center, transition=move_fast)
+    $ flan.move([sprite_facing(True)], transition=move_fast)
 
     f "I'm gonna ask her to numb my wings now."
 
@@ -100,7 +100,9 @@ label day2_morning:
 
     "Remilia nods and follows Flandre to the stairs."
 
-    "She looks around as she ascends. Books everywhere, along with fancy chandeliers lining the ceiling."
+    show bg_library_stairs behind f, r with fade
+
+    "She looks around as they ascend. Books everywhere, along with fancy chandeliers lining the ceiling."
 
     r "You think she's read all those?"
 
@@ -144,8 +146,8 @@ label day2_library:
 
     $ pat.show(magic=True, transition=dissolve_fast)
     call generic_spell()
-    $ remi.show(dirty=False)
-    $ flan.show(dirty=False)
+    $ remi.show(dirty=False, at=enterforcefinish)
+    $ flan.show(dirty=False, at=enterforcefinish)
     with dissolve
 
     p "I would appreciate it if you don't sully my carpets on your way in."
@@ -302,10 +304,14 @@ label day2_library:
 
     p "I'll analyze your wings. Lay on the table."
 
-    $ flan.move(center_right, transition=move_fast)
+    $ flan.move(right, transition=move_fast)
     play sound sfx_body_fall
 
-    "Flandre dives onto the table, pointing her back towards the ceiling. Patchouli floats over her."
+    "Flandre dives onto the table, pointing her back towards the ceiling."
+
+    $ pat.move(center_right, transition=ease)
+    $ pat.face(flipped=False)
+    $ pat.show(magic=True, transition=dissolve_fast, zorder=0.8)
 
     r "Don't do anything weird to her."
 
@@ -322,32 +328,61 @@ label day2_library:
     r "Explode how?"
 
     scene black with fade
-
-    "Patchouli begins her analysis with various spells and potions. Remilia stands in the corner and watches for the rest of the night."
+    stop music fadeout 2.0
+    "Patchouli begins her analysis, floating above Flandre and applying various spells and potions. Remilia stands in the corner and watches for the rest of the night."
 
     return
 
 label day2_end:
 
+    play music bgm_emotional fadein 2.0
     call scene_transition_fade("bg_study")
+
+    $ remi.show(at=[corner_left, standheight], zorder=1.5)
+    $ pat.show(at=[center_right, standheight])
+    $ flan.show(at=[right, standheight])
+    with dissolve
+
+    $ pat.show(center, transition=move_fast)
     
     "Patchouli drops out of the air, onto her feet."
+
+    $ pat.show(magic=False, transition=dissolve_fast, zorder=2)
 
     p "I'm done."
 
     r "Are they fixed?"
 
+    $ pat.face(flipped=True, transition=dissolve_fast)
+
     p "No, I'm tired."
+
+    $ flan.move(corner_right)
+    $ pat.move(center_right)
+    $ remi.move(left, transition=ease)
 
     "Remilia pushes off the wall she was leaning on, approaching Patchouli."
 
     r "Did you learn anything useful?"
 
-    "Patchouli yawns. Flandre hops off the table and starts doing stretches on the floor."
+    $ flan.move(drophalf)
+
+    "Patchouli yawns, while Flandre starts doing stretches on the floor."
+
+    $ flan.face(flipped=False)
 
     p "These wings won't heal themselves, they were cut by something abnormal. I must figure out exactly what that abnormality is."
 
+    $ flan.move(center_right)
+    $ pat.face(flipped=False, transition=dissolve)
+
+    $ pat.move(offscreenright)
+    $ flan.move(corner_left, transition=move_slow)
+
     "She walks off deeper into the room."
+
+    $ flan.move(standheight)
+    $ remi.move(center, transition=ease)
 
     r "Hey, what now?"
 
@@ -355,7 +390,7 @@ label day2_end:
 
     r "Ugh, fine then. Hey, Flan—hey where are you?"
 
-    "She looks to where she was, but she's gone."
+    $ remi.face(flipped=True)
 
     f "Huh? It's all symbols?"
 
@@ -363,9 +398,16 @@ label day2_end:
 
     f "Bleh. This stuff is too complicated."
 
+    $ remi.move(hop)
+
     "She tosses it aside, nearly crushing her sister's foot."
 
+    $ remi.move(hopreset)
+    $ remi.move(left, transition=move_slow)
+
     r "What are you doing?"
+
+    $ flan.flip()
 
     f "Reading. Or, trying."
 
@@ -375,6 +417,8 @@ label day2_end:
 
     r "Can I check them?"
 
+    $ flan.flip()
+
     "Flandre turns and presents them to Remilia."
 
     r "They are... hmm."
@@ -383,7 +427,7 @@ label day2_end:
 
     r "...Yeah. Same."
 
-    "Flandre turns around."
+    $ flan.flip()
 
     f "Are you sure?"
 
@@ -415,19 +459,25 @@ label day2_end:
 
     f "Fine."
 
+    $ remi.flip(dissolve_fast)
+
     scene black with fade
 
     "Flandre runs over to more bookshelves as Remilia walks deeper into the room."
 
+    play music bgm_library fadein 2.0
     scene bg_study with fade
+    $ pat.flip()
+    $ pat.show(at=[right, standheight], transition=dissolve)
+    "Patchouli is sitting at a table, looking at the vast collection of open books in front of her."
 
-    "Patchouli is sitting at a table, looking at the many open books in front of her."
+    $ remi.show(at=[left, standheight, enterleft])
 
-    r "Hey, can I ask some more questions?"
+    r "Hey, I'd like to ask you a few questions."
 
     p "Sure."
 
-    "Her attention stays fixed on her books as she responds."
+    "Her attention stays glued to her books."
 
     r "Did Flandre's wings change at all while you were studying them?"
 
@@ -455,7 +505,9 @@ label day2_end:
 
     p "Thank you for sharing that. It is useful information."
 
-    r "Of course."
+    "Remilia gives a self-satisfied grin."
+
+    r "Why, of course."
 
     p "Do you know anything else about Flandre's injuries that she didn't tell me?"
 
@@ -471,34 +523,44 @@ label day2_end:
 
     r "Good."
 
-    "Remilia's smile returns as Patchouli stands up."
+    $ pat.move(center_right, transition=move_slow)
+
+    "Remilia's smug grin returns as Patchouli stands up."
 
     p "Mind if I check something?"
 
     r "Go right ahead."
 
-    # show cg
+    #TODO show cg
 
     "Patchouli grabs Remilia's wing."
 
     r "Huh? W-wait, hey!"
 
-    # hide cg
-    scene bg_study
+    #TODO hide cg
+
+    $ remi.move(hop)
+    pause 0.3
+    $ remi.move(hopreset)
+    $ remi.move(corner_left, transition=move_fast)
 
     "Remilia quickly leaps across the room, out of her grip."
 
-    r "What are you doing, fiend?!"
+    r "What are you doing, fiend?! Unhand me!"
 
     p "Checking your wings."
 
-    r "Hands off!"
+    r "Unacceptable!"
 
     p "But you said go ahead?"
 
-    r "I didn't mean me!"
+    r "I wasn't talking about me!"
 
     p "Oh."
+
+    "The rattled vampire clears her throat."
+
+    $ remi.move(far_left, transition=ease)
 
     r "Don't just touch a vampire's wing like that. Understand?"
 
@@ -506,27 +568,38 @@ label day2_end:
 
     r "That's clinical. It's obviously different."
 
+    $ remi.move(hop)
+
     f "What are you two doing?"
 
-    "Remilia jumps."
+    $ remi.move(hopreset, transition=None)
+    $ remi.move(center)
+    $ pat.move(far_right, transition=ease)
+    $ remi.flip(dissolve_fast)
+    $ flan.show(at=[far_left, standheight, enterleft])
+    $ flan.forget_position()
 
     r "Flandre?"
 
     p "I'm learning vampire etiquette."
 
-    r "This {i}heathen{/i} touched my wing without a care. As if it were some trinket from a market stall."
+    r "This heathen touched my wing without a care. As if it were some trinket from a market stall."
 
     f "Whoa. Is that one of those weird things you were worried about, sis?"
 
     r "No... Never mind. This is stupid."
 
-    "Remilia flies past Flandre, out of the room."
+    $ remi.move(offscreenleft, transition=move_slow)
 
+
+    $ flan.move(sprite_facing(True), transition=dissolve_fast)
     f "Wait, sis!"
 
-    "She runs after her."
+    $ flan.move(offscreenleft, transition=move_slow)
 
-    call scene_transition_fade("bg_library")
+    call scene_transition_fade("bg_library_stairs")
+
+    #TODO I left off here
 
     f "Where are you going?"
 

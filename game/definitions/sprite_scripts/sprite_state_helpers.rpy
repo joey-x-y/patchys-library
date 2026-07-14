@@ -275,6 +275,9 @@ init python:
 
             self._apply_transition(transition)
 
+        def flip(self, transition=None):
+            self.face(flipped=not self.flipped, transition=transition)
+
 
         def reset(self, at=None, transition=None):
             """
