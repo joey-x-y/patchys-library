@@ -5,7 +5,7 @@ transform standheight:
     ypos 1.0
 
 transform sitheight:
-    ypos 1.1
+    ypos 1.05
 
 transform left:
     xpos 0.3

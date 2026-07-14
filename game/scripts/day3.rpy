@@ -269,6 +269,7 @@ label day3_morning:
     $ remi.move(offscreenleft, transition=move_slow)
     
 
+    stop music fadeout 2.0
     scene bg_library with fade
     $ flan.flip()
     $ flan.show(at=[right, sitheight], transition=dissolve)
@@ -315,6 +316,8 @@ label day3_morning:
 
     $ flan.show(at=[center_left, standheight, enterleft()], flip=True)
     $ remi.show(at=[far_left, standheight, enterleft()], flip=True)
+
+    play music bgm_library fadein 2.0
 
     pause 0.3
 

@@ -15,6 +15,7 @@ transform table_zoom:
     ease 1.0 zoom 1.3 pos (-0.3, -0.2)
 
 transform table_unzoom:
+    zoom 1.3 pos (-0.3, -0.2)
     ease 1.0 zoom 1.0 pos (0.0, 0.0)
 
 
