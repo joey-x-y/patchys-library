@@ -292,7 +292,12 @@ screen navigation():
     vbox:
         style_prefix "navigation"
 
-        xpos gui.navigation_xpos
+        if main_menu:
+            xalign 1.0
+            xoffset -60
+        else:
+            xpos gui.navigation_xpos
+
         yalign 0.5
 
         spacing gui.navigation_spacing
@@ -355,7 +360,7 @@ screen main_menu():
     ## This ensures that any other menu screen is replaced.
     tag menu
 
-    add gui.main_menu_background
+    add ("images/title_completion.png" if persistent.beat_game else "images/title.png")
 
     ## This empty frame darkens the main menu.
     frame:
@@ -385,6 +390,7 @@ style main_menu_version is main_menu_text
 
 style main_menu_frame:
     xsize 420
+    xalign 0.0
     yfill True
 
     background "gui/overlay/main_menu.png"

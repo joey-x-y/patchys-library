@@ -30,17 +30,3 @@ label start:
     call day7 from _call_day7
 
     return
-
-label test:
-    scene bg_library
-
-    $ remi.show(expression="neutral", at=center)
-    $ flan.show(expression="frown", at=far_left)
-    $ pat.show(expression="neutral", at=right)
-
-
-    r "We are testing, you scoundrel!"
-
-    $ flan.move(flip)
-
-    f "WHYYHU yo ma"

@@ -1,3 +1,5 @@
+init offset = -2
+
 define sp = "audio/sfx/"
 define ap = "audio/bgm/"
 define bp = "images/backgrounds/"
@@ -75,3 +77,7 @@ image cg_kiss_gentle = cgp + "hug.png"
 
 # image cg_wing_surprise = cgp + "wing_surprise.png"
 image cg_wingtouch = At(cgp + "wing_touch.png", bg_scale)
+
+# UI __________
+
+image title_overlay = "gui/overlay/main_menu.png"

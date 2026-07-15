@@ -18,12 +18,12 @@ define config.name = _("A Scarlet Dream Beyond the Library")
 ## Determines if the title given above is shown on the main menu screen. Set
 ## this to False to hide the title.
 
-define gui.show_name = True
+define gui.show_name = False
 
 
 ## The version of the game.
 
-define config.version = "1.0"
+define config.version = "1.1"
 
 
 ## Text that is placed on the game's about screen. Place the text between the
@@ -150,7 +150,7 @@ define config.save_directory = "patchyslibrary-1782450684"
 ##
 ## The icon displayed on the taskbar or dock.
 
-define config.window_icon = "gui/window_icon.png"
+define config.window_icon = "images/thumbnail.png"
 
 
 ## Build configuration #########################################################
