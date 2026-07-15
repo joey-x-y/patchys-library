@@ -1,10 +1,10 @@
 label day3:
-    call day3_morning
+    call day3_morning from _call_day3_morning
 
     return
 
 label day3_morning:
-    scene bg_bedroom with fade
+    call day_transition_in from _call_day_transition_in_1
     play music bgm_library fadein 2.0
 
     $ flan.flip()
@@ -37,11 +37,11 @@ label day3_morning:
 
     r "Geez, hold on."
 
-    scene black with fade
+    call scene_transition_fade("black") from _call_scene_transition_fade_15
 
     "Flandre drags her out of the room, all the way to Patchouli's study."
 
-    scene bg_study with fade
+    call scene_transition_fade("bg_study") from _call_scene_transition_fade_16
     play sound sfx_door_open
 
     $ pat.show(hat=True, at=[right, standheight], transition=dissolve, zorder=1)
@@ -59,7 +59,7 @@ label day3_morning:
     p "Uh, yeah, sure."
 
     $ pat.show(magic=True, transition=dissolve_fast)
-    call generic_spell()
+    call generic_spell() from _call_generic_spell_6
 
     "She casts the spell once again."
 
@@ -175,7 +175,7 @@ label day3_morning:
 
     $ pat.move(sitheight, transition=move_slow)
 
-    show layer master at table_zoom
+    call table_zoom_l from _call_table_zoom_l
 
     "Patchouli looks back down at her books. Remilia watches for a while, before breaking the silence."
 
@@ -257,7 +257,7 @@ label day3_morning:
 
     "Remilia pouts as her fingertip regenerates. She continues her silent observation."
 
-    show bg_study with fade
+    call show_transition_fade("bg_study") from _call_show_transition_fade_3
 
     "Eventually, the books all close at the same time."
 
@@ -270,7 +270,7 @@ label day3_morning:
     
 
     stop music fadeout 2.0
-    scene bg_library with fade
+    call scene_transition_fade("bg_library") from _call_scene_transition_fade_17
     $ flan.flip()
     $ flan.show(at=[right, sitheight], transition=dissolve)
 
@@ -290,6 +290,8 @@ label day3_morning:
     $ flan.move(standheight, transition=move_slow)
     $ flan.flip(transition=dissolve_fast)
 
+    $ remi.move(enterforcefinish)
+    with None
     $ remi.move(center, transition=move_slow)
 
     "Remilia extends her arms."
@@ -310,7 +312,7 @@ label day3_morning:
 
     $ remi.flip(transition=dissolve)
 
-    scene bg_study with fade
+    call scene_transition_fade("bg_study") from _call_scene_transition_fade_18
 
     $ pat.show(at=[right, standheight], transition=dissolve)
 
@@ -336,7 +338,7 @@ label day3_morning:
 
     f "Nearly 'till morning. It was starting to wear off though."
 
-    call generic_spell()
+    call generic_spell() from _call_generic_spell_7
 
     p "Now it should be good until next time I see you."
 
@@ -353,7 +355,7 @@ label day3_morning:
 
     f "Yes ma'am! See ya!"
 
-    scene bg_bedroom with fade
+    call scene_transition_fade("bg_bedroom") from _call_scene_transition_fade_19
 
     $ flan.show(at=[left, standheight])
     $ remi.show(at=[center_right, standheight], flip=True, transition=dissolve)
@@ -429,7 +431,7 @@ label day3_morning:
 
     r "Ugh."
 
-    scene black with fade
+    call scene_transition_fade("black") from _call_scene_transition_fade_20
 
     "Remilia empties her coffin and sleeps."
 

@@ -33,6 +33,7 @@ define sfx_rustle_2 = sp + "rustle_2.ogg"
 define sfx_rustle_3 = sp + "rustle_3.ogg"
 define sfx_stomach_growling = sp + "stomach_growling.ogg"
 define sfx_woosh = sp + "woosh.ogg"
+define sfx_crash = "<from 1.7 to 4>" + sp + "branch_crash.ogg"
 
 # BGs __________
 
@@ -56,6 +57,7 @@ transform bg_scale_tablezoom:
     xalign 1.0
     yalign 1.0
 
+image bg_forest = At(bp + "forest.png", bg_scale)
 image bg_bedroom = At(bp + "bedroom.png", bg_scale)
 image bg_bedroom_nocoffin = At(bp + "bedroom_nocoffin.png", bg_scale)
 image bg_study = At(bp + "library.png", bg_scale)
@@ -68,7 +70,8 @@ image bg_library_stairs = At(bp + "entrance.png", bg_scale_upper)
 image cg_hug = cgp + "hug.png"
 image cg_stare_cry = cgp + "hug.png"
 image cg_stare_gentle = cgp + "hug.png"
-image cg_kiss_cry = cgp + "hug.png"
+image cg_kiss_cry = cgp + "kiss.png"
 image cg_kiss_gentle = cgp + "hug.png"
 
 # image cg_wing_surprise = cgp + "wing_surprise.png"
+image cg_wingtouch = At(cgp + "wing_touch.png", bg_scale)

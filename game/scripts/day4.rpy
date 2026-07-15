@@ -1,11 +1,11 @@
 label day4:
-    call day4_morning
+    call day4_morning from _call_day4_morning
 
 
     return
 
 label day4_morning:
-    call day_transition_in()
+    call day_transition_in() from _call_day_transition_in_2
 
     $ flan.show(wings="mid", at=[center_right, standheight, enterbottom()], flip=True)
     
@@ -53,11 +53,11 @@ label day4_morning:
     $ remi.move(offscreenright)
     $ flan.move(offscreenright, transition=move_slow)
 
-    scene black with fade
+    call scene_transition_fade("black") from _call_scene_transition_fade_21
 
     "Flandre grabs onto Remilia, who flies them to the study."
 
-    scene bg_study with fade
+    call scene_transition_fade("bg_study") from _call_scene_transition_fade_22
 
     $ pat.show(hat=False, at=[right, standheight], transition=dissolve, zorder=2)
 
@@ -83,7 +83,7 @@ label day4_morning:
     $ flan.show(at=[right, standheight], flip=True, transition=move_slow)
     
     $ pat.show(magic=True, at=center, transition=dissolve_fast, flip=True)
-    call generic_spell
+    call generic_spell from _call_generic_spell_8
 
     "Flandre takes her spot on the table, as Patchouli reapplies the numb spell."
 
@@ -145,7 +145,7 @@ label day4_morning:
     $ flan.show(sitheight, flip=True)
     $ pat.show(sitheight, flip=True, transition=dissolve)
 
-    show layer master at table_zoom
+    call table_zoom_l from _call_table_zoom_l_1
 
     "Patchouli grabs a potion and begins rubbing it into the wings."
 
@@ -153,7 +153,7 @@ label day4_morning:
 
     p "One of them could restore your wings, if we are fortunate. But regardless, they'll help me figure out what's going on with them. I'll spare you the details."
 
-    show bg_study with fade
+    call show_transition_fade("bg_study") from _call_show_transition_fade_4
 
     "A few hours pass as she applies many more."
 
@@ -285,7 +285,7 @@ label day4_morning:
 
     play sound sfx_door_open
 
-    show layer master at table_unzoom
+    call table_unzoom_l from _call_table_unzoom_l
 
     r "I'm back!"
 
@@ -313,8 +313,7 @@ label day4_morning:
 
     p "This is not what the covers are for."
 
-    show layer master at table_zoom
-    with None
+    call table_zoom_l from _call_table_zoom_l_2
 
     $ remi.move(at=[center_left, sitheight])
     $ flan.show(center_right, flip=True)
@@ -349,7 +348,7 @@ label day4_morning:
 
     "Flandre grabs herself two fresh rabbits, carefully avoiding her sister's former meal."
 
-    call generic_spell
+    call generic_spell from _call_generic_spell_9
     
     "Then, the bag vanishes."
 
@@ -465,7 +464,7 @@ label day4_morning:
 
     r "Alas, that girl just keeps provoking me. Let's escape while we can."
 
-    call scene_transition_fade("bg_bedroom")
+    call scene_transition_fade("bg_bedroom") from _call_scene_transition_fade_23
 
     $ remi.show(at=[center, standheight, enterright()], flip=True)
     $ flan.show(at=[far_right, standheight, enterright()])
@@ -537,7 +536,7 @@ label day4_morning:
     f "Mhm. See you, Remi."
 
     stop music fadeout 2.0
-    scene black with fade
+    call scene_transition_fade("black") from _call_scene_transition_fade_24
 
     "Flandre's coffin closes once again, as Remilia retires into her own."
 

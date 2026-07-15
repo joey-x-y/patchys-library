@@ -3,6 +3,8 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
+default persistent.beat_game=False
+
 define initial_magician_name = "Magician"
 define real_magician_name = "Patchouli"
 
@@ -16,16 +18,16 @@ define p = DynamicCharacter("magician_name", color="#c767ff")
 # The game starts here.
 
 label start:
-
+    stop music fadeout 2.0
     # call test
 
-    call day1
-    call day2
-    call day3
-    call day4
-    call day5
-    call day6
-    call day7
+    call day1 from _call_day1
+    call day2 from _call_day2
+    call day3 from _call_day3
+    call day4 from _call_day4
+    call day5 from _call_day5
+    call day6 from _call_day6
+    call day7 from _call_day7
 
     return
 

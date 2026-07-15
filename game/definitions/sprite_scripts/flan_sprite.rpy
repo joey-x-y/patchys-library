@@ -1,31 +1,57 @@
-define cpf = cp + "flandre/"
+define cpf = "flandre/"
+define cpfe = cpf + "expression/"
+define cpfw = cpf + "Wing layer/"
 
-## Default
+layeredimage f:
+    at sprite_set
 
-image f smile = At(cpf + "default/flandre normal default.png", sprite_set)
-image f neutral = At(cpf + "default/flandre normal frown.png", sprite_set)
+    group wings:
+        attribute begin default:
+            cpfw + "wing begining.png"
+        attribute mid:
+            cpfw + "wing mid.png"
+        attribute gone:
+            cpfw + "wing end.png"
+        attribute crystal:
+            cpfw + "wing crystal.png"
 
-## Dirty
+    group base:
+        attribute clean default:
+            cpf + "default/flandre normal default.png"
+        attribute noacc:
+            cpf + "no acc/base.png"
 
-image f smile dirty = At(cpf + "dirty/flandre dirty.png", sprite_set)
-image f neutral dirty = At(cpf + "dirty/flandre dirty frown.png", sprite_set)
+    group face:
+        attribute neutral default:
+            cpfe + "default.png"
+        attribute frown:
+            cpfe + "beginging frown.png"
+        attribute angry:
+            cpfe + "angry.png"
+        attribute blushing:
+            cpfe + "blusing.png"
+        attribute crying:
+            cpfe + "crying.png"
+        attribute holding_tear:
+            cpfe + "holding back tear.png"
+        attribute serious:
+            cpfe + "serious.png"
+        attribute smile:
+            cpfe + "smile.png"
+        attribute surprised:
+            cpfe + "suprise.png"
 
-## No wing
+    group effects:
+        attribute noeffect default:
+            Null()
+        attribute blushing:
+            cpfe + "blusing.png"
 
-image f smile nowing = At(cpf + "no wing/flandre.png", sprite_set)
-image f neutral nowing = At(cpf + "no wing/frown flandre.png", sprite_set)
-
-## Mid wing
-
-image f smile midwing = At(cpf + "wing mid/flandre default.png", sprite_set)
-image f neutral midwing = At(cpf + "wing mid/frown flandre.png", sprite_set)
-
-## No accessories + beginning wing
-
-image f smile noacc = At(cpf + "no acc/beginging wing/flandre.png", sprite_set)
-image f neutral noacc = At(cpf + "no acc/beginging wing/frown flandre.png", sprite_set)
-
-## No accessories + mid wing
-
-image f smile noacc midwing = At(cpf + "no acc/mid wing/flandre mid wing.png", sprite_set)
-image f neutral noacc midwing = At(cpf + "no acc/mid wing/frown flandre mid wing.png", sprite_set)
+    group dirt:
+        attribute none default:
+            Null()
+        attribute dirty:
+            Fixed(
+                cpf + "dirty/base.png",
+                cpfe + "bag eye.png"
+            )

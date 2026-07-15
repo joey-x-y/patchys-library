@@ -1,10 +1,10 @@
 label day5:
-    call day5_morning
+    call day5_morning from _call_day5_morning
 
     return
 
 label day5_morning:
-    call day_transition_in
+    call day_transition_in from _call_day_transition_in_3
 
     $ flan.show(at=[center, standheight], flip=True, zorder=6)
     $ remi.show(at=[left, standheight], flip=True)
@@ -45,7 +45,7 @@ label day5_morning:
 
     f "Mmf, mmph mm mmf!"
 
-    call scene_transition_fade("bg_study")
+    call scene_transition_fade("bg_study") from _call_scene_transition_fade_25
 
     $ pat.show([right, sitheight], transition=dissolve, hat=True)
 
@@ -101,7 +101,7 @@ label day5_morning:
 
     r "You pour."
 
-    show layer master at table_zoom
+    call table_zoom_l from _call_table_zoom_l_3
 
     "Remilia sits as Patchouli serves tea with her magic, not moving a muscle."
 
@@ -299,12 +299,12 @@ label day5_morning:
 
     $ flan.show(at=[far_left, standheight], transition=dissolve, zorder=1)
 
-    show layer master at table_unzoom
+    call table_unzoom_l from _call_table_unzoom_l_1
 
     r "Oh, hello Flandre. Hey, wait, what does that mean?!"
 
     $ pat.show(magic=True)
-    call generic_spell
+    call generic_spell from _call_generic_spell_10
 
     f "Nice aim. You can do numb me from there?"
 
@@ -325,7 +325,7 @@ label day5_morning:
     $ flan.move(at=[center, sitheight], transition=move_slow)
     $ remi.flip(transition=dissolve_fast)
 
-    show layer master at table_zoom
+    call table_zoom_l from _call_table_zoom_l_4
 
     "Flandre crashes into the tea party."
 
@@ -357,7 +357,7 @@ label day5_morning:
 
     "She puts them up."
 
-    show bg_study with fade
+    call show_transition_fade("bg_study") from _call_show_transition_fade_5
 
     "They continue to relax at the table for the next few hours, with Patchouli passively researching despite the vampire's distractions."
 
@@ -368,12 +368,12 @@ label day5_morning:
     f "Yeah... carry me."
 
     stop music fadeout 2.0
-    scene black with fade
+    call scene_transition_fade("black") from _call_scene_transition_fade_26
 
     "Remilia drags Flandre to their bedroom."
 
     play music bgm_library fadein 2.0
-    scene bg_bedroom with fade
+    call scene_transition_fade("bg_bedroom") from _call_scene_transition_fade_27
 
     $ remi.show(at=[left, standheight], zorder=2)
     $ flan.show(at=[center_right, standheight], flip=True, transition=dissolve)
@@ -402,7 +402,7 @@ label day5_morning:
 
     play sound sfx_coffin_close
 
-    scene black with fade
+    call scene_transition_fade("black") from _call_scene_transition_fade_28
 
     "After their routine meal, they retire to their coffins."
 

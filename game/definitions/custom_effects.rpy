@@ -6,8 +6,7 @@ image impact_flash = Solid("#ffffff")
 image black_2 = Solid("#000000")
 
 init python:
-    renpy.add_layer("effects", above="master")
-
+    
     def spear_block_impact():
         renpy.sound.play(sfx_magic_clash_2)
         remi.move(shake(magnitude=2))

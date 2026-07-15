@@ -12,7 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("patchys library")
+define config.name = _("A Scarlet Dream Beyond the Library")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
@@ -48,7 +48,7 @@ define build.name = "patchyslibrary"
 
 define config.has_sound = True
 define config.has_music = True
-define config.has_voice = True
+# define config.has_voice = True
 
 
 ## To allow the user to play a test sound on the sound or voice channel,
@@ -62,7 +62,7 @@ define config.has_voice = True
 ## the player is at the main menu. This file will continue playing into the
 ## game, until it is stopped or another file is played.
 
-# define config.main_menu_music = "main-menu-theme.ogg"
+define config.main_menu_music = "bgm/title.ogg"
 
 
 ## Transitions #################################################################

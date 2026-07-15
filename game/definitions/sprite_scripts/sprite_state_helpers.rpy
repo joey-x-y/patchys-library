@@ -29,14 +29,21 @@ init python:
             tag,
             state_order,
             defaults,
-            lookup,
+            lookup=None,
+            compose=None,
             layer="master",
         ):
+            if lookup is None and compose is None:
+                raise Exception(
+                    "StatefulSprite {!r} requires a lookup table or compose function.".format(tag)
+                )
+
             self.tag = tag
             self.state_order = tuple(state_order)
             self.defaults = defaults.copy()
             self.state = defaults.copy()
-            self.lookup = lookup
+            self.lookup = lookup or {}
+            self.compose = compose
             self.layer = layer
             self.flipped = False
 
@@ -63,11 +70,14 @@ init python:
             """
             Returns the Ren'Py image name for a given state.
 
-            Raises a readable error if no matching flattened sprite exists.
+            Uses compose() when provided (e.g. layeredimages), otherwise lookup.
             """
 
             if state is None:
                 state = self.state
+
+            if self.compose is not None:
+                return self.compose(state)
 
             key = self._state_key(state)
 
@@ -191,6 +201,8 @@ init python:
                 **show_arguments
             )
 
+            self._sync_companions(show_arguments)
+
             self.state = proposed_state
             self._apply_transition(transition)
 
@@ -218,11 +230,20 @@ init python:
 
                 at_list.append(sprite_facing(self.flipped))
 
+                show_arguments = {
+                    "layer": self.layer,
+                    "at_list": at_list,
+                }
+
+                if zorder is not None:
+                    show_arguments["zorder"] = zorder
+
                 renpy.show(
                     self._image_name(),
-                    layer=self.layer,
-                    at_list=at_list,
+                    **show_arguments
                 )
+
+                self._sync_companions(show_arguments)
 
                 self._apply_transition(transition)
 
@@ -245,11 +266,17 @@ init python:
 
             at_list.append(sprite_facing(self.flipped))
 
+            show_arguments = {
+                "layer": self.layer,
+                "at_list": at_list,
+            }
+
             renpy.show(
                 self._image_name(),
-                layer=self.layer,
-                at_list=at_list,
+                **show_arguments
             )
+
+            self._sync_companions(show_arguments)
 
             self._apply_transition(transition)
 
@@ -277,7 +304,25 @@ init python:
                 layer=self.layer,
             )
 
+            self._hide_companions()
+
             self._apply_transition(transition)
+
+
+        def _sync_companions(self, show_arguments):
+            """
+            Hook for companion images that should track this sprite.
+            """
+
+            pass
+
+
+        def _hide_companions(self):
+            """
+            Hook for hiding companion images.
+            """
+
+            pass
 
         def flip(self, transition=None):
             self.face(flipped=not self.flipped, transition=transition)
@@ -348,6 +393,13 @@ init python:
             )
 
 
+        def hunt(self, value=True, transition=None):
+            return self.show(
+                hunt=value,
+                transition=transition,
+            )
+
+
         def wings(self, value, transition=None):
             return self.show(
                 wings=value,
@@ -380,6 +432,76 @@ init python:
 ## FLAN
 ################################################################################
 
+init python:
+
+    FLAN_EXPRESSIONS = (
+        "neutral",
+        "frown",
+        "angry",
+        "crying",
+        "holding_tear",
+        "serious",
+        "smile",
+        "surprised",
+    )
+
+    # Script values ("default") map onto layeredimage wing attributes.
+    FLAN_WINGS = {
+        "default": "begin",
+        "begin": "begin",
+        "mid": "mid",
+        "gone": "gone",
+        "crystal": "crystal",
+    }
+
+    def flan_compose(state):
+        """
+        Builds a layeredimage attribute name for Flan.
+
+        Wings and face map directly. Base is clean or noacc.
+        Dirty and blush are optional overlay attributes.
+        """
+
+        expression = state["expression"]
+
+        if expression not in FLAN_EXPRESSIONS:
+            raise Exception(
+                "Flan has no expression {!r}. Valid expressions are: {}".format(
+                    expression,
+                    ", ".join(FLAN_EXPRESSIONS),
+                )
+            )
+
+        wings = state["wings"]
+
+        if wings not in FLAN_WINGS:
+            raise Exception(
+                "Flan has no wing state {!r}. Valid wings are: {}".format(
+                    wings,
+                    ", ".join(sorted(FLAN_WINGS)),
+                )
+            )
+
+        parts = [
+            "f",
+            FLAN_WINGS[wings],
+            "noacc" if not state["accessories"] else "clean",
+            expression,
+        ]
+
+        if state.get("blush"):
+            parts.append("blush")
+        else:
+            parts.append("noeffect")
+
+        if state["dirty"]:
+            parts.append("dirty")
+        else:
+            parts.append("none")
+
+        return " ".join(parts)
+
+
 default flan = StatefulSprite(
     tag="f",
 
@@ -388,6 +510,7 @@ default flan = StatefulSprite(
         "dirty",
         "wings",
         "accessories",
+        "blush",
     ),
 
     defaults={
@@ -395,39 +518,57 @@ default flan = StatefulSprite(
         "dirty": False,
         "wings": "default",
         "accessories": True,
+        "blush": False,
     },
 
-    lookup={
-        # Default
-        ("neutral", False, "default", True): "f neutral",
-        ("smile",   False, "default", True): "f smile",
-
-        # Dirty
-        ("neutral", True, "default", True): "f neutral dirty",
-        ("smile",   True, "default", True): "f smile dirty",
-
-        # No wings
-        ("neutral", False, "none", True): "f neutral nowing",
-        ("smile",   False, "none", True): "f smile nowing",
-
-        # Mid wings, accessories still present
-        ("neutral", False, "mid", True): "f neutral midwing",
-        ("smile",   False, "mid", True): "f smile midwing",
-
-        # No accessories, default wings
-        ("neutral", False, "default", False): "f neutral noacc",
-        ("smile",   False, "default", False): "f smile noacc",
-
-        # No accessories, mid wings
-        ("neutral", False, "mid", False): "f neutral noacc midwing",
-        ("smile",   False, "mid", False): "f smile noacc midwing",
-    },
+    compose=flan_compose,
 )
 
 
 ################################################################################
-## pat
+## PAT
 ################################################################################
+
+init python:
+
+    PAT_EXPRESSIONS = (
+        "neutral",
+        "angry",
+        "blushing",
+        "serious",
+        "smile",
+        "surprised",
+        "think",
+    )
+
+    def pat_compose(state):
+        """
+        Builds a layeredimage attribute name for Patchy.
+
+        Base from hat + magic: base, magic, nohat, magicnohat.
+        """
+
+        expression = state["expression"]
+
+        if expression not in PAT_EXPRESSIONS:
+            raise Exception(
+                "Pat has no expression {!r}. Valid expressions are: {}".format(
+                    expression,
+                    ", ".join(PAT_EXPRESSIONS),
+                )
+            )
+
+        if state["magic"] and not state["hat"]:
+            base = "magicnohat"
+        elif state["magic"]:
+            base = "magic"
+        elif not state["hat"]:
+            base = "nohat"
+        else:
+            base = "base"
+
+        return "p {} {}".format(base, expression)
+
 
 default pat = StatefulSprite(
     tag="p",
@@ -444,27 +585,7 @@ default pat = StatefulSprite(
         "magic": False,
     },
 
-    lookup={
-        # Default
-        ("neutral", True, False): "p neutral",
-        ("smile",   True, False): "p smile",
-        ("angry",   True, False): "p angry",
-
-        # Magic
-        ("neutral", True, True): "p neutral magic",
-        ("smile",   True, True): "p smile magic",
-        ("angry",   True, True): "p angry magic",
-
-        # No hat
-        ("neutral", False, False): "p neutral nohat",
-        ("smile",   False, False): "p smile nohat",
-        ("angry",   False, False): "p angry nohat",
-
-        # No hat and magic
-        ("neutral", False, True): "p neutral nohat magic",
-        ("smile",   False, True): "p smile nohat magic",
-        ("angry",   False, True): "p angry nohat magic",
-    },
+    compose=pat_compose,
 )
 
 
@@ -472,30 +593,126 @@ default pat = StatefulSprite(
 ## REMI
 ################################################################################
 
-default remi = StatefulSprite(
+init python:
+
+    REMI_EXPRESSIONS = (
+        "neutral",
+        "angry",
+        "crying",
+        "crying2",
+        "embarrassed",
+        "holding_tear",
+        "serious",
+        "smile",
+        "surprised",
+    )
+
+    REMI_WING_LAYER = "rear_sprites"
+
+    def remi_compose(state):
+        """
+        Builds a layeredimage attribute name for Remi.
+
+        Base is hunt, noacc, or clean.
+        Dirty is an optional overlay attribute.
+        """
+
+        expression = state["expression"]
+
+        if expression not in REMI_EXPRESSIONS:
+            raise Exception(
+                "Remi has no expression {!r}. Valid expressions are: {}".format(
+                    expression,
+                    ", ".join(REMI_EXPRESSIONS),
+                )
+            )
+
+        if state["hunt"]:
+            base = "hunt"
+        elif not state["accessories"]:
+            base = "noacc"
+        else:
+            base = "clean"
+
+        parts = [
+            "r",
+            base,
+            expression,
+        ]
+
+        if state["dirty"]:
+            parts.append("dirty")
+        else:
+            parts.append("none")
+
+        return " ".join(parts)
+
+
+    class RemiSprite(StatefulSprite):
+        """
+        Remi's body plus a separate wing image on rear_sprites.
+
+        Wings track Remi's position and facing on every show/move/effect/hide,
+        but always display on the rear_sprites layer so they stay behind other
+        characters on master.
+        """
+
+        def __init__(
+            self,
+            wing_image="r_wings",
+            wing_layer=REMI_WING_LAYER,
+            **kwargs
+        ):
+            super(RemiSprite, self).__init__(**kwargs)
+
+            self.wing_image = wing_image
+            self.wing_tag = wing_image.split()[0]
+            self.wing_layer = wing_layer
+
+
+        def _sync_companions(self, show_arguments):
+            wing_arguments = {
+                "layer": self.wing_layer,
+            }
+
+            if "at_list" in show_arguments:
+                wing_arguments["at_list"] = list(show_arguments["at_list"])
+
+            elif (
+                not renpy.showing(self.wing_tag, layer=self.wing_layer)
+                and self.position is not None
+            ):
+                if isinstance(self.position, (list, tuple)):
+                    at_list = list(self.position)
+                else:
+                    at_list = [self.position]
+
+                at_list.append(sprite_facing(self.flipped))
+                wing_arguments["at_list"] = at_list
+
+            renpy.show(self.wing_image, **wing_arguments)
+
+
+        def _hide_companions(self):
+            renpy.hide(self.wing_tag, layer=self.wing_layer)
+
+
+default remi = RemiSprite(
     tag="r",
 
     state_order=(
         "expression",
         "dirty",
         "accessories",
+        "hunt",
     ),
 
     defaults={
         "expression": "neutral",
         "dirty": False,
         "accessories": True,
+        "hunt": False,
     },
 
-    lookup={
-        # Default
-        ("neutral", False, True): "r neutral",
-
-        # Dirty
-        ("neutral", True, True): "r neutral dirty",
-        ("hunt",    True, True): "r hunt dirty",
-
-        # No accessories
-        ("neutral", False, False): "r neutral noacc",
-    },
+    compose=remi_compose,
 )

@@ -1,5 +1,5 @@
 label day6:
-    call day6_morning
+    call day6_morning from _call_day6_morning
 
 
     return
@@ -7,9 +7,9 @@ label day6:
 
 label day6_morning:
 
-    call day_transition_in
+    call day_transition_in from _call_day_transition_in_4
 
-    $ flan.show(wings="none", at=[center_right, standheight], flip=True, transition=dissolve, zorder=5)
+    $ flan.show(wings="gone", at=[center_right, standheight], flip=True, transition=dissolve, zorder=5)
 
     "Flandre jumps out from her coffin."
 
@@ -73,7 +73,7 @@ label day6_morning:
     r "Hey, Flan—."
 
     play sound sfx_magic_cast
-    call spear_summon()
+    call spear_summon() from _call_spear_summon_2
 
     "A large red sword appears in Flandre's hand and begins to glow."
 
@@ -134,7 +134,7 @@ label day6_morning:
     $ remi.flip(transition=dissolve_fast)
     $ remi.move(offscreenright, transition=move_slow)
 
-    call scene_transition_fade("bg_library")
+    call scene_transition_fade("bg_library") from _call_scene_transition_fade_29
 
     $ remi.show([offscreenright, standheight], flip=True)
     with None
@@ -148,11 +148,11 @@ label day6_morning:
 
     $ remi.move(standheight, transition=move_slow)
 
-    scene black with fade
+    call scene_transition_fade("black") from _call_scene_transition_fade_30
 
     "She finally stands up and flies her way to the study."
 
-    scene bg_study with fade
+    call scene_transition_fade("bg_study") from _call_scene_transition_fade_31
 
     $ pat.show([right, standheight], transition=dissolve)
 
@@ -171,7 +171,7 @@ label day6_morning:
 
     p "Hmm."
 
-    call scene_transition_fade("bg_bedroom")
+    call scene_transition_fade("bg_bedroom") from _call_scene_transition_fade_32
 
     $ flan.show([far_left, standheight, floatup])
     $ remi.show([center_right, standheight], transition=dissolve)
@@ -223,7 +223,7 @@ label day6_morning:
     $ remi.flip(transition=dissolve_fast)
     $ remi.move(offscreenright, transition=move_fast)
 
-    call scene_transition_fade("bg_study")
+    call scene_transition_fade("bg_study") from _call_scene_transition_fade_33
 
     $ pat.show([center_left, sitheight], transition=dissolve, zorder=5)
     $ remi.show([corner_left, standheight, enterleft()])
@@ -259,7 +259,7 @@ label day6_morning:
     $ remi.move(center_left, transition=ease)
 
     play music bgm_emotional fadein 2.0
-    show layer master at table_zoom
+    call table_zoom_l from _call_table_zoom_l_5
 
     $ remi.move(hopreset)
     with None
@@ -274,7 +274,7 @@ label day6_morning:
 
     "Remilia looks to the door and back, lets out a deep breath as she drops her head in tears."
 
-    show bg_study with fade
+    call show_transition_fade("bg_study") from _call_show_transition_fade_6
 
     "Nobody speaks for a few minutes."
 
@@ -306,7 +306,7 @@ label day6_morning:
 
     "Patchouli looks over to Remilia, then looks back down."
 
-    show layer master at table_unzoom
+    call table_unzoom_l from _call_table_unzoom_l_2
     stop music fadeout 2.0
 
     $ pat.move([center_right, standheight], transition=move_slow)
@@ -320,7 +320,6 @@ label day6_morning:
 
     play music bgm_ending fadein 2.0
     show cg_hug zorder 8 with dissolve
-
 
     r "I'm sorry Patchy!"
 
@@ -385,7 +384,7 @@ label day6_morning:
 
     $ pat.move(hopdown(10, 0.4))
 
-    "Patchouli brings up her legs, tucking her knees into her chest."
+    "Patchouli brings up her legs, tucking them knees into her chest."
 
     $ remi.move(left, transition=ease)
 
@@ -393,7 +392,7 @@ label day6_morning:
 
     p "But I have not done what was promised."
 
-    r "You made a clear effort."
+    r "You clearly made an effort."
 
     p "I don't care. I want to fix those wings."
 
@@ -416,7 +415,7 @@ label day6_morning:
 
     r "Sure."
 
-    show bg_study with fade
+    call show_transition_fade("bg_study") from _call_show_transition_fade_7
 
     "Hours pass in silence, with Remilia occasional pacing, and Patchouli skimming books, thinking, and putting them away."
 
@@ -447,6 +446,9 @@ label day6_morning:
     r "Shut up! I'm never calling you that again. Just do it already."
 
     #TODO wing cg
+
+    $ pat.move(center_right)
+    $ remi.show(transition=dissolve, flip=True, zorder=5)
 
     "Patchouli grabs the wings, thoroughly handling them and feeling each individual part."
 
@@ -502,13 +504,20 @@ label day6_morning:
 
     # TODO end wing cg
 
-    "Patchouli lets go."
+    $ remi.move(corner_left)
+    $ pat.move(right, transition=move_slow)
+
+    "Patchouli releases the noble wings."
+
+    $ remi.flip()
 
     r "Finally! I hope you understand the elegance of wings now."
 
     p "I do. Thank you."
 
-    "Remilia faces Patchouli with a smug smile."
+    $ remi.move(left, transition=move_slow)
+
+    "Remilia approaches Patchouli with a smug smile."
 
     r "That was a privilege that nobody else in this world has ever experienced. Remember that."
 
@@ -516,11 +525,13 @@ label day6_morning:
 
     "Remilia's smile drops as she looks to the door,"
 
-    r "It might be time for me to talk to Flandre."
+    r "I should see Flandre now. It shouldn't be put off any longer."
 
     p "Mm. Good luck."
 
-    "Remilia slowly walks to the door. She looks back and forth between the door and the room."
+    $ remi.show(corner_left, transition=move_slow, flip=True)
+
+    $ remi.flip(transition=dissolve)
 
     r "Um, Patchouli?"
 
@@ -530,19 +541,23 @@ label day6_morning:
 
     p "Would I be helpful?"
 
-    r "No, never mind. This is silly of me. I'll go now."
+    $ remi.flip(transition=dissolve_fast)
+
+    r "No, never mind. This is foolish of me. I'm leaving."
+
+    $ remi.move(offscreenleft, transition=move_slow)
 
     stop music fadeout 2.0
 
-    call scene_transition_fade("bg_library_stairs")
+    call scene_transition_fade("bg_library_stairs") from _call_scene_transition_fade_34
 
-    $ remi.show([center_right, standheight], transition=dissolve)
+    $ remi.show([center_left, standheight], transition=dissolve, flip=True)
 
-    "She quickly steps out of the room and takes a slow, deep breath."
+    "She takes a long slow, deep breath."
 
     r "I have to face her eventually. Come on."
 
-    scene black with fade
+    call scene_transition_fade("black") from _call_scene_transition_fade_35
 
     "She slowly walks down the stairs, and eventually makes it to the bedroom door."
 
@@ -552,10 +567,10 @@ label day6_morning:
 
     "She enters."
 
-    scene bg_bedroom with fade
+    call scene_transition_fade("bg_bedroom") from _call_scene_transition_fade_36
 
     $ flan.show([far_left, standheight, floatup], transition=dissolve, flip=True)
-    $ remi.show([right, standheight, enterright()])
+    $ remi.show([right, standheight, enterright()], flip=True)
 
     "Flandre is sitting in her coffin, unmoved from before. Dried tears cover her face."
 
@@ -601,7 +616,7 @@ label day6_morning:
 
     r "..."
 
-    scene black with fade
+    call scene_transition_fade("black") from _call_scene_transition_fade_37
 
     "She climbs into her coffin and falls asleep instantly."
 

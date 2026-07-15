@@ -1,22 +1,33 @@
 label day7:
 
-    call day7_morning
+    call day7_morning from _call_day7_morning
 
-    call epilogue
+    call epilogue from _call_epilogue
+
+    $ persistent.beat_game = True
 
     return
 
 label day7_morning:
 
-    call day_transition_in
+    call day_transition_in from _call_day_transition_in_5
 
-    
+    $ remi.show([center_right, standheight, enterbottom()], flip=True)
 
-    "Remilia rises from her coffin, and Flandre opens her immediately after."
+    pause 0.5
 
-    r "Um, hello, Flandre. How are you feeling?"
+    $ flan.show([far_left, standheight, enterbottom()])
+    $ remi.move(enterforcefinish)
+    with None
+    $ remi.flip(transition=dissolve)
 
-    f "Bad. But calmer now. I'm sorry for hurting you."
+    r "Um... hello, Flandre. Are you doing alright?"
+
+    f "Sure. Sorry for hitting you."
+
+    play music bgm_library fadein 2.0
+
+    $ remi.move(hop(10))
 
     "Remilia stands and puts her hands on her hips."
 
@@ -26,27 +37,52 @@ label day7_morning:
 
     r "Uh... didn't you?"
 
-    "Flandre gets up and walks to the door."
+    $ flan.move(corner_right, transition=move_slow)
+    $ remi.flip(transition=dissolve_fast)
 
-    r "Going already?"
+    r "You going already?"
 
     f "Yes."
 
-    "She leaves, and Remilia chases behind. They begin walking up the stairs."
+    $ flan.move(offscreenright)
+    $ remi.move(offscreenright, transition=move_slow)
 
-    r "Hey, how's your balance?"
+    call scene_transition_fade("bg_library_stairs") from _call_scene_transition_fade_38
 
-    f "Manageable enough. I am fine."
+    $ flan.show([center_left, standheight], flip=True)
+    $ remi.show([right, standheight], flip=True, transition=dissolve)
 
-    "They arrive at the study. Patchouli looks up from her mountain of books and scrolls."
+    "She leaves, and Remilia follows her up the stairs."
+
+    r "How's your balance?"
+
+    f "Manageable enough."
+
+    r "I could at least hold your hand."
+
+    $ flan.flip(transition=dissolve)
+
+    f "...Fine."
+
+    $ remi.move(center, transition=move_slow)
+    $ flan.flip(transition=dissolve)
+
+    call scene_transition_fade("bg_study") from _call_scene_transition_fade_39
+
+    $ pat.show([right, standheight], transition=dissolve)
+
+    $ flan.show([center_left, standheight, enterleft()], flip=True, zorder=5)
+    $ remi.show([left, standheight, enterleft()], flip=True)
+
+    "As they arrive, Patchouli looks up from her mountain of books and scrolls."
 
     p "Ah, Flandre."
 
     f "Hi."
 
-    p "I'm, um, sorry about your wings."
+    p "I'm, uh, sorry about your wings."
 
-    f "Don't apologize for it. How are things now?"
+    f "Don't apologize for it. What's the plan now? Is there any hope?"
 
     p "I have been... thinking."
 
@@ -56,7 +92,7 @@ label day7_morning:
 
     f "Huh. New wings? How's that work?"
 
-    p "I don't know. Even though Remilia let me study wing anatomy, I don't know how I could replicate it."
+    p "I don't know. Even though Remilia let me explore her wing anatomy, I'm unsure how I could replicate it."
 
     r "Hey!"
 
@@ -64,29 +100,45 @@ label day7_morning:
 
     p "I got a feel of Remilia's wings, taking note of how the flaps and stem feel and connect with each other. I touched them as thoroughly as I could to try and fully understand them."
 
+    $ flan.move(enterforcefinish)
+    with None
+    $ flan.flip(transition=dissolve)
+
     "A shocked Flandre looks over to a tomato-faced Remilia."
 
     r "Shut up!"
 
     f "But I haven't made fun of you yet."
 
+    $ pat.move(center, transition=ease)
+    $ flan.flip(transition=dissolve_fast)
+
     "Patchouli's head snaps to the wings."
 
     p "I would like to touch them more. May I?"
 
-    "Remilia flinches away from Patchouli."
+    $ remi.move(scoot_left)
 
     r "I am not such an indecent vampire! I don't do such uncouth things on request!"
+
+    $ remi.move(unscoot)
 
     f "I shouldn't leave you two alone together."
 
     r "I said shut up!"
 
-    "Remilia sighs, then walks over to Patchouli."
+    $ remi.move(center_left)
+    $ flan.move(corner_left, transition=move_slow)
+
+    "Remilia sighs as she walks over to Patchouli."
 
     r "Fine."
 
     p "Thank you."
+
+    $ remi.flip(transition=dissolve)
+
+    #TODO wing cg
 
     "Patchouli grasps the wings. Flandre stares intently."
 
@@ -104,7 +156,12 @@ label day7_morning:
 
     r "Be quiet!"
 
-    "Patchouli lets go."
+    p "This will be satisfactory."
+
+    #TODO end wing cg
+
+    $ remi.show(left, flip=True, zorder=7)
+    $ pat.move(right, transition=move_slow)
 
     f "Were they nice, Patchy?"
 
@@ -114,27 +171,43 @@ label day7_morning:
 
     f "Looks like a yes."
 
-    "Remilia walks in front of Flandre and waves her arms."
+    $ remi.show(flip=True, transition=ease)
+
+    "Remilia walks in front of Flandre to flail her arms."
 
     r "I showed her so she can understand wings more, to help with fixing yours. That is all. Understand?"
 
     f "Sure. Whatever you say."
 
-    r "Oh... how—"
+    r "Oh... but—"
+
+    $ remi.move(hop(10))
+    $ flan.move(hop(10))
 
     p "But that doesn't even matter!"
 
-    "Patchouli suddenly hovers into the air with a smile, making the vampires jump."
+    $ pat.move(floatup, transition=move)
+    $ remi.flip(transition=dissolve_fast)
+
+    "Patchouli suddenly hovers into the air with a smile."
 
     f "Huh?"
 
     p "I don't have to make vampire wings!"
 
-    "She flies off, and Flandre reaches out her arm in Patchouli's direction."
+    $ pat.flip(transition=dissolve_fast)
+    $ pat.move(offscreenright, transition=move_slow)
+
+    $ flan.move(scoot_right)
 
     f "Patchy, wait! But I want wings!"
 
-    "She returns with multiple crystals."
+    "Flandre reaches out her arm in Patchouli's direction."
+
+    $ pat.show(magic=True, at=[hopreset, right, enterright()], flip=True)
+    $ flan.move(unscoot)
+
+    "She returns with multiple crystals in hand."
 
     p "I can just attach magic crystals!"
 
@@ -142,9 +215,14 @@ label day7_morning:
 
     p "Yes! This shouldn't take very long."
 
+    $ remi.move(center_left)
+    $ flan.move(far_left, transition=move_slow)
+
     r "Hey, what's the plan exactly?"
 
     p "I will imbue these crystals with the same magic I use to move objects, and embed it into her wing stems. If she applies magical energy to her stems, it will react with the crystals."
+
+    r "Huh."
 
     f "That sounds super cool!"
 
@@ -154,21 +232,30 @@ label day7_morning:
 
     p "Is trial and error acceptable? That would be fastest, and I believe your regeneration capabilities would be sufficient for survival."
 
+    $ flan.move(hop(10))
+
     f "No! Use Remi!"
 
     r "No. Regeneration doesn't prevent pain."
 
     p "I can numb your body."
 
+    $ remi.move(scoot_right)
+
     r "No! You're insane!"
+
+    $ remi.move(unscoot)
 
     p "Fair enough."
 
-    "Patchouli exhales and turns to Flandre."
+    "Patchouli takes a long exhale."
 
-    p "Enough goofing off. Flandre, I do believe you know how to use magical energy, right?"
+    p "Enough goofing off. Now, Flandre, I do believe you know how to use magical energy, right?"
 
     f "Yeah! Like this!"
+
+    play sound sfx_magic_cast
+    call spear_summon from _call_spear_summon_3
 
     "She summons her sword."
 
@@ -176,67 +263,115 @@ label day7_morning:
 
     f "Sorry."
 
+    call spear_summon from _call_spear_summon_4
+
     "The sword disappears."
 
     p "Perfect! This should work. Give me some time."
+
+    $ flan.flip()
+    $ flan.move(hop())
 
     f "Woohoo!"
 
     r "Would you like any help?"
 
-    "Patchouli grabs Remilia's shoulders."
+    $ pat.move(center, transition=move_fast)
+    play sound sfx_rustle_2
+    $ remi.move(small_shake)
+
+    "Patchouli grabs Remilia by the shoulders."
 
     p "Yup! I'll work you to the bone."
 
     r "Mm. Right."
 
+    $ flan.flip()
+
     f "So touchy. Bleh."
+
+    call scene_transition_fade("black") from _call_scene_transition_fade_40
 
     "Over the next few hours, Patchouli imbues various magical crystals as Remilia runs around gathering materials. Flandre lies on the ground reading about mercury."
 
+    call scene_transition_fade("bg_study") from _call_scene_transition_fade_41
+
+    $ remi.show([center_left, standheight])
+    $ pat.show([center_right, standheight])
+    $ flan.show([corner_left, sitheight], flip=True)
+    with dissolve
+
     p "Got it! This is stable! I think. Now for a test. Hold this, Remilia."
+
+    $ pat.show(magic=True, transition=dissolve_fast)
 
     "She takes the crystal."
 
     p "Now, put a little energy into it."
 
+    play sound sfx_magic_summon
+    $ remi.move(floatup)
+    call generic_spell from _call_generic_spell_11
+
     "Remilia slowly floats into the air."
 
     r "Whoa. Neat."
 
-    p "Perfect. Now, we attach these to Flandre's stems."
+    p "Perfect. Now we attach these to the wing stems."
+
+    $ flan.flip()
 
     r "That's incredible!"
 
-    "Flandre runs over."
+    $ flan.move([far_left, standheight], transition=ease)
 
     f "What's going on?"
 
-    p "I believe I have solved the problem."
+    p "I believe the problem has been solved."
 
-    "Flandre leaps into the air."
+    $ flan.move(hop(length=0.25))
 
     f "Yay! Yay!"
 
-    "Patchouli swipes the crystal from Remilia's hand, making her drop."
+    $ pat.move(hop(10))
+    with None
+    $ remi.move(hopreset, transition=move_fast)
 
-    r "That was truly incredible. You're phenomenal."
+    "Patchouli swipes the crystal from Remilia's hand."
+
+    r "That was truly incredible. You're brilliant."
 
     p "Ehem, yes, of course. Now lie down, Flandre. I will attach them."
 
-    "She jumps face-first onto the table."
+    $ flan.move(hopreset)
+    $ flan.show(right, transition=move_fast, zorder=1)
+    play sound sfx_body_fall
 
-    r "Don't damage the table."
+    r "Don't damage the table with your dive-bombing."
 
-    f "Don't ruin the moment."
+    f "This is my moment. Silence."
 
     r "Fine, fine."
 
+    call scene_transition_fade("black") from _call_scene_transition_fade_42
+
+    stop music fadeout 2.0
+
     "Patchouli floats over Flandre. One by one, she places a crystal onto a wing stem, casts a spell, and it sticks. Eventually, she's done and floats away."
+
+    call scene_transition_fade("bg_study") from _call_scene_transition_fade_43
+
+    $ remi.show(at=[far_left, standheight])
+    $ flan.show(wings="crystal", at=[far_right, sitheight], flip=True)
+    $ pat.show(at=[center_left, standheight], flip=True, magic=False)
+    with dissolve
 
     p "Listen to me closely. Stand up, slowly. Very carefully."
 
     f "Slowly. Got it."
+
+    play sound sfx_crystals_clacking
+    $ flan.move(sitheight, transition=move_slow)
 
     "She slowly sits up. The crystals sway back and forth."
 
@@ -244,27 +379,29 @@ label day7_morning:
 
     p "Wait, no, hold on. Don't move."
 
-    "Patchouli flies over and applies another spell."
+    $ pat.move(center, transition=move_fast)
+    call generic_spell from _call_generic_spell_12
+    $ pat.move(center_left, transition=move_fast)
 
     p "Continue."
 
-    "Patchouli flies back next to Remilia as Flandre stands all the way up, the crystals stay in place."
+    $ flan.move(floatup)
 
     p "How is your balance?"
 
     f "Good! Kind of."
 
-    p "Now, just apply the smallest amount of magical energy—"
+    p "Now, just apply the smallest amount of magical energy."
 
-    "Flandre shoots to the ceiling."
+    # "Flandre shoots to the ceiling."
 
-    p "Gently!"
+    # p "Gently!"
 
-    "She slowly floats down."
-
-    p "How is it?"
+    # "She slowly floats down."
 
     "Flandre starts flipping in the air."
+
+    p "How is it?"
 
     f "Awesome! Amazing! Absolutely astonishing!"
 
@@ -272,11 +409,16 @@ label day7_morning:
 
     f "I can fly! I can fly!"
 
+    $ flan.move(offscreenright, transition=move_fast)
+
     "She zooms around the room, faster than their eyes can follow."
 
     p "Hey!"
 
     r "Give up. She won't stop."
+
+    $ remi.move(left, transition=move_slow)
+    $ pat.flip(transition=dissolve)
 
     "Remilia walks up to Patchouli."
 
@@ -285,6 +427,9 @@ label day7_morning:
     "Remilia's gaze flicks to the side and back to Patchouli a few times, her face steadily turning red."
 
     p "Uh, wha—"
+
+    play music bgm_ending fadein 2.0
+    show cg_kiss_cry zorder 8 with dissolve
 
     "Remilia lunges into Patchouli, grabbing and kissing her."
 
@@ -320,7 +465,16 @@ label day7_morning:
 
     f "The moment I look away."
 
+    hide cg_kiss_cry with dissolve
+
+    $ remi.move(far_left)
+    $ pat.move(right, transition=move_fast)
+
     "They jump apart."
+
+    $ flan.move(hopreset)
+    with None
+    $ flan.move(corner_right, transition=dissolve)
 
     r "She was just, checking something!"
 
@@ -340,11 +494,20 @@ label day7_morning:
 
     f "You two are stealing my spotlight. Stand there and watch my new moves! You can drown in each other's eyes later!"
 
+    call scene_transition_fade("black") from _call_scene_transition_fade_44
+
     "The two lovebirds stand together as Flandre zips around at dangerous speeds."
 
     return
 
 label epilogue:
+
+    call scene_transition_fade("bg_study") from _call_scene_transition_fade_45
+
+    $ remi.show(at=[far_left, standheight])
+    $ pat.show(at=[center, standheight], flip=True)
+    $ flan.show(at=[far_right, standheight])
+    with dissolve
 
     "Finally, Flandre crash lands into a chair."
 
@@ -358,6 +521,8 @@ label epilogue:
 
     "Then, a couch appears."
 
+    $ pat.flip(transition=dissolve)
+
     p "I believe you wanted a couch?"
 
     r "Yes!"
@@ -369,6 +534,10 @@ label epilogue:
     "Remilia pats the spot next to her."
 
     r "Come here. But don't you dare sit on my wing."
+
+    $ remi.move(corner_left)
+    $ pat.move(left, transition=move_slow)
+    $ pat.flip(transition=dissolve)
 
     "Patchouli joins her. Remilia immediately leans into her."
 
@@ -389,6 +558,8 @@ label epilogue:
     f "Hehe. You're married now."
 
     r "No we are not!"
+
+    $ flan.hide(transition=dissolve)
 
     "Flandre leans back, then immediately falls asleep. The chicken remains fall to the floor."
 
@@ -455,6 +626,8 @@ label epilogue:
     p "Now, shall we discuss the future over some wine?"
 
     r "Yes!"
+
+    call scene_transition_fade("black") from _call_scene_transition_fade_46
 
     "As Flandre sleeps after her wing celebration, the new couple drink wine together throughout the night."
 

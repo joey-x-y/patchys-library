@@ -1,20 +1,25 @@
 label day1:
 
-    call day1_forest
-    call day1_library
-    call day1_end
+    call day1_forest from _call_day1_forest
+    call day1_library from _call_day1_library
+    call day1_end from _call_day1_end
 
     return
     
 label day1_forest:
-    scene bg_forest
+    call scene_transition_fade("bg_forest") from _call_scene_transition_fade
 
-    play music bgm_forest fadein 2.0
-
-    $ remi.show(dirty=True, at=[left, standheight])
-    $ flan.show(dirty=True, at=[right, standheight])
+    $ remi.show(dirty=True, at=[center_right, standheight, enterright(speed=0.5)], flip=True, zorder=5)
+    $ flan.show(expression="frown",dirty=True, at=[right, standheight, enterright(speed=0.5)])
 
     f "Remi! Look out!"
+
+    $ remi.move(enterforcefinish)
+    $ flan.move(enterforcefinish)
+    with None
+
+    $ remi.move([center, floatup])
+    $ flan.move([center_right, floatup], transition=move_fast)
 
     "Remilia swerves upwards, narrowly avoiding a tree."
 
@@ -22,13 +27,19 @@ label day1_forest:
 
     f "Just land already! You've been flying for hours!"
 
-    r "No, no, I can still..."
+    $ remi.move([center_left, sitheight])
+    $ flan.move([center, sitheight], transition=move_slow)
 
-    "They slowly drift downward, back into the treeline."
+    r "No, no, I can still..."
 
     f "Remi!"
 
     r "Wh—"
+
+    play sound sfx_crash
+
+    $ remi.move(shake())
+    $ flan.move(shake())
 
     "They blast through a wall of thin branches."
 
@@ -36,19 +47,28 @@ label day1_forest:
 
     r "Fine."
 
+    play music bgm_forest fadein 2.0
+    call scene_transition_fade("bg_forest") from _call_scene_transition_fade_1
+    call dim_screen from _call_dim_screen
     play sound sfx_forest_land
+
+    $ remi.show(at=[center_left, standheight], zorder=5)
+    $ flan.show(at=[right, standheight], transition=dissolve)
 
     "Remilia drops down from the air and catches her breath. Flandre steps down from her back."
 
     f "Geez, Remi."
 
+    $ remi.flip(transition=dissolve_fast)
+    $ remi.move(center_right, transition=move_slow)
+
     "Remilia takes Flandre's hand."
 
     r "We need to keep moving, trees aren't good enough shelter from the sun. It will cut through the leaves."
 
-    f "But you're pushing yourself to death. Slow down."
+    f "You're pushing yourself to death."
 
-    r "I'm just trying to..."
+    r "But I'm just trying to..."
 
     "She takes a deep breath."
 
@@ -56,8 +76,11 @@ label day1_forest:
 
     f "I'll try."
 
+    $ remi.flip(transition=dissolve_fast)
+
     play sound sfx_forest_footsteps
-    with forest_walk_fade
+    
+    call show_transition_fade("bg_forest") from _call_show_transition_fade
 
     f "Hey... I'm getting really tired. I need a break."
 
@@ -65,13 +88,20 @@ label day1_forest:
 
     play sound sfx_forest_land 
 
-    "Flandre's legs buckle, and she falls back hard."
+    $ flan.move(drophalf)
+
+    "Flandre's legs buckle."
 
     f "I can't."
 
-    "Remilia kneels down and places her hand on Flandre's hat."
+    $ remi.flip(transition=dissolve_fast)
+    $ remi.move(drophalf)
+
+    "Remilia kneels down and places her hand on Flandre's head."
 
     r "Alright. We'll spare a few minutes."
+
+    $ remi.move(hop())
 
     "Remilia begins to get up, but gets pulled back down."
 
@@ -81,11 +111,24 @@ label day1_forest:
 
     "Flandre sighs and lets go."
 
+    $ remi.move(hopreset)
+    with None
+
+    $ remi.flip(transition=dissolve_fast)
+
+    $ remi.move([offscreenleft, standheight], transition=ease)
+    $ remi.flip()
+    $ remi.move(center_right, transition=ease)
+
+    $ remi.move(drophalf)
+
     "Remilia leaves, and quickly returns with a rabbit in hand."
 
     r "A feast, just for you."
 
     f "Thanks."
+
+    $ remi.move(center_left, transition=move_slow)
 
     "Flandre devours half of it."
 
@@ -111,11 +154,18 @@ label day1_forest:
 
     r "I see."
 
+    $ remi.move(standheight, transition=move_slow)
+    call dim_screen_half from _call_dim_screen_half
+
     "Remilia looks off to the sky. The purple foreglow of sunrise begins to show itself."
+
+    $ remi.move(center, transition=move_slow)
 
     r "We cannot wait any longer. Let's go, Flandre. Take my hand."
 
     f "Okay..."
+
+    $ flan.move(standheight, transition=move_slow)
 
     "Flandre grabs Remilia's hand and pulls herself up."
 
@@ -125,10 +175,12 @@ label day1_forest:
 
     r "No, the animal kind. Don't worry."
 
-    "Flandre grabs Remilia's hand as they begin walking."
+    $ remi.flip(transition=dissolve_fast)
+
+    "Flandre clings to Remilia's hand as they resume walking."
 
     play sound sfx_forest_footsteps
-    with forest_walk_fade
+    call show_transition_fade("bg_forest") from _call_show_transition_fade_1
 
     r "Oh?"
 
@@ -138,22 +190,34 @@ label day1_forest:
 
     f "What if someone scary is in there?"
 
-    play sound sfx_forest_land
+    $ remi.move(left, transition=move_slow)
 
     "Remilia steps to the door and grabs the handle."
 
-    r "We have no choice. Come, I'll keep you safe."
+    $ remi.flip(transition=dissolve_fast)
 
-    "The edge of the sun begins to rise, stinging their vampiric skin."
+    r "Look at the sky. We have no choice. Come, I'll keep you safe."
 
-    "Then, they enter the mysterious building together."
+    call dim_screen_revert from _call_dim_screen_revert
+
+    $ flan.flip(transition=dissolve_fast)
+
+    pause 1.0
+
+    $ flan.flip(transition=dissolve_fast)
+    $ flan.move(center, transition=move_slow)
+
+    play sound sfx_door_open
+    call scene_transition_fade("black") from _call_scene_transition_fade_2
+
+    stop music fadeout 2.0
+
+    "The sisters enter as the sun begins to rise behind them."
 
     return
 
 label day1_library:
-    stop music fadeout 2.0
-
-    call scene_transition_fade("bg_library")
+    call scene_transition_fade("bg_library") from _call_scene_transition_fade_3
 
     "They step into a large library. Bookshelves line the walls, and a large staircase lies straight ahead."
 
@@ -184,17 +248,17 @@ label day1_library:
     $ flan.move(corner_left)
     with move_fast
 
-    call spear_summon()
+    call spear_summon() from _call_spear_summon
 
     play sound sfx_magic_clash_2
 
     $ remi.effect(shake)
 
-    call spear_block_quick()
+    call spear_block_quick() from _call_spear_block_quick
 
     "Something fires at Remilia's neck, but she summons her spear to block at the last moment."
 
-    call spear_block_continuous()
+    call spear_block_continuous() from _call_spear_block_continuous
 
     r "This trap won't on us, fool."
 
@@ -204,7 +268,7 @@ label day1_library:
 
     r "Stay close. I have it handled."
 
-    call spear_block_barrage_end()
+    call spear_block_barrage_end() from _call_spear_block_barrage_end
 
     play music bgm_duel fadein 2.0
 
@@ -219,7 +283,7 @@ label day1_library:
 
     "Remilia lifts her spear, charging it up in response."
 
-    call spear_lazer_clash()
+    call spear_lazer_clash() from _call_spear_lazer_clash
 
     "The crystals fire beams of light and water, Remilia meets them with a flash of energy from her spear. The attacks cancel each other out."
 
@@ -233,13 +297,13 @@ label day1_library:
 
     p "A shame."
 
-    call spear_lazer_clash()
+    call spear_lazer_clash() from _call_spear_lazer_clash_1
 
     "Remilia charges her spear again, and the beams collide. Remilia nearly goes limp in Flandre's arms, heavily breathing."
 
     f "Sis..."
 
-    call spear_lazer_clash()
+    call spear_lazer_clash() from _call_spear_lazer_clash_2
 
     "Again, the lasers fire. They collide yet again."
 
@@ -254,13 +318,13 @@ label day1_library:
     play sound sfx_magic_cast
     $ flan.move(left, transition=move_fast)
 
-    call spear_summon()
+    call spear_summon() from _call_spear_summon_1
 
     "Flandre steps in front of Remilia's body and summons her sword. The magician charges her crystals."
 
     f "Hah!"
 
-    call spear_lazer_clash(defender=flan)
+    call spear_lazer_clash(defender=flan) from _call_spear_lazer_clash_3
 
     "The red slash collides with the lasers, splitting them in half. They crash into the ground next to the sisters."
 
@@ -270,7 +334,7 @@ label day1_library:
     "Flandre drops to her knees, breathing frantically."
 
     $ pat.move([floatdowntocenter])
-    call clear_effects
+    call clear_effects from _call_clear_effects
 
     "The magician slowly floats down in front of them."
 
@@ -294,13 +358,14 @@ label day1_library:
 
     p "Your room is over there. Go on."
 
-    play sound sfx_rustle_2
     $ flan.move(standup)
     pause 0.5
     $ flan.move(shake(magnitude=4))
     pause 0.3
     play sound sfx_body_fall
     $ flan.move(drophalf)
+
+    f "I... can't..."
 
     p "Hm. I suppose you are rather exhausted."
 
@@ -318,7 +383,7 @@ label day1_library:
 
 label day1_end:
 
-    call scene_transition_fade("bg_bedroom_nocoffin")
+    call scene_transition_fade("bg_bedroom_nocoffin") from _call_scene_transition_fade_4
     $ pat.face(flipped=False)
     $ flan.face(flipped=False)
     $ remi.face(flipped=True)
@@ -355,6 +420,8 @@ label day1_end:
 
     f "Remi, you're awake!"
 
+    $ flan.show(expression="neutral")
+
     r "Yes, I was the whole time. I just couldn't move."
 
     p "Then you should understand your situation. I am studying a vampire, as agreed. Be silent."
@@ -366,7 +433,7 @@ label day1_end:
     "The magician leans in close to the wings for a few moments."
 
     $ pat.show(magic=True, transition=dissolve_fast)
-    call generic_spell()
+    call generic_spell() from _call_generic_spell
     
     p "I numbed them."
 
@@ -397,9 +464,9 @@ label day1_end:
 
     $ pat.flip()
     $ pat.show(magic=True, transition=dissolve_fast)
-    call generic_spell()
+    call generic_spell() from _call_generic_spell_1
 
-    show bg_bedroom behind f, r, p with dissolve
+    show bg_bedroom onlayer background with dissolve
 
     "She summons two coffins onto the bed."
 
@@ -460,7 +527,7 @@ label day1_end:
 
     f "We really need food..."
 
-    call generic_spell()
+    call generic_spell() from _call_generic_spell_2
 
     "After a few moments, a dead chicken appears on the table."
 
@@ -473,9 +540,8 @@ label day1_end:
     play sound sfx_coffin_close
     $ flan.hide(transition=dissolve_fast)
 
-    scene black with fade
+    call scene_transition_fade("black") from _call_scene_transition_fade_5
     
-
     "Flandre finishes the meal, then jumps into the other coffin."
 
     f "Finally... I can..."

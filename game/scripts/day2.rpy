@@ -1,12 +1,12 @@
 label day2:
-    call day2_morning
-    call day2_library
-    call day2_end
+    call day2_morning from _call_day2_morning
+    call day2_library from _call_day2_library
+    call day2_end from _call_day2_end
 
     return
 
 label day2_morning:
-    call day_transition_in()
+    call day_transition_in() from _call_day_transition_in
 
     play sound sfx_coffin_open
 
@@ -67,7 +67,7 @@ label day2_morning:
 
     r "Hey, wait!"
 
-    call scene_transition_fade("bg_library")
+    call scene_transition_fade("bg_library") from _call_scene_transition_fade_6
 
     $ remi.face(flipped=True)
     $ flan.face(flipped=False)
@@ -82,7 +82,7 @@ label day2_morning:
 
     r "Of course we will, don't wander off like that."
 
-    call generic_spell()
+    call generic_spell() from _call_generic_spell_3
 
     p "Go up the stairs."
 
@@ -100,7 +100,7 @@ label day2_morning:
 
     "Remilia nods and follows Flandre to the stairs."
 
-    show bg_library_stairs behind f, r with fade
+    call show_transition_fade("bg_library_stairs") from _call_show_transition_fade_2
 
     "She looks around as they ascend. Books everywhere, along with fancy chandeliers lining the ceiling."
 
@@ -122,7 +122,7 @@ label day2_morning:
 
 label day2_library:
 
-    call scene_transition_fade("bg_study")
+    call scene_transition_fade("bg_study") from _call_scene_transition_fade_7
     "They step into yet another room lined with even more books. Patchouli sits in front at her desk large desk."
 
     play music bgm_library fadein 2.0
@@ -145,7 +145,7 @@ label day2_library:
     p "One moment."
 
     $ pat.show(magic=True, transition=dissolve_fast)
-    call generic_spell()
+    call generic_spell() from _call_generic_spell_4
     $ remi.show(dirty=False, at=enterforcefinish)
     $ flan.show(dirty=False, at=enterforcefinish)
     with dissolve
@@ -158,7 +158,7 @@ label day2_library:
 
     $ flan.move(center_right, transition=ease)
 
-    call generic_spell()
+    call generic_spell() from _call_generic_spell_5
 
     $ flan.show(center, zorder=1)
     with move_slow
@@ -330,7 +330,7 @@ label day2_library:
 
     r "Explode how?"
 
-    scene black with fade
+    call scene_transition_fade("black") from _call_scene_transition_fade_8
     stop music fadeout 2.0
     "Patchouli begins her analysis, floating above Flandre and applying various spells and potions. Remilia stands in the corner and watches for the rest of the night."
 
@@ -339,7 +339,7 @@ label day2_library:
 label day2_end:
 
     play music bgm_emotional fadein 2.0
-    call scene_transition_fade("bg_study")
+    call scene_transition_fade("bg_study") from _call_scene_transition_fade_9
 
     $ remi.show(at=[corner_left, standheight], zorder=1.5)
     $ pat.show(at=[center_right, standheight])
@@ -464,12 +464,12 @@ label day2_end:
 
     $ remi.flip(dissolve_fast)
 
-    scene black with fade
+    call scene_transition_fade("black") from _call_scene_transition_fade_10
 
     "Flandre runs over to more bookshelves as Remilia walks deeper into the room."
 
     play music bgm_library fadein 2.0
-    scene bg_study with fade
+    call scene_transition_fade("bg_study") from _call_scene_transition_fade_11
     $ pat.flip()
     $ pat.show(at=[right, standheight], transition=dissolve)
     "Patchouli is sitting at a table, looking at the vast collection of open books in front of her."
@@ -536,6 +536,8 @@ label day2_end:
 
     #TODO show cg
 
+    $ pat.move(center, transition=move_slow)
+
     "Patchouli grabs Remilia's wing."
 
     r "Huh? W-wait, hey!"
@@ -599,7 +601,7 @@ label day2_end:
 
     $ flan.move(offscreenleft, transition=move_slow)
 
-    call scene_transition_fade("bg_library_stairs")
+    call scene_transition_fade("bg_library_stairs") from _call_scene_transition_fade_12
 
     $ remi.show(at=[center_left, standheight], transition=dissolve)
     $ flan.flip()
@@ -633,17 +635,11 @@ label day2_end:
 
     play music bgm_title fadein 2.0
 
-    show black_2 behind r, f:
-        alpha 0.5
-
-    show black:
-        alpha 0.2
-
-    with dissolve
-
     $ remi.show(at=[closeup, room_pacing(start_pos=0.4)])
     $ flan.show(at=[closeup, room_pacing(start_pos=0.55)])
     with dissolve
+
+    call dim_screen from _call_dim_screen_1
 
     "Remilia leaps into the air. They hover along the ceiling, weaving between the various chandeliers."
 
@@ -663,7 +659,7 @@ label day2_end:
 
     f "Oops."
 
-    show bg_library behind f, r, black, black_2 with dissolve
+    show bg_library onlayer background behind f, r, black, black_2 with dissolve
 
     "Remilia moves to the bookshelf-lined walls, minimizing the risk of a tragic accident."
 
@@ -687,13 +683,12 @@ label day2_end:
 
     $ remi.move([closeuprevert, center_left])
     $ flan.move([closeuprevert, center_right])
-    hide black
-    hide black_2
-    with dissolve
+    
+    call dim_screen_revert from _call_dim_screen_revert_1
 
     f "That was fun! Now food."
 
-    call scene_transition_fade("bg_bedroom")
+    call scene_transition_fade("bg_bedroom") from _call_scene_transition_fade_13
 
     $ remi.flip()
     $ flan.show(at=[left, standheight, enterright()])
@@ -714,7 +709,7 @@ label day2_end:
 
     r "Mhm, sure you did."
 
-    scene black with fade
+    call scene_transition_fade("black") from _call_scene_transition_fade_14
     play sound sfx_coffin_open
     stop music fadeout 2.0
 
