@@ -4,32 +4,69 @@ label day5:
     return
 
 label day5_morning:
-    
-    "As Flandre steps out of her coffin, Remilia flies behind her."
+    call day_transition_in
+
+    $ flan.show(at=[center, standheight], flip=True, zorder=6)
+    $ remi.show(at=[left, standheight], flip=True)
+    with dissolve
+
+    $ remi.move(center_right, transition=move_fast)
+    $ remi.flip(transition=dissolve_fast)
+
+    r "..."
 
     r "Wings look the same."
 
     f "Phew."
 
-    "Flandre gets up and pulls a rabbit out of the bag."
+    play music bgm_emotional fadein 2.0
+
+    $ flan.move(far_left, transition=move_slow)
+    play sound sfx_rustle_1
+    $ flan.move(hopdown(150, length=0.5))
+
+    "Flandre grabs a rabbit out of the bag."
 
     r "Already? We just ate before our slumber."
 
+    $ flan.move(hopreset)
+    $ flan.flip(transition=dissolve_fast)
+
     f "Not everyone has your puny appetite."
 
-    r "Guess not. I'll go on ahead."
+    $ flan.flip(transition=dissolve_fast)
+    $ flan.move(hopdown(150, length=0.5))
 
-    "Flandre's mouth is too full to respond as Remilia flies off. She finds Patchouli sitting with a book in her hands."
+    r "Guess not. I'm going on ahead."
+
+    $ remi.show(offscreenright, flip=True, transition=move_slow)
+    $ flan.move(hopreset)
+    $ flan.flip()
+
+    f "Mmf, mmph mm mmf!"
+
+    call scene_transition_fade("bg_study")
+
+    $ pat.show([right, sitheight], transition=dissolve, hat=True)
+
+    "Patchouli sits with a book placed in her lap."
+
+    $ remi.show(at=[corner_left, standheight, enterleft()], zorder=5)
 
     p "Oh, you're alone today."
 
-    r "She was hungry."
+    r "Yeah, she was hungry."
+
+    p "Mm."
 
     "A minute passes with Remilia standing awkwardly at the front. Patchouli is focused on her book."
 
-    r "Hey... how come you made your library all the way out in a forest like this?"
+    r "Hey... how come you built your library all the way out in a forest like this?"
 
     p "It is secluded."
+
+    $ remi.move(enterforcefinish)
+    $ remi.move(left, transition=move_slow)
 
     "Remilia smiles as she walks forward."
 
@@ -45,21 +82,32 @@ label day5_morning:
 
     p "How bothersome they are."
 
-    r "Yes, like a servant. Some are obedient and serve great food, some are better off being food."
+    r "Ah yes, much like servants. Some are obedient and serve great food, some are better off being the food themselves."
 
-    p "Right. On the subject of servitude, could you grab my tea set?"
+    p "Right. On the subject of servitude, would you fetch my tea set?"
+
+    pause 0.5
 
     "Remilia stares for a few seconds, then gives an exasperated sigh."
 
-    "She brings over the tea set and sets it down roughly."
+    $ remi.move(offscreenright, transition=ease)
+    $ remi.flip()
+    $ remi.move(center_left, transition=ease)
+    $ remi.flip(transition=dissolve_fast)
+
+    $ remi.move(sitheight, transition=move_fast)
+
+    "She sets the tea set down roughly."
 
     r "You pour."
+
+    show layer master at table_zoom
 
     "Remilia sits as Patchouli serves tea with her magic, not moving a muscle."
 
     "They drink in silence for a few minutes."
 
-    r "Hey, have we been a bother?"
+    r "Would you say we've been a bother?"
 
     p "No."
 
@@ -69,13 +117,13 @@ label day5_morning:
 
     r "Really. That's surprising."
 
-    p "You two have made things interesting, so I have no complaints."
+    p "You two have made things interesting, I have no complaints."
 
     r "I guess we did. Now, more tea."
 
     "Their cups refill, and the drinks continue."
 
-    r "So, you told us in the beginning that you want to study vampires, but you've only focused on Flandre's wings. You haven't gone outside of that."
+    r "So, you told us in the beginning that you want to study vampires, but you've only focused on Flandre's wings. You haven't gone any further."
 
     p "I tried, but you didn't want me to."
 
@@ -117,25 +165,31 @@ label day5_morning:
 
     r "A liability."
 
+    $ pat.move(hop(10))
+
     p "Huh?"
 
     r "But in a good way, I mean. Flandre is someone to keep safe at all times. If servants are incapable of doing it, I have to."
 
-    "Patchouli takes a long sip, letting many seconds pass before responding."
+    "Patchouli takes a long sip, letting several seconds pass before responding."
 
     p "I see."
 
+    $ remi.move(standheight, transition=move_slow)
+
     "Remilia stands and points her tea cup at Patchouli with a massive grin."
 
-    r "I've never seen your face that confused before. Who's looking rather silly now?"
+    r "I've never seen your face so confused before. Who's the one looking rather silly now?"
 
     p "You should use your words better."
 
-    r "You should accept defeat."
+    r "Semantics. I still win."
 
-    "She chugs the rest and sits down."
+    $ remi.move(sitheight, transition=move_fast)
 
-    r "Having a sister is like a companion. That's a simpler way of putting it. I'm not alone."
+    "She downs the rest and sits back down."
+
+    r "A sister is like a companion. That's a simpler way of putting it. I'm not alone."
 
     "Patchouli looks down into her cup."
 
@@ -143,11 +197,7 @@ label day5_morning:
 
     r "Yes. Did your family not want to come here with you?"
 
-    p "I came here silently."
-
-    r "Hm. I see."
-
-    p "I was not needed where I was created."
+    p "I simply left on my own. I was not needed where I was created."
 
     r "Um... what does that mean?"
 
@@ -159,25 +209,23 @@ label day5_morning:
 
     p "More than that. They are a separate species from human. One whose body can survive on magical energy alone. Biological needs are removed."
 
-    r "How does that happen?"
+    r "Removing biological needs? How does that work?"
 
-    p "Converting one's body into that state requires a sophisticated form of magic, one that many magic-users never figure out."
+    p "Converting one's body into that state requires a sophisticated form of magic, one that many magic-users never discover."
 
     r "Ah, but a smart girl like you figured it out, then?"
 
     p "No. I am an exception. I was born as a Magician."
 
-    r "Whoa, that's cool."
-
-    p "You sound like Flandre."
-
-    r "I'll take that as a compliment. How does that even work, though?"
+    r "Whoa, that's pretty cool. How does that even work though?"
 
     p "I am not certain. I only know that some form of special magic was used. I would like to figure that out someday."
 
     r "That's very interesting indeed. It sounds very special."
 
     p "It is, I suppose. But every shortcut pays a price. My physical attributes are rather... poor."
+
+    $ remi.move(hop(10))
 
     "Remilia laughs."
 
@@ -187,15 +235,17 @@ label day5_morning:
 
     r "No, I take that back. Don't get too full of yourself."
 
+    "Patchouli lets out a sigh."
+
     p "Tomfoolery of the highest order."
 
-    r "Hmph. Whatever you say. More tea, now."
+    r "Hmph. More tea, now."
 
     "The rounds of tea continue."
 
-    r "Why did you leave your place of birth if you want to understand their magic?"
+    r "Why did you leave that place if you want to understand that Magician birth magic?"
 
-    p "The knowledge was never given to me. I decided to pursue my own knowledge."
+    p "The knowledge would never be given to me. I have to pursue my own knowledge."
 
     r "So, is solving your birth a mission of sorts?"
 
@@ -213,11 +263,13 @@ label day5_morning:
 
     p "I did."
 
-    "Remilia face palms."
+    "Remilia smacks her own face with her palm."
 
     r "Of course you did."
 
-    "Patchouli smiles to herself. Remilia crosses her arms and puts up her feet."
+    $ remi.move(scoot_left)
+
+    "Patchouli smiles to herself. Remilia leans back and puts up her feet as if it were a recliner."
 
     p "Does my past interest you? You look so curious."
 
@@ -227,7 +279,7 @@ label day5_morning:
 
     "Patchouli takes a small sip, and fiddles with the cup."
 
-    r "You know, libraries are quite nice. Truly a staple for any good mansion. Though this place is severely lacking in couches. I need more space to spread my poor wings."
+    r "You know, libraries are quite nice. Truly a staple for any good mansion."
 
     p "I haven't seen you touch a book."
 
@@ -237,19 +289,32 @@ label day5_morning:
 
     r "Nah. That's the librarian's job. Delegation is the most important skill of a noble. Remember that."
 
-    p "How shameless."
+    p "That is rather shameless."
+
+    r "The only shame here is the severe lack of sofas. I could use more space to spread my poor wings."
 
     f "Your true colors are showing."
 
+    
+
+    $ flan.show(at=[far_left, standheight], transition=dissolve, zorder=1)
+
+    show layer master at table_unzoom
+
     r "Oh, hello Flandre. Hey, wait, what does that mean?!"
 
-    "Patchouli casts her numb spell."
+    $ pat.show(magic=True)
+    call generic_spell
 
-    f "Nice aim. You can do it from there?"
+    f "Nice aim. You can do numb me from there?"
+
+    $ pat.show(magic=False, transition=dissolve_fast, zorder=2)
 
     p "Yes."
 
     f "You two were so deeply engaged with each other, I didn't have the heart to interrupt. But then boredom happened. What a shame."
+
+    $ remi.flip(transition=dissolve_fast)
 
     r "How long have you been here?"
 
@@ -257,11 +322,20 @@ label day5_morning:
 
     r "That long. Ugh."
 
-    "Flandre takes a seat."
+    $ flan.move(at=[center, sitheight], transition=move_slow)
+    $ remi.flip(transition=dissolve_fast)
+
+    show layer master at table_zoom
+
+    "Flandre crashes into the tea party."
+
+    $ flan.flip(transition=dissolve_fast)
 
     f "Your peculiar charm is overwhelming Patchy."
 
     r "My what now? Peculiar? I am no such thing."
+
+    $ flan.flip(transition=dissolve_fast)
 
     "Flandre aims her fingers at Patchouli."
 
@@ -279,7 +353,11 @@ label day5_morning:
 
     f "Heh. That's stupid."
 
+    $ flan.move(hop(10))
+
     "She puts them up."
+
+    show bg_study with fade
 
     "They continue to relax at the table for the next few hours, with Patchouli passively researching despite the vampire's distractions."
 
@@ -287,7 +365,18 @@ label day5_morning:
 
     r "I think it's bedtime."
 
-    "Patchouli nods, and they travel to their bedroom."
+    f "Yeah... carry me."
+
+    stop music fadeout 2.0
+    scene black with fade
+
+    "Remilia drags Flandre to their bedroom."
+
+    play music bgm_library fadein 2.0
+    scene bg_bedroom with fade
+
+    $ remi.show(at=[left, standheight], zorder=2)
+    $ flan.show(at=[center_right, standheight], flip=True, transition=dissolve)
 
     f "I'm happy you made a friend."
 
@@ -301,6 +390,8 @@ label day5_morning:
 
     f "Congrats."
 
+    $ remi.move(center, transition=move_slow)
+
     "Remilia puts her hand on Flandre's head."
 
     r "You'll always be my sister, Flandre. Don't worry."
@@ -309,6 +400,10 @@ label day5_morning:
 
     r "Ah, the usual."
 
-    "They retire to their coffins."
+    play sound sfx_coffin_close
+
+    scene black with fade
+
+    "After their routine meal, they retire to their coffins."
 
     return

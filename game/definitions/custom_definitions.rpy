@@ -65,4 +65,10 @@ image bg_library_stairs = At(bp + "entrance.png", bg_scale_upper)
 
 # CGs __________
 
-image hug = cgp + "hug.png"
+image cg_hug = cgp + "hug.png"
+image cg_stare_cry = cgp + "hug.png"
+image cg_stare_gentle = cgp + "hug.png"
+image cg_kiss_cry = cgp + "hug.png"
+image cg_kiss_gentle = cgp + "hug.png"
+
+# image cg_wing_surprise = cgp + "wing_surprise.png"

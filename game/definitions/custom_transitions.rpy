@@ -5,7 +5,7 @@ label scene_transition_fade(bg):
     with fade
     return
 
-label day_transition_in():
+label day_transition_in:
     scene black
     pause 1.0
     scene bg_bedroom with fade
@@ -17,5 +17,8 @@ transform table_zoom:
 transform table_unzoom:
     zoom 1.3 pos (-0.3, -0.2)
     ease 1.0 zoom 1.0 pos (0.0, 0.0)
+
+transform camera_revert:
+    zoom 1.0 pos (0.0, 0.0)
 
 

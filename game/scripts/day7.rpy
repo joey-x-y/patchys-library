@@ -8,6 +8,10 @@ label day7:
 
 label day7_morning:
 
+    call day_transition_in
+
+    
+
     "Remilia rises from her coffin, and Flandre opens her immediately after."
 
     r "Um, hello, Flandre. How are you feeling?"

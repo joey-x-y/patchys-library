@@ -7,41 +7,64 @@ label day6:
 
 label day6_morning:
 
+    call day_transition_in
+
+    $ flan.show(wings="none", at=[center_right, standheight], flip=True, transition=dissolve, zorder=5)
+
     "Flandre jumps out from her coffin."
 
-    f "Why am I so hungry...?"
+    f "I'm starving..."
+
+    $ flan.show(far_left, transition=move_slow, flip=True)
 
     "She goes straight to the stash of food, crunching away."
 
+    $ remi.show([center_right, standheight], transition=dissolve, zorder=1)
+
     "Remilia slowly rises."
 
+    $ remi.flip(transition=dissolve_fast)
+
     r "Eating so loudly so—"
+
+    r "..."
 
     f "I am absolutely starving. Want one?"
 
     "Flandre continues eating for a few moments."
 
+    $ flan.flip(transition=dissolve_fast)
+
     f "Uh, do you?"
 
-    "Flandre turns to a crying Remilia."
+    stop music fadeout 2.0
+
+    r "..."
 
     f "What? What's wrong?!"
+
+    $ remi.flip(transition=dissolve_fast)
 
     "Remilia averts her eyes."
 
     f "Remi?!"
 
+    $ remi.flip(transition=dissolve_fast)
+
     r "..."
+
+    $ flan.move(hop(10))
 
     "Flandre reaches behind to her wings and grabs them."
 
     f "Uh, Remi, something is..."
 
-    "Remilia looks back."
-
     r "Your wings are gone."
 
     f "Gone. Oh."
+
+    $ flan.move(hopreset)
+    $ flan.move(hop(10))
 
     "Flandre rubs her hand along the empty wing stem."
 
@@ -49,9 +72,16 @@ label day6_morning:
 
     r "Hey, Flan—."
 
-    "Suddenly, a large red sword appears in Flandre's hand and begins to glow."
+    play sound sfx_magic_cast
+    call spear_summon()
+
+    "A large red sword appears in Flandre's hand and begins to glow."
 
     r "No, stop!"
+
+    $ remi.move(left, transition=move_fast)
+    $ remi.move(room_pacing(start_pos=0.3, distance=0.003, move_speed=0.15, pivot_pause_time=0.175))
+    $ flan.move(room_pacing(start_pos=0.2, distance=0.003, move_speed=0.15, pivot_pause_time=0.175))
 
     "Remilia flies over and grabs Flandre. Flandre swings her sword around as Remilia holds her in place."
 
@@ -69,15 +99,26 @@ label day6_morning:
 
     f "But, but, they're... already gone."
 
+    $ remi.move(left)
+    $ flan.move(far_left)
+    $ flan.flip(transition=dissolve_fast)
+
     "Flandre goes limp, and puts her face in her hands, crying."
 
     f "They're gone! I'll never fly again!"
+
+    $ flan.flip(transition=dissolve_fast)
+    $ remi.move(at=[center_right, sitheight], transition=move_fast)
+    $ remi.move(drophalf)
+    with None
+
+    $ flan.move(at=floatup, transition=move_fast)
 
     "Flandre shoves Remilia onto the ground, then jumps into her coffin."
 
     "Remilia coughs hard on the floor, holding her stomach. After her breath stabilizes, she sits up and stares at Flandre silently."
 
-    "After ten minutes, Remilia stand up."
+    $ remi.move(sitheight, move_slow)
 
     r "Flandre?"
 
@@ -89,21 +130,53 @@ label day6_morning:
 
     r "Um, I'll be right back, alright?"
 
-    "Remilia steps out to the front hall, then drops to a knee."
+    $ remi.move(standheight, transition=move_slow)
+    $ remi.flip(transition=dissolve_fast)
+    $ remi.move(offscreenright, transition=move_slow)
 
-    r "Ow... she's so strong. Ah, I don't have time to be hurt right now!"
+    call scene_transition_fade("bg_library")
 
-    "She stands up after a moment and flies through the study door."
+    $ remi.show([offscreenright, standheight], flip=True)
+    with None
+    $ remi.move(center_right, transition=move_slow)
+
+    $ remi.move(drophalf, transition=move_slow)
+
+    r "Ow... she's so strong. My stomache..."
+    
+    r "Ah, I don't have time to be hurt right now!"
+
+    $ remi.move(standheight, transition=move_slow)
+
+    scene black with fade
+
+    "She finally stands up and flies her way to the study."
+
+    scene bg_study with fade
+
+    $ pat.show([right, standheight], transition=dissolve)
+
+    $ remi.show(at=[left, standheight, enterleft(0.3)], flip=True)
 
     r "Patchouli! Come!"
 
     p "Is something amiss?"
 
-    r "Hurry up!"
+    r "Hurry!"
 
-    "Remilia flies out."
+    $ remi.show(enterforcefinish, flip=True)
+    with None
+
+    $ remi.move(offscreenleft, transition=ease)
 
     p "Hmm."
+
+    call scene_transition_fade("bg_bedroom")
+
+    $ flan.show([far_left, standheight, floatup])
+    $ remi.show([center_right, standheight], transition=dissolve)
+
+    $ pat.show([far_right, standheight, enterright()])
 
     "Patchouli flies behind Remilia into the bedroom. Flandre is leaning back in her coffin, blankly staring at the ceiling. Her gaze snaps to them as they enter."
 
@@ -115,43 +188,93 @@ label day6_morning:
 
     f "Leave me alone!"
 
-    "Flandre turns and curls herself into a ball, revealing her wings."
+    $ flan.flip(transition=dissolve_fast)
+    $ flan.move(hopreset, transition=move_fast)
+
+    "Flandre turns and curls herself into a ball, revealing her decayed wings."
 
     p "...What?"
 
-    r "Yeah... she's not taking it well."
+    r "Mhm... She's not taking it well."
 
     p "Damn it! They're already gone?"
+
+    $ remi.flip(transition=dissolve_fast)
 
     r "Uh, hey, Patchouli?"
 
     p "What can I—"
 
-    "She quickly flies out of the room mid-sentence."
+    $ pat.move(enterforcefinish)
+    $ pat.flip()
+    with None
+    $ pat.move(offscreenright, transition=ease)
 
     r "Hey!"
 
-    "Remilia looks back and forth between the door and Flandre's deadly glare, then flies off to the study. There, she finds Patchouli breathing heavily on the floor."
+    $ remi.flip(transition=dissolve_fast)
+    pause 0.2
+    $ remi.flip(transition=dissolve_fast)
+    pause 0.2
+    $ remi.flip(transition=dissolve_fast)
+
+    "She looks back and forth between the door and Flandre's deadly glare."
+    
+    $ remi.flip(transition=dissolve_fast)
+    $ remi.move(offscreenright, transition=move_fast)
+
+    call scene_transition_fade("bg_study")
+
+    $ pat.show([center_left, sitheight], transition=dissolve, zorder=5)
+    $ remi.show([corner_left, standheight, enterleft()])
+    pause 0.2
+    $ pat.move(drophalf)
 
     r "What are you doing?"
 
     p "I want... to do... something."
 
-    r "Slow down, aren't you weak?"
+    r "Slow down, would you? Aren't you weak?"
+
+    $ pat.move(standup)
 
     p "I'm fine."
 
-    "She stands and takes a few wobbly steps. Remilia picks her up."
+    $ pat.move(center, transition=MoveTransition(0.5, time_warp=_warper.ease))
+    $ pat.move(drophalf)
 
     r "Stop! Just sit down!"
+
+    $ remi.move(enterforcefinish)
+    with None
+    $ remi.move(center_left, transition=ease)
+    $ remi.move(floatup)
+    with None
+    $ pat.move(standheight, transition=ease)
+
+    $ remi.move(center_right)
+    $ pat.move(right, transition=ease)
+
+    $ pat.show(sitheight, flip=True)
+    $ remi.move(center_left, transition=ease)
+
+    play music bgm_emotional fadein 2.0
+    show layer master at table_zoom
+
+    $ remi.move(hopreset)
+    with None
+    $ remi.move(sitheight, transition=move_slow)
 
     "She drops Patchouli onto her chair, then sits across from her. Patchouli breathes hard for a full minute before recovering."
 
     p "Sorry."
 
-    "Remilia looks to the door and back a few times."
+    $ remi.flip(transition=dissolve)
+    $ remi.flip(transition=dissolve)
 
-    "She lets out a deep breath then drops her head. Tears appear."
+    "Remilia looks to the door and back, lets out a deep breath as she drops her head in tears."
+
+    show bg_study with fade
 
     "Nobody speaks for a few minutes."
 
@@ -171,7 +294,9 @@ label day6_morning:
 
     "Patchouli crosses her arms and looks down."
 
-    p "...No, The fault is mine. I screwed up."
+    p "I screwed it up. Working so slow."
+
+    $ remi.move(drophalf)
 
     "Remilia curls into a ball and buries her face."
 
@@ -181,11 +306,21 @@ label day6_morning:
 
     "Patchouli looks over to Remilia, then looks back down."
 
-    "She takes a deep breath, then slowly floats over in front of her."
+    show layer master at table_unzoom
+    stop music fadeout 2.0
+
+    $ pat.move([center_right, standheight], transition=move_slow)
+
+    "She takes a deep breath, then slowly floats over."
 
     p "Um... Remilia?"
 
-    "Remilia peeks up, then suddenly latches onto Patchouli."
+    $ remi.move(sitheight, transition=move_slow)
+    $ remi.move([center, standheight], transition=move_fast)
+
+    play music bgm_ending fadein 2.0
+    show cg_hug zorder 8 with dissolve
+
 
     r "I'm sorry Patchy!"
 
@@ -197,9 +332,9 @@ label day6_morning:
 
     r "I'm so useless."
 
-    p "You're not."
+    p "...You're not."
 
-    r "Not enough."
+    r "Not good enough."
 
     p "You are."
 
@@ -211,7 +346,13 @@ label day6_morning:
 
     "They hold on to each other silently for a long time."
 
+    show cg_hug with fade
+
     "Eventually, Remilia gently let's go."
+
+    hide cg_hug with dissolve
+    
+    $ remi.move(left, transition=ease)
 
     r "Uh, sorry. Thanks. Um, yeah."
 
@@ -223,6 +364,15 @@ label day6_morning:
 
     r "Ha, me neither."
 
+    stop music fadeout 2.0
+    play music bgm_emotional fadein 2.0
+
+    $ remi.show(corner_left, flip=True, zorder=6)
+    $ pat.show(right, transition=move_slow, flip=True)
+    $ pat.show(sitheight, flip=True)
+
+    $ remi.flip(transition=dissolve)
+
     "Remilia walks away, circling the room. Patchouli sits back down."
 
     r "So... what now? Ugh, I already asked you that."
@@ -233,13 +383,17 @@ label day6_morning:
 
     p "Oh."
 
+    $ pat.move(hopdown(10, 0.4))
+
     "Patchouli brings up her legs, tucking her knees into her chest."
 
-    r "Don't blame yourself for any of this. You have already done more for us than anyone ever has."
+    $ remi.move(left, transition=ease)
+
+    r "It's foolish to blame yourself for this. You have already done more for us than anyone ever has."
 
     p "But I have not done what was promised."
 
-    r "You tried your best. I could tell."
+    r "You made a clear effort."
 
     p "I don't care. I want to fix those wings."
 
@@ -251,11 +405,18 @@ label day6_morning:
 
     p "There really isn't anything to study. I don't know. I need to think."
 
-    r "Understood. Want me to leave you alone?"
+    $ remi.flip(transition=dissolve)
+
+    r "I understand. Want me to leave you alone?"
 
     p "No. Stay."
 
-    "Remilia sits back down."
+    $ remi.flip(transition=dissolve_fast)
+    $ remi.move([center_left, sitheight], transition=ease)
+
+    r "Sure."
+
+    show bg_study with fade
 
     "Hours pass in silence, with Remilia occasional pacing, and Patchouli skimming books, thinking, and putting them away."
 
@@ -267,6 +428,8 @@ label day6_morning:
 
     "Remilia walks over to Patchouli."
 
+    $ remi.move([center, standheight], transition=ease)
+
     r "Here."
 
     p "...What?"
@@ -275,11 +438,15 @@ label day6_morning:
 
     r "I present to you, the pride and soul of all vampires. My gorgeous wings. You wanted to study them. Here you go."
 
+    $ pat.move(standheight, transition=ease)
+
     "Patchouli stands and smiles."
 
     p "Oh, I see. You're finally letting Patchy touch your wings?"
 
     r "Shut up! I'm never calling you that again. Just do it already."
+
+    #TODO wing cg
 
     "Patchouli grabs the wings, thoroughly handling them and feeling each individual part."
 
@@ -333,6 +500,8 @@ label day6_morning:
 
     p "Oh."
 
+    # TODO end wing cg
+
     "Patchouli lets go."
 
     r "Finally! I hope you understand the elegance of wings now."
@@ -363,9 +532,17 @@ label day6_morning:
 
     r "No, never mind. This is silly of me. I'll go now."
 
+    stop music fadeout 2.0
+
+    call scene_transition_fade("bg_library_stairs")
+
+    $ remi.show([center_right, standheight], transition=dissolve)
+
     "She quickly steps out of the room and takes a slow, deep breath."
 
-    r "I have to face her eventually."
+    r "I have to face her eventually. Come on."
+
+    scene black with fade
 
     "She slowly walks down the stairs, and eventually makes it to the bedroom door."
 
@@ -375,11 +552,19 @@ label day6_morning:
 
     "She enters."
 
-    "Flandre is sitting in her coffin. Dried tears cover her face."
+    scene bg_bedroom with fade
+
+    $ flan.show([far_left, standheight, floatup], transition=dissolve, flip=True)
+    $ remi.show([right, standheight, enterright()])
+
+    "Flandre is sitting in her coffin, unmoved from before. Dried tears cover her face."
 
     r "Hello, Flandre."
 
     f "Hi."
+
+    $ remi.move(left, transition=move_slow)
+    $ flan.move(hopreset, transition=move_slow)
 
     "Remilia walks to the bed and hugs her. Flandre leans into her."
 
@@ -403,14 +588,21 @@ label day6_morning:
 
     r "Right, of course."
 
-    "Remilia steps back."
+    $ remi.move(center_right, transition=ease)
 
     f "If you blame yourself again, I'll hit you."
 
     r "Right."
 
-    "Flandre closes her coffin lid."
+    play sound sfx_coffin_close
+    $ flan.hide(transition=dissolve)
 
-    "Remilia exhales heavily then enters her own, falling asleep instantly."
+    "Flandre closes her coffin lid, as Remilia exhales heavily."
+
+    r "..."
+
+    scene black with fade
+
+    "She climbs into her coffin and falls asleep instantly."
 
     return

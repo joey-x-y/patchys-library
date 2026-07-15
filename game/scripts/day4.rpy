@@ -59,7 +59,7 @@ label day4_morning:
 
     scene bg_study with fade
 
-    $ pat.show(at=[right, standheight], transition=dissolve, zorder=2)
+    $ pat.show(hat=False, at=[right, standheight], transition=dissolve, zorder=2)
 
     $ remi.show(at=[far_left, standheight, enterleft()], zorder=5)
     $ flan.show(at=[left, standheight, enterleft()], zorder=3)
@@ -429,7 +429,7 @@ label day4_morning:
 
     $ flan.flip(transition=dissolve_fast)
 
-    f "What?! You made {i}The{/i} Remilia Scarlet grab something for you?"
+    f "What? You made The Remilia Scarlet grab something for you?"
 
     p "Yes. Her labor was much appreciated."
 
@@ -524,7 +524,7 @@ label day4_morning:
 
     "She quickly escapes to her coffin."
 
-    r "Good heavens."
+    r "Goodness."
 
     play sound sfx_coffin_open
     
@@ -536,6 +536,7 @@ label day4_morning:
 
     f "Mhm. See you, Remi."
 
+    stop music fadeout 2.0
     scene black with fade
 
     "Flandre's coffin closes once again, as Remilia retires into her own."
