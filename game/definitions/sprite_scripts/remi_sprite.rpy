@@ -34,6 +34,12 @@ layeredimage r:
         attribute surprised:
             cpre + "suprised.png"
 
+    group effects:
+        attribute noeffect default:
+            Null()
+        attribute blushing:
+            cpre + "plusing.png"
+
     group dirt:
         attribute none default:
             Null()

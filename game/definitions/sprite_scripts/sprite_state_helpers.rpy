@@ -490,7 +490,7 @@ init python:
         ]
 
         if state.get("blush"):
-            parts.append("blush")
+            parts.append("blushing")
         else:
             parts.append("noeffect")
 
@@ -534,7 +534,6 @@ init python:
     PAT_EXPRESSIONS = (
         "neutral",
         "angry",
-        "blushing",
         "serious",
         "smile",
         "surprised",
@@ -567,7 +566,18 @@ init python:
         else:
             base = "base"
 
-        return "p {} {}".format(base, expression)
+        parts = [
+            "p",
+            base,
+            expression,
+        ]
+
+        if state["blush"]:
+            parts.append("blushing")
+        else:
+            parts.append("noeffect")
+
+        return " ".join(parts)
 
 
 default pat = StatefulSprite(
@@ -577,12 +587,14 @@ default pat = StatefulSprite(
         "expression",
         "hat",
         "magic",
+        "blush",
     ),
 
     defaults={
         "expression": "neutral",
         "hat": True,
         "magic": False,
+        "blush": False,
     },
 
     compose=pat_compose,
@@ -639,6 +651,11 @@ init python:
             base,
             expression,
         ]
+
+        if state["blush"]:
+            parts.append("blushing")
+        else:
+            parts.append("noeffect")
 
         if state["dirty"]:
             parts.append("dirty")
@@ -705,6 +722,7 @@ default remi = RemiSprite(
         "dirty",
         "accessories",
         "hunt",
+        "blush",
     ),
 
     defaults={
@@ -712,6 +730,7 @@ default remi = RemiSprite(
         "dirty": False,
         "accessories": True,
         "hunt": False,
+        "blush": False,
     },
 
     compose=remi_compose,

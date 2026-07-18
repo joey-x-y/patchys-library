@@ -28,8 +28,6 @@ layeredimage f:
             cpfe + "beginging frown.png"
         attribute angry:
             cpfe + "angry.png"
-        attribute blushing:
-            cpfe + "blusing.png"
         attribute crying:
             cpfe + "crying.png"
         attribute holding_tear:

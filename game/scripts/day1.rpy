@@ -43,7 +43,7 @@ label day1_forest:
 
     "They blast through a wall of thin branches."
 
-    f "See! You're going to kill yourself like this!"
+    f "See?! You're going to kill yourself like this!"
 
     r "Fine."
 

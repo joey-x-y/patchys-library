@@ -63,7 +63,6 @@ image bg_forest = At(bp + "forest.png", bg_scale)
 image bg_bedroom = At(bp + "bedroom.png", bg_scale)
 image bg_bedroom_nocoffin = At(bp + "bedroom_nocoffin.png", bg_scale)
 image bg_study = At(bp + "library.png", bg_scale)
-image bg_study_tablezoom = At(bp + "library.png", bg_scale_tablezoom)
 image bg_library = At(bp + "entrance.png", bg_scale)
 image bg_library_stairs = At(bp + "entrance.png", bg_scale_upper)
 

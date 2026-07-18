@@ -33,3 +33,9 @@ layeredimage p:
             cppe + "shock.png"
         attribute think:
             cppe + "Thinking.png"
+
+    group effects:
+        attribute noeffect default:
+            Null()
+        attribute blushing:
+            cppe + "blusing.png"
