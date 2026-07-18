@@ -1,8 +1,7 @@
 ################################################################################
 ## GALLERY
 ##
-## Background assets and CG variants can be connected by replacing the None
-## values in GALLERY_BACKGROUNDS and GALLERY_CGS below with image paths.
+## Background and CG entries contain a title, defined image name(s), and artist.
 ################################################################################
 
 init python:
@@ -42,20 +41,21 @@ init python:
         },
     }
 
-    # Replace None with an image path, then add or remove entries as needed.
-    # Example: ("Scarlet Devil Mansion", "images/backgrounds/mansion.png")
+    # Each entry is (title, image name, artist).
+    # Image names reference images defined in custom_definitions.rpy.
     GALLERY_BACKGROUNDS = (
-        ("Background 1", None),
-        ("Background 2", None),
-        ("Background 3", None),
-        ("Background 4", None),
+        ("Forest", "bg_forest", "Hiro Reverie"),
+        ("Bedroom", "bg_bedroom", "camellia"),
+        ("Patchouli's Study", "bg_study", "camellia"),
+        ("Library Entrance", "bg_library", "camellia"),
     )
 
-    # Each entry is (title, variants). Replace each None with an image path.
-    # Add more paths to a variants tuple to make them available with the arrows.
+    # Each entry is (title, variants, artist). Add more image names to a
+    # variants tuple to make them available with the arrows.
     GALLERY_CGS = (
-        ("CG 1", (None, None, None)),
-        ("CG 2", (None, None)),
+        ("Vampire Kiss", ("cg_kiss_cry", "cg_kiss_gentle", "cg_hug", "cg_stare_cry", "cg_stare_gentle"), "Hiro Reverie"),
+        ("Unsolicited Wing Touching", ("cg_wingtouch",), "numblr"),
+        ("Title Screen", ("cg_title", "cg_title_completion"), "Hiro Reverie"),
     )
 
     def gallery_character_sprite(character):
@@ -135,10 +135,20 @@ transform gallery_character_preview:
     yalign 1.0
 
 
+transform gallery_thumbnail_hover:
+    xalign 0.5
+    yalign 0.5
+
+    on hover:
+        easein 0.15 zoom 1.05
+    on idle:
+        easein 0.15 zoom 1.0
+
+
 screen gallery():
     tag menu
 
-    add gui.game_menu_background
+    add gui.main_menu_background
     add Solid("#09070dcc")
 
     text _("Gallery"):
@@ -168,7 +178,7 @@ screen gallery():
         textbutton _("Backgrounds") action ShowMenu("background_gallery")
         textbutton _("CGs") action ShowMenu("cg_gallery")
 
-    textbutton _("Back"):
+    textbutton _("Return"):
         style "gallery_back_button"
         action ShowMenu("main_menu")
 
@@ -183,21 +193,30 @@ screen character_gallery(character):
     $ state = gallery_character_states[character]
     $ sprite_image = gallery_character_image(character)
 
-    add gui.game_menu_background
-    add Solid("#09070de6")
+    add gui.main_menu_background
+    add Solid("#09070dcc")
 
-    text _("[character_name] Gallery"):
+    text _("[character_name]"):
         style "gallery_title"
-
-    if character == "remilia":
-        add "r_wings" at gallery_character_preview
 
     if character == "flandre":
         add sprite_image:
             at gallery_character_preview
             xzoom -1
-    else:
-        add sprite_image at gallery_character_preview
+            yoffset -80
+
+    elif character == "patchouli":
+        add sprite_image:
+            at gallery_character_preview
+            yoffset -60
+
+    elif character == "remilia":
+        add "r_wings":
+            at gallery_character_preview
+            yoffset -80
+        add sprite_image:
+            at gallery_character_preview
+            yoffset -80
 
     frame:
         style "gallery_controls_frame"
@@ -236,6 +255,10 @@ screen character_gallery(character):
                                 1,
                             )
 
+    text _("Artist: camellia"):
+        style "gallery_artist_credit"
+        xalign 0.77
+
     textbutton _("Back"):
         style "gallery_back_button"
         action ShowMenu("gallery")
@@ -246,7 +269,7 @@ screen character_gallery(character):
 screen background_gallery():
     tag menu
 
-    add gui.game_menu_background
+    add gui.main_menu_background
     add Solid("#09070de6")
 
     text _("Backgrounds"):
@@ -258,11 +281,11 @@ screen background_gallery():
         draggable True
 
         vpgrid:
-            cols 3
-            spacing 30
+            cols 2
+            spacing 60
 
             for background_index, background in enumerate(GALLERY_BACKGROUNDS):
-                $ background_title, background_path = background
+                $ background_title, background_image, background_artist = background
 
                 vbox:
                     spacing 8
@@ -275,13 +298,19 @@ screen background_gallery():
                         )
 
                         add gallery_asset(
-                            background_path,
+                            background_image,
                             background_title,
                             (420, 236),
-                        )
+                        ):
+                            at gallery_thumbnail_hover
 
                     text background_title:
                         xalign 0.5
+
+                    if background_artist:
+                        text _("Artist: [background_artist]"):
+                            xalign 0.5
+                            color gui.idle_small_color
 
     textbutton _("Back"):
         style "gallery_back_button"
@@ -293,14 +322,18 @@ screen background_gallery():
 screen background_gallery_view(background_index):
     tag menu
 
-    $ background_title, background_path = GALLERY_BACKGROUNDS[background_index]
+    $ background_title, background_image, background_artist = GALLERY_BACKGROUNDS[background_index]
 
     add gallery_asset(
-        background_path,
+        background_image,
         background_title + "\nPlaceholder",
         (1920, 1080),
         "#17121d",
     )
+
+    if background_artist:
+        text _("Artist: [background_artist]"):
+            style "gallery_artist_credit"
 
     textbutton _("Back"):
         style "gallery_back_button"
@@ -312,7 +345,7 @@ screen background_gallery_view(background_index):
 screen cg_gallery():
     tag menu
 
-    add gui.game_menu_background
+    add gui.main_menu_background
     add Solid("#09070de6")
 
     text _("CGs"):
@@ -322,7 +355,7 @@ screen cg_gallery():
         style "gallery_cg_entries"
 
         for cg_index, cg in enumerate(GALLERY_CGS):
-            $ cg_title, cg_variants = cg
+            $ cg_title, cg_variants, cg_artist = cg
             $ variant_count = len(cg_variants)
 
             vbox:
@@ -340,11 +373,17 @@ screen cg_gallery():
                         cg_variants[0],
                         cg_title,
                         (620, 349),
-                    )
+                    ):
+                        at gallery_thumbnail_hover
 
                 text cg_title:
                     xalign 0.5
                     size 38
+
+                if cg_artist:
+                    text _("Artist: [cg_artist]"):
+                        xalign 0.5
+                        color gui.idle_small_color
 
                 text _("[variant_count] Variants"):
                     xalign 0.5
@@ -360,14 +399,18 @@ screen cg_gallery():
 screen cg_gallery_view(cg_index, variant_index=0):
     tag menu
 
-    $ cg_title, cg_variants = GALLERY_CGS[cg_index]
+    # Screen parameters reset on every screen update, so copy the starting
+    # variant into a default variable that SetScreenVariable can change.
+    default current_variant = variant_index
+
+    $ cg_title, cg_variants, cg_artist = GALLERY_CGS[cg_index]
     $ variant_count = len(cg_variants)
-    $ variant_number = variant_index + 1
-    $ variant_path = cg_variants[variant_index]
+    $ variant_number = current_variant + 1
+    $ variant_path = cg_variants[current_variant]
 
     add gallery_asset(
         variant_path,
-        cg_title + "\nVariant {}".format(variant_index + 1),
+        cg_title + "\nVariant {}".format(current_variant + 1),
         (1920, 1080),
         "#17121d",
     )
@@ -377,8 +420,8 @@ screen cg_gallery_view(cg_index, variant_index=0):
         xpos 40
         yalign 0.5
         action SetScreenVariable(
-            "variant_index",
-            (variant_index - 1) % variant_count,
+            "current_variant",
+            (current_variant - 1) % variant_count,
         )
 
     textbutton _("→"):
@@ -387,14 +430,18 @@ screen cg_gallery_view(cg_index, variant_index=0):
         xoffset -40
         yalign 0.5
         action SetScreenVariable(
-            "variant_index",
-            (variant_index + 1) % variant_count,
+            "current_variant",
+            (current_variant + 1) % variant_count,
         )
 
     text "[variant_number] / [variant_count]":
         xalign 0.5
         yalign 0.95
         outlines [(2, "#000000", 0, 0)]
+
+    if cg_artist:
+        text _("Artist: [cg_artist]"):
+            style "gallery_artist_credit"
 
     textbutton _("Back"):
         style "gallery_back_button"
@@ -431,6 +478,8 @@ style gallery_back_button:
     xpos 40
     yalign 1.0
     yoffset -35
+    padding (25, 12)
+    background Solid("#00000099")
 
 style gallery_controls_frame is gui_frame
 style gallery_controls_frame:
@@ -442,12 +491,12 @@ style gallery_controls_frame:
 
 style gallery_attribute_label is gui_text
 style gallery_attribute_label:
-    size 27
+    size 33
     color gui.accent_color
 
 style gallery_value_text is gui_text
 style gallery_value_text:
-    xsize 320
+    min_width 320
     yalign 0.5
     text_align 0.5
     size 31
@@ -463,7 +512,7 @@ style gallery_arrow_button_text:
 
 style gallery_grid_viewport is gui_viewport
 style gallery_grid_viewport:
-    xpos 250
+    xpos 500
     ypos 160
     xsize 1420
     ysize 800
@@ -472,7 +521,7 @@ style gallery_cg_entries is hbox
 style gallery_cg_entries:
     xalign 0.5
     yalign 0.5
-    spacing 80
+    spacing 20
 
 style gallery_fullscreen_arrow_button is gui_button
 style gallery_fullscreen_arrow_button:
@@ -484,3 +533,11 @@ style gallery_fullscreen_arrow_button_text is gui_button_text
 style gallery_fullscreen_arrow_button_text:
     xalign 0.5
     size 52
+
+style gallery_artist_credit is gui_text
+style gallery_artist_credit:
+    xalign 1.0
+    xoffset -40
+    yalign 1.0
+    yoffset -35
+    outlines [(2, "#000000", 0, 0)]

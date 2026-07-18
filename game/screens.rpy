@@ -305,7 +305,9 @@ screen navigation():
         if main_menu:
 
             textbutton _("Start") action Start()
-            textbutton _("Gallery") action ShowMenu("gallery")
+            
+            if persistent.beat_game:
+                textbutton _("Gallery") action ShowMenu("gallery")
 
         else:
 
@@ -436,10 +438,9 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
 
         hbox:
 
-            ## Reserve space for the navigation section.
-            frame:
-                style "game_menu_navigation_frame"
-
+            #  ## Reserve space for the navigation section.
+            # frame:
+            #     style "game_menu_navigation_frame"
             frame:
                 style "game_menu_content_frame"
 
@@ -480,6 +481,8 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
 
                     transclude
 
+           
+
     use navigation
 
     textbutton _("Return"):
@@ -517,6 +520,7 @@ style game_menu_navigation_frame:
     yfill True
 
 style game_menu_content_frame:
+    xsize 1550
     left_margin 60
     right_margin 30
     top_margin 15
@@ -531,7 +535,7 @@ style game_menu_side:
     spacing 15
 
 style game_menu_label:
-    xpos 75
+    xpos gui.navigation_xpos
     ysize 180
 
 style game_menu_label_text:

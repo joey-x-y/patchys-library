@@ -18,6 +18,7 @@ define p = DynamicCharacter("magician_name", color="#c767ff")
 # The game starts here.
 
 label start:
+    $ persistent.beat_game = True
     stop music fadeout 2.0
     # call test
 

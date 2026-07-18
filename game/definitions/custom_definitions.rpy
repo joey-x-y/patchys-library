@@ -74,6 +74,9 @@ image cg_stare_gentle = cgp + "hug.png"
 image cg_kiss_cry = cgp + "kiss.png"
 image cg_kiss_gentle = cgp + "hug.png"
 
+image cg_title = "images/title.png"
+image cg_title_completion = "images/title_completion.png"
+
 # image cg_wing_surprise = cgp + "wing_surprise.png"
 image cg_wingtouch = At(cgp + "wing_touch.png", bg_scale)
 
