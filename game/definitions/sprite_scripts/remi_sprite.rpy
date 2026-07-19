@@ -1,18 +1,28 @@
 define cpr = "remi/"
 define cpre = cpr + "expression/"
+define cpra = cpr + "accessary/"
 
 image r_wings = At(cpr + "wing.png", sprite_set)
 
 layeredimage r:
     at sprite_set
 
-    group base:
-        attribute clean default:
-            cpr + "default/remilia.png"
-        attribute hunt:
-            cpr + "dirty/remilia dirty hunt rabbit.png"
-        attribute noacc:
-            cpr + "no acc/remilia default no head band.png"
+    always:
+        cpr + "no acc/remilia default no head band.png"
+
+    group hat:
+        attribute hat default:
+            cpra + "headdress.png"
+        attribute nohat:
+            Null()
+            
+    group glove:
+        attribute glove default:
+            cpra + "glove.png"
+        attribute noglove:
+            Null()
+        attribute bloody:
+            cpra + "hunt_hand.png"
 
     group face:
         attribute neutral default:
@@ -45,6 +55,6 @@ layeredimage r:
             Null()
         attribute dirty:
             Fixed(
-                cpr + "dirty/remilia dirty.png",
-                cpr + "eyebag.png"
+                cpr + "eyebag.png",
+                cpr + "dirty/remilia dirty.png"
             )

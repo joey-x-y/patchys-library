@@ -4,6 +4,8 @@
 ## Background and CG entries contain a title, defined image name(s), and artist.
 ################################################################################
 
+#TODO figure out how to handle remilia hunt variants, Should tell camellia about visual bugs. Custom display names.
+
 init python:
 
     GALLERY_CHARACTER_CONFIG = {
@@ -12,9 +14,9 @@ init python:
             "sprite": "remi",
             "attributes": (
                 ("expression", "Expression", REMI_EXPRESSIONS),
+                ("hat", "Hat", (True, False)),
+                ("glove", "Glove", ("On", "Off", "Blood")),
                 ("dirty", "Dirty", (False, True)),
-                ("accessories", "Accessories", (True, False)),
-                ("hunt", "Hunt Outfit", (False, True)),
                 ("blush", "Blushing", (False, True)),
             ),
         },
@@ -53,9 +55,19 @@ init python:
     # Each entry is (title, variants, artist). Add more image names to a
     # variants tuple to make them available with the arrows.
     GALLERY_CGS = (
-        ("Vampire Kiss", ("cg_kiss_cry", "cg_kiss_gentle", "cg_hug", "cg_stare_cry", "cg_stare_gentle"), "Hiro Reverie"),
+        ("Vampire Kiss", ("cg_kiss_surprise", "cg_kiss_gentle", "cg_stare",  "cg_hug"), "Hiro Reverie"),
         ("Unsolicited Wing Touching", ("cg_wingtouch",), "numblr"),
         ("Title Screen", ("cg_title", "cg_title_completion"), "Hiro Reverie"),
+    )
+
+    # Display names and files used by the gallery's Music Room.
+    GALLERY_BGM_TRACKS = (
+        ("Title", bgm_title),
+        ("Forest", bgm_forest),
+        ("Duel", bgm_duel),
+        ("Library", bgm_library),
+        ("Library 2", bgm_emotional),
+        ("The Kiss", bgm_ending),
     )
 
     def gallery_character_sprite(character):
@@ -106,13 +118,31 @@ init python:
             return Transform(path, fit="cover", xysize=size)
         return gallery_placeholder(placeholder_text, size, color)
 
+    def gallery_music_room_enter():
+        global gallery_current_track
+        if gallery_current_track is None:
+            gallery_current_track = "Title"
+
+    def gallery_toggle_music(track_name, track_file):
+        global gallery_current_track
+
+        if gallery_current_track == track_name:
+            renpy.music.stop(channel="music")
+            gallery_current_track = None
+        else:
+            renpy.music.set_pause(False, channel="music")
+            renpy.music.play(track_file, channel="music", loop=True)
+            gallery_current_track = track_name
+
+        renpy.restart_interaction()
+
 
 default gallery_character_states = {
     "remilia": {
         "expression": "neutral",
+        "hat": True,
+        "glove": "On",
         "dirty": False,
-        "accessories": True,
-        "hunt": False,
         "blush": False,
     },
     "flandre": {
@@ -128,6 +158,8 @@ default gallery_character_states = {
         "magic": False,
     },
 }
+
+default gallery_current_track = None
 
 
 transform gallery_character_preview:
@@ -148,39 +180,65 @@ transform gallery_thumbnail_hover:
 screen gallery():
     tag menu
 
-    add gui.main_menu_background
-    add Solid("#09070dcc")
+    use game_menu(_("Gallery")):
 
-    text _("Gallery"):
-        style "gallery_title"
+        # Fill the content frame so the button column can center in it.
+        fixed:
+            frame:
+                style "gallery_main_frame"
 
-    vbox:
-        style "gallery_main_buttons"
+                vbox:
+                    spacing 20
+                    xalign 0.5
 
-        textbutton _("Remilia"):
-            action [
-                Function(gallery_reset_character, "remilia"),
-                ShowMenu("character_gallery", character="remilia"),
-            ]
+                    text _("Character Sprites"):
+                        style "gallery_group_header"
 
-        textbutton _("Flandre"):
-            action [
-                Function(gallery_reset_character, "flandre"),
-                ShowMenu("character_gallery", character="flandre"),
-            ]
+                    add Solid(gui.accent_color):
+                        xysize (420, 6)
+                        xalign 0.5
 
-        textbutton _("Patchouli"):
-            action [
-                Function(gallery_reset_character, "patchouli"),
-                ShowMenu("character_gallery", character="patchouli"),
-            ]
+                    textbutton _("Remilia"):
+                        style "gallery_main_buttons_button"
+                        action [
+                            Function(gallery_reset_character, "remilia"),
+                            ShowMenu("character_gallery", character="remilia"),
+                        ]
 
-        textbutton _("Backgrounds") action ShowMenu("background_gallery")
-        textbutton _("CGs") action ShowMenu("cg_gallery")
+                    textbutton _("Flandre"):
+                        style "gallery_main_buttons_button"
+                        action [
+                            Function(gallery_reset_character, "flandre"),
+                            ShowMenu("character_gallery", character="flandre"),
+                        ]
 
-    textbutton _("Return"):
-        style "gallery_back_button"
-        action ShowMenu("main_menu")
+                    textbutton _("Patchouli"):
+                        style "gallery_main_buttons_button"
+                        action [
+                            Function(gallery_reset_character, "patchouli"),
+                            ShowMenu("character_gallery", character="patchouli"),
+                        ]
+
+                    null height 5
+
+                    text _("Other Galleries"):
+                        style "gallery_group_header"
+
+                    add Solid(gui.accent_color):
+                        xysize (420, 6)
+                        xalign 0.5
+
+                    textbutton _("Backgrounds"):
+                        style "gallery_main_buttons_button"
+                        action ShowMenu("background_gallery")
+
+                    textbutton _("Illustrations"):
+                        style "gallery_main_buttons_button"
+                        action ShowMenu("cg_gallery")
+
+                    textbutton _("Music Room"):
+                        style "gallery_main_buttons_button"
+                        action ShowMenu("music_room")
 
     key "game_menu" action ShowMenu("main_menu")
 
@@ -257,9 +315,8 @@ screen character_gallery(character):
 
     text _("Artist: camellia"):
         style "gallery_artist_credit"
-        xalign 0.77
 
-    textbutton _("Back"):
+    textbutton _("Return"):
         style "gallery_back_button"
         action ShowMenu("gallery")
 
@@ -312,7 +369,7 @@ screen background_gallery():
                             xalign 0.5
                             color gui.idle_small_color
 
-    textbutton _("Back"):
+    textbutton _("Return"):
         style "gallery_back_button"
         action ShowMenu("gallery")
 
@@ -335,7 +392,7 @@ screen background_gallery_view(background_index):
         text _("Artist: [background_artist]"):
             style "gallery_artist_credit"
 
-    textbutton _("Back"):
+    textbutton _("Return"):
         style "gallery_back_button"
         action ShowMenu("background_gallery")
 
@@ -348,7 +405,7 @@ screen cg_gallery():
     add gui.main_menu_background
     add Solid("#09070de6")
 
-    text _("CGs"):
+    text _("Illustrations"):
         style "gallery_title"
 
     hbox:
@@ -385,11 +442,12 @@ screen cg_gallery():
                         xalign 0.5
                         color gui.idle_small_color
 
-                text _("[variant_count] Variants"):
-                    xalign 0.5
-                    color gui.idle_small_color
+                if variant_count > 1:
+                    text _("[variant_count] Variants"):
+                        xalign 0.5
+                        color gui.idle_small_color
 
-    textbutton _("Back"):
+    textbutton _("Return"):
         style "gallery_back_button"
         action ShowMenu("gallery")
 
@@ -415,39 +473,82 @@ screen cg_gallery_view(cg_index, variant_index=0):
         "#17121d",
     )
 
-    textbutton _("←"):
-        style "gallery_fullscreen_arrow_button"
-        xpos 40
-        yalign 0.5
-        action SetScreenVariable(
-            "current_variant",
-            (current_variant - 1) % variant_count,
-        )
+    if variant_count > 1:
 
-    textbutton _("→"):
-        style "gallery_fullscreen_arrow_button"
-        xalign 1.0
-        xoffset -40
-        yalign 0.5
-        action SetScreenVariable(
-            "current_variant",
-            (current_variant + 1) % variant_count,
-        )
+        textbutton _("←"):
+            style "gallery_fullscreen_arrow_button"
+            xpos 40
+            yalign 0.5
+            action SetScreenVariable(
+                "current_variant",
+                (current_variant - 1) % variant_count,
+            )
 
-    text "[variant_number] / [variant_count]":
-        xalign 0.5
-        yalign 0.95
-        outlines [(2, "#000000", 0, 0)]
+        textbutton _("→"):
+            style "gallery_fullscreen_arrow_button"
+            xalign 1.0
+            xoffset -40
+            yalign 0.5
+            action SetScreenVariable(
+                "current_variant",
+                (current_variant + 1) % variant_count,
+            )
+
+        text "[variant_number] / [variant_count]":
+            xalign 0.5
+            yalign 0.95
+            outlines [(2, "#000000", 0, 0)]
 
     if cg_artist:
         text _("Artist: [cg_artist]"):
             style "gallery_artist_credit"
 
-    textbutton _("Back"):
+    textbutton _("Return"):
         style "gallery_back_button"
         action ShowMenu("cg_gallery")
 
     key "game_menu" action ShowMenu("cg_gallery")
+
+screen music_room():
+    tag menu
+
+    on "show" action Function(gallery_music_room_enter)
+
+    add gui.main_menu_background
+    add Solid("#09070de6")
+
+    text _("Music Room"):
+        style "gallery_title"
+
+    text _("Current Track: [gallery_current_track!s]"):
+        style "music_room_current_track"
+
+    viewport:
+        style "music_room_viewport"
+        mousewheel True
+        draggable True
+
+        vbox:
+            spacing 14
+
+            for track_name, track_file in GALLERY_BGM_TRACKS:
+                textbutton track_name:
+                    style "music_room_track_button"
+                    selected gallery_current_track == track_name
+                    action Function(
+                        gallery_toggle_music,
+                        track_name,
+                        track_file,
+                    )
+
+    text _("Music: ramaseta"):
+        style "gallery_artist_credit"
+
+    textbutton _("Return"):
+        style "gallery_back_button"
+        action ShowMenu("gallery")
+
+    key "game_menu" action ShowMenu("gallery")
 
 
 style gallery_title is gui_label_text
@@ -457,28 +558,61 @@ style gallery_title:
     size 64
     color gui.accent_color
 
-style gallery_main_buttons is vbox
-style gallery_main_buttons:
+style gallery_main_frame is empty
+style gallery_main_frame:
     xalign 0.5
     yalign 0.5
-    spacing 20
+    padding (70, 45)
+    background Solid("#000000aa")
 
 style gallery_main_buttons_button is gui_button
 style gallery_main_buttons_button:
     xsize 420
     ysize 70
+    xalign 0.5
 
 style gallery_main_buttons_button_text is gui_button_text
 style gallery_main_buttons_button_text:
     xalign 0.5
     size 40
 
-style gallery_back_button is navigation_button
+style gallery_group_header is gui_text
+style gallery_group_header:
+    xalign 0.5
+    text_align 0.5
+    size 60
+    color gui.accent_color
+
+style music_room_current_track is gui_text
+style music_room_current_track:
+    xalign 0.5
+    ypos 125
+    size 34
+    color gui.idle_small_color
+
+style music_room_viewport is gui_viewport
+style music_room_viewport:
+    xalign 0.5
+    ypos 205
+    xsize 600
+    ysize 720
+
+style music_room_track_button is gui_button
+style music_room_track_button:
+    xsize 600
+    ysize 70
+
+style music_room_track_button_text is gui_button_text
+style music_room_track_button_text:
+    xalign 0.5
+    size 36
+
+style gallery_back_button is return_button
 style gallery_back_button:
-    xpos 40
-    yalign 1.0
-    yoffset -35
-    padding (25, 12)
+#     xpos gui.navigation_xpos
+#     yalign 1.0
+#     yoffset -35
+    # padding (25, 12)
     background Solid("#00000099")
 
 style gallery_controls_frame is gui_frame
@@ -536,8 +670,8 @@ style gallery_fullscreen_arrow_button_text:
 
 style gallery_artist_credit is gui_text
 style gallery_artist_credit:
-    xalign 1.0
-    xoffset -40
+    xalign 0.0
+    xoffset 40
     yalign 1.0
     yoffset -35
     outlines [(2, "#000000", 0, 0)]

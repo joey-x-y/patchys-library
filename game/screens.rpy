@@ -305,9 +305,6 @@ screen navigation():
         if main_menu:
 
             textbutton _("Start") action Start()
-            
-            if persistent.beat_game:
-                textbutton _("Gallery") action ShowMenu("gallery")
 
         else:
 
@@ -318,6 +315,9 @@ screen navigation():
         textbutton _("Load") action ShowMenu("load")
 
         textbutton _("Preferences") action ShowMenu("preferences")
+
+        if persistent.beat_game and main_menu:
+            textbutton _("Gallery") action ShowMenu("gallery")
 
         if _in_replay:
 
@@ -535,7 +535,7 @@ style game_menu_side:
     spacing 15
 
 style game_menu_label:
-    xpos gui.navigation_xpos
+    xpos 750
     ysize 180
 
 style game_menu_label_text:

@@ -639,18 +639,22 @@ init python:
                 )
             )
 
-        if state["hunt"]:
-            base = "hunt"
-        elif not state["accessories"]:
-            base = "noacc"
-        else:
-            base = "clean"
-
         parts = [
             "r",
-            base,
             expression,
         ]
+
+        if state["glove"] == "Off":
+            parts.append("noglove")
+        elif state["glove"] == "Blood":
+            parts.append("bloody")
+        else:
+            parts.append("glove")
+
+        if not state["hat"]:
+            parts.append("nohat")
+        else:
+            parts.append("hat")
 
         if state["blush"]:
             parts.append("blushing")
@@ -719,17 +723,17 @@ default remi = RemiSprite(
 
     state_order=(
         "expression",
+        "hat",
+        "glove",
         "dirty",
-        "accessories",
-        "hunt",
         "blush",
     ),
 
     defaults={
         "expression": "neutral",
+        "hat": True,
+        "glove": "On",
         "dirty": False,
-        "accessories": True,
-        "hunt": False,
         "blush": False,
     },
 
