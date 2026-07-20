@@ -6,7 +6,7 @@ label day5:
 label day5_morning:
     call day_transition_in from _call_day_transition_in_3
 
-    $ flan.show(at=[center, standheight], flip=True, zorder=6)
+    $ flan.show(at=[center, standheight], flip=True)
     $ remi.show(at=[left, standheight], flip=True)
     with dissolve
 
@@ -51,7 +51,7 @@ label day5_morning:
 
     "Patchouli sits with a book placed in her lap."
 
-    $ remi.show(at=[corner_left, standheight, enterleft()], zorder=5)
+    $ remi.show(at=[corner_left, standheight, enterleft()], zorder=1)
 
     p "Oh, you're alone today."
 
@@ -295,8 +295,6 @@ label day5_morning:
 
     f "Your true colors are showing."
 
-    
-
     $ flan.show(at=[far_left, standheight], transition=dissolve, zorder=1)
 
     call table_unzoom_l from _call_table_unzoom_l_1
@@ -306,9 +304,9 @@ label day5_morning:
     $ pat.show(magic=True)
     call generic_spell from _call_generic_spell_10
 
-    f "Nice aim. You can do numb me from there?"
+    f "Nice aim. You can numb me from there?"
 
-    $ pat.show(magic=False, transition=dissolve_fast, zorder=2)
+    $ pat.show(magic=False, transition=dissolve_fast, zorder=5)
 
     p "Yes."
 
@@ -323,11 +321,12 @@ label day5_morning:
     r "That long. Ugh."
 
     $ flan.move(at=[center, sitheight], transition=move_slow)
-    $ remi.flip(transition=dissolve_fast)
+    $ flan.show(zorder=2)
+    $ remi.show(flip=True, transition=dissolve_fast, zorder=4)
 
     call table_zoom_l from _call_table_zoom_l_4
 
-    "Flandre crashes into the tea party."
+    "Flandre crashes the tea party."
 
     $ flan.flip(transition=dissolve_fast)
 
@@ -365,7 +364,11 @@ label day5_morning:
 
     r "I think it's bedtime."
 
+    call table_unzoom_l from _call_table_unzoom_l_6
+
     f "Yeah... carry me."
+
+    p "See you two tomorrow."
 
     stop music fadeout 2.0
     call scene_transition_fade("black") from _call_scene_transition_fade_26
@@ -390,7 +393,7 @@ label day5_morning:
 
     f "Congrats."
 
-    $ remi.move(center, transition=move_slow)
+    $ remi.show(center, transition=move_slow, zorder=7)
 
     "Remilia puts her hand on Flandre's head."
 

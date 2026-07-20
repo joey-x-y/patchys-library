@@ -11,7 +11,7 @@ label day2_morning:
     play sound sfx_coffin_open
 
     $ remi.face(flipped=False)
-    $ remi.show(at=[left, standheight, enterbottom()], zorder=1)
+    $ remi.show(at=[left, standheight, enterbottom()], zorder=5)
     
     "Remilia rises out of her coffin and stretches."
 
@@ -72,7 +72,7 @@ label day2_morning:
     $ remi.face(flipped=True)
     $ flan.face(flipped=False)
 
-    $ flan.show(at=[center, standheight], zorder=1, transition=dissolve)
+    $ flan.show(at=[center, standheight], zorder=2, transition=dissolve)
     $ remi.show(at=[right, standheight, enterright()])
     
 
@@ -114,7 +114,7 @@ label day2_morning:
 
     p "You may enter."
 
-    $ remi.show(center_right, transition=move_slow, zorder=1)
+    $ remi.show(center_right, transition=move_slow)
 
     "Remilia grabs Flandre's hand as they enter together."
 
@@ -133,7 +133,7 @@ label day2_library:
 
     $ pat.show(hat=False, at=[right, standheight], transition=dissolve, zorder=2)
 
-    $ remi.show(at=[left, standheight, enterleft()], zorder=1)
+    $ remi.show(at=[left, standheight, enterleft()])
     $ flan.show(at=[corner_left, standheight, enterleft()])
 
     p "Welcome to my study."
@@ -181,7 +181,7 @@ label day2_library:
 
     f "Aw."
 
-    $ remi.show(center_left, zorder=1.5)
+    $ remi.show(center_left)
     $ flan.move(far_left)
     with move_slow
 
@@ -196,7 +196,7 @@ label day2_library:
 
     play sound sfx_rustle_3
 
-    "Flandre tugs the back of Remilia's shirt."
+    "Flandre tugs the back of Remilia's dress."
 
     f "You're being rude, sis."
 
@@ -217,7 +217,7 @@ label day2_library:
     $ remi.move(far_left)
     with move_slow
 
-    "Flandre gently tugs Remilia's shirt, and she steps back next to her."
+    "Flandre gently tugs again, and Remilia reluctantly steps back next to her."
 
     f "She's done. You can ask stuff now."
 
@@ -282,11 +282,18 @@ label day2_library:
 
     f "Just be quiet, Remi."
 
-    $ remi.show(unscoot, zorder=0.5)
+    $ remi.show(unscoot)
     $ flan.move(center_left)
     with move_slow
 
+    $ flan.show(zorder=7)
+
     "Flandre steps forward out of Remilia's grip. Remilia mouth opens, but quickly closes again."
+
+    f "U-um..."
+
+    $ flan.move(hopdown(height=10, length=0.3))
+    pause 0.3
 
     f "Patchouli, could you try? The pain... I hate it. Please. I'll help however you want."
 
@@ -306,6 +313,8 @@ label day2_library:
 
     p "I'll analyze your wings. Lay on the table."
 
+    $ pat.show(zorder=8)
+
     $ flan.move(hopreset)
     $ flan.move(right, transition=move_fast)
     play sound sfx_body_fall
@@ -318,9 +327,13 @@ label day2_library:
 
     r "Don't do anything weird to her."
 
+    $ pat.show(at=center, flip=True, magic=False)
+
     p "Like what?"
 
     r "Uh... I don't know."
+
+    $ pat.show(at=center_right, flip=True, magic=True)
 
     p "In that case, you are free to go do whatever you want. But don't break anything. And don't disturb me."
 
@@ -368,7 +381,7 @@ label day2_end:
 
     r "Did you learn anything useful?"
 
-    $ flan.move(drophalf)
+    $ flan.show(drophalf, zorder=0.5)
 
     "Patchouli yawns, while Flandre starts doing stretches on the floor."
 
@@ -377,7 +390,7 @@ label day2_end:
     p "These wings won't heal themselves, they were cut by something abnormal. I must figure out exactly what that abnormality is."
 
     $ flan.move(center_right)
-    $ pat.face(flipped=False, transition=dissolve)
+    $ pat.face(flipped=False, transition=dissolve_fast)
 
     $ pat.move(offscreenright)
     $ flan.move(corner_left, transition=move_slow)
@@ -393,9 +406,10 @@ label day2_end:
 
     r "Ugh, fine then. Hey, Flan—hey where are you?"
 
-    $ remi.face(flipped=True)
-
     f "Huh? It's all symbols?"
+
+    $ flan.show(zorder=1)
+    $ remi.face(flipped=True)
 
     "Flandre stands at a shelf with books scattered around her. Her face is buried in a large tome."
 
@@ -476,7 +490,7 @@ label day2_end:
 
     $ remi.show(at=[left, standheight, enterleft])
 
-    r "Hey, I'd like to ask you a few questions."
+    r "Hey, I have a few questions for you."
 
     p "Sure."
 
@@ -492,7 +506,7 @@ label day2_end:
 
     r "Well... they looked different the last time I checked."
 
-    "Patchouli looks up."
+    "Patchouli finally looks up."
 
     p "When was that?"
 
@@ -534,26 +548,22 @@ label day2_end:
 
     r "Go right ahead."
 
-    #TODO show cg
+    call summon_cg("cg_wingtouch") from _call_summon_cg
 
     $ pat.move(center, transition=move_slow)
 
-    "Patchouli grabs Remilia's wing."
-
     r "Huh? W-wait, hey!"
 
-    #TODO hide cg
+    call dismiss_cg from _call_dismiss_cg
 
-    $ remi.move(hop)
-    pause 0.3
-    $ remi.move(hopreset)
     $ remi.move(corner_left, transition=move_fast)
+    $ remi.move(hop)
 
     "Remilia quickly leaps across the room, out of her grip."
 
     r "What are you doing, fiend?! Unhand me!"
 
-    p "Checking your wings."
+    p "Checking your wings?"
 
     r "Unacceptable!"
 
@@ -565,6 +575,8 @@ label day2_end:
 
     "The rattled vampire clears her throat."
 
+    $ remi.move(hopreset)
+    with None
     $ remi.move(far_left, transition=ease)
 
     r "Don't just touch a vampire's wing like that. Understand?"
@@ -581,7 +593,7 @@ label day2_end:
     $ remi.move(center)
     $ pat.move(far_right, transition=ease)
     $ remi.flip(dissolve_fast)
-    $ flan.show(at=[far_left, standheight, enterleft])
+    $ flan.show(at=[far_left, standheight, enterleft], zorder=6)
     $ flan.forget_position()
 
     r "Flandre?"

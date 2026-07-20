@@ -314,6 +314,8 @@ label day3_morning:
 
     call scene_transition_fade("bg_study") from _call_scene_transition_fade_18
 
+    call table_unzoom_l from _call_table_unzoom_l_4
+
     $ pat.show(at=[right, standheight], transition=dissolve)
 
     $ flan.show(at=[center_left, standheight, enterleft()], flip=True)
@@ -358,7 +360,7 @@ label day3_morning:
     call scene_transition_fade("bg_bedroom") from _call_scene_transition_fade_19
 
     $ flan.show(at=[left, standheight])
-    $ remi.show(at=[center_right, standheight], flip=True, transition=dissolve)
+    $ remi.show(at=[center_right, standheight], flip=True, transition=dissolve, zorder=2)
 
     "The sisters gather around their daily dead chicken."
 
@@ -402,7 +404,7 @@ label day3_morning:
 
     f "I believe you."
 
-    $ flan.move(center, transition=move_slow)
+    $ flan.show(center, transition=move_slow)
 
     "Flandre leans into Remilia."
 
@@ -414,9 +416,9 @@ label day3_morning:
 
     $ flan.move([far_left, floatup], transition=move_fast)
 
-    "Flandre jumps into her coffin."
-
     f "I'm tired now. Bye."
+
+    "Flandre jumps into her coffin and grabs the lid."
 
     r "You forgot something."
 
@@ -427,7 +429,7 @@ label day3_morning:
     play sound sfx_coffin_close
     $ flan.hide(dissolve)
     
-    "Flandre's coffin slams shut."
+    "The lid slams shut."
 
     r "Ugh."
 

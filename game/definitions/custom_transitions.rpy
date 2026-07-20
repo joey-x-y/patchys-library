@@ -1,3 +1,5 @@
+init offset = -1
+
 define config.layers = [
     "background",
     "rear_sprites",
@@ -8,11 +10,11 @@ define config.layers = [
     "overlay",
 ]
 
-define forest_walk_fade = Fade(0.75, 0.6, 0.75)
+define fade_hold_black = Fade(0.75, 0.6, 0.75)
 
 label show_transition_fade(bg):
     show expression bg onlayer background
-    with fade
+    with fade_hold_black
     return
 
 label scene_transition_fade(bg):
@@ -26,6 +28,15 @@ label scene_transition_fade(bg):
     with fade
     return
 
+label summon_cg(cg):
+    show expression cg onlayer screens with dissolve
+    return
+
+label dismiss_cg:
+    $ renpy.scene(layer="screens")
+    with dissolve
+    return
+
 label day_transition_in:
     scene black onlayer background
     pause 1.0
@@ -34,15 +45,15 @@ label day_transition_in:
     return
 
 label table_zoom_l:
-    show layer master at table_zoom
-    show layer rear_sprites at table_zoom
-    show layer backgrounds at table_zoom
+    camera at table_zoom
+    camera rear_sprites at table_zoom
+    camera background at table_zoom
     return
 
 label table_unzoom_l:
-    show layer master at table_unzoom
-    show layer rear_sprites at table_unzoom
-    show layer backgrounds at table_unzoom
+    camera at table_unzoom
+    camera rear_sprites at table_unzoom
+    camera background at table_unzoom
     return
 
 transform table_zoom:

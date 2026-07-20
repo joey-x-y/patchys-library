@@ -9,8 +9,8 @@ label day1:
 label day1_forest:
     call scene_transition_fade("bg_forest") from _call_scene_transition_fade
 
-    $ remi.show(dirty=True, at=[center_right, standheight, enterright(speed=0.5)], flip=True, zorder=5)
-    $ flan.show(expression="frown",dirty=True, at=[right, standheight, enterright(speed=0.5)])
+    $ remi.show(dirty=True, at=[center_right, standheight, enterright(speed=0.5)], flip=True, zorder=7)
+    $ flan.show(expression="frown",dirty=True, at=[right, standheight, enterright(speed=0.5)], zorder=4)
 
     f "Remi! Look out!"
 
@@ -52,7 +52,7 @@ label day1_forest:
     call dim_screen from _call_dim_screen
     play sound sfx_forest_land
 
-    $ remi.show(at=[center_left, standheight], zorder=5)
+    $ remi.show(at=[center_left, standheight])
     $ flan.show(at=[right, standheight], transition=dissolve)
 
     "Remilia drops down from the air and catches her breath. Flandre steps down from her back."
@@ -94,6 +94,8 @@ label day1_forest:
 
     f "I can't."
 
+    call table_zoom_l from _call_table_zoom_l_6
+
     $ remi.flip(transition=dissolve_fast)
     $ remi.move(drophalf)
 
@@ -101,7 +103,7 @@ label day1_forest:
 
     r "Alright. We'll spare a few minutes."
 
-    $ remi.move(hop())
+    $ remi.move(hop(100, 0.3))
 
     "Remilia begins to get up, but gets pulled back down."
 
@@ -169,6 +171,8 @@ label day1_forest:
 
     "Flandre grabs Remilia's hand and pulls herself up."
 
+    call table_unzoom_l from _call_table_unzoom_l_3
+
     r "There must be some kind of shelter. Hunters build cabins out here."
 
     f "Vampire hunters?"
@@ -221,7 +225,7 @@ label day1_library:
 
     "They step into a large library. Bookshelves line the walls, and a large staircase lies straight ahead."
 
-    $ remi.show(at=[standheight, far_left, enterleft], zorder=1)
+    $ remi.show(at=[standheight, far_left, enterleft])
     $ flan.face(flipped=True)
     $ flan.show(at=[standheight, corner_left, enterleft])
 
@@ -388,7 +392,7 @@ label day1_end:
     $ flan.face(flipped=False)
     $ remi.face(flipped=True)
 
-    $ flan.show(at=[standheight, right, enterleft(speed=1.5)], zorder=1)
+    $ flan.show(at=[standheight, right, enterleft(speed=1.5)], zorder=6)
     $ remi.show(at=[dropdowninstant, corner_right, enterleft(speed=1.5)])
     
     pause 0.7
@@ -506,6 +510,10 @@ label day1_end:
     f "Nope! I can't feel them! It's great! I can finally—"
 
     play sound sfx_body_fall
+
+    $ remi.move(shake())
+
+    pause 0.1
 
     $ remi.show(dropdown, zorder=1)
 

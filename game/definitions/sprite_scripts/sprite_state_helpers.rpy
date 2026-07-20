@@ -16,6 +16,11 @@
 
 init python:
 
+    # Current schemas keyed by tag. Init-time sprite construction fills this;
+    # old saves keep stale self.defaults, so normalize reads from here instead.
+    STATEFUL_SPRITE_SCHEMAS = {}
+    DEFAULT_SPRITE_ZORDER = 5
+
     class StatefulSprite:
         """
         Controls a set of complete, flattened character sprites as though their
@@ -32,6 +37,7 @@ init python:
             lookup=None,
             compose=None,
             layer="master",
+            zorder=DEFAULT_SPRITE_ZORDER,
         ):
             if lookup is None and compose is None:
                 raise Exception(
@@ -46,9 +52,16 @@ init python:
             self.compose = compose
             self.layer = layer
             self.flipped = False
+            self.zorder = zorder
 
             # Remember the last position used by move() or show(position=...).
             self.position = None
+
+            STATEFUL_SPRITE_SCHEMAS[tag] = {
+                "defaults": defaults.copy(),
+                "state_order": tuple(state_order),
+                "compose": compose,
+            }
 
 
         ########################################################################
@@ -66,6 +79,69 @@ init python:
             return tuple(state[name] for name in self.state_order)
 
 
+        def _ensure_runtime_attrs(self):
+            """
+            Fill instance fields added in later builds (old saves omit them).
+            """
+
+            if not hasattr(self, "zorder"):
+                self.zorder = DEFAULT_SPRITE_ZORDER
+
+            if not hasattr(self, "flipped"):
+                self.flipped = False
+
+            if not hasattr(self, "position"):
+                self.position = None
+
+
+        def _sync_schema(self):
+            """
+            Refresh defaults/state_order/compose from the current game definition.
+
+            Saved sprites pickle their own defaults, which go stale when the
+            schema changes (e.g. hunt -> glove).
+            """
+
+            self._ensure_runtime_attrs()
+
+            schema = STATEFUL_SPRITE_SCHEMAS.get(self.tag)
+
+            if schema is None:
+                return
+
+            self.defaults = schema["defaults"].copy()
+            self.state_order = schema["state_order"]
+
+            if schema.get("compose") is not None:
+                self.compose = schema["compose"]
+
+
+        def _normalize_state(self, state, persist=False):
+            """
+            Rebuild state from current defaults when it has missing or obsolete
+            keys (common with older saves). Keeps any values that are still valid.
+            """
+
+            self._sync_schema()
+
+            expected_keys = set(self.defaults)
+            state_keys = set(state)
+
+            if state_keys == expected_keys:
+                return state
+
+            rebuilt = self.defaults.copy()
+
+            for key in expected_keys:
+                if key in state:
+                    rebuilt[key] = state[key]
+
+            if persist:
+                self.state = rebuilt
+
+            return rebuilt
+
+
         def _image_name(self, state=None):
             """
             Returns the Ren'Py image name for a given state.
@@ -73,11 +149,22 @@ init python:
             Uses compose() when provided (e.g. layeredimages), otherwise lookup.
             """
 
+            persist = state is None
+
             if state is None:
                 state = self.state
 
+            state = self._normalize_state(state, persist=persist)
+
             if self.compose is not None:
-                return self.compose(state)
+                try:
+                    return self.compose(state)
+                except KeyError:
+                    # Stale schema or corrupt state: force rebuild from current defaults.
+                    self._sync_schema()
+                    state = self.defaults.copy()
+                    self.state = state
+                    return self.compose(state)
 
             key = self._state_key(state)
 
@@ -135,10 +222,14 @@ init python:
                 $ flan.show(reset=True)
             """
 
+            self._sync_schema()
+
             if reset:
                 proposed_state = self.defaults.copy()
             else:
-                proposed_state = self.state.copy()
+                # Rebuild from defaults if this save has obsolete/missing keys,
+                # then keep any values that are still valid.
+                proposed_state = self._normalize_state(self.state, persist=True).copy()
 
             # Reject misspelled or unsupported property names.
             for name in changes:
@@ -162,12 +253,13 @@ init python:
                 layer=self.layer,
             )
 
+            if zorder is not None:
+                self.zorder = zorder
+
             show_arguments = {
                 "layer": self.layer,
+                "zorder": self.zorder,
             }
-
-            if zorder is not None:
-                show_arguments["zorder"] = zorder
 
             if behind is not None:
                 show_arguments["behind"] = behind
@@ -219,7 +311,12 @@ init python:
                 $ flan.move(center, transition=move)
             """
 
+            self._sync_schema()
+
             self.position = at
+
+            if zorder is not None:
+                self.zorder = zorder
 
             if renpy.showing(self.tag, layer=self.layer):
 
@@ -233,10 +330,8 @@ init python:
                 show_arguments = {
                     "layer": self.layer,
                     "at_list": at_list,
+                    "zorder": self.zorder,
                 }
-
-                if zorder is not None:
-                    show_arguments["zorder"] = zorder
 
                 renpy.show(
                     self._image_name(),
@@ -251,6 +346,8 @@ init python:
             """
             Applies an effect to the character.
             """
+
+            self._sync_schema()
 
             if self.position is None:
                 at_list = []
@@ -269,6 +366,7 @@ init python:
             show_arguments = {
                 "layer": self.layer,
                 "at_list": at_list,
+                "zorder": self.zorder,
             }
 
             renpy.show(
@@ -448,7 +546,6 @@ init python:
     # Script values ("default") map onto layeredimage wing attributes.
     FLAN_WINGS = {
         "default": "begin",
-        "begin": "begin",
         "mid": "mid",
         "gone": "gone",
         "crystal": "crystal",
@@ -502,25 +599,33 @@ init python:
         return " ".join(parts)
 
 
-default flan = StatefulSprite(
-    tag="f",
-
-    state_order=(
+    FLAN_STATE_ORDER = (
         "expression",
         "dirty",
         "wings",
         "accessories",
         "blush",
-    ),
+    )
 
-    defaults={
+    FLAN_DEFAULTS = {
         "expression": "neutral",
         "dirty": False,
         "wings": "default",
         "accessories": True,
         "blush": False,
-    },
+    }
 
+    STATEFUL_SPRITE_SCHEMAS["f"] = {
+        "defaults": FLAN_DEFAULTS.copy(),
+        "state_order": FLAN_STATE_ORDER,
+        "compose": flan_compose,
+    }
+
+
+default flan = StatefulSprite(
+    tag="f",
+    state_order=FLAN_STATE_ORDER,
+    defaults=FLAN_DEFAULTS,
     compose=flan_compose,
 )
 
@@ -580,23 +685,31 @@ init python:
         return " ".join(parts)
 
 
-default pat = StatefulSprite(
-    tag="p",
-
-    state_order=(
+    PAT_STATE_ORDER = (
         "expression",
         "hat",
         "magic",
         "blush",
-    ),
+    )
 
-    defaults={
+    PAT_DEFAULTS = {
         "expression": "neutral",
         "hat": True,
         "magic": False,
         "blush": False,
-    },
+    }
 
+    STATEFUL_SPRITE_SCHEMAS["p"] = {
+        "defaults": PAT_DEFAULTS.copy(),
+        "state_order": PAT_STATE_ORDER,
+        "compose": pat_compose,
+    }
+
+
+default pat = StatefulSprite(
+    tag="p",
+    state_order=PAT_STATE_ORDER,
+    defaults=PAT_DEFAULTS,
     compose=pat_compose,
 )
 
@@ -619,7 +732,9 @@ init python:
         "surprised",
     )
 
-    REMI_WING_LAYER = "rear_sprites"
+    REMI_WING_LAYER = "master"
+    REMI_WING_ZORDER = 1
+    REMI_WING_IMAGE = "r_wings"
 
     def remi_compose(state):
         """
@@ -669,19 +784,45 @@ init python:
         return " ".join(parts)
 
 
+    REMI_STATE_ORDER = (
+        "expression",
+        "hat",
+        "glove",
+        "dirty",
+        "blush",
+    )
+
+    REMI_DEFAULTS = {
+        "expression": "neutral",
+        "hat": True,
+        "glove": "On",
+        "dirty": False,
+        "blush": False,
+    }
+
+    STATEFUL_SPRITE_SCHEMAS["r"] = {
+        "defaults": REMI_DEFAULTS.copy(),
+        "state_order": REMI_STATE_ORDER,
+        "compose": remi_compose,
+        "wing_layer": REMI_WING_LAYER,
+        "wing_zorder": REMI_WING_ZORDER,
+        "wing_image": REMI_WING_IMAGE,
+    }
+
+
     class RemiSprite(StatefulSprite):
         """
-        Remi's body plus a separate wing image on rear_sprites.
+        Remi's body plus a separate wing image on the same layer.
 
-        Wings track Remi's position and facing on every show/move/effect/hide,
-        but always display on the rear_sprites layer so they stay behind other
-        characters on master.
+        Wings track Remi's position and facing on every show/move/effect/hide.
+        They default to a lower zorder so they stay behind other characters.
         """
 
         def __init__(
             self,
-            wing_image="r_wings",
+            wing_image=REMI_WING_IMAGE,
             wing_layer=REMI_WING_LAYER,
+            wing_zorder=REMI_WING_ZORDER,
             **kwargs
         ):
             super(RemiSprite, self).__init__(**kwargs)
@@ -689,11 +830,81 @@ init python:
             self.wing_image = wing_image
             self.wing_tag = wing_image.split()[0]
             self.wing_layer = wing_layer
+            self.wing_zorder = wing_zorder
+
+
+        def _ensure_runtime_attrs(self):
+            super(RemiSprite, self)._ensure_runtime_attrs()
+
+            schema = STATEFUL_SPRITE_SCHEMAS.get(self.tag, {})
+
+            if not hasattr(self, "wing_image"):
+                self.wing_image = schema.get("wing_image", REMI_WING_IMAGE)
+
+            if not hasattr(self, "wing_tag"):
+                self.wing_tag = self.wing_image.split()[0]
+
+            if not hasattr(self, "wing_zorder"):
+                self.wing_zorder = schema.get("wing_zorder", REMI_WING_ZORDER)
+
+            # Old saves kept wings on rear_sprites; move them to master.
+            previous_layer = getattr(self, "wing_layer", None)
+
+            if previous_layer is None or previous_layer == "rear_sprites":
+                if previous_layer == "rear_sprites":
+                    renpy.hide(self.wing_tag, layer="rear_sprites")
+
+                self.wing_layer = schema.get("wing_layer", REMI_WING_LAYER)
+
+
+        def show(
+            self,
+            at=None,
+            transition=None,
+            zorder=None,
+            behind=None,
+            reset=False,
+            flip=False,
+            wing_zorder=None,
+            **changes
+        ):
+            self._sync_schema()
+
+            if wing_zorder is not None:
+                self.wing_zorder = wing_zorder
+
+            return super(RemiSprite, self).show(
+                at=at,
+                transition=transition,
+                zorder=zorder,
+                behind=behind,
+                reset=reset,
+                flip=flip,
+                **changes
+            )
+
+
+        def move(self, at, transition=None, zorder=None, wing_zorder=None):
+            self._sync_schema()
+
+            if wing_zorder is not None:
+                self.wing_zorder = wing_zorder
+
+            return super(RemiSprite, self).move(
+                at,
+                transition=transition,
+                zorder=zorder,
+            )
 
 
         def _sync_companions(self, show_arguments):
+            self._ensure_runtime_attrs()
+
             wing_arguments = {
                 "layer": self.wing_layer,
+                "zorder": self.wing_zorder,
+                # Keep wings behind Remi's body even when zorders match.
+                "behind": [self.tag],
             }
 
             if "at_list" in show_arguments:
@@ -715,27 +926,15 @@ init python:
 
 
         def _hide_companions(self):
+            self._ensure_runtime_attrs()
             renpy.hide(self.wing_tag, layer=self.wing_layer)
+            # Clear any leftover wings from pre-migration saves.
+            renpy.hide(self.wing_tag, layer="rear_sprites")
 
 
 default remi = RemiSprite(
     tag="r",
-
-    state_order=(
-        "expression",
-        "hat",
-        "glove",
-        "dirty",
-        "blush",
-    ),
-
-    defaults={
-        "expression": "neutral",
-        "hat": True,
-        "glove": "On",
-        "dirty": False,
-        "blush": False,
-    },
-
+    state_order=REMI_STATE_ORDER,
+    defaults=REMI_DEFAULTS,
     compose=remi_compose,
 )

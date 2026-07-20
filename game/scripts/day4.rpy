@@ -59,10 +59,10 @@ label day4_morning:
 
     call scene_transition_fade("bg_study") from _call_scene_transition_fade_22
 
-    $ pat.show(hat=False, at=[right, standheight], transition=dissolve, zorder=2)
+    $ pat.show(hat=False, at=[right, standheight], transition=dissolve, zorder=4)
 
-    $ remi.show(at=[far_left, standheight, enterleft()], zorder=5)
-    $ flan.show(at=[left, standheight, enterleft()], zorder=3)
+    $ remi.show(at=[far_left, standheight, enterleft()], zorder=6)
+    $ flan.show(at=[left, standheight, enterleft()], zorder=5)
 
     r "Patchouli. I believe her wings have deteriorated."
 
@@ -177,7 +177,7 @@ label day4_morning:
 
     p "That's all of them. Your wings aren't fixed, but I gained valuable information. Enough to form theories."
 
-    $ flan.show(flip=True, zorder=1)
+    $ flan.show(flip=True, zorder=3)
 
     f "Ooh, like what?"
 
@@ -289,8 +289,8 @@ label day4_morning:
 
     r "I'm back!"
 
-    $ remi.show(at=[far_left, standheight, enterleft()], zorder=5, flip=True)
-    $ pat.move(at=[center_right, standheight], transition=move_slow)
+    $ remi.show(at=[far_left, standheight, enterleft()], flip=True)
+    $ pat.show(at=[center_right, standheight], transition=move_slow, zorder=2)
     $ pat.flip(transition=dissolve_fast)
 
     "Remilia flies in with a large bag."
@@ -317,7 +317,7 @@ label day4_morning:
 
     $ remi.move(at=[center_left, sitheight])
     $ flan.show(center_right, flip=True)
-    $ pat.move(at=[far_right, sitheight])
+    $ pat.show(at=[far_right, sitheight], zorder=5)
     with move_slow 
 
     "Remilia begins her feast, causing blood to drip down her face."
@@ -471,8 +471,6 @@ label day4_morning:
 
     "Remilia drags Flandre down the stairs to their room. The bag of furry corpses is stashed in the corner."
 
-    
-
     r "Delightful. The fruit of my labor."
 
     f "Is chasing bunnies all you did today?"
@@ -483,6 +481,8 @@ label day4_morning:
     r "How rude. I thoroughly explored the area. It is pleasantly secluded. Plenty of wildlife to feed off of. Patchouli has a rather clever chicken trap as well."
 
     f "It's a nice place to build a library."
+
+    call table_unzoom_l from _call_table_unzoom_l_5
 
     $ remi.show(flip=True, at=left, transition=move_slow)
 
@@ -504,7 +504,7 @@ label day4_morning:
 
     r "How exactly is that 'all about it'? That's hardly any information."
 
-    $ flan.move(scoot_left)
+    $ flan.show(scoot_left, zorder=8)
 
     f "You're reeeally curious."
 

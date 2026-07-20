@@ -12,14 +12,14 @@ label day7_morning:
 
     call day_transition_in from _call_day_transition_in_5
 
-    $ remi.show([center_right, standheight, enterbottom()], flip=True)
+    $ remi.show([center_right, standheight, enterbottom(0.5)], flip=True)
 
     pause 0.5
 
     $ flan.show([far_left, standheight, enterbottom()])
     $ remi.move(enterforcefinish)
     with None
-    $ remi.flip(transition=dissolve)
+    $ remi.flip(transition=dissolve_fast)
 
     r "Um... hello, Flandre. Are you doing alright?"
 
@@ -60,7 +60,7 @@ label day7_morning:
 
     r "I could at least hold your hand."
 
-    $ flan.flip(transition=dissolve)
+    $ flan.show(flip=True, transition=dissolve, zorder=3)
 
     f "...Fine."
 
@@ -71,7 +71,7 @@ label day7_morning:
 
     $ pat.show([right, standheight], transition=dissolve)
 
-    $ flan.show([center_left, standheight, enterleft()], flip=True, zorder=5)
+    $ flan.show([center_left, standheight, enterleft()], flip=True)
     $ remi.show([left, standheight, enterleft()], flip=True)
 
     "As they arrive, Patchouli looks up from her mountain of books and scrolls."
@@ -136,9 +136,7 @@ label day7_morning:
 
     p "Thank you."
 
-    $ remi.flip(transition=dissolve)
-
-    #TODO wing cg
+    show cg_wingtouch zorder 8 with dissolve
 
     "Patchouli grasps the wings. Flandre stares intently."
 
@@ -152,15 +150,18 @@ label day7_morning:
 
     p "I believe it does."
 
+    $ flan.show(closeup, zorder=9, transition=dissolve)
+
     f "Are you in love?"
 
     r "Be quiet!"
 
     p "This will be satisfactory."
 
-    #TODO end wing cg
+    $ flan.move(closeuprevert)
+    hide cg_wingtouch with dissolve
 
-    $ remi.show(left, flip=True, zorder=7)
+    $ remi.show(left)
     $ pat.move(right, transition=move_slow)
 
     f "Were they nice, Patchy?"
@@ -171,7 +172,8 @@ label day7_morning:
 
     f "Looks like a yes."
 
-    $ remi.show(flip=True, transition=ease)
+    $ flan.show(zorder=2)
+    $ remi.show(flip=True, transition=dissolve_fast)
 
     "Remilia walks in front of Flandre to flail her arms."
 
@@ -259,6 +261,8 @@ label day7_morning:
 
     "She summons her sword."
 
+    $ remi.flip()
+
     r "Put that away!"
 
     f "Sorry."
@@ -266,6 +270,8 @@ label day7_morning:
     call spear_summon from _call_spear_summon_4
 
     "The sword disappears."
+
+    $ remi.flip(transition=dissolve_fast)
 
     p "Perfect! This should work. Give me some time."
 
@@ -323,7 +329,7 @@ label day7_morning:
 
     r "That's incredible!"
 
-    $ flan.move([far_left, standheight], transition=ease)
+    $ flan.show([far_left, standheight], transition=ease, zorder=7)
 
     f "What's going on?"
 
@@ -361,9 +367,9 @@ label day7_morning:
 
     call scene_transition_fade("bg_study") from _call_scene_transition_fade_43
 
-    $ remi.show(at=[far_left, standheight])
-    $ flan.show(wings="crystal", at=[far_right, sitheight], flip=True)
-    $ pat.show(at=[center_left, standheight], flip=True, magic=False)
+    $ remi.show(at=[corner_left, standheight])
+    $ flan.show(wings="crystal", at=[right, sitheight], flip=True)
+    $ pat.show(at=[left, standheight], flip=True, magic=False)
     with dissolve
 
     p "Listen to me closely. Stand up, slowly. Very carefully."
@@ -371,7 +377,7 @@ label day7_morning:
     f "Slowly. Got it."
 
     play sound sfx_crystals_clacking
-    $ flan.move(sitheight, transition=move_slow)
+    $ flan.move(standheight, transition=move_slow)
 
     "She slowly sits up. The crystals sway back and forth."
 
@@ -379,13 +385,13 @@ label day7_morning:
 
     p "Wait, no, hold on. Don't move."
 
-    $ pat.move(center, transition=move_fast)
+    $ pat.show(center, transition=move_fast)
     call generic_spell from _call_generic_spell_12
-    $ pat.move(center_left, transition=move_fast)
+    $ pat.show(left, transition=move_fast)
 
     p "Continue."
 
-    $ flan.move(floatup)
+    $ flan.move(floatup, transition=move_slow)
 
     p "How is your balance?"
 
@@ -417,8 +423,8 @@ label day7_morning:
 
     r "Give up. She won't stop."
 
-    $ remi.move(left, transition=move_slow)
-    $ pat.flip(transition=dissolve)
+    $ remi.move(center_left)
+    $ pat.show(center_right, flip=True, transition=move_slow, zorder=2)
 
     "Remilia walks up to Patchouli."
 
@@ -429,7 +435,7 @@ label day7_morning:
     p "Uh, wha—"
 
     play music bgm_ending fadein 2.0
-    show cg_kiss_cry zorder 8 with dissolve
+    call summon_cg("cg_kiss_surprise") from _call_summon_cg_3
 
     "Remilia lunges into Patchouli, grabbing and kissing her."
 
@@ -445,9 +451,15 @@ label day7_morning:
 
     r "Yes, sorry. I don't know why I did that. Sorry."
 
+    call summon_cg("cg_kiss_gentle") from _call_summon_cg_4
+
     "Remilia starts to let go, but Patchouli pulls her in for another kiss."
 
     "They hold it for ten seconds before separating again."
+
+    scene black onlayer screens with dissolve
+
+    call summon_cg("cg_stare") from _call_summon_cg_5
 
     r "Uh, uh..."
 
@@ -461,19 +473,21 @@ label day7_morning:
 
     p "Mm."
 
-    "They go back in for another. Flandre hovers over them."
+    call summon_cg("cg_kiss_gentle") from _call_summon_cg_6
+
+    "They go back in for another."
+
+    show f crystal onlayer screens at corner_right, closeup
 
     f "The moment I look away."
 
-    hide cg_kiss_cry with dissolve
+    call dismiss_cg from _call_dismiss_cg_3
 
     $ remi.move(far_left)
     $ pat.move(right, transition=move_fast)
 
     "They jump apart."
 
-    $ flan.move(hopreset)
-    with None
     $ flan.move(corner_right, transition=dissolve)
 
     r "She was just, checking something!"
@@ -538,6 +552,7 @@ label epilogue:
     $ remi.move(corner_left)
     $ pat.move(left, transition=move_slow)
     $ pat.flip(transition=dissolve)
+    $ remi.move(scoot_right, transition=move_slow)
 
     "Patchouli joins her. Remilia immediately leans into her."
 
@@ -559,7 +574,8 @@ label epilogue:
 
     r "No we are not!"
 
-    $ flan.hide(transition=dissolve)
+    $ flan.move(dropdowninstant, transition=move_slow)
+    $ flan.hide(transition=dissolve_fast)
 
     "Flandre leans back, then immediately falls asleep. The chicken remains fall to the floor."
 

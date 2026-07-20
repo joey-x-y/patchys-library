@@ -319,7 +319,7 @@ label day6_morning:
     $ remi.move([center, standheight], transition=move_fast)
 
     play music bgm_ending fadein 2.0
-    show cg_hug zorder 8 with dissolve
+    call summon_cg("cg_hug") from _call_summon_cg_1
 
     r "I'm sorry Patchy!"
 
@@ -345,11 +345,11 @@ label day6_morning:
 
     "They hold on to each other silently for a long time."
 
-    show cg_hug with fade
+    show cg_hug onlayer screens with fade_hold_black
 
-    "Eventually, Remilia gently let's go."
+    "Eventually, Remilia gently lets go."
 
-    hide cg_hug with dissolve
+    call dismiss_cg from _call_dismiss_cg_1
     
     $ remi.move(left, transition=ease)
 
@@ -445,7 +445,7 @@ label day6_morning:
 
     r "Shut up! I'm never calling you that again. Just do it already."
 
-    #TODO wing cg
+    call summon_cg("cg_wingtouch") from _call_summon_cg_2
 
     $ pat.move(center_right)
     $ remi.show(transition=dissolve, flip=True, zorder=5)
@@ -502,7 +502,7 @@ label day6_morning:
 
     p "Oh."
 
-    # TODO end wing cg
+    call dismiss_cg from _call_dismiss_cg_2
 
     $ remi.move(corner_left)
     $ pat.move(right, transition=move_slow)
@@ -569,7 +569,7 @@ label day6_morning:
 
     call scene_transition_fade("bg_bedroom") from _call_scene_transition_fade_36
 
-    $ flan.show([far_left, standheight, floatup], transition=dissolve, flip=True)
+    $ flan.show([far_left, standheight, floatup], transition=dissolve, flip=True, zorder=8)
     $ remi.show([right, standheight, enterright()], flip=True)
 
     "Flandre is sitting in her coffin, unmoved from before. Dried tears cover her face."
