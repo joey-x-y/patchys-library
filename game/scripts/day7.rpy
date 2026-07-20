@@ -27,13 +27,15 @@ label day7_morning:
 
     play music bgm_library fadein 2.0
 
-    $ remi.move(hop(10))
+    $ remi.show(expression="smile", at=hop(10))
 
     "Remilia stands and puts her hands on her hips."
 
     r "Don't worry, I'm durable. I can bounce back from a few elbows."
 
     f "Heh, would that still be true if I hit you hard?"
+
+    $ remi.expression("surprised")
 
     r "Uh... didn't you?"
 
@@ -45,7 +47,7 @@ label day7_morning:
     f "Yes."
 
     $ flan.move(offscreenright)
-    $ remi.move(offscreenright, transition=move_slow)
+    $ remi.show(expression="neutral", at=offscreenright, transition=move_slow)
 
     call scene_transition_fade("bg_library_stairs") from _call_scene_transition_fade_38
 
@@ -64,7 +66,7 @@ label day7_morning:
 
     f "...Fine."
 
-    $ remi.move(center, transition=move_slow)
+    $ remi.show(expression="smile", at=center, transition=move_slow)
     $ flan.flip(transition=dissolve)
 
     call scene_transition_fade("bg_study") from _call_scene_transition_fade_39
@@ -72,7 +74,7 @@ label day7_morning:
     $ pat.show([right, standheight], transition=dissolve)
 
     $ flan.show([center_left, standheight, enterleft()], flip=True)
-    $ remi.show([left, standheight, enterleft()], flip=True)
+    $ remi.show(expression="neutral", at=[left, standheight, enterleft()], flip=True)
 
     "As they arrive, Patchouli looks up from her mountain of books and scrolls."
 
@@ -94,12 +96,15 @@ label day7_morning:
 
     p "I don't know. Even though Remilia let me explore her wing anatomy, I'm unsure how I could replicate it."
 
+    $ remi.expression("angry")
+
     r "Hey!"
 
     f "You what about anata what?"
 
     p "I got a feel of Remilia's wings, taking note of how the flaps and stem feel and connect with each other. I touched them as thoroughly as I could to try and fully understand them."
 
+    $ remi.blush()
     $ flan.move(enterforcefinish)
     with None
     $ flan.flip(transition=dissolve)
@@ -117,7 +122,7 @@ label day7_morning:
 
     p "I would like to touch them more. May I?"
 
-    $ remi.move(scoot_left)
+    $ remi.show(expression="neutral", at=scoot_left)
 
     r "I am not such an indecent vampire! I don't do such uncouth things on request!"
 
@@ -125,9 +130,11 @@ label day7_morning:
 
     f "I shouldn't leave you two alone together."
 
+    $ remi.expression("angry")
+
     r "I said shut up!"
 
-    $ remi.move(center_left)
+    $ remi.show(expression="neutral", at=center_left)
     $ flan.move(corner_left, transition=move_slow)
 
     "Remilia sighs as she walks over to Patchouli."
@@ -156,7 +163,7 @@ label day7_morning:
 
     r "Be quiet!"
 
-    p "This will be satisfactory."
+    p "I am satisfied."
 
     $ flan.move(closeuprevert)
     hide cg_wingtouch with dissolve
@@ -177,19 +184,23 @@ label day7_morning:
 
     "Remilia walks in front of Flandre to flail her arms."
 
+    $ remi.expression("angry")
+
     r "I showed her so she can understand wings more, to help with fixing yours. That is all. Understand?"
 
     f "Sure. Whatever you say."
 
+    $ remi.expression("neutral")
+
     r "Oh... but—"
 
-    $ remi.move(hop(10))
+    $ remi.show(expression="surprised", blush=False, at=hop(10))
     $ flan.move(hop(10))
 
     p "But that doesn't even matter!"
 
     $ pat.move(floatup, transition=move)
-    $ remi.flip(transition=dissolve_fast)
+    $ remi.show(expression="neutral", flip=True, transition=dissolve_fast)
 
     "Patchouli suddenly hovers into the air with a smile."
 
@@ -242,11 +253,11 @@ label day7_morning:
 
     p "I can numb your body."
 
-    $ remi.move(scoot_right)
+    $ remi.show(expression="angry", at=scoot_right)
 
     r "No! You're insane!"
 
-    $ remi.move(unscoot)
+    $ remi.show(expression="neutral", at=unscoot)
 
     p "Fair enough."
 
@@ -261,13 +272,15 @@ label day7_morning:
 
     "She summons her sword."
 
-    $ remi.flip()
+    $ remi.show(expression="serious", flip=True)
 
     r "Put that away!"
 
     f "Sorry."
 
     call spear_summon from _call_spear_summon_4
+
+    $ remi.expression("neutral")
 
     "The sword disappears."
 
@@ -290,6 +303,8 @@ label day7_morning:
 
     p "Yup! I'll work you to the bone."
 
+    $ remi.show(expresssion="embarrased", blush=True)
+
     r "Mm. Right."
 
     $ flan.flip()
@@ -302,7 +317,7 @@ label day7_morning:
 
     call scene_transition_fade("bg_study") from _call_scene_transition_fade_41
 
-    $ remi.show([center_left, standheight])
+    $ remi.show(expression="neutral", blush=False, at=[center_left, standheight])
     $ pat.show([center_right, standheight])
     $ flan.show([corner_left, sitheight], flip=True)
     with dissolve
@@ -321,10 +336,13 @@ label day7_morning:
 
     "Remilia slowly floats into the air."
 
+    $ remi.expression("surprised")
+
     r "Whoa. Neat."
 
     p "Perfect. Now we attach these to the wing stems."
 
+    $ remi.expression("smile")
     $ flan.flip()
 
     r "That's incredible!"
@@ -353,9 +371,13 @@ label day7_morning:
     $ flan.show(right, transition=move_fast, zorder=1)
     play sound sfx_body_fall
 
+    $ remi.expression("neutral")
+
     r "Don't damage the table with your dive-bombing."
 
     f "This is my moment. Silence."
+
+    $ remi.expression("smile")
 
     r "Fine, fine."
 
@@ -367,7 +389,7 @@ label day7_morning:
 
     call scene_transition_fade("bg_study") from _call_scene_transition_fade_43
 
-    $ remi.show(at=[corner_left, standheight])
+    $ remi.show(expression="neutral", at=[corner_left, standheight])
     $ flan.show(wings="crystal", at=[right, sitheight], flip=True)
     $ pat.show(at=[left, standheight], flip=True, magic=False)
     with dissolve
@@ -379,7 +401,7 @@ label day7_morning:
     play sound sfx_crystals_clacking
     $ flan.move(standheight, transition=move_slow)
 
-    "She slowly sits up. The crystals sway back and forth."
+    "The crystals sway back and forth as she moves up."
 
     f "Wow! Musical wings!"
 
@@ -411,9 +433,11 @@ label day7_morning:
 
     f "Awesome! Amazing! Absolutely astonishing!"
 
+    $ remi.expression("smile")
+
     p "Good."
 
-    f "I can fly! I can fly!"
+    f "I can fly! I can fly! Fly! Fly! Bird!"
 
     $ flan.move(offscreenright, transition=move_fast)
 
@@ -423,19 +447,25 @@ label day7_morning:
 
     r "Give up. She won't stop."
 
-    $ remi.move(center_left)
+    play music bgm_title fadein 2.0
+
+    $ remi.show(blush=True, at=center_left)
     $ pat.show(center_right, flip=True, transition=move_slow, zorder=2)
 
     "Remilia walks up to Patchouli."
 
-    p "I guess not. I trust you'll clean any messes."
+    p "I guess not. I trust you'll clean her messes? Fallen bookshelves are a pain."
+
+    $ remi.expression("embarrassed", transition=dissolve)
 
     "Remilia's gaze flicks to the side and back to Patchouli a few times, her face steadily turning red."
 
     p "Uh, wha—"
 
-    play music bgm_ending fadein 2.0
+    stop music fadeout 2.0
+    
     call summon_cg("cg_kiss_surprise") from _call_summon_cg_3
+    play music bgm_ending fadein 2.0
 
     "Remilia lunges into Patchouli, grabbing and kissing her."
 
@@ -483,14 +513,17 @@ label day7_morning:
 
     call dismiss_cg from _call_dismiss_cg_3
 
-    $ remi.move(far_left)
+    $ remi.show(expression="surprised", at=far_left)
     $ pat.move(right, transition=move_fast)
 
     "They jump apart."
 
     $ flan.move(corner_right, transition=dissolve)
+    $ remi.expression("angry")
 
     r "She was just, checking something!"
+
+    $ remi.expression("neutral")
 
     f "Sure... sure. Give up, lovebirds. How many kisses was that?"
 
@@ -503,6 +536,8 @@ label day7_morning:
     r "Patchy, don't tell her."
 
     f "Patchy?"
+
+    $ remi.expression("embarrassed")
 
     r "No, I meant... damn it."
 
@@ -518,12 +553,12 @@ label epilogue:
 
     call scene_transition_fade("bg_study") from _call_scene_transition_fade_45
 
-    $ remi.show(at=[far_left, standheight])
+    $ remi.show(expression="neutral", blush=False, at=[far_left, standheight])
     $ pat.show(at=[center, standheight], flip=True)
     $ flan.show(at=[far_right, standheight])
     with dissolve
 
-    "Finally, Flandre crash lands into a chair."
+    "Finally, Flandre crashes into a chair."
 
     f "I'm tired."
 
@@ -533,11 +568,15 @@ label epilogue:
 
     "She instantly dives into her new meal."
 
+    call generic_spell
+
     "Then, a couch appears."
 
     $ pat.flip(transition=dissolve)
 
     p "I believe you wanted a couch?"
+
+    $ remi.expression("smile")
 
     r "Yes!"
 
@@ -546,6 +585,8 @@ label epilogue:
     p "Glad you like it."
 
     "Remilia pats the spot next to her."
+
+    $ remi.show(expression="neutral", blush=True)
 
     r "Come here. But don't you dare sit on my wing."
 
@@ -556,6 +597,8 @@ label epilogue:
 
     "Patchouli joins her. Remilia immediately leans into her."
 
+    $ remi.expression("smile")
+
     r "Thank you. I can't thank you enough."
 
     p "It was my pleasure. It made for a good story."
@@ -563,6 +606,8 @@ label epilogue:
     r "Mhm."
 
     "Remilia looks over to a fascinated Flandre."
+
+    $ remi.show(expression="neutral", blush=False)
 
     r "Stop staring."
 
@@ -572,6 +617,8 @@ label epilogue:
 
     f "Hehe. You're married now."
 
+    $ remi.expression("angry")
+
     r "No we are not!"
 
     $ flan.move(dropdowninstant, transition=move_slow)
@@ -579,27 +626,42 @@ label epilogue:
 
     "Flandre leans back, then immediately falls asleep. The chicken remains fall to the floor."
 
+    $ remi.show(expression="neutral", at=center_left)
+    $ pat.move(center, transition=move_slow)
+
     r "Geez, such a handful."
 
     p "It makes for good entertainment."
+
+    $ remi.expression("smile")
 
     r "Yeah. It is."
 
     p "You are rather bold, stealing my lips like a prince from a fairytale."
 
+    $ remi.expression("embarrassed")
+
     r "I uh, yeah. Sorry."
 
     p "You do not need to apologize. I thoroughly enjoyed it."
+
+    $ remi.blush()
 
     r "Then, are we, um, you know? I guess... a thing?"
 
     p "I don't know."
 
+    $ remi.expression("neutral")
+
     r "Then... I wanna be. So we are."
 
     p "I have no opposition to that."
 
+    $ remi.show(expression="smile", at=scoot_right)
+
     "Remilia pulls herself into Patchouli."
+
+    $ remi.move(hop(10))
 
     "Then, Remilia's wings envelop her."
 
@@ -609,7 +671,7 @@ label epilogue:
 
     p "I want to show you something. I believe it will be to your liking."
 
-    "Remilia's face turns scarlet."
+    $ remi.show(expression="embarrassed", at=unscoot)
 
     r "W-what do you mean?"
 
@@ -623,23 +685,35 @@ label epilogue:
 
     p "An ancient wine."
 
+    $ remi.show(expression="surprised", blush=False, at=right, transition=move_fast)
+
     "Remilia leaps from the couch to the table."
 
     r "How ancient?!"
 
     p "Hey, come back here! I will serve us in a civil manner."
 
+    $ remi.expression("neutral")
+
     r "Hmph, fine."
+
+    $ remi.move(center_left, transition=move_slow)
 
     "Remilia sits back down, then Patchouli pulls her in."
 
     p "I'll serve it once you wrap me with your wings again."
 
+    $ remi.expression("smile")
+
     r "Gladly."
+
+    $ remi.move(scoot_right)
 
     "As the wings wrap around Patchouli, the crate lid flies off to the floor. Large wine bottles float up and out, lining the table."
 
     p "Now, shall we discuss the future over some wine?"
+
+    $ remi.blush()
 
     r "Yes!"
 
