@@ -19,7 +19,7 @@ label day3_morning:
     "The lid slowly cracks open, revealing the sleepy vampire within."
 
     $ remi.flip()
-    $ remi.show(at=[left, standheight, enterbottom(speed=2)])
+    $ remi.show(expression="neutral", at=[left, standheight, enterbottom(speed=2)])
 
     r "What... it's too early for yelling..."
 
@@ -67,7 +67,7 @@ label day3_morning:
 
     $ remi.show(at=[far_left, standheight, enterleft()], zorder=3)
 
-    r "Her name is Patchouli."
+    r "Wasn't her name Patchouli?"
 
     f "That's too long. She's Patchy now."
 
@@ -117,6 +117,8 @@ label day3_morning:
 
     p "I'll keep checking on it. Remilia noticed some changes, so I want to monitor them closely."
 
+    $ remi.expression("embarrassed")
+
     f "What? When?"
 
     p "Yesterday."
@@ -131,11 +133,13 @@ label day3_morning:
 
     f "Why did you lie?"
 
+    $ remi.show(expression="neutral")
+
     r "I wanted to be sure before I said anything."
 
     f "They are {i}my{/i} wings! I want to know everything!"
 
-    "Remilia averts her gaze."
+    $ remi.expression("embarrassed", transition=dissolve)
 
     f "Anything else I should know?"
 
@@ -143,21 +147,23 @@ label day3_morning:
 
     f "Well I'm a part of this too, so tell me."
 
+    $ remi.expression("neutral")
+
     r "Right. Sorry."
 
     $ flan.move(offscreenleft, transition=move_slow)
 
     stop music fadeout 2.0
 
-    "Flandre lets out a heavy sigh as she leaves the room."
+    "Flandre storms out of the room."
 
     p "Apologies."
 
     $ remi.move(center_left, transition=move_slow)
 
-    "Remilia lets out a sigh of her own as she drops into a chair at Patchouli's table."
+    "Remilia lets out a big sigh as she drops into a chair."
 
-    $ remi.show(sitheight, transition=move_slow)
+    $ remi.move(sitheight, transition=move_slow)
 
     play music bgm_emotional fadein 2.0
 
@@ -201,17 +207,21 @@ label day3_morning:
 
     "Remilia glances over to a vial sitting on a bookshelf, a few feet behind Patchouli."
 
+    $ remi.expression("smile")
+
     r "Ah, am I the servant? I believe I am more fit to be served."
 
     p "Not really."
 
-    $ remi.move(standheight, transition=move_slow)
+    $ remi.move(at=standheight, transition=move_slow)
 
     "Remilia spreads her arms and wings wide."
 
     r "Why not? I believe it would be a great honor to serve a vampire like me."
 
     p "No. Please grab it for me. I'd rather not exert myself."
+
+    $ remi.expression("neutral")
 
     r "Oh, fine."
 
@@ -241,6 +251,7 @@ label day3_morning:
     "Remilia reaches towards one of the notes."
 
     play sound sfx_magic_clash_1
+    $ remi.expression("surprised")
     $ remi.move(hop(height=30))
 
     r "Ow! My finger!"
@@ -252,6 +263,8 @@ label day3_morning:
     r "Did you do that?"
 
     p "Mm."
+
+    $ remi.expression("neutral")
 
     r "Geez. Fine, I won't interfere."
 
@@ -268,7 +281,6 @@ label day3_morning:
     $ remi.flip()
     $ remi.move(offscreenleft, transition=move_slow)
     
-
     stop music fadeout 2.0
     call scene_transition_fade("bg_library") from _call_scene_transition_fade_17
     $ flan.flip()
@@ -300,9 +312,13 @@ label day3_morning:
 
     f "No. I don't want to."
 
+    $ remi.expression("embarrassed")
+
     r "Right. Um... sorry, about—"
 
     f "It's fine. I'm not really mad anymore."
+
+    $ remi.expression("smile")
 
     r "Oh. Good."
 
@@ -310,6 +326,7 @@ label day3_morning:
 
     f "Hurry up, slow face."
 
+    $ remi.expression("neutral")
     $ remi.flip(transition=dissolve)
 
     call scene_transition_fade("bg_study") from _call_scene_transition_fade_18
@@ -364,6 +381,8 @@ label day3_morning:
 
     "The sisters gather around their daily dead chicken."
 
+    $ remi.expression("surprised")
+
     r "Hey... I'm sorry about..."
 
     f "I know."
@@ -374,11 +393,17 @@ label day3_morning:
 
     f "I know. Stop talking about that. Give me the chicken leg if you want forgiveness."
 
+    $ remi.expression("neutral")
+
     r "Here, ma'am."
 
     f "Thank you, my servant. The dark meat is all mine today."
 
+    $ remi.expression("angry")
+
     r "Oh, come on."
+
+    $ remi.expression("neurtal")
 
     "Flandre takes a massive chomp."
 
@@ -388,15 +413,20 @@ label day3_morning:
 
     f "Does she really mean it? Is she telling the truth?"
 
+    $ remi.expression("smile")
+
     r "Yes, I am sure. She's been consistently honest, and appears competent. I've been watching her very closely."
 
-    "Remilia looks to the side."
+    $ remi.expression("embarrassed", transition=dissolve_fast)
 
     r "I'm the only one that's been... not so straightforward."
 
+    $ remi.expression("surprised")
     $ remi.move(small_shake())
 
     "Flandre tosses the bone onto Remilia's lap."
+
+    $ remi.expression("neutral")
 
     f "Ha, it sounds like you're the one defending Patchy now."
 
@@ -410,9 +440,13 @@ label day3_morning:
 
     f "You wouldn't lie about that. You never advocate for people."
 
+    $ remi.expression("smile")
+
     r "I cannot deny that."
 
     f "Thanks for trusting someone for me."
+
+    r "Mhm."
 
     $ flan.move([far_left, floatup], transition=move_fast)
 
@@ -423,6 +457,8 @@ label day3_morning:
     r "You forgot something."
 
     "Remilia tosses the bone at her, but she catches and dunks it into Remilia's coffin."
+
+    $ remi.expression("neutral")
     
     f "Heh."
 

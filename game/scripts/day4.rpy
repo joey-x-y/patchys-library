@@ -21,15 +21,21 @@ label day4_morning:
 
     stop music fadeout 2.0
 
+    $ remi.expression("crying", transition=dissolve)
+
     "Remilia freezes as she looks at Flandre."
 
     f "Um, Remi? What is it?"
+    
+    $ remi.expression("embarrassed")
 
     "Remilia looks away for a moment before looking back."
 
     r "Can I look at your wings for a moment?"
 
     f "Are they worse?"
+
+    $ remi.expression("neutral")
 
     r "Um... I think it might be a little worse. I want to make sure."
 
@@ -117,11 +123,13 @@ label day4_morning:
 
     p "It was never locked."
 
+    $ remi.expression("surprised")
+
     r "What? I thought you locked us in?"
 
     p "No."
 
-    $ remi.move(hopdown(height=10))
+    $ remi.show(expression="neutral", at=hopdown(height=10))
 
     "Remilia sighs heavily with her hand on her face."
 
@@ -133,9 +141,14 @@ label day4_morning:
 
     p "I'm not capable of that."
 
+    $ remi.expression("smile")
+
     r "I knew it."
 
     p "But the stakes were too high to test it."
+
+    $ remi.expression("neutral")
+    $ remi.blush()
 
     r "Bah. This deception will not go unanswered."
 
@@ -289,7 +302,7 @@ label day4_morning:
 
     r "I'm back!"
 
-    $ remi.show(at=[far_left, standheight, enterleft()], flip=True)
+    $ remi.show(expression="smile", blush=False, glove="Blood", dirty=True, at=[far_left, standheight, enterleft()], flip=True)
     $ pat.show(at=[center_right, standheight], transition=move_slow, zorder=2)
     $ pat.flip(transition=dissolve_fast)
 
@@ -301,7 +314,11 @@ label day4_morning:
 
     f "Hypocrite."
 
-    r "Oh shut up."
+    $ remi.expression("angry")
+
+    r "Oh shut up!"
+
+    $ remi.expression("smile")
 
     "She tosses her delivery to the floor."
 
@@ -313,12 +330,29 @@ label day4_morning:
 
     p "This is not what the covers are for."
 
+    r "They weren't doing anything anyway. They were just shoved in a corner."
+
+    p "For future use. And must you bring in so much filth?"
+
+    call generic_spell
+    $ remi.show(dirty=False, glove="Off", transition=dissolve_fast)
+
+    r "That's just how hunting is. Hands get dirty. It is what it is."
+
+    f "How unnoble."
+
+    $ remi.expression("neutral")
+
+    r "Quiet, you."
+
     call table_zoom_l from _call_table_zoom_l_2
 
     $ remi.move(at=[center_left, sitheight])
     $ flan.show(center_right, flip=True)
     $ pat.show(at=[far_right, sitheight], zorder=5)
     with move_slow 
+
+    $ remi.show(glove="Blood", expression="smile", transition=dissolve)
 
     "Remilia begins her feast, causing blood to drip down her face."
 
@@ -350,11 +384,17 @@ label day4_morning:
 
     call generic_spell from _call_generic_spell_9
     
+    $ remi.show(glove="Off", transition=dissolve_fast)
+
     "Then, the bag vanishes."
+
+    $ remi.expression("surprised")
 
     r "Huh? My food?"
 
     p "They're in your room now."
+
+    $ remi.expression("smile")
 
     r "Cool, you can just teleport anything, anywhere you want?"
 
@@ -372,6 +412,8 @@ label day4_morning:
 
     p "It was a mixture of water and sun magic."
 
+    $ remi.expression("neutral")
+
     r "Uhh... sun?"
 
     p "Useful against vampires, but at a cost. Lasers require an undesirable level of exertion."
@@ -387,13 +429,17 @@ label day4_morning:
     r "Bold words, book girl. Someday I'll demonstrate the true power of my Gungnir, when I'm not half-dead."
 
     $ flan.flip()
-    $ remi.move(shake)
+    $ remi.show(expression="surprised", at=shake)
 
     "Flandre throws a bone at Remilia's face point blank."
+
+    $ remi.expression("angry")
 
     r "Hey!"
 
     f "Stop talking about fighting. I don't wanna fight more."
+
+    $ remi.expression("smile")
 
     r "We're not even fighting yet, just planning our rematch. Isn't that right, master of this random library in the middle of nowhere?"
 
@@ -401,11 +447,15 @@ label day4_morning:
 
     p "Rematch declined."
 
+    $ remi.expression("angry")
+
     r "Oh, come on."
 
     f "Good."
 
     play music bgm_library fadein 2.0
+
+    $ remi.expression("neutral")
 
     "Patchouli points to Flandre's pile of rabbit remains."
 
@@ -420,12 +470,15 @@ label day4_morning:
 
     "Remilia sips tea, but pauses midway through. She slams it down."
 
+    $ remi.expression("angry")
+
     r "Hey, wait just a minute! You can teleport things, but made me grab a vial for you?"
 
     p "Moving things with magic takes effort too. Not only lasers."
 
-    $ flan.move(center_right, transition=move_fast)
+    $ remi.expression("neutral")
 
+    $ flan.move(center_right, transition=move_fast)
     $ flan.flip(transition=dissolve_fast)
 
     f "What? You made The Remilia Scarlet grab something for you?"
@@ -458,6 +511,8 @@ label day4_morning:
 
     f "I'm sleepy now. I ate too much."
 
+    $ remi.expression("smile")
+
     r "Fantastic. A proper meal must be followed by a proper rest. Shall we?"
 
     f "Finally, you two never stop bickering."
@@ -478,7 +533,7 @@ label day4_morning:
     $ remi.move(enterforcefinish)
     $ remi.flip()
 
-    r "How rude. I thoroughly explored the area. It is pleasantly secluded. Plenty of wildlife to feed off of. Patchouli has a rather clever chicken trap as well."
+    r "Rude. I thoroughly explored the area. It is pleasantly secluded. Plenty of wildlife to feed off of. Patchouli has a rather clever chicken trap as well."
 
     f "It's a nice place to build a library."
 
@@ -492,11 +547,14 @@ label day4_morning:
 
     f "She made it herself."
 
+    $ remi.expression("surprised")
     $ remi.flip(transition=dissolve_fast)
 
     r "Huh? Really?"
 
     f "Yup. She told me all about it. Magic and creativity!"
+
+    $ remi.expression("neutral")
 
     r "Right. What else?"
 
@@ -507,6 +565,8 @@ label day4_morning:
     $ flan.show(scoot_left, zorder=8)
 
     f "You're reeeally curious."
+
+    $ remi.expression("embarrassed")
 
     r "Eh, not really."
 
@@ -519,7 +579,7 @@ label day4_morning:
 
     play sound sfx_coffin_close
 
-    $ remi.flip(transition=dissolve_fast)
+    $ remi.show(expression="neutral", flip=True, transition=dissolve_fast)
 
     "She quickly escapes to her coffin."
 

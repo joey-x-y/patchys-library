@@ -491,9 +491,9 @@ init python:
             )
 
 
-        def hunt(self, value=True, transition=None):
+        def glove(self, value="On", transition=None):
             return self.show(
-                hunt=value,
+                glove=value,
                 transition=transition,
             )
 
@@ -522,6 +522,12 @@ init python:
         def hat(self, value=True, transition=None):
             return self.show(
                 hat=value,
+                transition=transition,
+            )
+
+        def blush(self, value=True, transition=None):
+            return self.show(
+                blush=value,
                 transition=transition,
             )
 

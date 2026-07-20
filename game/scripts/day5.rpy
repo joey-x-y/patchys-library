@@ -10,10 +10,12 @@ label day5_morning:
     $ remi.show(at=[left, standheight], flip=True)
     with dissolve
 
-    $ remi.move(center_right, transition=move_fast)
+    $ remi.show(expression="serious", at=center_right, transition=move_fast)
     $ remi.flip(transition=dissolve_fast)
 
     r "..."
+
+    $ remi.expression("neutral")
 
     r "Wings look the same."
 
@@ -37,7 +39,7 @@ label day5_morning:
     $ flan.flip(transition=dissolve_fast)
     $ flan.move(hopdown(150, length=0.5))
 
-    r "Guess not. I'm going on ahead."
+    r "Guess not. I'll go on ahead."
 
     $ remi.show(offscreenright, flip=True, transition=move_slow)
     $ flan.move(hopreset)
@@ -55,7 +57,7 @@ label day5_morning:
 
     p "Oh, you're alone today."
 
-    r "Yeah, she was hungry."
+    r "Yeah. She was hungry."
 
     p "Mm."
 
@@ -66,11 +68,11 @@ label day5_morning:
     p "It is secluded."
 
     $ remi.move(enterforcefinish)
-    $ remi.move(left, transition=move_slow)
+    $ remi.show(expression="smile", at=left, transition=move_slow)
 
     "Remilia smiles as she walks forward."
 
-    r "It really is. This place is quite peaceful. Do you enjoy seclusion?"
+    r "It truly is. This place is quite peaceful. Do you enjoy seclusion?"
 
     p "Yes. No distractions."
 
@@ -78,15 +80,23 @@ label day5_morning:
 
     p "It depends."
 
+    $ remi.expression("neutral")
+
     r "On what?"
 
     p "How bothersome they are."
+
+    $ remi.expression("smile")
 
     r "Ah yes, much like servants. Some are obedient and serve great food, some are better off being the food themselves."
 
     p "Right. On the subject of servitude, would you fetch my tea set?"
 
+    $ remi.expression("surprised")
+
     pause 0.5
+
+    $ remi.expression("neutral")
 
     "Remilia stares for a few seconds, then gives an exasperated sigh."
 
@@ -119,6 +129,8 @@ label day5_morning:
 
     p "You two have made things interesting, I have no complaints."
 
+    $ remi.expression("smile")
+
     r "I guess we did. Now, more tea."
 
     "Their cups refill, and the drinks continue."
@@ -127,17 +139,23 @@ label day5_morning:
 
     p "I tried, but you didn't want me to."
 
+    $ remi.expression("neutral")
+
     r "What do you mean?"
 
     "Patchouli makes a grabbing gesture with her hand. Remilia grits her teeth in response."
 
     p "You looked rather silly in that moment."
 
+    $ remi.expression("embarrassed")
+
     "Remilia smiles and looks away, crossing her arms."
 
     r "If I weren't such a gracious vampire, your life would have ended after such an offense."
 
     p "Gracious indeed. But really, the wings became a problem I wanted to solve. And so I will."
+
+    $ remi.expression("smile")
 
     "Remilia looks back and leans forward, picking up her second round of tea."
 
@@ -149,11 +167,15 @@ label day5_morning:
 
     r "It will. I've been dreaming of it."
 
+    $ remi.expression("neutral")
+
     "She looks down, staring into her cup."
 
     r "This was all because of my negligence. I would do anything for it to be fixed. Nothing is more important."
 
     "Remilia leans back again and looks directly at Patchouli."
+
+    $ remi.expression("smile")
 
     r "So yeah, thanks."
 
@@ -169,15 +191,17 @@ label day5_morning:
 
     p "Huh?"
 
+    $ remi.expression("neutral")
+
     r "But in a good way, I mean. Flandre is someone to keep safe at all times. If servants are incapable of doing it, I have to."
 
     "Patchouli takes a long sip, letting several seconds pass before responding."
 
     p "I see."
 
-    $ remi.move(standheight, transition=move_slow)
+    $ remi.show(expression="smile", at=standheight, transition=move_slow)
 
-    "Remilia stands and points her tea cup at Patchouli with a massive grin."
+    "Remilia stands and points her tea cup at Patchouli."
 
     r "I've never seen your face so confused before. Who's the one looking rather silly now?"
 
@@ -185,7 +209,7 @@ label day5_morning:
 
     r "Semantics. I still win."
 
-    $ remi.move(sitheight, transition=move_fast)
+    $ remi.show(expression="neutral", at=sitheight, transition=move_fast)
 
     "She downs the rest and sits back down."
 
@@ -195,7 +219,7 @@ label day5_morning:
 
     p "Hmm, that's family in general, right?"
 
-    r "Yes. Did your family not want to come here with you?"
+    r "Eh, probably. Did your family not want to come here with you?"
 
     p "I simply left on my own. I was not needed where I was created."
 
@@ -212,6 +236,8 @@ label day5_morning:
     r "Removing biological needs? How does that work?"
 
     p "Converting one's body into that state requires a sophisticated form of magic, one that many magic-users never discover."
+
+    $ remi.expression("smile")
 
     r "Ah, but a smart girl like you figured it out, then?"
 
@@ -232,6 +258,8 @@ label day5_morning:
     r "No kidding. You might even be more qualified to own servants than me."
 
     p "I—"
+
+    $ remi.expression("neutral")
 
     r "No, I take that back. Don't get too full of yourself."
 
@@ -263,21 +291,30 @@ label day5_morning:
 
     p "I did."
 
+    $ remi.move(hop(10))
+
     "Remilia smacks her own face with her palm."
 
     r "Of course you did."
 
+    $ remi.move(hopreset)
     $ remi.move(scoot_left)
 
     "Patchouli smiles to herself. Remilia leans back and puts up her feet as if it were a recliner."
 
     p "Does my past interest you? You look so curious."
 
+    $ remi.expression("embarrassed")
+
     r "W-what, n-no. Not really."
 
     p "Oh. I see."
 
+    $ remi.expression("neutral")
+
     "Patchouli takes a small sip, and fiddles with the cup."
+
+    $ remi.expression("smile")
 
     r "You know, libraries are quite nice. Truly a staple for any good mansion."
 
@@ -293,14 +330,21 @@ label day5_morning:
 
     r "The only shame here is the severe lack of sofas. I could use more space to spread my poor wings."
 
+    $ remi.expression("surprised")
+
     f "Your true colors are showing."
 
     $ flan.show(at=[far_left, standheight], transition=dissolve, zorder=1)
 
     call table_unzoom_l from _call_table_unzoom_l_1
 
-    r "Oh, hello Flandre. Hey, wait, what does that mean?!"
+    r "Oh, hello Flandre."
 
+    $ remi.expression("angry")
+    
+    r "Hey, wait, what does that mean?!"
+
+    $ remi.expression("neutral")
     $ pat.show(magic=True)
     call generic_spell from _call_generic_spell_10
 
@@ -318,6 +362,8 @@ label day5_morning:
 
     f "I got here right after you."
 
+    $ remi.blush()
+
     r "That long. Ugh."
 
     $ flan.move(at=[center, sitheight], transition=move_slow)
@@ -326,7 +372,7 @@ label day5_morning:
 
     call table_zoom_l from _call_table_zoom_l_4
 
-    "Flandre crashes the tea party."
+    "Flandre takes her seat as she crashes the tea party."
 
     $ flan.flip(transition=dissolve_fast)
 
@@ -343,6 +389,8 @@ label day5_morning:
     r "She won't just magically become my sister. Well, unless there's a spell for that."
 
     p "There is. But I don't know that one."
+
+    $ remi.show(expression="smile", blush=False)
 
     r "See? Nothing to worry about."
 
@@ -362,13 +410,13 @@ label day5_morning:
 
     "Flandre lets out a big yawn."
 
-    r "I think it's bedtime."
+    r "It sounds like bedtime."
 
     call table_unzoom_l from _call_table_unzoom_l_6
 
     f "Yeah... carry me."
 
-    p "See you two tomorrow."
+    p "Goodnight, you two."
 
     stop music fadeout 2.0
     call scene_transition_fade("black") from _call_scene_transition_fade_26
@@ -383,11 +431,15 @@ label day5_morning:
 
     f "I'm happy you made a friend."
 
+    $ remi.expression("neutral")
+
     r "Did you doubt I would?"
 
     f "Um... maybe?"
 
     "Remilia sighs."
+
+    $ remi.expression("smile")
 
     r "How rude. Of course I did."
 
@@ -400,6 +452,8 @@ label day5_morning:
     r "You'll always be my sister, Flandre. Don't worry."
 
     f "I know. I was picking on you."
+
+    $ remi.expression("neutral")
 
     r "Ah, the usual."
 

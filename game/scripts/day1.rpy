@@ -9,12 +9,12 @@ label day1:
 label day1_forest:
     call scene_transition_fade("bg_forest") from _call_scene_transition_fade
 
-    $ remi.show(dirty=True, tired=True, at=[center_right, standheight, enterright(speed=0.5)], flip=True, zorder=7)
-    $ flan.show(expression="frown",dirty=True, tired=True, at=[right, standheight, enterright(speed=0.5)], zorder=4)
+    $ remi.show(dirty=True, tired=True, glove="Off", at=[center_right, standheight, enterright(speed=0.5)], flip=True, zorder=7)
+    $ flan.show(expression="frown", dirty=True, tired=True, at=[right, standheight, enterright(speed=0.5)], zorder=4)
 
     f "Remi! Look out!"
 
-    $ remi.move(enterforcefinish)
+    $ remi.show(enterforcefinish, expression="surprised")
     $ flan.move(enterforcefinish)
     with None
 
@@ -22,6 +22,8 @@ label day1_forest:
     $ flan.move([center_right, floatup], transition=move_fast)
 
     "Remilia swerves upwards, narrowly avoiding a tree."
+
+    $ remi.expression("neutral")
 
     r "That was close."
 
@@ -34,6 +36,8 @@ label day1_forest:
 
     f "Remi!"
 
+    $ remi.expression("surprised")
+
     r "Wh—"
 
     play sound sfx_crash
@@ -42,6 +46,8 @@ label day1_forest:
     $ flan.move(shake())
 
     "They blast through a wall of thin branches."
+
+    $ remi.expression("neutral")
 
     f "See?! You're going to kill yourself like this!"
 
@@ -118,33 +124,43 @@ label day1_forest:
 
     $ remi.flip(transition=dissolve_fast)
 
-    $ remi.move([offscreenleft, standheight], transition=ease)
-    $ remi.flip()
-    $ remi.move(center_right, transition=ease)
-
-    $ remi.move(drophalf)
+    $ remi.move([offscreenleft, standheight], transition=move_slow)
+    $ remi.show(glove="Blood", flip=True)
+    $ remi.move(center_right, transition=move_slow)
 
     "Remilia leaves, and quickly returns with a rabbit in hand."
 
+    $ remi.expression("smile")
+
     r "A feast, just for you."
 
-    f "Thanks."
+    f "Than—mph."
+
+    "She cuts her thanks short with a mouthful of food."
 
     $ remi.move(center_left, transition=move_slow)
+    $ remi.show(glove="On", transition=dissolve_fast)
+    $ remi.show(drophalf)
 
     "Flandre devours half of it."
 
     f "Here's the rest."
 
+    $ remi.expression("neutral")
+
     r "I'll be alright."
 
     f "No you won't. You're hungry too."
+
+    $ remi.expression("smile")
 
     r "Keep the rest. You need it more."
 
     f "Fine."
 
     "Flandre finishes and tosses the bones aside."
+
+    $ remi.expression("neutral")
 
     r "How are your wings feeling?"
 
@@ -248,7 +264,7 @@ label day1_library:
     pause 0.3
 
     
-    $ remi.move(far_left)
+    $ remi.show(far_left, expression="serious")
     $ flan.move(corner_left)
     with move_fast
 
@@ -295,9 +311,7 @@ label day1_library:
 
     p "Leave, monsters."
 
-    r "We can't! We just need shelter for the day."
-
-    "The crystals begin charging again."
+    r "We can't! We need some shelter from the sun."
 
     p "A shame."
 
@@ -418,7 +432,7 @@ label day1_end:
 
     $ remi.move(drophalf)
 
-    r "What do you intend to do with them?"
+    r "What do you intend on doing with them?"
 
     $ flan.show(expression="smile")
 
@@ -430,7 +444,7 @@ label day1_end:
 
     p "Then you should understand your situation. I am studying a vampire, as agreed. Be silent."
 
-    $ remi.move(standup)
+    $ remi.show(standup, expression="neutral")
 
     "Remilia stands and stares her down."
 
@@ -482,11 +496,15 @@ label day1_end:
     play sound sfx_stomach_growling
     $ remi.move(shake(1, 0.3))
 
+    $ remi.blush()
+
     r "..."
 
     f "Um, we're hungry. Sorry."
 
     p "I'll warp something later."
+
+    $ remi.blush(False)
 
     $ pat.move(corner_left, transition=move_slow)
 
