@@ -9,8 +9,8 @@ label day1:
 label day1_forest:
     call scene_transition_fade("bg_forest") from _call_scene_transition_fade
 
-    $ remi.show(dirty=True, at=[center_right, standheight, enterright(speed=0.5)], flip=True, zorder=7)
-    $ flan.show(expression="frown",dirty=True, at=[right, standheight, enterright(speed=0.5)], zorder=4)
+    $ remi.show(dirty=True, tired=True, at=[center_right, standheight, enterright(speed=0.5)], flip=True, zorder=7)
+    $ flan.show(expression="frown",dirty=True, tired=True, at=[right, standheight, enterright(speed=0.5)], zorder=4)
 
     f "Remi! Look out!"
 

@@ -1,18 +1,19 @@
-define cpr = "remi/"
+define cpr = cp + "remi/"
 define cpre = cpr + "expression/"
-define cpra = cpr + "accessary/"
+define cpra = cpr + "acc/"
+define cprf = cpr + "effects/"
 
-image r_wings = At(cpr + "wing.png", sprite_set)
+image r_wings = At(cpr + "wing/remilia.png", sprite_set)
 
 layeredimage r:
     at sprite_set
-
+    
     always:
-        cpr + "no acc/remilia default no head band.png"
+        cpr + "no ac base/remilia.png"
 
     group hat:
         attribute hat default:
-            cpra + "headdress.png"
+            cpra + "hat.png"
         attribute nohat:
             Null()
             
@@ -22,7 +23,7 @@ layeredimage r:
         attribute noglove:
             Null()
         attribute bloody:
-            cpra + "hunt_hand.png"
+            cpra + "bloody hand.png"
 
     group face:
         attribute neutral default:
@@ -30,13 +31,11 @@ layeredimage r:
         attribute angry:
             cpre + "angry.png"
         attribute crying:
-            cpre + "crying 1.png"
+            cpre + "holding back tear.png"
         attribute crying2:
-            cpre + "crying 2.png"
+            cpre + "crying ver 2.png"
         attribute embarrassed:
             cpre + "embarssed.png"
-        attribute holding_tear:
-            cpre + "hodlign tear.png"
         attribute serious:
             cpre + "serious.png"
         attribute smile:
@@ -44,17 +43,20 @@ layeredimage r:
         attribute surprised:
             cpre + "suprised.png"
 
-    group effects:
-        attribute noeffect default:
+    group tired:
+        attribute awake default:
             Null()
-        attribute blushing:
-            cpre + "plusing.png"
+        attribute tired:
+            cpra + "bag.png"
 
     group dirt:
         attribute none default:
             Null()
         attribute dirty:
-            Fixed(
-                cpr + "eyebag.png",
-                cpr + "dirty/remilia dirty.png"
-            )
+            cpra + "dirt.png"
+
+    group effects:
+        attribute noeffect default:
+            Null()
+        attribute blushing:
+            cprf + "blush.png"

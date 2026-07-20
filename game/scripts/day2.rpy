@@ -11,7 +11,7 @@ label day2_morning:
     play sound sfx_coffin_open
 
     $ remi.face(flipped=False)
-    $ remi.show(at=[left, standheight, enterbottom()], zorder=5)
+    $ remi.show(tired=False, at=[left, standheight, enterbottom()], zorder=5)
     
     "Remilia rises out of her coffin and stretches."
 

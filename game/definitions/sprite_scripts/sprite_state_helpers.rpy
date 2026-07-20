@@ -582,11 +582,25 @@ init python:
         parts = [
             "f",
             FLAN_WINGS[wings],
-            "noacc" if not state["accessories"] else "clean",
             expression,
         ]
 
-        if state.get("blush"):
+        if state["hair"] == "long":
+            parts.append("long")
+        else:
+            parts.append("short")
+
+        if state["hat"]:
+            parts.append("ribbon")
+        else:
+            parts.append("nohat")
+
+        if state["tired"]:
+            parts.append("tired")
+        else:
+            parts.append("awake")
+
+        if state["blush"]:
             parts.append("blushing")
         else:
             parts.append("noeffect")
@@ -601,17 +615,21 @@ init python:
 
     FLAN_STATE_ORDER = (
         "expression",
+        "hair",
+        "hat",
         "dirty",
         "wings",
-        "accessories",
+        "tired",
         "blush",
     )
 
     FLAN_DEFAULTS = {
         "expression": "neutral",
+        "hair": "long",
+        "hat": True,
         "dirty": False,
         "wings": "default",
-        "accessories": True,
+        "tired": False,
         "blush": False,
     }
 
@@ -662,20 +680,20 @@ init python:
                 )
             )
 
-        if state["magic"] and not state["hat"]:
-            base = "magicnohat"
-        elif state["magic"]:
-            base = "magic"
-        elif not state["hat"]:
-            base = "nohat"
-        else:
-            base = "base"
-
         parts = [
             "p",
-            base,
             expression,
         ]
+
+        if state["hat"]:
+            parts.append("hat")
+        else:
+            parts.append("nohat")
+
+        if state["magic"]:
+            parts.append("magic")
+        else:
+            parts.append("base")
 
         if state["blush"]:
             parts.append("blushing")
@@ -726,7 +744,6 @@ init python:
         "crying",
         "crying2",
         "embarrassed",
-        "holding_tear",
         "serious",
         "smile",
         "surprised",
@@ -759,17 +776,22 @@ init python:
             expression,
         ]
 
+        if not state["hat"]:
+            parts.append("nohat")
+        else:
+            parts.append("hat")
+
         if state["glove"] == "Off":
             parts.append("noglove")
         elif state["glove"] == "Blood":
             parts.append("bloody")
         else:
-            parts.append("glove")
+            parts.append("glove")    
 
-        if not state["hat"]:
-            parts.append("nohat")
+        if not state["tired"]:
+            parts.append("awake")
         else:
-            parts.append("hat")
+            parts.append("tired")
 
         if state["blush"]:
             parts.append("blushing")
@@ -788,6 +810,7 @@ init python:
         "expression",
         "hat",
         "glove",
+        "tired",
         "dirty",
         "blush",
     )
@@ -796,6 +819,7 @@ init python:
         "expression": "neutral",
         "hat": True,
         "glove": "On",
+        "tired": False,
         "dirty": False,
         "blush": False,
     }

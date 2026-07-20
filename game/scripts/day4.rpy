@@ -85,7 +85,7 @@ label day4_morning:
     $ pat.show(magic=True, at=center, transition=dissolve_fast, flip=True)
     call generic_spell from _call_generic_spell_8
 
-    "Flandre takes her spot on the table, as Patchouli reapplies the numb spell."
+    "Flandre takes her spot on the table as Patchouli reapplies the numb spell."
 
     play music bgm_library fadein 2.0
 

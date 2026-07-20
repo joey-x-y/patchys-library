@@ -1,8 +1,9 @@
-define cpp = "patchy/"
+define cpp = cp + "patchy/"
 define cppe = cpp + "expression/"
+define cppa = cpp + "acc/"
 
 transform sprite_set_patchy:
-    zoom 0.24
+    zoom 0.62
     xanchor 0.5
     yanchor 1.0
     yoffset 60
@@ -12,17 +13,19 @@ layeredimage p:
 
     group base:
         attribute base default:
-            cpp + "default/patchy default.png"
+            cpp + "no ac base/base.png"
         attribute magic:
-            cpp + "magic/patchy magic.png"
+            cpp + "no ac base/base magic.png"
+
+    group hat:
+        attribute hat default:
+            cppa + "hat.png"
         attribute nohat:
-            cpp + "no acc/patchy no hat default.png"
-        attribute magicnohat:
-            cpp + "no acc/patchy no hat magic .png"
+            Null()
 
     group face:
         attribute neutral default:
-            cppe + "default.png"
+            cppe + "normal face.png"
         attribute angry:
             cppe + "angry.png"
         attribute serious:
@@ -32,10 +35,10 @@ layeredimage p:
         attribute surprised:
             cppe + "shock.png"
         attribute think:
-            cppe + "Thinking.png"
+            cppe + "thinking.png"
 
     group effects:
         attribute noeffect default:
             Null()
         attribute blushing:
-            cppe + "blusing.png"
+            cppe + "blushing.png"

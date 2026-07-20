@@ -8,7 +8,7 @@ label day3_morning:
     play music bgm_library fadein 2.0
 
     $ flan.flip()
-    $ flan.show(at=[center, standheight], transition=dissolve)
+    $ flan.show(tired=False, at=[center, standheight], transition=dissolve)
 
     "Flandre hops over and shakes Remilia's coffin."
 

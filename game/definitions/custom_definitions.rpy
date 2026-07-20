@@ -59,7 +59,7 @@ transform bg_scale_tablezoom:
     xalign 1.0
     yalign 1.0
 
-image bg_forest = At(bp + "forest.png", bg_scale)
+image bg_forest = bp + "forest.png"
 image bg_bedroom = At(bp + "bedroom.png", bg_scale)
 image bg_bedroom_nocoffin = At(bp + "bedroom_nocoffin.png", bg_scale)
 image bg_study = At(bp + "library.png", bg_scale)
