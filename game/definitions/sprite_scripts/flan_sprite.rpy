@@ -3,6 +3,8 @@ define cpfe = cpf + "expression/"
 define cpfw = cpf + "wing/"
 define cpfa = cpf + "acc/"
 
+# TODO consider removing blushes from surprised
+
 layeredimage f:
     at sprite_set
 
@@ -33,13 +35,13 @@ layeredimage f:
 
     group face:
         attribute neutral default:
-            cpfe + "normal face.png"
+            cpfe + "eye 1.png"
+        attribute neutral default:
+            cpfe + "mouth 1.png"
         attribute frown:
             cpfe + "eye 1.png"
-
         attribute frown:
             cpfe + "mouth 2.png"
-            # cpfe + "beginging frown.png"
         attribute angry:
             cpfe + "hostile.png"
         attribute crying:

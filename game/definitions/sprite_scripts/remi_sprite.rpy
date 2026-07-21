@@ -5,6 +5,8 @@ define cprf = cpr + "effects/"
 
 image r_wings = At(cpr + "wing/remilia.png", sprite_set)
 
+# TODO consider removing blushes from embarrased and other main faces
+
 layeredimage r:
     at sprite_set
     

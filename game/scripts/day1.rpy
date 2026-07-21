@@ -10,7 +10,7 @@ label day1_forest:
     call scene_transition_fade("bg_forest") from _call_scene_transition_fade
 
     $ remi.show(dirty=True, tired=True, glove="Off", at=[center_right, standheight, enterright(speed=0.5)], flip=True, zorder=7)
-    $ flan.show(expression="frown", dirty=True, tired=True, at=[right, standheight, enterright(speed=0.5)], zorder=4)
+    $ flan.show(expression="surprised", dirty=True, tired=True, at=[right, standheight, enterright(speed=0.5)], zorder=4)
 
     f "Remi! Look out!"
 
@@ -24,6 +24,7 @@ label day1_forest:
     "Remilia swerves upwards, narrowly avoiding a tree."
 
     $ remi.expression("neutral")
+    $ flan.expression("serious")
 
     r "That was close."
 
@@ -59,7 +60,7 @@ label day1_forest:
     play sound sfx_forest_land
 
     $ remi.show(at=[center_left, standheight])
-    $ flan.show(at=[right, standheight], transition=dissolve)
+    $ flan.show(expression="frown", at=[right, standheight], transition=dissolve)
 
     "Remilia drops down from the air and catches her breath. Flandre steps down from her back."
 
@@ -113,9 +114,13 @@ label day1_forest:
 
     "Remilia begins to get up, but gets pulled back down."
 
+    $ flan.expression("serious")
+
     f "You need rest too."
 
     r "It will be just a moment."
+
+    $ flan.expression("frown")
 
     "Flandre sighs and lets go."
 
@@ -134,6 +139,8 @@ label day1_forest:
 
     r "A feast, just for you."
 
+    $ flan.expression("neutral")
+
     f "Than—mph."
 
     "She cuts her thanks short with a mouthful of food."
@@ -149,6 +156,8 @@ label day1_forest:
     $ remi.expression("neutral")
 
     r "I'll be alright."
+
+    $ flan.expression("frown")
 
     f "No you won't. You're hungry too."
 
@@ -191,10 +200,13 @@ label day1_forest:
 
     r "There must be some kind of shelter. Hunters build cabins out here."
 
+    $ flan.expression("surprised")
+
     f "Vampire hunters?"
 
     r "No, the animal kind. Don't worry."
 
+    $ flan.expression("frown")
     $ remi.flip(transition=dissolve_fast)
 
     "Flandre clings to Remilia's hand as they resume walking."
@@ -265,7 +277,7 @@ label day1_library:
 
     
     $ remi.show(far_left, expression="serious")
-    $ flan.move(corner_left)
+    $ flan.show(corner_left, expression="surprised")
     with move_fast
 
     call spear_summon() from _call_spear_summon
@@ -287,6 +299,8 @@ label day1_library:
     f "What is that?!"
 
     r "Stay close. I have it handled."
+
+    $ flan.expression("frown")
 
     call spear_block_barrage_end() from _call_spear_block_barrage_end
 
@@ -319,6 +333,8 @@ label day1_library:
 
     "Remilia charges her spear again, and the beams collide. Remilia nearly goes limp in Flandre's arms, heavily breathing."
 
+    $ flan.expression("holding_tear")
+
     f "Sis..."
 
     call spear_lazer_clash() from _call_spear_lazer_clash_2
@@ -330,6 +346,8 @@ label day1_library:
     $ flan.move(unscoot)
 
     "As the crystals charge again, Remilia drops."
+
+    $ flan.expression("angry")
 
     f "Remi, no!"
 
@@ -347,7 +365,7 @@ label day1_library:
     "The red slash collides with the lasers, splitting them in half. They crash into the ground next to the sisters."
 
     play sound sfx_body_fall
-    $ flan.move(drophalf)
+    $ flan.show(drophalf, expression="frown")
 
     "Flandre drops to her knees, breathing frantically."
 
@@ -357,6 +375,8 @@ label day1_library:
     "The magician slowly floats down in front of them."
 
     p "It appears neither of you can fight anymore."
+
+    $ flan.expression("serious")
 
     f "We never wanted to! We just want to rest!"
 
@@ -381,11 +401,13 @@ label day1_library:
     $ flan.move(shake(magnitude=4))
     pause 0.3
     play sound sfx_body_fall
-    $ flan.move(drophalf)
+    $ flan.show(drophalf, expression="frown")
 
     f "I... can't..."
 
     p "Hm. I suppose you are rather exhausted."
+
+    $ flan.expression("surprised")
 
     play sound sfx_magic_summon
 
@@ -410,6 +432,7 @@ label day1_end:
     $ remi.show(at=[dropdowninstant, corner_right, enterleft(speed=1.5)])
     
     pause 0.7
+    $ flan.expression("frown")
     $ pat.show(magic=False, at=[standheight, left, enterleft(speed=1.5)])
 
     p "This will be your room. It should be good enough for two."
@@ -434,11 +457,11 @@ label day1_end:
 
     r "What do you intend on doing with them?"
 
-    $ flan.show(expression="smile")
+    $ flan.expression("smile")
 
     f "Remi, you're awake!"
 
-    $ flan.show(expression="neutral")
+    $ flan.expression("neutral")
 
     r "Yes, I was the whole time. I just couldn't move."
 
@@ -455,24 +478,30 @@ label day1_end:
     
     p "I numbed them."
 
-    $ flan.move(hop)
+    $ flan.show(hop, expression="smile")
 
     f "Yay! Thank you!"
 
     $ pat.show(magic=False, transition=dissolve_fast)
 
     $ flan.move(hopreset)
-    $ flan.move(right, transition=ease)
+    $ flan.show(right, expression="neutral", transition=ease)
     
     $ flan.face(flipped=False)
 
     p "Is that all?"
 
+    $ flan.expression("frown")
+
     f "Um... can we have coffins?"
 
     p "...Why?"
 
+    $ flan.blush()
+
     f "Sorry, never mind."
+
+    $ flan.blush(False)
 
     p "Then I belie—"
 
@@ -480,6 +509,7 @@ label day1_end:
 
     p "Ugh..."
 
+    $ flan.expression("neutral")
     $ pat.flip()
     $ pat.show(magic=True, transition=dissolve_fast)
     call generic_spell() from _call_generic_spell_1
@@ -499,6 +529,8 @@ label day1_end:
     $ remi.blush()
 
     r "..."
+
+    $ flan.expression("frown")
 
     f "Um, we're hungry. Sorry."
 
@@ -521,9 +553,13 @@ label day1_end:
 
     r "What a ridiculous situation."
 
+    $ flan.expression("neutral")
+
     f "But we have shelter."
 
     r "Indeed. How are your wings doing? Did she do anything strange?"
+
+    $ flan.expression("smile")
 
     f "Nope! I can't feel them! It's great! I can finally—"
 
@@ -533,6 +569,7 @@ label day1_end:
 
     pause 0.1
 
+    $ flan.expression("surprised")
     $ remi.show(dropdown, zorder=1)
 
     f "Ah, Remi!"
@@ -540,6 +577,8 @@ label day1_end:
     $ flan.move([center_right, drophalf], transition=ease)
 
     "She runs over and kneels down beside her."
+
+    $ flan.expression("frown")
 
     f "You seriously passed out? Ugh, I told you to eat."
 
@@ -557,7 +596,11 @@ label day1_end:
 
     "After a few moments, a dead chicken appears on the table."
 
+    $ flan.expression("surprised")
+
     f "Oh!"
+
+    $ flan.expression("neutral")
 
     "She feeds Remilia its blood."
 

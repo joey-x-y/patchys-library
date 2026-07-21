@@ -701,7 +701,7 @@ label epilogue:
 
     "Remilia sits back down, then Patchouli pulls her in."
 
-    p "I'll serve it once you wrap me with your wings again."
+    p "I'll serve it once you wrap me in your wings again."
 
     $ remi.expression("smile")
 
