@@ -8,7 +8,7 @@ label day3_morning:
     play music bgm_library fadein 2.0
 
     $ flan.flip()
-    $ flan.show(tired=False, at=[center, standheight], transition=dissolve)
+    $ flan.show(expression="neutral", tired=False, at=[center, standheight], transition=dissolve)
 
     "Flandre hops over and shakes Remilia's coffin."
 
@@ -23,9 +23,13 @@ label day3_morning:
 
     r "What... it's too early for yelling..."
 
+    $ flan.expression("smile")
+
     f "I slept the whole night!"
 
     r "That's great. Are they still numb?"
+
+    $ remi.expression("neutral")
 
     f "Mostly. It's fading a little."
 
@@ -69,13 +73,15 @@ label day3_morning:
 
     r "Wasn't her name Patchouli?"
 
+    $ flan.expression("frown")
+
     f "That's too long. She's Patchy now."
 
     $ pat.show(magic=False, transition=dissolve_fast)
 
     p "It works."
 
-    $ flan.move(center_left, transition=ease)
+    $ flan.show(expression="neutral", at=center_left, transition=ease)
 
     "Remilia looks to the mountain of books on Patchouli's desk."
 
@@ -90,6 +96,8 @@ label day3_morning:
     f "Ooh cool, potions? What do they do?"
 
     p "You'll see. As for the possibility of deterioration, I haven't found anything specific. Could I see your wings?"
+
+    $ remi.expression("frown")
 
     f "Huh, what, deterioration?"
 
@@ -118,14 +126,14 @@ label day3_morning:
     p "I'll keep checking on it. Remilia noticed some changes, so I want to monitor them closely."
 
     $ remi.expression("embarrassed")
+    $ flan.expression("surprised")
 
     f "What? When?"
 
     p "Yesterday."
 
+    $ flan.expression("serious")
     $ flan.flip(transition=dissolve_fast)
-
-    "Flandre crosses her arms as she glares at Remilia."
 
     f "So, you {i}did{/i} notice something yesterday? That's what you were talking to Patchouli about, then?"
 
@@ -144,6 +152,8 @@ label day3_morning:
     f "Anything else I should know?"
 
     r "No. I just thought the holes might be slightly bigger, but I'm not certain. I wanted to be sure before making you worry."
+
+    $ flan.expression("frown")
 
     f "Well I'm a part of this too, so tell me."
 
@@ -361,6 +371,8 @@ label day3_morning:
 
     p "Now it should be good until next time I see you."
 
+    $ flan.expression("neutral")
+
     f "Oh, thanks!"
 
     p "I have many experiments ready for tomorrow. I'll need you here all night."
@@ -385,6 +397,8 @@ label day3_morning:
 
     r "Hey... I'm sorry about..."
 
+    $ flan.expression("frown")
+
     f "I know."
 
     r "I was just... trying to help."
@@ -397,15 +411,19 @@ label day3_morning:
 
     r "Here, ma'am."
 
+    $ flan.expression("neutral")
+
     f "Thank you, my servant. The dark meat is all mine today."
 
     $ remi.expression("angry")
 
     r "Oh, come on."
 
-    $ remi.expression("neurtal")
+    $ remi.expression("neutral")
 
     "Flandre takes a massive chomp."
+
+    $ flan.expression("frown")
 
     f "I'm upset about my wings. I don't want to lose them."
 
@@ -427,6 +445,7 @@ label day3_morning:
     "Flandre tosses the bone onto Remilia's lap."
 
     $ remi.expression("neutral")
+    $ flan.expression("neutral")
 
     f "Ha, it sounds like you're the one defending Patchy now."
 
@@ -434,7 +453,7 @@ label day3_morning:
 
     f "I believe you."
 
-    $ flan.show(center, transition=move_slow)
+    $ flan.show(blush=True, at=center, transition=move_slow)
 
     "Flandre leans into Remilia."
 
@@ -448,7 +467,7 @@ label day3_morning:
 
     r "Mhm."
 
-    $ flan.move([far_left, floatup], transition=move_fast)
+    $ flan.show(blush=False, expression="frown", at=[far_left, floatup], transition=move_fast)
 
     f "I'm tired now. Bye."
 
@@ -459,7 +478,8 @@ label day3_morning:
     "Remilia tosses the bone at her, but she catches and dunks it into Remilia's coffin."
 
     $ remi.expression("neutral")
-    
+    $ flan.expression("neutral")
+
     f "Heh."
 
     play sound sfx_coffin_close

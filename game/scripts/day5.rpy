@@ -6,7 +6,7 @@ label day5:
 label day5_morning:
     call day_transition_in from _call_day_transition_in_3
 
-    $ flan.show(at=[center, standheight], flip=True)
+    $ flan.show(expression="frown", at=[center, standheight], flip=True)
     $ remi.show(at=[left, standheight], flip=True)
     with dissolve
 
@@ -18,6 +18,8 @@ label day5_morning:
     $ remi.expression("neutral")
 
     r "Wings look the same."
+
+    $ flan.expression("neutral")
 
     f "Phew."
 
@@ -31,18 +33,18 @@ label day5_morning:
 
     r "Already? We just ate before our slumber."
 
-    $ flan.move(hopreset)
+    $ flan.show(expression="frown", at=hopreset)
     $ flan.flip(transition=dissolve_fast)
 
     f "Not everyone has your puny appetite."
 
     $ flan.flip(transition=dissolve_fast)
-    $ flan.move(hopdown(150, length=0.5))
+    $ flan.show(expression="neutral", at=hopdown(150, length=0.5))
 
     r "Guess not. I'll go on ahead."
 
     $ remi.show(offscreenright, flip=True, transition=move_slow)
-    $ flan.move(hopreset)
+    $ flan.show(expression="surprised", at=hopreset)
     $ flan.flip()
 
     f "Mmf, mmph mm mmf!"
@@ -334,7 +336,7 @@ label day5_morning:
 
     f "Your true colors are showing."
 
-    $ flan.show(at=[far_left, standheight], transition=dissolve, zorder=1)
+    $ flan.show(expression="neutral", at=[far_left, standheight], transition=dissolve, zorder=1)
 
     call table_unzoom_l from _call_table_unzoom_l_1
 
@@ -348,13 +350,17 @@ label day5_morning:
     $ pat.show(magic=True)
     call generic_spell from _call_generic_spell_10
 
+    $ flan.expression("surprised")
+
     f "Nice aim. You can numb me from there?"
 
     $ pat.show(magic=False, transition=dissolve_fast, zorder=5)
 
     p "Yes."
 
-    f "You two were so deeply engaged with each other, I didn't have the heart to interrupt. But then boredom happened. What a shame."
+    $ flan.expression("neutral")
+
+    f "Neat. You two were so deeply engaged with each other, I didn't have the heart to interrupt. But then boredom happened. What a shame."
 
     $ remi.flip(transition=dissolve_fast)
 
@@ -374,9 +380,21 @@ label day5_morning:
 
     "Flandre takes her seat as she crashes the tea party."
 
+    $ flan.expression("frown")
+
+    f "Am I third horsing?"
+
+    p "Horse what?"
+
+    $ remi.expression("embarrassed")
+
+    r "She probably meant wheeling..."
+
+    f "Yeah. Sure. That."
+
     $ flan.flip(transition=dissolve_fast)
 
-    f "Your peculiar charm is overwhelming Patchy."
+    f "By the way, your peculiar charm is overwhelming Patchy. You need to be careful."
 
     r "My what now? Peculiar? I am no such thing."
 
@@ -388,7 +406,7 @@ label day5_morning:
 
     r "She won't just magically become my sister. Well, unless there's a spell for that."
 
-    p "There is. But I don't know that one."
+    p "There is. But I haven't learned that one."
 
     $ remi.show(expression="smile", blush=False)
 
@@ -397,6 +415,8 @@ label day5_morning:
     f "Hmph. I didn't mean it like that."
 
     r "Enough worrying. Put your feet on the table like a proper noble."
+
+    $ flan.expression("neutral")
 
     f "Heh. That's stupid."
 
@@ -407,6 +427,8 @@ label day5_morning:
     call show_transition_fade("bg_study") from _call_show_transition_fade_5
 
     "They continue to relax at the table for the next few hours, with Patchouli passively researching despite the vampire's distractions."
+
+    $ flan.show(expression="frown", at=hop(10))
 
     "Flandre lets out a big yawn."
 
@@ -427,13 +449,15 @@ label day5_morning:
     call scene_transition_fade("bg_bedroom") from _call_scene_transition_fade_27
 
     $ remi.show(at=[left, standheight], zorder=2)
-    $ flan.show(at=[center_right, standheight], flip=True, transition=dissolve)
+    $ flan.show(expression="neutral", at=[center_right, standheight], flip=True, transition=dissolve)
 
     f "I'm happy you made a friend."
 
     $ remi.expression("neutral")
 
     r "Did you doubt I would?"
+
+    $ flan.expression("frown")
 
     f "Um... maybe?"
 
@@ -443,8 +467,11 @@ label day5_morning:
 
     r "How rude. Of course I did."
 
+    $ flan.expression("smile")
+
     f "Congrats."
 
+    $ flan.expression("neutral")
     $ remi.show(center, transition=move_slow, zorder=7)
 
     "Remilia puts her hand on Flandre's head."

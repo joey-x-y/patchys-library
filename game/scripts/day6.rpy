@@ -9,7 +9,7 @@ label day6_morning:
 
     call day_transition_in from _call_day_transition_in_4
 
-    $ flan.show(wings="gone", at=[center_right, standheight], flip=True, transition=dissolve, zorder=5)
+    $ flan.show(wings="gone", expression="frown", at=[center_right, standheight], flip=True, transition=dissolve, zorder=5)
 
     "Flandre jumps out from her coffin."
 
@@ -40,6 +40,7 @@ label day6_morning:
     stop music fadeout 2.0
 
     $ remi.expression("crying")
+    $ flan.expression("surprised")
 
     r "..."
 
@@ -61,6 +62,8 @@ label day6_morning:
 
     r "Your wings are gone."
 
+    $ flan.expression("frown")
+
     f "Gone. Oh."
 
     $ flan.move(hopreset)
@@ -75,6 +78,8 @@ label day6_morning:
     $ remi.move(center, transition=move_slow)
 
     r "Hey, Flan—"
+
+    $ flan.expression("angry")
 
     play sound sfx_magic_cast
     call spear_summon() from _call_spear_summon_2
@@ -105,15 +110,17 @@ label day6_morning:
 
     r "Then please, calm down. We can have Patchouli figure something out."
 
+    $ flan.expression("holding_tear")
+
     f "But, but, they're... already gone."
 
     $ remi.move(left)
     $ flan.move(far_left)
-    $ flan.flip(transition=dissolve_fast)
+    $ flan.show(expression="crying", flip=True, transition=dissolve_fast)
 
     "Flandre goes limp, and puts her face in her hands, crying."
 
-    f "They're gone! I'll never fly again!"
+    f "They're gone! Gone!"
 
     $ flan.flip(transition=dissolve_fast)
     $ remi.move(at=[center_right, sitheight], transition=move_fast)
@@ -185,12 +192,14 @@ label day6_morning:
 
     call scene_transition_fade("bg_bedroom") from _call_scene_transition_fade_32
 
-    $ flan.show([far_left, standheight, floatup])
+    $ flan.show(expression="frown", at=[far_left, standheight, floatup])
     $ remi.show(expression="neutral", at=[center_right, standheight], transition=dissolve)
 
     $ pat.show([far_right, standheight, enterright()])
 
     "Patchouli flies behind Remilia into the bedroom. Flandre is leaning back in her coffin, blankly staring at the ceiling. Her gaze snaps to them as they enter."
+
+    $ flan.expression("angry")
 
     f "Go away! Leave me alone!"
 
@@ -200,7 +209,7 @@ label day6_morning:
 
     f "Leave me alone!"
 
-    $ flan.flip(transition=dissolve_fast)
+    $ flan.show(expression="serious", flip=True, transition=dissolve_fast)
     $ flan.move(hopreset, transition=move_fast)
 
     "Flandre turns and curls herself into a ball, revealing her decayed wings."
@@ -211,7 +220,7 @@ label day6_morning:
 
     p "Damn it! They're already gone?"
 
-    $ remi.show(expression="surprised", flip=True, transition=dissolve_fast)
+    $ remi.show(flip=True, transition=dissolve_fast)
 
     r "Uh, hey, Patchouli?"
 
@@ -221,6 +230,7 @@ label day6_morning:
     $ pat.flip()
     with None
     $ pat.move(offscreenright, transition=ease)
+    $ flan.flip(transition=dissolve_fast)
 
     r "Hey!"
 
@@ -596,14 +606,14 @@ label day6_morning:
 
     call scene_transition_fade("bg_bedroom") from _call_scene_transition_fade_36
 
-    $ flan.show([far_left, standheight, floatup], transition=dissolve, flip=True, zorder=8)
+    $ flan.show(expression="frown", at=[far_left, standheight, floatup], transition=dissolve, flip=True, zorder=8)
     $ remi.show([right, standheight, enterright()], flip=True)
 
     "Flandre is sitting in her coffin, unmoved from before. Dried tears cover her face."
 
     r "Hello, Flandre."
 
-    f "Hi."
+    f "...Hi."
 
     $ remi.move(left, transition=move_slow)
     $ flan.move(hopreset, transition=move_slow)

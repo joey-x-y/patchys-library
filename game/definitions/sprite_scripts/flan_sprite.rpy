@@ -3,7 +3,7 @@ define cpfe = cpf + "expression/"
 define cpfw = cpf + "wing/"
 define cpfa = cpf + "acc/"
 
-# TODO consider removing blushes from surprised
+# TODO consider removing blushes from surprised or questioning face
 
 layeredimage f:
     at sprite_set
