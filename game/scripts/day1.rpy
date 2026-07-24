@@ -306,8 +306,7 @@ label day1_library:
 
     play music bgm_duel fadein 2.0
 
-    $ pat.face(flipped=True)
-    $ pat.show(magic=True, at=[standheight, floatup, corner_right, enterright(speed=1.5)])
+    $ pat.show(magic=True, flip=True, expression="serious", at=[standheight, floatup, corner_right, enterright(speed=1.5)])
 
     pause 1.5
 
@@ -327,7 +326,11 @@ label day1_library:
 
     r "We can't! We need some shelter from the sun."
 
+    $ pat.expression("neutral")
+
     p "A shame."
+
+    $ pat.expression("serious")
 
     call spear_lazer_clash() from _call_spear_lazer_clash_1
 
@@ -358,11 +361,15 @@ label day1_library:
 
     "Flandre steps in front of Remilia's body and summons her sword. The magician charges her crystals."
 
+    $ pat.expression("surprised")
+
     f "Hah!"
 
     call spear_lazer_clash(defender=flan) from _call_spear_lazer_clash_3
 
     "The red slash collides with the lasers, splitting them in half. They crash into the ground next to the sisters."
+
+    $ pat.expression("serious")
 
     play sound sfx_body_fall
     $ flan.show(drophalf, expression="frown")
@@ -374,6 +381,8 @@ label day1_library:
 
     "The magician slowly floats down in front of them."
 
+    $ pat.expression("neutral")
+
     p "It appears neither of you can fight anymore."
 
     $ flan.expression("serious")
@@ -384,9 +393,15 @@ label day1_library:
 
     f "We had to! The sun will kill us!"
 
+    $ pat.expression("think")
+
     p "Hmm..."
 
     stop music fadeout 2.0
+
+    "..."
+
+    $ pat.expression("neutral")
 
     p "I've never seen vampires before. I want to study you. On that condition, you may stay."
 
@@ -415,6 +430,8 @@ label day1_library:
     $ flan.move(offscreenright)
     with ease
 
+    $ pat.flip(transition=dissolve_fast)
+
     f "Whoa!"
 
     "The magician sends them off to their room."
@@ -423,13 +440,11 @@ label day1_library:
 
 label day1_end:
 
+    play music bgm_emotional fadein 2.0
     call scene_transition_fade("bg_bedroom_nocoffin") from _call_scene_transition_fade_4
-    $ pat.face(flipped=False)
-    $ flan.face(flipped=False)
-    $ remi.face(flipped=True)
 
-    $ flan.show(at=[standheight, right, enterleft(speed=1.5)], zorder=6)
-    $ remi.show(at=[dropdowninstant, corner_right, enterleft(speed=1.5)])
+    $ flan.show(flip=True, at=[standheight, right, enterleft(speed=1.5)], zorder=6)
+    $ remi.show(flip=True, at=[dropdowninstant, corner_right, enterleft(speed=1.5)])
     
     pause 0.7
     $ flan.expression("frown")
@@ -495,6 +510,8 @@ label day1_end:
 
     f "Um... can we have coffins?"
 
+    $ pat.expression("annoyed")
+
     p "...Why?"
 
     $ flan.blush()
@@ -503,7 +520,10 @@ label day1_end:
 
     $ flan.blush(False)
 
+    $ pat.expression("neutral")
     p "Then I belie—"
+
+    $ pat.expression("annoyed")
 
     r "No, it's important. Vampires recover far quicker inside one. If you want your test subjects to be at full health, you should bring some."
 
@@ -539,6 +559,7 @@ label day1_end:
     $ remi.blush(False)
 
     $ pat.move(corner_left, transition=move_slow)
+    $ pat.expression("neutral")
 
     p "A word of caution. Try anything, you'll explode. So don't."
 
@@ -547,7 +568,7 @@ label day1_end:
     $ flan.move(left)
     $ remi.move(right)
     with move_slow
-    $ flan.face(flipped=True, transition=dissolve_fast)
+    $ flan.flip(transition=dissolve_fast)
 
     "Remilia lets out a massive sigh."
 

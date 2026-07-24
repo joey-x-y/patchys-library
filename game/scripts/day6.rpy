@@ -1,9 +1,7 @@
 label day6:
     call day6_morning from _call_day6_morning
 
-
     return
-
 
 label day6_morning:
 
@@ -173,11 +171,12 @@ label day6_morning:
 
     call scene_transition_fade("bg_study") from _call_scene_transition_fade_31
 
-    $ pat.show([right, standheight], transition=dissolve)
-
+    $ pat.show(expression="think", at=[right, standheight], transition=dissolve)
     $ remi.show(at=[left, standheight, enterleft(0.3)], flip=True)
 
     r "Patchouli! Come!"
+
+    $ pat.expression("surprised")
 
     p "Is something amiss?"
 
@@ -187,6 +186,7 @@ label day6_morning:
     with None
 
     $ remi.move(offscreenleft, transition=ease)
+    $ pat.expression("neutral")
 
     p "Hmm."
 
@@ -203,6 +203,8 @@ label day6_morning:
 
     f "Go away! Leave me alone!"
 
+    $ pat.expression("confused")
+
     p "Um..."
 
     r "Flandre... she wants to help you."
@@ -214,15 +216,21 @@ label day6_morning:
 
     "Flandre turns and curls herself into a ball, revealing her decayed wings."
 
+    $ pat.expression("surprised")
+
     p "...What?"
 
     r "Mhm... She's not taking it well."
+
+    $ pat.expression("angry")
 
     p "Damn it! They're already gone?"
 
     $ remi.show(flip=True, transition=dissolve_fast)
 
     r "Uh, hey, Patchouli?"
+
+    $ pat.expression("surprised")
 
     p "What can I—"
 
@@ -247,7 +255,7 @@ label day6_morning:
 
     call scene_transition_fade("bg_study") from _call_scene_transition_fade_33
 
-    $ pat.show([center_left, sitheight], transition=dissolve, zorder=5)
+    $ pat.show(expression="serious", at=[center_left, sitheight], transition=dissolve, zorder=5)
     $ remi.show([corner_left, standheight, enterleft()])
     pause 0.2
     $ pat.move(drophalf)
@@ -290,11 +298,14 @@ label day6_morning:
 
     "She drops Patchouli onto her chair, then sits across from her. Patchouli breathes hard for a full minute before recovering."
 
+    $ pat.expression("confused")
+
     p "Sorry."
 
     $ remi.flip(transition=dissolve)
     $ remi.flip(transition=dissolve)
 
+    $ pat.expression("neutral")
     $ remi.expression("crying", transition=dissolve)
 
     "Remilia looks to the door and back, then lets out a deep breath as she drops her head in tears."
@@ -313,9 +324,13 @@ label day6_morning:
 
     r "Can't you do something?"
 
+    $ pat.expression("angry")
+
     p "Do what?!"
 
     r "Never mind. Sorry."
+
+    $ pat.expression("neutral")
 
     "Patchouli crosses her arms and looks down."
 
@@ -337,6 +352,8 @@ label day6_morning:
     $ pat.move([center_right, standheight], transition=move_slow)
 
     "She takes a deep breath, then slowly floats over."
+
+    $ pat.expression("confused")
 
     p "Um... Remilia?"
 
@@ -376,6 +393,7 @@ label day6_morning:
 
     call dismiss_cg from _call_dismiss_cg_1
     
+    $ pat.show(expression="neutral", blush=True)
     $ remi.show(expression="neutral", blush=True, at=left, transition=ease)
 
     r "Uh, sorry. Thanks. Um, yeah."
@@ -386,6 +404,8 @@ label day6_morning:
 
     r "I, uh, feel a little better. Thank you."
 
+    $ pat.expression("smile")
+
     p "Yeah, um, yeah. Right. I don't know what I'm doing."
 
     r "Ha, me neither."
@@ -394,7 +414,7 @@ label day6_morning:
     play music bgm_emotional fadein 2.0
 
     $ remi.show(expression="neutral", blush=False, at=corner_left, flip=True, zorder=6)
-    $ pat.show(right, transition=move_slow, flip=True)
+    $ pat.show(expression="neutral", blush=False, at=right, transition=move_slow, flip=True)
     $ pat.show(sitheight, flip=True)
 
     $ remi.flip(transition=dissolve)
@@ -435,12 +455,12 @@ label day6_morning:
 
     r "I understand. Want me to leave you alone?"
 
-    p "No. Stay."
+    p "No."
 
     $ remi.flip(transition=dissolve_fast)
     $ remi.show(expression="smile", blush=True, at=[center_left, sitheight], transition=ease)
 
-    r "Sure."
+    r "Okay."
 
     $ remi.expression("neutral")
     $ remi.blush(False)
@@ -460,7 +480,9 @@ label day6_morning:
 
     r "Here."
 
-    p "...What?"
+    $ remi.expression("confused")
+
+    p "What?"
 
     $ remi.expression("smile")
 
@@ -468,9 +490,7 @@ label day6_morning:
 
     r "I present to you, the pride and soul of all vampires. My gorgeous wings. You wanted to study them. Here you go."
 
-    $ pat.move(standheight, transition=ease)
-
-    "Patchouli stands and smiles."
+    $ pat.show(expression="smile", at=standheight, transition=ease)
 
     p "Oh, I see. You're finally letting Patchy touch your wings?"
     
@@ -521,7 +541,7 @@ label day6_morning:
 
     r "Very! Now stop!"
 
-    p "I simply couldn't resist."
+    p "I simply cannot resist."
 
     r "What am I even doing right now..."
 
@@ -570,6 +590,8 @@ label day6_morning:
     $ remi.blush()
 
     r "Um, Patchouli?"
+
+    $ pat.expression("neutral")
 
     p "Yes?"
 

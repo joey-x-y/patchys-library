@@ -128,11 +128,15 @@ label day2_morning:
 
     r "I bet."
 
+    stop music fadeout 2.0
+
     "They reach the top, approaching a large door."
 
     p "You may enter."
 
     $ remi.show(center_right, transition=move_slow)
+
+    play sound sfx_door_open
 
     "Remilia grabs Flandre's hand as they enter together."
 
@@ -141,6 +145,7 @@ label day2_morning:
 label day2_library:
 
     call scene_transition_fade("bg_study") from _call_scene_transition_fade_7
+
     "They step into yet another room lined with even more books. Patchouli sits in front at her desk large desk."
 
     play music bgm_library fadein 2.0
@@ -149,12 +154,12 @@ label day2_library:
     $ remi.face(flipped=False)
     $ flan.face(flipped=True)
 
-    $ pat.show(hat=False, at=[right, standheight], transition=dissolve, zorder=2)
+    $ pat.show(hat=False, expression="smile", at=[right, standheight], transition=dissolve, zorder=2)
 
     $ remi.show(expression="neutral", at=[left, standheight, enterleft()])
     $ flan.show(at=[corner_left, standheight, enterleft()])
 
-    p "Welcome to my study."
+    p "Welcome, to my library of knowledge."
 
     $ flan.expression("surprised")
 
@@ -164,7 +169,9 @@ label day2_library:
 
     r "Apply that numbing spell again, would you?"
 
-    p "One moment."
+    $ pat.expression("annoyed")
+
+    p "Hold a moment."
 
     $ pat.show(magic=True, transition=dissolve_fast)
     call generic_spell() from _call_generic_spell_4
@@ -178,25 +185,22 @@ label day2_library:
 
     f "You don't stink any more, Remi! Finally."
 
-    $ remi.expression("angry")
-    $ remi.move(hop(20))
+    $ pat.expression("smile")
+    $ remi.show(expression="angry", flip=True, at=hop(20))
 
     r "What?!"
 
-    $ remi.expression("neutral")
+    $ pat.expression("neutral")
 
-    p "Now come here. I will numb those wings longer this time."
+    p "Now come here. I will numb your wings longer this time."
 
     $ flan.move(center_right, transition=ease)
+    $ remi.flip()
 
     call generic_spell() from _call_generic_spell_5
 
-    $ flan.show(center, zorder=1)
-    with move_slow
-
+    $ flan.show(center, zorder=1, transition=move_slow)
     $ pat.show(magic=False, transition=dissolve_fast)
-
-    $ flan.expression("frown")
 
     f "Thank you... uh, what's your name?"
 
@@ -243,6 +247,8 @@ label day2_library:
 
     r "I must know. I will only tolerate so much. I have dignity I wish to maintain."
 
+    $ pat.expression("smile")
+
     p "I'm not a mad magician, I won't do anything too harsh. I just want to understand vampires more. I've never seen one. It's fascinating."
     
     p "Why does simple sunlight hurt them when they are so durable? There are many questions to be answered."
@@ -255,6 +261,8 @@ label day2_library:
 
     r "Great."
 
+    $ pat.expression("neutral")
+
     play sound sfx_rustle_3
 
     $ remi.move(far_left)
@@ -265,6 +273,8 @@ label day2_library:
     $ flan.expression("neutral")
 
     f "She's done. You can ask stuff now."
+
+    $ pat.expression("curious")
 
     p "So I shall. For my first question, I believe vampires have the ability to regenerate themselves, correct?"
 
@@ -304,6 +314,7 @@ label day2_library:
 
     f "Uh... I don't know!"
 
+    $ pat.expression("neutral")
     $ flan.expression("frown")
     $ remi.show(scoot_right, expression="serious")
     play sound sfx_rustle_3
@@ -321,11 +332,15 @@ label day2_library:
 
     f "Um... if it's not too much trouble, do you think you can fix them? Please?"
 
+    $ pat.expression("think")
+
     p "Hmm... that would make for an interesting project."
 
     $ remi.expression("smile")
 
     r "Marvelous idea. This will make for a fine vampiric study."
+
+    $ pat.expression("annoyed")
 
     p "When you put it like that... never mind."
 
@@ -354,6 +369,7 @@ label day2_library:
 
     f "U-um..."
 
+    $ pat.expression("neutral")
     $ flan.move(hopdown(height=10, length=0.3))
     pause 0.3
 
@@ -365,7 +381,11 @@ label day2_library:
 
     r "Please heal my sister."
 
+    $ pat.expression("think")
+
     "Patchouli sighs."
+
+    $ pat.expression("neutral")
 
     p "Very well."
 
@@ -373,11 +393,15 @@ label day2_library:
 
     f "W-will you really?"
 
-    p "Yes. Sure."
+    $ pat.expression("annoyed")
+
+    p "Yes."
 
     $ flan.show(expression="smile", at=hop)
 
     f "Yay! You're awesome!"
+
+    $ pat.expression("neutral")
 
     p "I'll analyze your wings. Lay on the table."
 
@@ -395,7 +419,7 @@ label day2_library:
 
     r "Don't do anything weird to her."
 
-    $ pat.show(at=center, flip=True, magic=False)
+    $ pat.show(expression="curious", at=center, flip=True, magic=False)
 
     p "Like what?"
 
@@ -404,7 +428,7 @@ label day2_library:
     r "Uh... I don't know."
 
     $ remi.expression("neutral")
-    $ pat.show(at=center_right, flip=True, magic=True)
+    $ pat.show(expression="neutral", at=center_right, flip=True, magic=True)
 
     p "In that case, you are free to go do whatever you want. But don't break anything. And don't disturb me."
 
@@ -418,6 +442,7 @@ label day2_library:
 
     call scene_transition_fade("black") from _call_scene_transition_fade_8
     stop music fadeout 2.0
+
     "Patchouli begins her analysis, floating above Flandre and applying various spells and potions. Remilia stands in the corner and watches for the rest of the night."
 
     return
@@ -442,12 +467,12 @@ label day2_end:
 
     r "Are they fixed?"
 
-    $ pat.face(flipped=True, transition=dissolve_fast)
+    $ pat.show(expression="annoyed", flip=True, transition=dissolve_fast)
 
     p "No, I'm tired."
 
     $ flan.move(corner_right)
-    $ pat.move(center_right)
+    $ pat.show(expression="neutral", at=center_right)
     $ remi.move(left, transition=ease)
 
     "Remilia pushes off the wall she was leaning on, approaching Patchouli."
@@ -581,6 +606,7 @@ label day2_end:
     call scene_transition_fade("bg_study") from _call_scene_transition_fade_11
     $ pat.flip()
     $ pat.show(at=[right, standheight], transition=dissolve)
+
     "Patchouli is sitting at a table, looking at the vast collection of open books in front of her."
 
     $ remi.show(expression="neutral", at=[left, standheight, enterleft])
@@ -601,6 +627,8 @@ label day2_end:
 
     r "Well... they looked different the last time I checked."
 
+    $ pat.expression("curious")
+
     "Patchouli finally looks up."
 
     p "When was that?"
@@ -619,6 +647,8 @@ label day2_end:
 
     r "I see."
 
+    $ pat.expression("smile")
+
     p "Thank you for sharing that. It is useful information."
 
     $ remi.expression("smile")
@@ -627,11 +657,15 @@ label day2_end:
 
     r "Why, of course."
 
+    $ pat.expression("curious")
+
     p "Do you know anything else about Flandre's injuries that she didn't tell me?"
 
     $ remi.expression("serious")
 
     r "No."
+
+    $ pat.expression("neutral")
 
     p "I see."
 
@@ -647,6 +681,8 @@ label day2_end:
 
     "Remilia's smug grin returns as Patchouli stands up."
 
+    $ pat.expression("curious")
+
     p "Mind if I check something?"
 
     r "Go right ahead."
@@ -654,6 +690,7 @@ label day2_end:
     call summon_cg("cg_wingtouch") from _call_summon_cg
 
     $ remi.show(expression="surprised", blush=True)
+    $ pat.expression("neutral")
 
     r "Huh? W-wait, hey!"
 
@@ -668,6 +705,8 @@ label day2_end:
 
     r "W-what are you doing, fiend?! Unhand me!"
 
+    $ pat.expression("confused")
+
     p "Checking your wings?"
 
     r "Unacceptable!"
@@ -675,6 +714,8 @@ label day2_end:
     p "But you said go ahead?"
 
     r "I wasn't talking about me!"
+
+    $ pat.expression("neutral")
 
     p "Oh."
 
@@ -689,6 +730,8 @@ label day2_end:
     $ remi.expression("smile")
 
     r "Don't just touch a vampire's wing like that. Understand?"
+
+    $ pat.expression("confused")
 
     p "But I've been touching Flandre's."
 
@@ -715,7 +758,7 @@ label day2_end:
 
     $ remi.blush(False)
 
-    r "This heathen touched my wing without a care. As if it were some trinket from a market stall."
+    r "This {i}heathen{/i} touched my wing without a care. As if it were some trinket from a market stall."
 
     $ flan.expression("surprised")
 
@@ -765,7 +808,7 @@ label day2_end:
 
     $ flan.expression("smile")
 
-    f "Woohoo!"
+    f "Yay! We're flying!"
 
     play music bgm_title fadein 2.0
 

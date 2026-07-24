@@ -65,6 +65,7 @@ label generic_spell:
     show impact_flash onlayer effects at flash(0.2, 0.1)
     pause 0.2
     hide impact_flash onlayer effects
+    with None
     return
 
 transform flash(time=0.1, alpha=0.25):

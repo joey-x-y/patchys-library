@@ -77,6 +77,8 @@ label day4_morning:
 
     r "Patchouli. I believe her wings have deteriorated."
 
+    $ pat.expression("serious")
+
     p "Oh. Let me see."
 
     $ pat.move(center_left, transition=move_slow)
@@ -89,18 +91,18 @@ label day4_morning:
 
     f "Mm."
 
-    $ flan.forget_position()
-    
+    $ flan.move(enterforcefinish)
+    with None
     $ flan.show(at=[right, standheight], flip=True, transition=move_slow)
     
-    $ pat.show(magic=True, at=center, transition=dissolve_fast, flip=True)
+    $ pat.show(magic=True, expression="neutral", at=center, transition=dissolve_fast, flip=True)
     call generic_spell from _call_generic_spell_8
 
     "Flandre takes her spot on the table as Patchouli reapplies the numb spell."
 
     play music bgm_library fadein 2.0
 
-    $ pat.flip(transition=dissolve_fast)
+    $ pat.show(expression="smile", flip=True, transition=dissolve_fast)
 
     p "Are you going to stand in the corner and watch us all night again?"
 
@@ -126,9 +128,13 @@ label day4_morning:
 
     r "Would you unlock the front door? I want to go out."
 
+    $ pat.expression("confused")
+
     p "Unlock?"
 
     r "Yes."
+
+    $ pat.expression("neutral")
 
     p "It was never locked."
 
@@ -157,12 +163,12 @@ label day4_morning:
 
     p "But the stakes were too high to test it."
 
-    $ remi.expression("neutral")
-    $ remi.blush()
+    $ remi.show(expression="neutral", blush=True)
 
     r "Bah. This deception will not go unanswered."
 
     $ remi.flip()
+    with None
     $ remi.move(offscreenleft, transition=move_slow)
 
     $ flan.show(sitheight, flip=True)
@@ -206,6 +212,8 @@ label day4_morning:
 
     f "Ooh, like what?"
 
+    $ pat.expression("curious")
+
     p "The most likely cause is a form of poison. Your body is clearly not poisoned, but perhaps there is a residual effect in the wings."
 
     $ flan.expression("surprised")
@@ -224,11 +232,15 @@ label day4_morning:
 
     f "Uh... I don't know. That sounds scary."
 
+    $ pat.expression("smile")
+
     p "I see. That would make for an interesting experiment."
 
     $ flan.expression("surprised")
 
     f "No!"
+
+    $ pat.expression("neutral")
 
     p "I won't."
 
@@ -249,15 +261,19 @@ label day4_morning:
 
     "Flandre's legs slowly swing. Patchouli is still, her eyes closed but occasionally opening for a peek. Eventually, they stick to Flandre."
 
-    p "Where do you two come from?"
+    p "Where did you two come from?"
 
     $ flan.expression("smile")
 
     f "The noble Scarlet house!"
 
+    $ pat.expression("think")
+
     p "Noble house, hmm? That explains your sister's... peculiar charm."
 
     f "Haha, peculiar."
+
+    $ pat.expression("smile")
 
     p "Indeed. What brought you two into this forest?"
 
@@ -285,11 +301,15 @@ label day4_morning:
 
     f "You are a terrible storyteller."
 
+    $ pat.expression("neutral")
+
     p "Fine. I studied some libraries and learned how to manipulate materials to take the shape of the ideal design."
 
     $ flan.expression("surprised")
 
     f "Wow, cool. How did you do the magic?"
+
+    $ pat.expression("smile")
 
     p "It requires many years of magical study. You need to do that before you could even begin to understand."
 
@@ -304,7 +324,11 @@ label day4_morning:
 
     f "Hey, do you like Remilia?"
 
+    $ pat.expression("think")
+
     "Patchouli takes a long drink before responding."
+
+    $ pat.expression("neutral")
 
     p "Mhm. She's interesting, I suppose."
 
@@ -316,15 +340,20 @@ label day4_morning:
 
     f "I guess. But it's been excessive since it happened. Like it's somehow her fault."
 
+    $ pat.expression("curious")
+
     p "Since what?"
 
     $ flan.expression("holding_tear")
 
     f "Um..."
 
+    $ pat.expression("confused")
+
     p "Oh, never mind."
 
     $ flan.expression("frown")
+    $ pat.expression("neutral")
 
     "Flandre lets out a deep sigh."
 
@@ -333,6 +362,8 @@ label day4_morning:
     f "I can't complain, though. She makes me feel safe. I appreciate it. But she's annoying."
 
     "Patchouli sips tea, and smiles as she sets the cup down."
+
+    $ pat.expression("smile")
 
     p "That is—"
 
@@ -343,10 +374,12 @@ label day4_morning:
     r "I'm back!"
 
     $ remi.show(expression="smile", blush=False, glove="Blood", dirty=True, at=[far_left, standheight, enterleft()], flip=True)
-    $ pat.show(at=[center_right, standheight], transition=move_slow, zorder=2)
+    $ pat.show(expression="neutral", at=[center_right, standheight], transition=move_slow, zorder=2)
     $ pat.flip(transition=dissolve_fast)
 
     "Remilia flies in with a large bag."
+
+    $ pat.expression("confused")
 
     p "Is that one of my bookshelf covers?"
 
@@ -358,6 +391,7 @@ label day4_morning:
 
     $ remi.expression("angry")
     $ flan.expression("neutral")
+    $ pat.expression("neutral")
 
     r "Oh shut up!"
 
@@ -374,6 +408,7 @@ label day4_morning:
     f "Yay!"
 
     $ flan.expression("neutral")
+    $ pat.expression("annoyed")
 
     p "This is not what the covers are for."
 
@@ -389,6 +424,7 @@ label day4_morning:
     f "How unnoble."
 
     $ remi.expression("neutral")
+    $ pat.expression("smile")
 
     r "Quiet, you."
 
@@ -399,11 +435,12 @@ label day4_morning:
     $ pat.show(at=[far_right, sitheight], zorder=5)
     with move_slow 
 
-    $ remi.show(glove="Blood", expression="smile", transition=dissolve)
     $ flan.expression("frown")
-
+    $ remi.show(glove="Blood", expression="smile", transition=dissolve)
+    
     "Remilia begins her feast, causing blood to drip down her face."
 
+    $ pat.expression("neutral")
     $ flan.flip(transition=dissolve_fast)
 
     "Flandre does her best to protect the floor, cupping her hands in front of her sister."
@@ -418,6 +455,8 @@ label day4_morning:
 
     f "Ugh. Sorry Patchy, she is a terrible eater."
 
+    $ pat.expression("annoyed")
+
     p "Please keep the floors clean. I have not invested in mops."
 
     $ flan.expression("neutral")
@@ -425,6 +464,8 @@ label day4_morning:
     f "I'll do my best."
 
     p "I was talking to Remilia."
+
+    $ pat.expression("neutral")
 
     "Remilia tosses her half-eaten mess back into the pile."
 
@@ -454,6 +495,8 @@ label day4_morning:
 
     r "Cool, you can just teleport anything, anywhere you want?"
 
+    $ pat.expression("smile")
+
     p "Within my domain, most inanimate things."
 
     r "And you can eavesdrop on anyone, and make your voice appear anywhere?"
@@ -472,9 +515,13 @@ label day4_morning:
 
     r "Uhh... sun?"
 
+    $ pat.expression("neutral")
+
     p "Useful against vampires, but at a cost. Lasers require an undesirable level of exertion."
 
     r "I'm sure it does. Though you had no problem spamming them."
+
+    $ pat.show(expression="smile", at=hop(10))
 
     "Patchouli crosses her arms with a big grin."
 
@@ -501,6 +548,8 @@ label day4_morning:
     r "We're not even fighting yet, just planning our rematch. Isn't that right, master of this random library in the middle of nowhere?"
 
     stop music
+
+    $ pat.expression("neutral")
 
     p "Rematch declined."
 
@@ -532,6 +581,8 @@ label day4_morning:
 
     r "Hey, wait just a minute! You can teleport things, but made me grab a vial for you?"
 
+    $ pat.expression("smile")
+
     p "Moving things with magic takes effort too. Not only lasers."
 
     $ remi.expression("neutral")
@@ -555,9 +606,13 @@ label day4_morning:
 
     r "How rude. I did what I had to do to ensure your wings recover in a timely manner."
 
+    $ pat.expression("annoyed")
+
     p "After complaining."
 
     r "Oh, be quiet. When we first arrived, you were groaning about providing us simple necessities like coffins."
+
+    $ pat.expression("confused")
 
     "Patchouli sighs and presses her forehead into her tome."
 
@@ -565,6 +620,7 @@ label day4_morning:
 
     r "Excuse me?"
 
+    $ pat.expression("neutral")
     $ flan.show(expression="frown", at=center, transition=move_fast, flip=True)
 
     "Flandre pulls Remilia's shirt."
@@ -576,6 +632,8 @@ label day4_morning:
     r "Fantastic. A proper meal must be followed by a proper rest. Shall we?"
 
     f "Finally, you two never stop bickering."
+
+    $ pat.expression("smile")
 
     r "Alas, that girl just keeps provoking me. Let's escape while we can."
 

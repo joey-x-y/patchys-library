@@ -51,11 +51,17 @@ label day5_morning:
 
     call scene_transition_fade("bg_study") from _call_scene_transition_fade_25
 
-    $ pat.show([right, sitheight], transition=dissolve, hat=True)
+    $ pat.show(expression="think", at=[right, sitheight], transition=dissolve, hat=True)
 
     "Patchouli sits with a book placed in her lap."
 
     $ remi.show(at=[corner_left, standheight, enterleft()], zorder=1)
+
+    r "..."
+
+    r "Anyone home?"
+
+    $ pat.expression("neutral")
 
     p "Oh, you're alone today."
 
@@ -99,6 +105,7 @@ label day5_morning:
     pause 0.5
 
     $ remi.expression("neutral")
+    $ pat.expression("smile")
 
     "Remilia stares for a few seconds, then gives an exasperated sigh."
 
@@ -116,6 +123,8 @@ label day5_morning:
     call table_zoom_l from _call_table_zoom_l_3
 
     "Remilia sits as Patchouli serves tea with her magic, not moving a muscle."
+
+    $ pat.expression("neutral")
 
     "They drink in silence for a few minutes."
 
@@ -139,11 +148,15 @@ label day5_morning:
 
     r "So, you told us in the beginning that you want to study vampires, but you've only focused on Flandre's wings. You haven't gone any further."
 
+    $ pat.expression("annoyed")
+
     p "I tried, but you didn't want me to."
 
     $ remi.expression("neutral")
 
     r "What do you mean?"
+
+    $ pat.expression("smile")
 
     "Patchouli makes a grabbing gesture with her hand. Remilia grits her teeth in response."
 
@@ -155,15 +168,21 @@ label day5_morning:
 
     r "If I weren't such a gracious vampire, your life would have ended after such an offense."
 
-    p "Gracious indeed. But really, the wings became a problem I wanted to solve. And so I will."
+    $ pat.expression("neutral")
 
-    $ remi.expression("smile")
+    p "Gracious indeed. But truly, her wings became an intriguing problem I wish to solve. And so I shall."
+
+    $ remi.show(expression="smile", at=scoot_right)
 
     "Remilia looks back and leans forward, picking up her second round of tea."
 
     r "Wonderful. I truly am grateful for that."
+    
+    $ remi.move(unscoot)
 
-    "Patchouli grabs hers and takes a sip."
+    "Patchouli grabs her own and takes a sip."
+
+    $ pat.expression("smile")
 
     p "I imagine seeing your sister fly again will be a delightful moment for you."
 
@@ -174,6 +193,8 @@ label day5_morning:
     "She looks down, staring into her cup."
 
     r "This was all because of my negligence. I would do anything for it to be fixed. Nothing is more important."
+
+    $ pat.expression("neutral")
 
     "Remilia leans back again and looks directly at Patchouli."
 
@@ -189,7 +210,7 @@ label day5_morning:
 
     r "A liability."
 
-    $ pat.move(hop(10))
+    $ pat.expression("surprised")
 
     p "Huh?"
 
@@ -197,7 +218,11 @@ label day5_morning:
 
     r "But in a good way, I mean. Flandre is someone to keep safe at all times. If servants are incapable of doing it, I have to."
 
+    $ pat.show(expression="neutral", blush=True)
+
     "Patchouli takes a long sip, letting several seconds pass before responding."
+
+    $ pat.blush(False)
 
     p "I see."
 
@@ -207,10 +232,13 @@ label day5_morning:
 
     r "I've never seen your face so confused before. Who's the one looking rather silly now?"
 
+    $ pat.expression("annoyed")
+
     p "You should use your words better."
 
     r "Semantics. I still win."
 
+    $ pat.expression("neutral")
     $ remi.show(expression="neutral", at=sitheight, transition=move_fast)
 
     "She downs the rest and sits back down."
@@ -243,13 +271,19 @@ label day5_morning:
 
     r "Ah, but a smart girl like you figured it out, then?"
 
+    $ pat.expression("smile")
+
     p "No. I am an exception. I was born as a Magician."
 
     r "Whoa, that's pretty cool. How does that even work though?"
 
+    $ pat.expression("neutral")
+
     p "I am not certain. I only know that some form of special magic was used. I would like to figure that out someday."
 
     r "That's very interesting indeed. It sounds very special."
+
+    $ pat.expression("confused")
 
     p "It is, I suppose. But every shortcut pays a price. My physical attributes are rather... poor."
 
@@ -259,11 +293,16 @@ label day5_morning:
 
     r "No kidding. You might even be more qualified to own servants than me."
 
+    $ pat.expression("smile")
+
     p "I—"
 
     $ remi.expression("neutral")
+    $ pat.expression("confused")
 
     r "No, I take that back. Don't get too full of yourself."
+
+    $ pat.expression("annoyed")
 
     "Patchouli lets out a sigh."
 
@@ -271,19 +310,27 @@ label day5_morning:
 
     r "Hmph. More tea, now."
 
+    $ pat.expression("neutral")
+
     "The rounds of tea continue."
 
-    r "Why did you leave that place if you want to understand that Magician birth magic?"
+    r "Why did you leave that place if you want to understand that Magician birth magic stuff?"
 
-    p "The knowledge would never be given to me. I have to pursue my own knowledge."
+    p "That knowledge would never be given to me. I have to pursue my own knowledge."
 
     r "So, is solving your birth a mission of sorts?"
 
     p "Not particularly. I simply enjoy seeking knowledge, and this library allows me to do so without others meddling."
 
+    $ remi.expression("smile")
+
     r "You sure are interested in knowledge, eh?"
 
+    $ pat.expression("smile")
+
     p "Yes, and it has become a most suitable surname."
+
+    $ remi.expression("neutral")
 
     r "What? Surname?"
 
@@ -310,6 +357,8 @@ label day5_morning:
 
     r "W-what, n-no. Not really."
 
+    $ pat.expression("neutral")
+
     p "Oh. I see."
 
     $ remi.expression("neutral")
@@ -320,19 +369,26 @@ label day5_morning:
 
     r "You know, libraries are quite nice. Truly a staple for any good mansion."
 
+    $ pat.expression("annoyed")
+
     p "I haven't seen you touch a book."
 
     r "That's not the point. It's the atmosphere. Status. A wealth of books convey a wealth of knowledge."
 
+    $ pat.expression("curious")
+
     p "Does that matter if you've never read them and haven't accumulated said knowledge?"
 
     r "Nah. That's the librarian's job. Delegation is the most important skill of a noble. Remember that."
+
+    $ remi.expression("confused")
 
     p "That is rather shameless."
 
     r "The only shame here is the severe lack of sofas. I could use more space to spread my poor wings."
 
     $ remi.expression("surprised")
+    $ pat.expression("neutral")
 
     f "Your true colors are showing."
 
@@ -384,6 +440,8 @@ label day5_morning:
 
     f "Am I third horsing?"
 
+    $ pat.expression("confused")
+
     p "Horse what?"
 
     $ remi.expression("embarrassed")
@@ -392,15 +450,20 @@ label day5_morning:
 
     f "Yeah. Sure. That."
 
+    $ pat.expression("neutral")
     $ flan.flip(transition=dissolve_fast)
 
     f "By the way, your peculiar charm is overwhelming Patchy. You need to be careful."
+
+    $ pat.expression("smile")
 
     r "My what now? Peculiar? I am no such thing."
 
     $ flan.flip(transition=dissolve_fast)
 
     "Flandre aims her fingers at Patchouli."
+
+    $ pat.expression("neutral")
 
     f "I'm jealous now. Don't steal my sister. I'm watching you."
 
@@ -438,7 +501,9 @@ label day5_morning:
 
     f "Yeah... carry me."
 
-    p "Goodnight, you two."
+    $ pat.expression("smile")
+
+    p "Farewell, you two."
 
     stop music fadeout 2.0
     call scene_transition_fade("black") from _call_scene_transition_fade_26

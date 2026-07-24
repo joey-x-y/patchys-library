@@ -1,7 +1,6 @@
 label day7:
 
     call day7_morning from _call_day7_morning
-
     call epilogue from _call_epilogue
 
     $ persistent.beat_game = True
@@ -84,9 +83,13 @@ label day7_morning:
 
     f "Hi."
 
+    $ pat.expression("confused")
+
     p "I'm, uh, sorry about your wings."
 
     f "Don't apologize for it. What's the plan now? Is there any hope?"
+
+    $ pat.expression("neutral")
 
     p "I have been... thinking."
 
@@ -105,6 +108,8 @@ label day7_morning:
     r "Hey!"
 
     f "You what about anata what?"
+
+    $ pat.expression("curious")
 
     p "I got a feel of Remilia's wings, taking note of how the flaps and stem feel and connect with each other. I touched them as thoroughly as I could to try and fully understand them."
 
@@ -149,6 +154,8 @@ label day7_morning:
 
     r "Fine."
 
+    $ pat.expression("smile")
+
     p "Thank you."
 
     show cg_wingtouch zorder 8 with dissolve
@@ -176,8 +183,9 @@ label day7_morning:
     $ flan.show(expression="neutral", at=closeuprevert)
     hide cg_wingtouch with dissolve
 
-    $ remi.show(left)
+    $ remi.move(left)
     $ pat.move(right, transition=move_slow)
+    $ pat.expression("think", transition=dissolve_fast)
 
     f "Were they nice, Patchy?"
 
@@ -202,12 +210,13 @@ label day7_morning:
 
     r "Oh... but—"
 
+    $ pat.expression("surprised")
     $ remi.show(expression="surprised", blush=False, at=hop(10))
     $ flan.show(expression="surprised", at=hop(10))
 
     p "But that doesn't even matter!"
 
-    $ pat.move(floatup, transition=move)
+    $ pat.show(expression="smile", at=floatup, transition=move)
     $ remi.show(expression="neutral", flip=True, transition=dissolve_fast)
 
     "Patchouli suddenly hovers into the air with a smile."
@@ -241,17 +250,23 @@ label day7_morning:
 
     r "Hey, what's the plan exactly?"
 
+    $ pat.expression("curious")
+
     p "I will imbue these crystals with the same magic I use to move objects, and embed it into her wing stems. If she applies magical energy to her stems, it will react with the crystals."
 
     r "Huh."
 
     f "That sounds super cool!"
 
+    $ pat.expression("smile")
+
     p "Yes, I just need to think about how to implement that without them exploding on your back."
 
     $ flan.expression("frown")
 
     f "Oh."
+
+    $ pat.expression("confused")
 
     p "Is trial and error acceptable? That would be fastest, and I believe your regeneration capabilities would be sufficient for survival."
 
@@ -263,6 +278,8 @@ label day7_morning:
 
     r "No. Regeneration doesn't prevent pain."
 
+    $ pat.expression("neutral")
+
     p "I can numb your body."
 
     $ remi.show(expression="angry", at=scoot_right)
@@ -273,7 +290,11 @@ label day7_morning:
 
     p "Fair enough."
 
+    $ pat.move(hop(10))
+
     "Patchouli takes a long exhale."
+
+    $ pat.expression("serious")
 
     p "Enough goofing off. Now, Flandre, I do believe you know how to use magical energy, right?"
 
@@ -283,6 +304,8 @@ label day7_morning:
 
     play sound sfx_magic_cast
     call spear_summon from _call_spear_summon_3
+
+    $ pat.expression("smile")
 
     "She summons her sword."
 
@@ -302,6 +325,7 @@ label day7_morning:
     "The sword disappears."
 
     $ remi.flip(transition=dissolve_fast)
+    $ pat.move(hop(10))
 
     p "Perfect! This should work. Give me some time."
 
@@ -314,7 +338,7 @@ label day7_morning:
 
     r "Would you like any help?"
 
-    $ pat.move(center, transition=move_fast)
+    $ pat.show(blush=True, at=center, transition=move_fast)
     play sound sfx_rustle_2
     $ remi.move(small_shake)
 
@@ -337,7 +361,7 @@ label day7_morning:
     call scene_transition_fade("bg_study") from _call_scene_transition_fade_41
 
     $ remi.show(expression="neutral", blush=False, at=[center_left, standheight])
-    $ pat.show([center_right, standheight])
+    $ pat.show(blush=False, at=[center_right, standheight])
     $ flan.show([corner_left, sitheight], flip=True)
     with dissolve
 
@@ -347,6 +371,8 @@ label day7_morning:
 
     "She takes the crystal."
 
+    $ pat.expression("serious")
+
     p "Now, put a little energy into it."
 
     play sound sfx_magic_summon
@@ -355,6 +381,7 @@ label day7_morning:
 
     "Remilia slowly floats into the air."
 
+    $ pat.expression("smile")
     $ remi.expression("surprised")
 
     r "Whoa. Neat."
@@ -384,9 +411,13 @@ label day7_morning:
 
     r "That was truly incredible. You're brilliant."
 
+    $ pat.blush()
+
     p "Ehem, yes, of course. Now lie down, Flandre. I will attach them."
 
+    $ pat.blush(False)
     $ flan.move(hopreset)
+    with None
     $ flan.show(right, transition=move_fast, zorder=1)
     play sound sfx_body_fall
 
@@ -412,7 +443,7 @@ label day7_morning:
 
     $ remi.show(expression="neutral", at=[corner_left, standheight])
     $ flan.show(wings="crystal", at=[right, sitheight], flip=True)
-    $ pat.show(at=[left, standheight], flip=True, magic=False)
+    $ pat.show(expression="neutral", at=[left, standheight], flip=True, magic=False)
     with dissolve
 
     p "Listen to me closely. Stand up, slowly. Very carefully."
@@ -428,13 +459,15 @@ label day7_morning:
 
     f "Wow! Musical wings!"
 
+    $ pat.expression("confused")
+
     p "Wait, no, hold on. Don't move."
 
     $ flan.expression("frown")
 
     $ pat.show(center, transition=move_fast)
     call generic_spell from _call_generic_spell_12
-    $ pat.show(left, transition=move_fast)
+    $ pat.show(expression="neutral", at=left, transition=move_fast)
 
     p "Continue."
 
@@ -463,6 +496,7 @@ label day7_morning:
     f "Awesome! Amazing! Absolutely astonishing!"
 
     $ remi.expression("smile")
+    $ pat.expression("smile")
 
     p "Good."
 
@@ -470,7 +504,9 @@ label day7_morning:
 
     $ flan.move(offscreenright, transition=move_fast)
 
-    "She zooms around the room, faster than their eyes can follow."
+    "She zooms around the room, faster than eyes can follow."
+
+    $ pat.expression("serious")
 
     p "Hey!"
 
@@ -479,7 +515,7 @@ label day7_morning:
     play music bgm_title fadein 2.0
 
     $ remi.show(blush=True, at=center_left)
-    $ pat.show(center_right, flip=True, transition=move_slow, zorder=2)
+    $ pat.show(expression="smile", at=center_right, flip=True, transition=move_slow, zorder=2)
 
     "Remilia walks up to Patchouli."
 
@@ -488,6 +524,8 @@ label day7_morning:
     $ remi.expression("embarrassed", transition=dissolve)
 
     "Remilia's gaze flicks to the side and back to Patchouli a few times, her face steadily turning red."
+
+    $ pat.blush(transition=dissolve)
 
     p "Uh, wha—"
 
@@ -561,9 +599,13 @@ label day7_morning:
 
     f "How many before today?"
 
+    $ pat.expression("neutral")
+
     p "Zero, sadly."
 
     r "Patchy, don't tell her."
+
+    $ pat.expression("smile")
 
     f "Patchy?"
 
@@ -584,7 +626,7 @@ label epilogue:
     call scene_transition_fade("bg_study") from _call_scene_transition_fade_45
 
     $ remi.show(expression="neutral", blush=False, at=[far_left, standheight])
-    $ pat.show(at=[center, standheight], flip=True)
+    $ pat.show(expression="neutral", blush=False, at=[center, standheight], flip=True)
     $ flan.show(expression="frown", at=[far_right, standheight])
     with dissolve
 
@@ -592,7 +634,7 @@ label epilogue:
 
     f "I'm tired."
 
-    call generic spell
+    call generic_spell
 
     $ flan.expression("neutral")
 
@@ -604,13 +646,15 @@ label epilogue:
 
     $ pat.flip(transition=dissolve)
 
-    p "I believe you wanted a couch?"
+    p "I believe you wanted a sofa?"
 
     $ remi.expression("smile")
 
     r "Yes!"
 
     "Remilia dives into the couch, letting her wings spread across the whole thing. Then she sits up."
+
+    $ pat.expression("smile")
 
     p "Glad you like it."
 
@@ -621,18 +665,18 @@ label epilogue:
     r "Come here. But don't you dare sit on my wing."
 
     $ remi.move(corner_left)
-    $ pat.move(left, transition=move_slow)
+    $ pat.show(blush=True, at=left, transition=move_slow)
     $ pat.flip(transition=dissolve)
     $ remi.move(scoot_right, transition=move_slow)
     $ flan.expression("frown")
 
-    "Patchouli joins her. Remilia immediately leans into her."
+    "Patchouli sits next to Remilia, and the vampire leans into her with no hesitation."
 
     $ remi.expression("smile")
 
     r "Thank you. I can't thank you enough."
 
-    p "It was my pleasure. It made for a good story."
+    p "It was my pleasure. An intriguing puzzle, and a good story besides."
 
     r "Mhm."
 
@@ -664,11 +708,15 @@ label epilogue:
 
     r "Geez, such a handful."
 
-    p "It makes for good entertainment."
+    $ pat.expression("neutral")
+
+    p "She is good entertainment."
 
     $ remi.expression("smile")
 
-    r "Yeah. It is."
+    r "Yeah. I guess so."
+
+    $ pat.expression("smile")
 
     p "You are rather bold, stealing my lips like a prince from a fairytale."
 
@@ -682,11 +730,15 @@ label epilogue:
 
     r "Then, are we, um, you know? I guess... a thing?"
 
+    $ pat.expression("neutral")
+
     p "I don't know."
 
     $ remi.expression("neutral")
 
     r "Then... I wanna be. So we are."
+
+    $ pat.expression("smile")
 
     p "I have no opposition to that."
 
@@ -700,6 +752,8 @@ label epilogue:
 
     r "Good. You're mine."
 
+    $ pat.expression("neutral")
+
     "They stick together silently for a few minutes."
 
     p "I want to show you something. I believe it will be to your liking."
@@ -708,13 +762,19 @@ label epilogue:
 
     r "W-what do you mean?"
 
+    $ pat.expression("smile")
+
     "Patchouli grins widely."
+
+    $ pat.expression("curious")
 
     p "I brought something very special when I set out to build this mansion. I've been storing it in the basement, waiting for the perfect occasion."
 
     r "U-um, what is it?"
 
     "A crate appears on the table."
+
+    $ pat.expression("smile")
 
     p "An ancient wine."
 
@@ -724,15 +784,20 @@ label epilogue:
 
     r "How ancient?!"
 
+    $ pat.show(expression="serious", blush=False)
+
     p "Hey, come back here! I will serve us in a civil manner."
 
     $ remi.expression("neutral")
+    $ pat.expression("neutral")
 
     r "Hmph, fine."
 
     $ remi.move(center_left, transition=move_slow)
 
     "Remilia sits back down, then Patchouli pulls her in."
+
+    $ pat.show(expression="smile", blush=True)
 
     p "I'll serve it once you wrap me in your wings again."
 

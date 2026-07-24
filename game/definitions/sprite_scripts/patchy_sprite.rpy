@@ -2,14 +2,10 @@ define cpp = cp + "patchy/"
 define cppe = cpp + "expression/"
 define cppa = cpp + "acc/"
 
-transform sprite_set_patchy:
-    zoom 0.62
-    xanchor 0.5
-    yanchor 1.0
-    yoffset 60
+# TODO consider changing neutral mouth, build annoyed face. build curious face, probably just neutral mouth with wide eyes. Confused similar to curious
 
 layeredimage p:
-    at sprite_set_patchy
+    at sprite_set(scale=0.62, yoffset=60)
 
     group base:
         attribute base default:
@@ -28,6 +24,8 @@ layeredimage p:
             cppe + "normal face.png"
         attribute angry:
             cppe + "angry.png"
+        attribute annoyed:
+            cppe + "angry.png"
         attribute serious:
             cppe + "serious.png"
         attribute smile:
@@ -36,6 +34,10 @@ layeredimage p:
             cppe + "shock.png"
         attribute think:
             cppe + "thinking.png"
+        attribute curious:
+            cppe + "normal face.png"
+        attribute confused:
+            cppe + "normal face.png"
 
     group effects:
         attribute noeffect default:

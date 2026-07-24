@@ -7,8 +7,7 @@ label day3_morning:
     call day_transition_in from _call_day_transition_in_1
     play music bgm_library fadein 2.0
 
-    $ flan.flip()
-    $ flan.show(expression="neutral", tired=False, at=[center, standheight], transition=dissolve)
+    $ flan.show(expression="neutral", tired=False, flip=True, at=[center, standheight], transition=dissolve)
 
     "Flandre hops over and shakes Remilia's coffin."
 
@@ -18,8 +17,7 @@ label day3_morning:
 
     "The lid slowly cracks open, revealing the sleepy vampire within."
 
-    $ remi.flip()
-    $ remi.show(expression="neutral", at=[left, standheight, enterbottom(speed=2)])
+    $ remi.show(expression="neutral", flip=True, at=[left, standheight, enterbottom(speed=2)])
 
     r "What... it's too early for yelling..."
 
@@ -29,7 +27,7 @@ label day3_morning:
 
     r "That's great. Are they still numb?"
 
-    $ remi.expression("neutral")
+    $ flan.expression("neutral")
 
     f "Mostly. It's fading a little."
 
@@ -60,9 +58,11 @@ label day3_morning:
 
     f "Patchy! More numbness!"
 
+    $ pat.expression("confused")
+
     p "Uh, yeah, sure."
 
-    $ pat.show(magic=True, transition=dissolve_fast)
+    $ pat.show(magic=True, expression="neutral", transition=dissolve_fast)
     call generic_spell() from _call_generic_spell_6
 
     "She casts the spell once again."
@@ -87,17 +87,29 @@ label day3_morning:
 
     r "You've been busy."
 
-    "Patchouli smiles."
+    $ pat.expression("smile")
 
     p "Indeed. I've been doing research on what might be blocking your regeneration."
+
+    $ pat.expression("curious")
 
     p "There are various possibilities, like poisons, wound-blocking magic, sun-specific afflictions. I'll craft some potions to try on you tomorrow."
 
     f "Ooh cool, potions? What do they do?"
 
-    p "You'll see. As for the possibility of deterioration, I haven't found anything specific. Could I see your wings?"
+    $ pat.expression("smile")
 
-    $ remi.expression("frown")
+    p "You'll see. As for the possibility of deterioration, I haven't found anything specific. Could I see your..."
+
+    $ pat.expression("confused")
+
+    "Patchouli glances at Remilia, then back."
+
+    $ pat.expression("curious")
+
+    p "Your wings?"
+
+    $ flan.expression("frown")
 
     f "Huh, what, deterioration?"
 
@@ -109,6 +121,8 @@ label day3_morning:
     $ flan.flip(transition=dissolve_fast)
 
     "She walks over. Patchouli inspects them closely."
+
+    $ pat.expression("neutral")
 
     p "Hmm."
 
@@ -136,6 +150,8 @@ label day3_morning:
     $ flan.flip(transition=dissolve_fast)
 
     f "So, you {i}did{/i} notice something yesterday? That's what you were talking to Patchouli about, then?"
+
+    $ pat.expression("confused")
 
     r "Um, yes. I—"
 
@@ -179,6 +195,8 @@ label day3_morning:
 
     r "That's just how it is. I suppose I handled things poorly."
 
+    $ pat.expression("neutral")
+
     p "Yes."
 
     r "You don't have to agree."
@@ -201,6 +219,8 @@ label day3_morning:
 
     r "Good. You seem very experienced with magic."
 
+    $ pat.expression("smile")
+
     p "Yes. I am a natural-born Magician, after all."
 
     r "What does that mean?"
@@ -209,7 +229,11 @@ label day3_morning:
 
     r "Uh... got it."
 
+    $ pat.expression("annoyed")
+
     p "Perhaps I'll educate you on what Magicians are later."
+
+    $ pat.expression("neutral")
 
     "Patchouli points over her shoulder, behind herself."
 
@@ -242,6 +266,8 @@ label day3_morning:
 
     r "Here. Satisfied?"
 
+    $ pat.expression("smile")
+
     p "Yes. Thank you."
 
     r "It was only a few steps away."
@@ -251,12 +277,17 @@ label day3_morning:
     r "I'm no laborer..."
 
     $ remi.move(sitheight, transition=move_slow)
+    $ pat.expression("neutral")
 
     "Remilia grumbles as she sits back down. She silently observes Patchouli."
 
+    $ pat.expression("smile", transition=dissolve_fast)
+
     "The magician moves between different books scattered across the table, jotting notes on occasion."
 
-    "Every once in a while, a smile flashes for a moment, before returning to her usual deadpan expression."
+    $ pat.expression("neutral", transition=dissolve_fast)
+
+    "Every once in a while, a smile flashes before returning to her usual deadpan expression."
 
     "Remilia reaches towards one of the notes."
 
@@ -280,9 +311,13 @@ label day3_morning:
 
     "Remilia pouts as her fingertip regenerates. She continues her silent observation."
 
+    $ pat.expression("smile")
+
     call show_transition_fade("bg_study") from _call_show_transition_fade_3
 
     "Eventually, the books all close at the same time."
+
+    $ pat.expression("neutral")
 
     p "I'm done. Would you get Flandre? I want to check something."
 

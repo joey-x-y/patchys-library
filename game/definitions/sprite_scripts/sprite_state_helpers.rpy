@@ -663,10 +663,13 @@ init python:
     PAT_EXPRESSIONS = (
         "neutral",
         "angry",
+        "annoyed",
         "serious",
         "smile",
         "surprised",
         "think",
+        "curious",
+        "confused",
     )
 
     def pat_compose(state):
