@@ -96,6 +96,8 @@ layeredimage r:
             cpre + "eye 8.png"
         attribute surprised:
             cpre + "mouth 1.png"
+        attribute surprised:
+            cprf + "sweat emote.png"
         attribute annoyed:
             cpre + "eye 1.png"
         attribute annoyed:

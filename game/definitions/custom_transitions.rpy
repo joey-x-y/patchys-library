@@ -46,14 +46,22 @@ label day_transition_in:
 
 label table_zoom_l:
     camera at table_zoom
-    camera rear_sprites at table_zoom
     camera background at table_zoom
     return
 
 label table_unzoom_l:
     camera at table_unzoom
-    camera rear_sprites at table_unzoom
     camera background at table_unzoom
+    return
+
+label left_zoom_l:
+    camera at left_zoom
+    camera background at left_zoom
+    return
+
+label left_unzoom_l:
+    camera at left_unzoom
+    camera background at left_unzoom
     return
 
 transform table_zoom:
@@ -61,6 +69,13 @@ transform table_zoom:
 
 transform table_unzoom:
     zoom 1.3 pos (-0.3, -0.2)
+    ease 1.0 zoom 1.0 pos (0.0, 0.0)
+
+transform left_zoom:
+    ease 1.0 zoom 1.3 pos (0.0, -0.2)
+
+transform left_unzoom:
+    zoom 1.3 pos (0.0, -0.2)
     ease 1.0 zoom 1.0 pos (0.0, 0.0)
 
 transform camera_revert:
@@ -87,7 +102,7 @@ label dim_screen_half:
     return
     
 label dim_screen_revert:
-    hide black onlayer background
-    hide black_2
+    hide black
+    hide black_2 onlayer background
     with dissolve
     return

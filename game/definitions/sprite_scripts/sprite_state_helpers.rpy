@@ -574,6 +574,7 @@ init python:
         "mid": "mid",
         "gone": "gone",
         "crystal": "crystal",
+        "rightwing": "rightwing",
     }
 
     def flan_compose(state):

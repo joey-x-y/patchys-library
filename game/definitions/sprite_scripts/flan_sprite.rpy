@@ -3,9 +3,14 @@ define cpfe = cpf + "expression/"
 define cpfw = cpf + "wing/"
 define cpfa = cpf + "acc/"
 
-# TODO consider removing blushes from surprised face, or add questioning face
-
-
+image right_wing = Composite(
+    (1804, 1733),
+    (902, 0),
+    Transform(
+        cpfw + "wing beginning.png",
+        crop=(902, 0, 902, 1733) # x, y, width, height
+    )
+)
 
 layeredimage f:
     at sprite_set
@@ -19,6 +24,8 @@ layeredimage f:
             cpfw + "wing stem.png"
         attribute crystal:
             cpfw + "wing crystal.png"
+        attribute rightwing:
+            "right_wing"
 
     group hair:
         attribute long default:
@@ -86,8 +93,8 @@ layeredimage f:
             cpfe + "eye 4.png"
         attribute holding_tear:
             cpfe + "mouth 2.png"
-        attribute holding_tear:
-            cpfe + "tear 1.png"
+        # attribute holding_tear:
+        #     cpfe + "tear 1.png"
         attribute serious:
             cpfe + "serious.png"
         attribute smile:

@@ -12,7 +12,7 @@ init python:
         remi.move(shake(magnitude=2))
         renpy.show("impact_flash", at_list=[flash()], layer="effects")
 
-screen spear_block_barrage_timer(interval=2):
+screen spear_block_barrage_timer(interval=3):
     # Fire once almost immediately.
     timer 0.01 action Function(spear_block_impact)
 

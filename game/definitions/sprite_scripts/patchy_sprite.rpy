@@ -27,13 +27,11 @@ layeredimage p:
         attribute angry:
             cppe + "nose.png"
         attribute annoyed:
-            cppe + "eye 4.png"
+            cppe + "eye 1.png"
         attribute annoyed:
-            cppe + "mouth 4.png"
+            cppe + "mouth 6.png"
         attribute serious:
-            cppe + "eye 4.png"
-        attribute serious:
-            cppe + "mouth 5.png"
+            cppe + "serious.png"
         attribute smile:
             cppe + "smile.png"
         attribute surprised:
