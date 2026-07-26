@@ -3,7 +3,9 @@ define cpfe = cpf + "expression/"
 define cpfw = cpf + "wing/"
 define cpfa = cpf + "acc/"
 
-# TODO consider removing blushes from surprised or questioning face
+# TODO consider removing blushes from surprised face, or add questioning face
+
+
 
 layeredimage f:
     at sprite_set
@@ -33,9 +35,43 @@ layeredimage f:
         attribute nohat:
             Null()
 
+    # group eyes:
+    #     attribute eye1 default:
+    #         cpfe + "eye 1.png"
+    #     attribute eye2:
+    #         cpfe + "eye 2.png"
+    #     attribute eye3:
+    #         cpfe + "eye 3.png"
+    #     attribute eye4:
+    #         cpfe + "eye 4.png"
+    #     attribute eye5:
+    #         cpfe + "eye 5.png"
+    #     attribute eye6:
+    #         cpfe + "eye 6.png"
+
+    # group mouth:
+    #     attribute mouth1 default:
+    #         cpfe + "mouth 1.png"
+    #     attribute mouth2:
+    #         cpfe + "mouth 2.png"
+    #     attribute mouth3:
+    #         cpfe + "mouth 3.png"
+    #     attribute mouth4:
+    #         cpfe + "mouth 4.png"
+    #     attribute mouth5:
+    #         cpfe + "mouth 5.png"
+    #     attribute mouth6:
+    #         cpfe + "mouth 6.png"
+    #     attribute mouth7:
+    #         cpfe + "mouth 7.png"
+
+    # smile = eye2 mouth3
+    # angry = eye3 mouth5
+    # surprised = eye5 mouth5
+
     group face:
         attribute neutral default:
-            cpfe + "eye 1.png"
+            cpfe + "eye 2.png"
         attribute neutral default:
             cpfe + "mouth 1.png"
         attribute frown:
@@ -47,13 +83,25 @@ layeredimage f:
         attribute crying:
             cpfe + "crying.png"
         attribute holding_tear:
-            cpfe + "holding back tear.png"
+            cpfe + "eye 4.png"
+        attribute holding_tear:
+            cpfe + "mouth 2.png"
+        attribute holding_tear:
+            cpfe + "tear 1.png"
         attribute serious:
             cpfe + "serious.png"
         attribute smile:
-            cpfe + "smile.png"
+            cpfe + "eye 2.png"
+        attribute smile:
+            cpfe + "mouth 3.png"
         attribute surprised:
-            cpfe + "suprise.png"
+            cpfe + "eye 5.png"
+        attribute surprised:
+            cpfe + "mouth 5.png"
+        attribute question:
+            cpfe + "eye 2.png"
+        attribute question:
+            cpfe + "mouth 6.png"
 
     group tired:
         attribute awake default:

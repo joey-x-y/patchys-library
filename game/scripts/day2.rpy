@@ -190,12 +190,13 @@ label day2_library:
 
     r "What?!"
 
+    
     $ pat.expression("neutral")
 
     p "Now come here. I will numb your wings longer this time."
 
+    $ remi.show(expression="neutral", flip=True, at=hopreset)
     $ flan.move(center_right, transition=ease)
-    $ remi.flip()
 
     call generic_spell() from _call_generic_spell_5
 
@@ -257,10 +258,11 @@ label day2_library:
 
     p "Hmm. Yeah."
 
-    $ remi.expression("neutral")
+    $ remi.expression("annoyed")
 
     r "Great."
 
+    $ remi.expression("neutral")
     $ pat.expression("neutral")
 
     play sound sfx_rustle_3
@@ -363,7 +365,7 @@ label day2_library:
 
     $ flan.show(zorder=7)
 
-    "Flandre steps forward out of Remilia's grip. Remilia mouth opens, but quickly closes again."
+    "Flandre steps forward out of Remilia's grip. Remilia's mouth opens, then silently closes."
 
     $ flan.expression("holding_tear")
 

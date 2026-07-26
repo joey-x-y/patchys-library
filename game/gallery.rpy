@@ -4,8 +4,6 @@
 ## Background and CG entries contain a title, defined image name(s), and artist.
 ################################################################################
 
-#TODO figure out how to handle remilia hunt variants, Should tell camellia about visual bugs. Custom display names.
-
 init python:
 
     GALLERY_CHARACTER_CONFIG = {
@@ -14,6 +12,8 @@ init python:
             "sprite": "remi",
             "attributes": (
                 ("expression", "Expression", REMI_EXPRESSIONS),
+                # ("eyes", "Eyes", REMI_EYES),
+                # ("mouth", "Mouth", REMI_MOUTH),
                 ("hat", "Hat", (True, False)),
                 ("glove", "Glove", ("On", "Off", "Blood")),
                 ("tired", "Tired", (False, True)),
@@ -26,6 +26,8 @@ init python:
             "sprite": "flan",
             "attributes": (
                 ("expression", "Expression", FLAN_EXPRESSIONS),
+                # ("eyes", "Eyes", FLAN_EYES),
+                # ("mouth", "Mouth", FLAN_MOUTH),
                 ("wings", "Wings", ("default", "mid", "gone", "crystal")),
                 ("hair", "Hair", ("long", "short")),
                 ("hat", "Ribbon", (True, False)),
@@ -39,6 +41,8 @@ init python:
             "sprite": "pat",
             "attributes": (
                 ("expression", "Expression", PAT_EXPRESSIONS),
+                # ("eyes", "Eyes", PAT_EYES),
+                # ("mouth", "Mouth", PAT_MOUTH),
                 ("hat", "Hat", (True, False)),
                 ("magic", "Magic Cast", (False, True)),
                 ("blush", "Blushing", (False, True)),

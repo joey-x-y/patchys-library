@@ -547,7 +547,26 @@ init python:
         "serious",
         "smile",
         "surprised",
+        "question",
     )
+
+    # FLAN_EYES = (
+    #     "eye1",
+    #     "eye2",
+    #     "eye3",
+    #     "eye4",
+    #     "eye5",
+    #     "eye6",
+    # )
+    # FLAN_MOUTH = (
+    #     "mouth1",
+    #     "mouth2",
+    #     "mouth3",
+    #     "mouth4",
+    #     "mouth5",
+    #     "mouth6",
+    #     "mouth7",
+    # )
 
     # Script values ("default") map onto layeredimage wing attributes.
     FLAN_WINGS = {
@@ -575,6 +594,7 @@ init python:
                 )
             )
 
+        
         wings = state["wings"]
 
         if wings not in FLAN_WINGS:
@@ -590,6 +610,16 @@ init python:
             FLAN_WINGS[wings],
             expression,
         ]
+
+        # eyes = state["eyes"]
+        # mouth = state["mouth"]
+
+        # parts = [
+        #     "f",
+        #     FLAN_WINGS[wings],
+        #     eyes,
+        #     mouth,
+        # ]
 
         if state["hair"] == "long":
             parts.append("long")
@@ -621,6 +651,8 @@ init python:
 
     FLAN_STATE_ORDER = (
         "expression",
+        # "eyes",
+        # "mouth",
         "hair",
         "hat",
         "dirty",
@@ -631,6 +663,8 @@ init python:
 
     FLAN_DEFAULTS = {
         "expression": "neutral",
+        # "eyes": "eye1",
+        # "mouth": "mouth1",
         "hair": "long",
         "hat": True,
         "dirty": False,
@@ -672,6 +706,23 @@ init python:
         "confused",
     )
 
+    # PAT_EYES = (
+    #     "eye1",
+    #     "eye2",
+    #     "eye3",
+    #     "eye4",
+    #     "eye5",
+    #     "eye6",
+    # )
+    # PAT_MOUTH = (
+    #     "mouth1",
+    #     "mouth2",
+    #     "mouth3",
+    #     "mouth4",
+    #     "mouth5",
+    #     "mouth6",
+    # )
+
     def pat_compose(state):
         """
         Builds a layeredimage attribute name for Patchy.
@@ -694,6 +745,16 @@ init python:
             expression,
         ]
 
+        # eyes = state["eyes"]
+        # mouth = state["mouth"]
+
+        # parts = [
+        #     "p",
+        #     eyes,
+        #     mouth,
+        # ]
+
+
         if state["hat"]:
             parts.append("hat")
         else:
@@ -714,6 +775,8 @@ init python:
 
     PAT_STATE_ORDER = (
         "expression",
+        # "eyes",
+        # "mouth",
         "hat",
         "magic",
         "blush",
@@ -721,6 +784,8 @@ init python:
 
     PAT_DEFAULTS = {
         "expression": "neutral",
+        # "eyes": "eye1",
+        # "mouth": "mouth1",
         "hat": True,
         "magic": False,
         "blush": False,
@@ -756,7 +821,30 @@ init python:
         "serious",
         "smile",
         "surprised",
+        "annoyed",
     )
+
+    # REMI_EYES = (
+    #     "eye1",
+    #     "eye2",
+    #     "eye3",
+    #     "eye4",
+    #     "eye5",
+    #     "eye6",
+    #     "eye7",
+    #     "eye8",
+    #     "eye9",
+    # )
+    # REMI_MOUTH = (
+    #     "mouth1",
+    #     "mouth2",
+    #     "mouth3",
+    #     "mouth4",
+    #     "mouth5",
+    #     "mouth6",
+    #     "mouth7",
+    #     "mouth8",
+    # )
 
     REMI_WING_LAYER = "master"
     REMI_WING_ZORDER = 1
@@ -784,6 +872,15 @@ init python:
             "r",
             expression,
         ]
+
+        # eyes = state["eyes"]
+        # mouth = state["mouth"]
+
+        # parts = [
+        #     "r",
+        #     eyes,
+        #     mouth,
+        # ]
 
         if not state["hat"]:
             parts.append("nohat")
@@ -817,6 +914,8 @@ init python:
 
     REMI_STATE_ORDER = (
         "expression",
+        # "eyes",
+        # "mouth",
         "hat",
         "glove",
         "tired",
@@ -826,6 +925,8 @@ init python:
 
     REMI_DEFAULTS = {
         "expression": "neutral",
+        # "eyes": "eye1",
+        # "mouth": "mouth1",
         "hat": True,
         "glove": "On",
         "tired": False,
