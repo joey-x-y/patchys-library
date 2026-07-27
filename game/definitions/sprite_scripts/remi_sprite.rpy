@@ -5,8 +5,6 @@ define cprf = cpr + "effects/"
 
 image r_wings = At(cpr + "wing/remilia.png", sprite_set)
 
-# TODO consider removing blushes from embarrased and other main faces
-
 layeredimage r:
     at sprite_set
     
@@ -26,50 +24,6 @@ layeredimage r:
             Null()
         attribute bloody:
             cpra + "bloody hand.png"
-
-    # group eyes:
-    #     attribute eye1 default:
-    #         cpre + "eye 1.png"
-    #     attribute eye2:
-    #         cpre + "eye 2.png"
-    #     attribute eye3:
-    #         cpre + "eye 3.png"
-    #     attribute eye4:
-    #         cpre + "eye 4.png"
-    #     attribute eye5:
-    #         cpre + "eye 5.png"
-    #     attribute eye6:
-    #         cpre + "eye 6.png"
-    #     attribute eye7:
-    #         cpre + "eye 7.png"
-    #     attribute eye8:
-    #         cpre + "eye 8.png"
-    #     attribute eye9:
-    #         cpre + "eye 9.png"
-
-    # group mouth:
-    #     attribute mouth1 default:
-    #         cpre + "mouth 1.png"
-    #     attribute mouth2:
-    #         cpre + "mouth 2.png"
-    #     attribute mouth3:
-    #         cpre + "mouth 3.png"
-    #     attribute mouth4:
-    #         cpre + "mouth 4.png"
-    #     attribute mouth5:
-    #         cpre + "mouth 5.png"
-    #     attribute mouth6:
-    #         cpre + "mouth 6.png"
-    #     attribute mouth7:
-    #         cpre + "mouth 7.png"
-    #     attribute mouth8:
-    #         cpre + "mouth 8.png"
-
-    # expression combos: 
-    # embarrassed = eye9 mouth8
-    # smile = eye1 mouth2
-    # surprise = eye8 mouth1
-    # serious = eye7 mouth5
 
     group face:
         attribute neutral default:

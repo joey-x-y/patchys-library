@@ -6,7 +6,7 @@ label day4:
 label day4_morning:
     call day_transition_in() from _call_day_transition_in_2
 
-    $ flan.show(wings="mid", at=[center_right, standheight, enterbottom()], flip=True)
+    $ flan.show(wings="mid", at=[center_right, standheight], flip=True, transition=dissolve)
     
     "Flandre pops open her coffin and stands on the bed."
 
@@ -410,7 +410,7 @@ label day4_morning:
 
     f "Hypocrite."
 
-    $ remi.expression("angry")
+    $ remi.show(expression="angry", at=enterforcefinish)
     $ flan.expression("neutral")
     $ pat.expression("smile")
 
@@ -439,7 +439,7 @@ label day4_morning:
 
     p "Yes, for future use. And must you bring in so much filth?"
 
-    call generic_spell
+    call generic_spell from _call_generic_spell_13
     $ remi.show(dirty=False, glove="Off", transition=dissolve_fast)
 
     r "That's just how hunting works. Hands get dirty. It is what it is."
@@ -524,7 +524,7 @@ label day4_morning:
     p "Within my domain, most inanimate things. Books, dead animals, hats, whatever."
 
     $ pat.show(magic=True, transition=dissolve_fast)
-    call generic_spell
+    call generic_spell from _call_generic_spell_14
     $ pat.show(hat=True, transition=dissolve_fast)
 
     p "Like that."
@@ -704,12 +704,11 @@ label day4_morning:
 
     f "Is chasing bunnies all you did today?"
 
-    $ remi.move(enterforcefinish)
-    $ remi.flip()
+    $ remi.show(flip=True,at=enterforcefinish)
 
     r "Rude. I thoroughly explored the area. It is pleasantly secluded. Plenty of wildlife to feed off of. Patchouli has a rather clever chicken trap as well."
 
-    $ flan.expression("neutral")
+    $ flan.show(expression="neutral", at=enterforcefinish)
 
     f "It's a nice place to build a library."
 

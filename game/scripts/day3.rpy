@@ -83,7 +83,7 @@ label day3_morning:
 
     r "Wasn't her name Patchouli?"
 
-    $ flan.expression("frown")
+    $ flan.show(expression="frown", at=enterforcefinish)
 
     f "Too long. She's Patchy now."
 
@@ -148,7 +148,7 @@ label day3_morning:
 
     p "I'll keep checking on it. Remilia noticed some changes, so I want to monitor them closely."
 
-    $ remi.expression("annoyed")
+    $ remi.show(expression="annoyed", at=enterforcefinish)
     $ flan.expression("surprised", transition=dissolve_fast)
 
     f "What? When?"
@@ -166,7 +166,7 @@ label day3_morning:
 
     f "Why did you lie?"
 
-    $ remi.show(expression="annoyed")
+    $ remi.expression("annoyed")
 
     r "I wanted to be sure before I said anything."
 

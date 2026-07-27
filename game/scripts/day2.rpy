@@ -19,7 +19,7 @@ label day2_morning:
 
     "She looks over to Flandre's coffin."
 
-    $ remi.expression("neutral")
+    $ remi.show(expression="neutral", at=enterforcefinish)
 
     r "She's still asleep. Now how can I get us out of here?"
 
@@ -564,7 +564,7 @@ label day2_end:
 
     "She tosses it aside, nearly crushing her sister's foot."
 
-    call left_zoom_l
+    call left_zoom_l from _call_left_zoom_l
 
     $ remi.move(hopreset)
     with None
@@ -639,7 +639,7 @@ label day2_end:
 
     f "Okay."
 
-    call left_unzoom_l
+    call left_unzoom_l from _call_left_unzoom_l
 
     $ remi.flip(dissolve_fast)
 

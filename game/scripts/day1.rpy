@@ -14,7 +14,7 @@ label day1_forest:
     $ remi.show(dirty=True, tired=True, glove="Off", at=[center_right, standheight], flip=True, zorder=7)
     $ flan.show(expression="frown", dirty=True, tired=True, at=[right, standheight], transition=dissolve, zorder=4)
 
-    "Remilia flies above the forest at a high speed. Her sister, Flandre, is on her back."
+    "Remilia flies above the forest at a high speed. Her sister, Flandre, is hanging onto her back."
 
     $ remi.move(at=[center, sitheight])
     $ flan.move(at=[center_right, sitheight], transition=move_slow)

@@ -12,8 +12,6 @@ init python:
             "sprite": "remi",
             "attributes": (
                 ("expression", "Expression", REMI_EXPRESSIONS),
-                # ("eyes", "Eyes", REMI_EYES),
-                # ("mouth", "Mouth", REMI_MOUTH),
                 ("hat", "Hat", (True, False)),
                 ("glove", "Glove", ("On", "Off", "Blood")),
                 ("tired", "Tired", (False, True)),
@@ -26,8 +24,6 @@ init python:
             "sprite": "flan",
             "attributes": (
                 ("expression", "Expression", FLAN_EXPRESSIONS),
-                # ("eyes", "Eyes", FLAN_EYES),
-                # ("mouth", "Mouth", FLAN_MOUTH),
                 ("wings", "Wings", ("default", "mid", "gone", "crystal")),
                 ("hair", "Hair", ("long", "short")),
                 ("hat", "Ribbon", (True, False)),
@@ -41,8 +37,6 @@ init python:
             "sprite": "pat",
             "attributes": (
                 ("expression", "Expression", PAT_EXPRESSIONS),
-                # ("eyes", "Eyes", PAT_EYES),
-                # ("mouth", "Mouth", PAT_MOUTH),
                 ("hat", "Hat", (True, False)),
                 ("magic", "Magic Cast", (False, True)),
                 ("blush", "Blushing", (False, True)),

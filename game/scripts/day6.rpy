@@ -118,24 +118,21 @@ label day6_morning:
     $ remi.expression("crying")
     $ flan.show(expression="crying", at=sitheight, transition=move_slow)
 
-    "Flandre goes limp, and puts her face in her hands, crying."
+    "Flandre goes limp and puts her face in her hands."
 
     f "They're gone! Gone!"
 
     $ flan.flip(transition=dissolve_fast)
-    $ remi.move(at=[center_right, sitheight], transition=move_fast)
-    $ remi.move(drophalf)
-    with None
+    $ remi.move(at=[center_right, drophalf], transition=move_fast)
+    # $ remi.show(at=drophalf, expression="neutral")
 
     $ flan.move(at=[standheight, floatup], transition=move_fast)
 
     "Flandre shoves Remilia onto the ground, then jumps into her coffin."
 
-    $ remi.expression("neutral")
-
     "Remilia coughs hard on the floor, holding her stomach. After her breath stabilizes, she sits up and stares at Flandre silently."
 
-    $ remi.show(expression="annoyed", at=sitheight, transition=move_slow)
+    $ remi.show(expression="annoyed", at=[sitheight], transition=move_slow)
 
     r "Flandre?"
 
@@ -653,6 +650,8 @@ label day6_morning:
 
     f "...Hi."
 
+    $ remi.move(enterforcefinish)
+    with None
     $ remi.move(at=[left, scoot_right(35)], transition=move_slow)
     $ flan.show(at=hopreset, flip=True, transition=move_slow)
 
@@ -660,7 +659,7 @@ label day6_morning:
 
     $ flan.show(hat=True, transition=dissolve)
 
-    "Remilia attaches her bow back into her hair."
+    "She attaches her sister's bow back into her hair."
 
     f "They're gone."
 

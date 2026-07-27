@@ -32,7 +32,7 @@ label day7_morning:
 
     r "Don't worry, I'm durable. I can bounce back from a few elbows."
 
-    $ flan.expression("neutral")
+    $ flan.show(expression="neutral", at=enterforcefinish)
 
     f "Heh, would that still be true if I hit you hard?"
 
@@ -100,13 +100,13 @@ label day7_morning:
 
     p "I was trying to restore your wings, but now I have to think about how they could be replaced in their entirety."
 
-    $ flan.expression("question")
+    $ flan.show(expression="question", at=enterforcefinish)
 
     f "Huh. New wings? How's that work?"
 
     p "I don't know. Even though Remilia let me explore her wing anatomy, I'm unsure how I could replicate it."
 
-    $ remi.expression("angry")
+    $ remi.show(expression="angry", at=enterforcefinish)
 
     r "Hey!"
 
@@ -207,7 +207,7 @@ label day7_morning:
 
     $ remi.expression("angry")
 
-    r "I showed her so she can understand wings more, to help with fixing yours. That is all. Understand?"
+    r "I showed her so she can understand wings better to help with fixing yours. That is all. Got it?"
 
     f "Sure. Whatever you say."
 
@@ -256,7 +256,7 @@ label day7_morning:
 
     r "Hey, what's the plan exactly?"
 
-    $ pat.expression("curious")
+    $ pat.show(expression="curious", at=enterforcefinish)
 
     p "I will imbue these crystals with the same magic I use to move objects, and embed it into her wing stems. If she applies magical energy to her stems, it will react with the crystals."
 
@@ -640,13 +640,13 @@ label epilogue:
 
     f "I'm tired."
 
-    call generic_spell
+    call generic_spell from _call_generic_spell_15
 
     $ flan.expression("neutral")
 
     "Patchouli summons a dead chicken on Flandre's lap. She instantly dives into the new meal."
 
-    call generic_spell
+    call generic_spell from _call_generic_spell_16
 
     "Then, a couch appears."
 
@@ -712,7 +712,7 @@ label epilogue:
 
     "Flandre leans back, then immediately falls asleep. The chicken remains fall to the floor."
 
-    call left_zoom_l
+    call left_zoom_l from _call_left_zoom_l_1
 
     $ remi.expression("neutral")
 
@@ -782,7 +782,7 @@ label epilogue:
 
     r "U-um, what is it?"
 
-    call generic_spell
+    call generic_spell from _call_generic_spell_17
 
     "A crate appears on the table."
 
