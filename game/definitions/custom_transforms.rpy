@@ -37,11 +37,11 @@ transform center_right:
 transform mid_center_right:
     xpos 0.55
 
-transform scoot_left:
-    ease 0.4 xoffset -30
+transform scoot_left(distance=30):
+    ease 0.4 xoffset -distance
 
-transform scoot_right:
-    ease 0.4 xoffset 30
+transform scoot_right(distance=30):
+    ease 0.4 xoffset distance
 
 transform unscoot:
     ease 0.4 xoffset 0

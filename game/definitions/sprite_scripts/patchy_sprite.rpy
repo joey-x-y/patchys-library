@@ -5,7 +5,7 @@ define cppa = cpp + "acc/"
 # TODO consider changing neutral mouth, build annoyed face. build curious face, probably just neutral mouth with wide eyes. Confused similar to curious
 
 layeredimage p:
-    at sprite_set(scale=0.62, yoffset=60)
+    at sprite_set(scale=0.6, yoffset=60)
 
     group base:
         attribute base default:

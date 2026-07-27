@@ -10,17 +10,21 @@ label day4_morning:
     
     "Flandre pops open her coffin and stands on the bed."
 
+    $ flan.expression("smile")
+
     f "Hey, my wings are still fully numb!"
+
+    $ flan.expression("neutral")
 
     "Remilia's coffin swings open."
 
-    $ remi.show(at=[left, standheight], flip=True, transition=dissolve, zorder=3)
+    $ remi.show(at=[left, standheight], expression="neutral", flip=True, transition=dissolve, zorder=3)
 
     r "Oh, that's... good."
 
     stop music fadeout 2.0
 
-    $ remi.expression("surprised", transition=dissolve)
+    $ remi.expression("annoyed", transition=dissolve)
 
     "Remilia freezes as she looks at Flandre."
 
@@ -49,8 +53,6 @@ label day4_morning:
 
     r "The holes are a little bigger."
 
-    $ flan.expression("frown")
-
     f "Mm."
 
     r "It's not a lot worse, just a little."
@@ -66,7 +68,7 @@ label day4_morning:
 
     call scene_transition_fade("black") from _call_scene_transition_fade_21
 
-    "Flandre grabs onto Remilia, who flies them to the study."
+    "Flandre grabs onto Remilia, and they fly to the study."
 
     call scene_transition_fade("bg_study") from _call_scene_transition_fade_22
 
@@ -85,9 +87,11 @@ label day4_morning:
 
     p "They did. Odd, this is a sudden change."
 
+    $ flan.expression("frown")
+
     f "Is it bad?"
 
-    p "I was expecting this eventually, but more gradually. I'll look into it today."
+    p "I was expecting this eventually, but more gradual. I'll look into it today."
 
     f "Mm."
 
@@ -118,17 +122,20 @@ label day4_morning:
 
     f "Oh, right. You were worried about her doing weird stuff."
 
+    $ remi.expression("smile")
+
     "Remilia shrugs."
 
     r "Sure. Whatever."
 
-    $ flan.blush(False)
+    $ flan.show(blush=False, flip=True)
+    $ remi.expression("neutral")
 
     "She points to Patchouli."
 
     r "Would you unlock the front door? I want to go out."
 
-    $ pat.expression("confused")
+    $ pat.expression("curious")
 
     p "Unlock?"
 
@@ -138,7 +145,7 @@ label day4_morning:
 
     p "It was never locked."
 
-    $ remi.expression("surprised")
+    $ remi.expression("annoyed")
 
     r "What? I thought you locked us in?"
 
@@ -151,7 +158,9 @@ label day4_morning:
 
     r "I guess I never checked. We were free all along?"
 
-    p "I would rather not deal with trapped, angry vampires. I would've let you leave, even if it would ruin my study project."
+    p "I would rather not deal with trapped, angry vampires. I would've let you escape, even if it means my study project is ruined."
+
+    $ flan.flip()
 
     f "What about the explody thing?"
 
@@ -182,11 +191,15 @@ label day4_morning:
 
     p "One of them could restore your wings, if we are fortunate. But regardless, they'll help me figure out what's going on with them. I'll spare you the details."
 
+    f "Kay."
+
     call show_transition_fade("bg_study") from _call_show_transition_fade_4
 
     "A few hours pass as she applies many more."
 
-    f "Hey Patchy, are you getting along with Remi?"
+    f "Patchy, are you getting along with Remi?"
+
+    $ pat.expression("curious")
 
     p "Well enough, I think."
 
@@ -194,15 +207,19 @@ label day4_morning:
 
     f "Is she still mean to you?"
 
+    $ pat.expression("confused")
+
     p "Was she mean before?"
 
     f "Uh, yeah. Wasn't she?"
+
+    $ pat.expression("neutral")
 
     p "Seemed normal to me."
 
     f "Really? Huh."
 
-    "A large mass of empty potions float into a box."
+    "She tosses aside the last empty potion into the pile, and they all float into a box."
 
     $ pat.show(magic=False, transition=dissolve_fast)
 
@@ -216,19 +233,19 @@ label day4_morning:
 
     p "The most likely cause is a form of poison. Your body is clearly not poisoned, but perhaps there is a residual effect in the wings."
 
-    $ flan.expression("surprised")
+    $ flan.expression("frown")
 
     f "Poison?"
 
-    p "I would also be curious if something specific to vampires is involved. Perhaps some form of sun magic. Unfortunately I am not familiar with how exactly sunlight affects vampires."
-
-    $ flan.expression("frown")
+    p "I would also be curious if something specific to vampires is involved. Perhaps a form of sun magic? Unfortunately, I am not familiar with how exactly sunlight affects vampires."
 
     p "Speaking of which, have you ever been harmed by the sun before?"
 
     f "Not really. I've had tiny moments where it touches me, but it just stings a tiny bit."
 
     p "Do you know if sun wounds heal normally? If your arm was stuck out of a window and incinerated, would it come back?"
+
+    $ flan.expression("holding_tear")
 
     f "Uh... I don't know. That sounds scary."
 
@@ -248,14 +265,14 @@ label day4_morning:
 
     f "Phew."
 
-    $ flan.move(far_right)
-    $ pat.move(center_left, transition=move_slow)
+    $ flan.move(scoot_right)
+    $ pat.move(scoot_left, transition=move_slow)
     $ flan.move(hopdown(height=10))
     $ pat.move(hopdown(height=10))
 
     "They both take a seat. A tea set floats over and serves them."
 
-    p "Time for a break. I shouldn't need your wings for a few days."
+    p "That is all for now. I shouldn't need your wings for a few days."
 
     "She nods and grabs her tea. They sip in silence."
 
@@ -279,19 +296,20 @@ label day4_morning:
 
     $ flan.expression("frown")
 
-    f "Well... humans don't like vampires. We had to leave, or kill everyone."
+    f "Well... humans don't like vampires. We had to leave, or kill everyone..."
 
-    $ flan.show(expression="smile", at=[standheight, floatup], transition=move_fast)
-
-    "Flandre hops to her feet and spreads her arms."
+    $ flan.show(expression="smile", at=[standheight], transition=move_fast)
 
     f "But now we're here! This place is really nice."
+
+    $ flan.expression("neutral")
+    $ pat.move(hop(5))
 
     "Patchouli puts a proud hand to her chest."
 
     p "Good eye. It is my creation, after all."
 
-    $ flan.expression("surprised")
+    $ flan.expression("question")
 
     f "Really? How did you make it?"
 
@@ -301,11 +319,11 @@ label day4_morning:
 
     f "You are a terrible storyteller."
 
-    $ pat.expression("neutral")
+    $ pat.expression("curious")
 
     p "Fine. I studied some libraries and learned how to manipulate materials to take the shape of the ideal design."
 
-    $ flan.expression("surprised")
+    $ flan.expression("question")
 
     f "Wow, cool. How did you do the magic?"
 
@@ -317,8 +335,7 @@ label day4_morning:
 
     f "Oh. Never mind."
 
-    $ flan.show(expression="neutral", at=hopreset)
-    $ flan.move(at=sitheight, transition=move_fast)
+    $ flan.show(expression="neutral", at=sitheight, transition=move_fast)
 
     "Flandre plops back down and picks up her tea."
 
@@ -354,6 +371,7 @@ label day4_morning:
 
     $ flan.expression("frown")
     $ pat.expression("neutral")
+    with dissolve_fast
 
     "Flandre lets out a deep sigh."
 
@@ -368,8 +386,11 @@ label day4_morning:
     p "That is—"
 
     play sound sfx_door_open
+    stop music fadeout 1.0
 
     call table_unzoom_l from _call_table_unzoom_l
+
+    play music bgm_emotional fadein 2.0
 
     r "I'm back!"
 
@@ -383,7 +404,7 @@ label day4_morning:
 
     p "Is that one of my bookshelf covers?"
 
-    r "Good eye. 'Tis a small price to pay for your deception."
+    r "Very observant of you. 'Tis a small price to pay for your deception."
 
     $ flan.expression("frown")
 
@@ -391,15 +412,18 @@ label day4_morning:
 
     $ remi.expression("angry")
     $ flan.expression("neutral")
-    $ pat.expression("neutral")
+    $ pat.expression("smile")
 
     r "Oh shut up!"
 
     $ remi.expression("smile")
+    play sound sfx_body_fall
 
     "She tosses her delivery to the floor."
 
     r "I've brought a feast. No more chickens!"
+
+    $ pat.expression("annoyed")
 
     "She opens it, revealing a mass of rabbit carcasses."
 
@@ -408,11 +432,10 @@ label day4_morning:
     f "Yay!"
 
     $ flan.expression("neutral")
-    $ pat.expression("annoyed")
 
     p "This is not what the covers are for."
 
-    r "They weren't doing anything anyway. They were just shoved in a corner."
+    r "They weren't doing anything anyway. Just shoved in a random corner."
 
     p "Yes, for future use. And must you bring in so much filth?"
 
@@ -428,12 +451,13 @@ label day4_morning:
 
     r "Quiet, you."
 
-    call table_zoom_l from _call_table_zoom_l_2
-
     $ remi.move(at=[center_left, sitheight])
     $ flan.show(center_right, flip=True)
     $ pat.show(at=[far_right, sitheight], zorder=5)
-    with move_slow 
+    with ease 
+
+    call table_zoom_l from _call_table_zoom_l_2
+    with None
 
     $ flan.expression("frown")
     $ remi.show(glove="Blood", expression="smile", transition=dissolve)
@@ -453,7 +477,7 @@ label day4_morning:
 
     $ flan.show(center, flip=True, transition=dissolve_fast)
 
-    f "Ugh. Sorry Patchy, she is a terrible eater."
+    f "Sorry Patchy, she is a terrible eater."
 
     $ pat.expression("annoyed")
 
@@ -481,7 +505,7 @@ label day4_morning:
 
     call generic_spell from _call_generic_spell_9
     
-    $ remi.show(glove="Off", transition=dissolve_fast)
+    $ remi.show(glove="Off", hat=False, transition=dissolve_fast)
 
     "Then, the bag vanishes."
 
@@ -489,7 +513,7 @@ label day4_morning:
 
     r "Huh? My food?"
 
-    p "They're in your room now."
+    p "I've moved your things to your room."
 
     $ remi.expression("smile")
 
@@ -497,9 +521,22 @@ label day4_morning:
 
     $ pat.expression("smile")
 
-    p "Within my domain, most inanimate things."
+    p "Within my domain, most inanimate things. Books, dead animals, hats, whatever."
 
-    r "And you can eavesdrop on anyone, and make your voice appear anywhere?"
+    $ pat.show(magic=True, transition=dissolve_fast)
+    call generic_spell
+    $ pat.show(hat=True, transition=dissolve_fast)
+
+    p "Like that."
+
+    $ flan.expression("question")
+    $ pat.show(magic=False, transition=dissolve_fast)
+
+    f "Cool!"
+
+    $ flan.expression("neutral")
+
+    r "And you can also eavesdrop on anyone, and make your voice appear anywhere?"
 
     p "Not eavesdrop. I just know where people are."
 
@@ -507,17 +544,31 @@ label day4_morning:
 
     p "That would be useful, but no."
 
-    r "What were those lasers you fired at me? Those were cool."
+    r "..."
+
+    $ remi.expression("neutral")
+
+    "Remilia puts her hand in her hair."
+
+    r "Hey. You warped my crown."
+
+    p "Very observant of you. You'll find it eventually."
+
+    r "Fantastic. You sure have a lot of tricks. What were those lasers you fired at me?"
+
+    $ flan.expression("frown")
 
     p "It was a mixture of water and sun magic."
 
-    $ remi.expression("neutral")
+    $ remi.expression("annoyed")
 
     r "Uhh... sun?"
 
     $ pat.expression("neutral")
 
     p "Useful against vampires, but at a cost. Lasers require an undesirable level of exertion."
+
+    $ remi.expression("neutral")
 
     r "I'm sure it does. Though you had no problem spamming them."
 
@@ -528,7 +579,7 @@ label day4_morning:
     p "Of course not. When your opponent's knees are buckling, it's only natural to deliver a swift finish, no?"
 
     play music bgm_duel
-    $ flan.expression("frown")
+    $ remi.expression("smile")
 
     r "Bold words, book girl. Someday I'll demonstrate the true power of my Gungnir, when I'm not half-dead."
 
@@ -553,7 +604,7 @@ label day4_morning:
 
     p "Rematch declined."
 
-    $ remi.expression("angry")
+    $ remi.expression("annoyed")
     $ flan.expression("neutral")
 
     r "Oh, come on."
@@ -575,9 +626,11 @@ label day4_morning:
     $ flan.move(offscreenright, transition=move_slow)
     $ flan.flip()
 
+    $ remi.move(hop(10))
+
     "Remilia sips tea, but pauses midway through. She slams it down."
 
-    $ remi.expression("angry")
+    $ remi.expression("annoyed")
 
     r "Hey, wait just a minute! You can teleport things, but made me grab a vial for you?"
 
@@ -594,9 +647,11 @@ label day4_morning:
 
     p "Yes. Her labor was much appreciated."
 
+    $ flan.expression("question")
+
     f "Wow. You're amazing. She doesn't do that for anyone."
 
-    $ flan.show(expression="smile", at=hop)
+    $ flan.show(expression="smile", at=hop(10))
 
     "Flandre points her thumb at herself."
 
@@ -604,7 +659,7 @@ label day4_morning:
 
     $ flan.expression("neutral")
 
-    r "How rude. I did what I had to do to ensure your wings recover in a timely manner."
+    r "How rude. I did what was necessary to ensure your wings recover in a timely manner."
 
     $ pat.expression("annoyed")
 
@@ -613,6 +668,7 @@ label day4_morning:
     r "Oh, be quiet. When we first arrived, you were groaning about providing us simple necessities like coffins."
 
     $ pat.expression("confused")
+    $ pat.move(hopdown(30))
 
     "Patchouli sighs and presses her forehead into her tome."
 
@@ -642,7 +698,7 @@ label day4_morning:
     $ remi.show(at=[center, standheight, enterright()], flip=True)
     $ flan.show(at=[far_right, standheight, enterright()])
 
-    "Remilia drags Flandre down the stairs to their room. The bag of furry corpses is stashed in the corner."
+    "Remilia drags Flandre down the stairs to their room. The bag of furry corpses is stashed in the corner, with a hat on top."
 
     r "Delightful. The fruit of my labor."
 
@@ -667,28 +723,30 @@ label day4_morning:
 
     f "She made it herself."
 
-    $ remi.expression("surprised")
+    $ remi.expression("neutral")
     $ remi.flip(transition=dissolve_fast)
 
-    r "Huh? Really?"
+    r "Huh. Really?"
 
-    f "Yup. She told me all about it. Magic and creativity!"
-
-    $ remi.expression("neutral")
+    f "Yup. She told me everything. Magic and creativity!"
 
     r "Right. What else?"
 
     f "That's it."
 
-    r "How exactly is that 'all about it'? That's hardly any information."
+    $ remi.expression("annoyed")
 
-    $ flan.show(scoot_left, zorder=8)
+    r "How exactly is that 'everything'? That's hardly any information."
+
+    $ flan.show(scoot_left, expression="question", zorder=8)
 
     f "You're reeeally curious."
 
     $ remi.expression("embarrassed")
 
     r "Eh, not really."
+
+    $ flan.expression("neutral")
 
     f "You are."
 
@@ -707,13 +765,13 @@ label day4_morning:
 
     play sound sfx_coffin_open
     
-    $ flan.show(expression="frown", blush=True, flip=True, at=[left, floatup], transition=dissolve_fast)
+    $ flan.show(expression="frown", flip=True, at=[left, floatup], transition=dissolve_fast)
 
     f "Oh, um... thanks. You told me about my wings this time."
 
     r "Of course. I won't repeat the same mistake."
 
-    $ flan.show(expression="neutral", blush=False)
+    $ flan.show(expression="neutral", blush=True)
 
     f "Mhm. See you, Remi."
 

@@ -12,7 +12,7 @@ define magician_name = initial_magician_name
 
 define r = Character("Remilia", color="#4aa8ff")
 define f = Character("Flandre", color="#ff786c")
-define p = DynamicCharacter("magician_name", color="#c767ff")
+define p = DynamicCharacter("magician_name", color="#d0bbff")
 
 
 # The game starts here.

@@ -11,12 +11,15 @@ label day3_morning:
 
     "Flandre hops over and shakes Remilia's coffin."
 
+    $ flan.expression("question")
+
     f "Remi! Get up already!"
 
     play sound sfx_coffin_open
 
     "The lid slowly cracks open, revealing the sleepy vampire within."
 
+    $ flan.expression("neutral")
     $ remi.show(expression="neutral", flip=True, at=[left, standheight, enterbottom(speed=2)])
 
     r "What... it's too early for yelling..."
@@ -25,19 +28,29 @@ label day3_morning:
 
     f "I slept the whole night!"
 
+    $ remi.expression("smile")
+
     r "That's great. Are they still numb?"
 
-    $ flan.expression("neutral")
+    $ flan.expression("frown")
 
     f "Mostly. It's fading a little."
 
+    $ remi.expression("neutral")
+
     r "Hm. We'll go see that librarian soon."
 
-    $ flan.move(hop)
+    $ flan.show(expression="question", at=hop)
 
     f "No, let's go now!"
 
+    $ remi.expression("annoyed")
+
     r "Geez, hold on."
+
+    $ flan.flip(transition=dissolve_fast)
+    $ remi.move(offscreenright)
+    $ flan.move(offscreenright, transition=ease)
 
     call scene_transition_fade("black") from _call_scene_transition_fade_15
 
@@ -46,14 +59,11 @@ label day3_morning:
     call scene_transition_fade("bg_study") from _call_scene_transition_fade_16
     play sound sfx_door_open
 
-    $ pat.show(hat=True, at=[right, standheight], transition=dissolve, zorder=1)
+    $ pat.show(hat=True, expression="neutral", at=[right, standheight], transition=dissolve, zorder=1)
 
-    "Flandre flings the door open."
+    "The door flings open."
 
-    $ flan.flip()
-    $ flan.move([offscreenleft, standheight])
-    $ flan.show(at=[center, standheight, enterleft()], zorder=2)
-    with None
+    $ flan.show(expression="neutral", at=[center, standheight, enterleft()], zorder=4)
     $ pat.move(far_right, transition=move_slow)
 
     f "Patchy! More numbness!"
@@ -75,9 +85,9 @@ label day3_morning:
 
     $ flan.expression("frown")
 
-    f "That's too long. She's Patchy now."
+    f "Too long. She's Patchy now."
 
-    $ pat.show(magic=False, transition=dissolve_fast)
+    $ pat.show(magic=False, expression="neutral", transition=dissolve_fast)
 
     p "It works."
 
@@ -87,8 +97,6 @@ label day3_morning:
 
     r "You've been busy."
 
-    $ pat.expression("smile")
-
     p "Indeed. I've been doing research on what might be blocking your regeneration."
 
     $ pat.expression("curious")
@@ -97,21 +105,21 @@ label day3_morning:
 
     f "Ooh cool, potions? What do they do?"
 
-    $ pat.expression("smile")
+    $ pat.expression("neutral")
 
-    p "You'll see. As for the possibility of deterioration, I haven't found anything specific. Could I see your..."
+    p "You'll see. Now could I see your..."
 
     $ pat.expression("confused")
 
     "Patchouli glances at Remilia, then back."
 
-    $ pat.expression("curious")
-
-    p "Your wings?"
+    p "Your wings? I want to search for any signs of deterioration."
 
     $ flan.expression("frown")
 
     f "Huh, what, deterioration?"
+
+    $ pat.expression("neutral")
 
     p "Yes. I want to check and see if they've changed."
 
@@ -122,15 +130,16 @@ label day3_morning:
 
     "She walks over. Patchouli inspects them closely."
 
-    $ pat.expression("neutral")
+    $ pat.expression("serious")
 
     p "Hmm."
 
     "Seconds pass. Patchouli gently puts her fingers on the flaps around the holes."
 
+    $ pat.expression("neutral")
+
     p "No change."
 
-    $ remi.show(zorder=1)
     $ flan.move(center_left, transition=ease)
     $ flan.flip(transition=dissolve_fast)
     $ pat.move(right, transition=move_slow)
@@ -139,15 +148,15 @@ label day3_morning:
 
     p "I'll keep checking on it. Remilia noticed some changes, so I want to monitor them closely."
 
-    $ remi.expression("embarrassed")
-    $ flan.expression("surprised")
+    $ remi.expression("annoyed")
+    $ flan.expression("surprised", transition=dissolve_fast)
 
     f "What? When?"
 
     p "Yesterday."
 
-    $ flan.expression("serious")
-    $ flan.flip(transition=dissolve_fast)
+    $ remi.expression("embarrassed")
+    $ flan.show(expression="serious", flip=True, transition=dissolve_fast, zorder=2)
 
     f "So, you {i}did{/i} notice something yesterday? That's what you were talking to Patchouli about, then?"
 
@@ -157,13 +166,14 @@ label day3_morning:
 
     f "Why did you lie?"
 
-    $ remi.show(expression="neutral")
+    $ remi.show(expression="annoyed")
 
     r "I wanted to be sure before I said anything."
 
     f "They are {i}my{/i} wings! I want to know everything!"
 
-    $ remi.expression("embarrassed", transition=dissolve)
+    $ remi.expression("embarrassed")
+    $ flan.expression("frown", transition=dissolve)
 
     f "Anything else I should know?"
 
@@ -177,7 +187,7 @@ label day3_morning:
 
     r "Right. Sorry."
 
-    $ flan.move(offscreenleft, transition=move_slow)
+    $ flan.show(at=offscreenleft, zorder=6, transition=move_slow)
 
     stop music fadeout 2.0
 
@@ -199,9 +209,13 @@ label day3_morning:
 
     p "Yes."
 
+    $ remi.expression("annoyed")
+
     r "You don't have to agree."
 
     p "Are you leaving her alone?"
+
+    $ remi.expression("neutral")
 
     r "For now. I'll give her time. I still need to keep an eye on you."
 
@@ -217,11 +231,15 @@ label day3_morning:
 
     p "Fairly so. There almost certainly is some kind of solution. I've solved far more difficult problems than this."
 
+    $ remi.expression("smile")
+
     r "Good. You seem very experienced with magic."
 
     $ pat.expression("smile")
 
     p "Yes. I am a natural-born Magician, after all."
+
+    $ remi.expression("neutral")
 
     r "What does that mean?"
 
@@ -239,6 +257,8 @@ label day3_morning:
 
     p "Now could you grab me that vial over there?"
 
+    $ remi.expression("annoyed")
+
     "Remilia glances over to a vial sitting on a bookshelf, a few feet behind Patchouli."
 
     $ remi.expression("smile")
@@ -251,7 +271,7 @@ label day3_morning:
 
     "Remilia spreads her arms and wings wide."
 
-    r "Why not? I believe it would be a great honor to serve a vampire like me."
+    r "Why not? I believe it would be a great honor to serve a vampire of my standing."
 
     p "No. Please grab it for me. I'd rather not exert myself."
 
@@ -270,24 +290,26 @@ label day3_morning:
 
     p "Yes. Thank you."
 
+    $ remi.expression("annoyed")
+
     r "It was only a few steps away."
 
     p "I am not one for physical labor. I stick to my strengths."
 
     r "I'm no laborer..."
 
-    $ remi.move(sitheight, transition=move_slow)
-    $ pat.expression("neutral")
+    $ remi.show(expression="neutral", at=sitheight, transition=move_slow)
+    $ pat.expression("serious", transition=dissolve)
 
     "Remilia grumbles as she sits back down. She silently observes Patchouli."
 
-    $ pat.expression("smile", transition=dissolve_fast)
+    $ pat.expression("smile", transition=dissolve)
 
     "The magician moves between different books scattered across the table, jotting notes on occasion."
 
-    $ pat.expression("neutral", transition=dissolve_fast)
+    $ pat.expression("serious", transition=dissolve)
 
-    "Every once in a while, a smile flashes before returning to her usual deadpan expression."
+    "Every once in a while, a smile flashes for a short moment before fading away."
 
     "Remilia reaches towards one of the notes."
 
@@ -297,7 +319,7 @@ label day3_morning:
 
     r "Ow! My finger!"
 
-    "A spark vaporizes her finger instantly. As the blood flies towards the table, another spark vaporizes it, protecting the books. Patchouli does not react."
+    "A spark vaporizes her finger instantly. As the blood flies towards the table, another spark vaporizes it, protecting the books. Patchouli never moved."
 
     "Remilia looks at her hand in awe."
 
@@ -305,23 +327,26 @@ label day3_morning:
 
     p "Mm."
 
-    $ remi.expression("neutral")
+    $ remi.expression("annoyed")
 
     r "Geez. Fine, I won't interfere."
 
-    "Remilia pouts as her fingertip regenerates. She continues her silent observation."
+    $ remi.expression("neutral")
+    $ pat.expression("smile", transition=dissolve)
 
-    $ pat.expression("smile")
+    "Remilia pouts as her fingertip regenerates. She continues her silent observation."
 
     call show_transition_fade("bg_study") from _call_show_transition_fade_3
 
     "Eventually, the books all close at the same time."
 
-    $ pat.expression("neutral")
+    $ pat.expression("curious")
 
     p "I'm done. Would you get Flandre? I want to check something."
 
     r "Sure."
+
+    $ pat.expression("neutral")
 
     $ remi.flip()
     $ remi.move(offscreenleft, transition=move_slow)
@@ -398,7 +423,7 @@ label day3_morning:
 
     f "Yeah."
 
-    p "How long does it last on you?"
+    p "How long does my spell last on you?"
 
     f "Nearly 'till morning. It was starting to wear off though."
 
@@ -424,11 +449,11 @@ label day3_morning:
     call scene_transition_fade("bg_bedroom") from _call_scene_transition_fade_19
 
     $ flan.show(at=[left, standheight])
-    $ remi.show(at=[center_right, standheight], flip=True, transition=dissolve, zorder=2)
+    $ remi.show(at=[center_right, standheight], flip=True, transition=dissolve, zorder=3)
 
     "The sisters gather around their daily dead chicken."
 
-    $ remi.expression("surprised")
+    $ remi.expression("annoyed")
 
     r "Hey... I'm sorry about..."
 
@@ -450,7 +475,7 @@ label day3_morning:
 
     f "Thank you, my servant. The dark meat is all mine today."
 
-    $ remi.expression("angry")
+    $ remi.expression("annoyed")
 
     r "Oh, come on."
 
@@ -468,18 +493,18 @@ label day3_morning:
 
     $ remi.expression("smile")
 
-    r "Yes, I am sure. She's been consistently honest, and appears competent. I've been watching her very closely."
+    r "Yes, I am sure. Her honesty has been consistent, and she appears competent. I've been watching her very closely."
 
     $ remi.expression("embarrassed", transition=dissolve_fast)
 
     r "I'm the only one that's been... not so straightforward."
 
     $ remi.expression("surprised")
-    $ remi.move(small_shake())
+    $ remi.move(small_shake(1.5))
 
     "Flandre tosses the bone onto Remilia's lap."
 
-    $ remi.expression("neutral")
+    $ remi.show(expression="neutral", at=shakereset)
     $ flan.expression("neutral")
 
     f "Ha, it sounds like you're the one defending Patchy now."
@@ -488,11 +513,11 @@ label day3_morning:
 
     f "I believe you."
 
-    $ flan.show(blush=True, at=center, transition=move_slow)
+    $ flan.show(blush=True, at=center, transition=move_slow, zorder=2)
 
     "Flandre leans into Remilia."
 
-    f "You wouldn't lie about that. You never advocate for people."
+    f "You wouldn't lie about that. You never advocate for anyone."
 
     $ remi.expression("smile")
 
@@ -502,9 +527,11 @@ label day3_morning:
 
     r "Mhm."
 
-    $ flan.show(blush=False, expression="frown", at=[far_left, floatup], transition=move_fast)
+    $ flan.show(blush=False, at=[far_left, floatup], transition=move_slow)
 
-    f "I'm tired now. Bye."
+    f "I'm sleepy now. Good bye."
+
+    $ flan.expression("frown")
 
     "Flandre jumps into her coffin and grabs the lid."
 
@@ -521,6 +548,8 @@ label day3_morning:
     $ flan.hide(dissolve)
     
     "The lid slams shut."
+
+    $ remi.expression("annoyed")
 
     r "Ugh."
 
