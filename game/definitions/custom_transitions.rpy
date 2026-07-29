@@ -84,6 +84,15 @@ transform camera_revert:
 label dim_screen:
     show black_2 onlayer background:
         alpha 0.5
+    show black:
+        alpha 0.2
+
+    with dissolve
+    return
+
+label dim_screen_forest:
+    show black_2 onlayer background:
+        alpha 0.2
 
     show black:
         alpha 0.2
@@ -93,7 +102,7 @@ label dim_screen:
 
 label dim_screen_half:
     show black_2 onlayer background:
-        alpha 0.25
+        alpha 0.1
 
     show black:
         alpha 0.1

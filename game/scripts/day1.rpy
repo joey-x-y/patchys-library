@@ -61,7 +61,7 @@ label day1_forest:
     r "Fine."
 
     call scene_transition_fade("bg_forest") from _call_scene_transition_fade_1
-    call dim_screen from _call_dim_screen
+    call dim_screen_forest
     play sound sfx_forest_land
 
     $ remi.show(at=[center_left, standheight])

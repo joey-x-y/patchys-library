@@ -87,7 +87,7 @@ label day4_morning:
 
     p "They did. Odd, this is a sudden change."
 
-    $ flan.expression("frown")
+    $ flan.show(expression="frown", at=enterforcefinish)
 
     f "Is it bad?"
 

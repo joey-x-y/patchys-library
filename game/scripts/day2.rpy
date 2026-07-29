@@ -798,7 +798,6 @@ label day2_end:
     $ pat.move(far_right, transition=ease)
     $ remi.flip(dissolve_fast)
     $ flan.show(blush=True, at=[far_left, standheight, enterleft], zorder=6)
-    $ flan.forget_position()
 
     $ remi.expression("neutral")
 
@@ -810,7 +809,7 @@ label day2_end:
 
     r "This {i}heathen{/i} touched my wing without a care. As if it were some trinket from a market stall."
 
-    $ flan.expression("surprised")
+    $ flan.show(expression="surprised", at=enterforcefinish)
 
     f "Whoa. Is that one of those weird things you were worried about, sis?"
 
