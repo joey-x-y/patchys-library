@@ -112,8 +112,8 @@ screen say(who, what):
 
     ## If there's a side image, display it above the text. Do not display on
     ## the phone variant - there's no room.
-    if not renpy.variant("small"):
-        add SideImage() xalign 0.0 yalign 1.0
+    # if not renpy.variant("small"):
+    #     add SideImage() xalign 0.0 yalign 1.0
 
 
 ## Make the namebox available for styling through the Character object.
@@ -144,7 +144,7 @@ style namebox:
     ypos gui.name_ypos
     ysize gui.namebox_height
 
-    background Frame("gui/namebox.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign)
+    # background Frame("gui/namebox.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign)
     padding gui.namebox_borders.padding
 
 style say_label:
@@ -234,26 +234,62 @@ style choice_button_text is default:
 ##
 ## The quick menu is displayed in-game to provide easy access to the out-of-
 ## game menus.
+##
+## Button images live in gui/qmenu_buttons/. Hover uses a slight brighten until
+## dedicated hover art exists.
+
+init python:
+    # temp hoveer until real files
+    def qmenu_hover(path):
+        return Transform(path, matrixcolor=BrightnessMatrix(0.1))
 
 screen quick_menu():
 
     ## Ensure this appears on top of other screens.
     zorder 100
 
-    if quick_menu:
+    if not quick_menu:
 
         hbox:
-            style_prefix "quick"
             style "quick_menu"
 
-            textbutton _("Back") action Rollback()
-            textbutton _("History") action ShowMenu('history')
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Save") action ShowMenu('save')
-            textbutton _("Q.Save") action QuickSave()
-            textbutton _("Q.Load") action QuickLoad()
-            textbutton _("Prefs") action ShowMenu('preferences')
+            imagebutton:
+                idle "ui/Untitled320_20260710115734.png"
+                hover qmenu_hover("ui/Untitled320_20260710115734.png")
+                action Skip()
+                tooltip _("Skip")
+
+            # imagebutton:
+            #     idle "gui/qmenu_buttons/skip.png"
+            #     hover qmenu_hover("gui/qmenu_buttons/skip.png")
+            #     action Skip()
+            #     tooltip _("Skip")
+
+            # imagebutton:
+            #     idle "gui/qmenu_buttons/auto.png"
+            #     hover qmenu_hover("gui/qmenu_buttons/auto.png")
+            #     selected_idle "gui/qmenu_buttons/auto.png"
+            #     selected_hover qmenu_hover("gui/qmenu_buttons/auto.png")
+            #     action Preference("auto-forward", "toggle")
+            #     tooltip _("Auto")
+
+            # imagebutton:
+            #     idle "gui/qmenu_buttons/quick save.png"
+            #     hover qmenu_hover("gui/qmenu_buttons/quick save.png")
+            #     action QuickSave()
+            #     tooltip _("Quick Save")
+
+            # imagebutton:
+            #     idle "gui/qmenu_buttons/quick load.png"
+            #     hover qmenu_hover("gui/qmenu_buttons/quick load.png")
+            #     action ShowMenu("history")
+            #     tooltip _("History")
+
+            # imagebutton:
+            #     idle "gui/qmenu_buttons/close.png"
+            #     hover qmenu_hover("gui/qmenu_buttons/close.png")
+            #     action ShowMenu()
+            #     tooltip _("Hide Menu")
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -269,7 +305,9 @@ style quick_button_text is button_text
 
 style quick_menu:
     xalign 0.5
-    yalign 1.0
+    yalign 0.95
+    spacing 8
+    # xmaximum 1200
 
 style quick_button:
     properties gui.button_properties("quick_button")
