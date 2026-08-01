@@ -10,7 +10,7 @@ define real_magician_name = "Patchouli"
 
 define magician_name = initial_magician_name
 
-define r = Character("Remilia", color="#4aa8ff")
+define r = Character("Remilia", color="#6cbfff")
 define f = Character("Flandre", color="#ff786c")
 define p = DynamicCharacter("magician_name", color="#d0bbff")
 

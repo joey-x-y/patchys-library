@@ -135,7 +135,15 @@ style window:
     yalign gui.textbox_yalign
     ysize gui.textbox_height
 
-    background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
+    background At(
+        "gui/textbox.webp",
+        Transform(
+            xsize=1906,
+            fit="contain",
+            xalign=0.5,
+            yalign=1.0,
+        )
+)
 
 style namebox:
     xpos gui.name_xpos
@@ -243,53 +251,61 @@ init python:
     def qmenu_hover(path):
         return Transform(path, matrixcolor=BrightnessMatrix(0.1))
 
+transform qmenu_button_transform:
+    zoom 0.6
+
+transform qmenu_small_button_transform:
+    zoom 0.85
+
 screen quick_menu():
 
     ## Ensure this appears on top of other screens.
     zorder 100
 
-    if not quick_menu:
+    if quick_menu:
 
         hbox:
             style "quick_menu"
 
             imagebutton:
-                idle "ui/Untitled320_20260710115734.png"
-                hover qmenu_hover("ui/Untitled320_20260710115734.png")
+                at qmenu_button_transform
+                idle "gui/qmenu_buttons/skip.png"
+                selected_idle qmenu_hover("gui/qmenu_buttons/skip.png")
+                hover qmenu_hover("gui/qmenu_buttons/skip.png")
                 action Skip()
                 tooltip _("Skip")
 
-            # imagebutton:
-            #     idle "gui/qmenu_buttons/skip.png"
-            #     hover qmenu_hover("gui/qmenu_buttons/skip.png")
-            #     action Skip()
-            #     tooltip _("Skip")
+            imagebutton:
+                at qmenu_button_transform
+                idle "gui/qmenu_buttons/auto.png"
+                hover qmenu_hover("gui/qmenu_buttons/auto.png")
+                selected_idle "gui/qmenu_buttons/auto.png"
+                selected_hover qmenu_hover("gui/qmenu_buttons/auto.png")
+                action Preference("auto-forward", "toggle")
+                tooltip _("Auto")
 
-            # imagebutton:
-            #     idle "gui/qmenu_buttons/auto.png"
-            #     hover qmenu_hover("gui/qmenu_buttons/auto.png")
-            #     selected_idle "gui/qmenu_buttons/auto.png"
-            #     selected_hover qmenu_hover("gui/qmenu_buttons/auto.png")
-            #     action Preference("auto-forward", "toggle")
-            #     tooltip _("Auto")
+            imagebutton:
+                at qmenu_button_transform
+                idle "gui/qmenu_buttons/quick save.png"
+                hover qmenu_hover("gui/qmenu_buttons/quick save.png")
+                action QuickSave()
+                tooltip _("Quick Save")
 
-            # imagebutton:
-            #     idle "gui/qmenu_buttons/quick save.png"
-            #     hover qmenu_hover("gui/qmenu_buttons/quick save.png")
-            #     action QuickSave()
-            #     tooltip _("Quick Save")
+            imagebutton:
+                at qmenu_button_transform
+                idle "gui/qmenu_buttons/history.png"
+                hover qmenu_hover("gui/qmenu_buttons/history.png")
+                action ShowMenu("history")
+                tooltip _("History")
 
-            # imagebutton:
-            #     idle "gui/qmenu_buttons/quick load.png"
-            #     hover qmenu_hover("gui/qmenu_buttons/quick load.png")
-            #     action ShowMenu("history")
-            #     tooltip _("History")
-
-            # imagebutton:
-            #     idle "gui/qmenu_buttons/close.png"
-            #     hover qmenu_hover("gui/qmenu_buttons/close.png")
-            #     action ShowMenu()
-            #     tooltip _("Hide Menu")
+            imagebutton:
+                yalign 1.09
+                xoffset 3
+                at qmenu_small_button_transform
+                idle "gui/qmenu_buttons/close.png"
+                hover qmenu_hover("gui/qmenu_buttons/close.png")
+                action HideInterface()
+                tooltip _("Hide Menu")
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -300,17 +316,21 @@ init python:
 default quick_menu = True
 
 style quick_menu is hbox
-style quick_button is default
+# style quick_button is default
 style quick_button_text is button_text
 
 style quick_menu:
-    xalign 0.5
-    yalign 0.95
-    spacing 8
+    xalign 1.0
+    xoffset -180
+    yalign 0.97
+    spacing 10
     # xmaximum 1200
 
-style quick_button:
-    properties gui.button_properties("quick_button")
+# style quick_button:
+#     properties gui.button_properties("quick_button")
+
+style quick_imagebutton:
+    yalign 1.0
 
 style quick_button_text:
     properties gui.text_properties("quick_button")
