@@ -28,15 +28,11 @@ label day3_morning:
 
     f "I slept the whole night!"
 
-    $ remi.expression("smile")
-
     r "That's great. Are they still numb?"
 
     $ flan.expression("frown")
 
     f "Mostly. It's fading a little."
-
-    $ remi.expression("neutral")
 
     r "Hm. We'll go see that librarian soon."
 

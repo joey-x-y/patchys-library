@@ -14,7 +14,7 @@ label day1_forest:
     $ remi.show(dirty=True, tired=True, glove="Off", at=[center_right, standheight], flip=True, zorder=7)
     $ flan.show(expression="frown", dirty=True, tired=True, at=[right, standheight], transition=dissolve, zorder=4)
 
-    "Remilia flies above the forest at a high speed. Her sister, Flandre, is hanging onto her back."
+    "Remilia flies above the forest at a high speed. Her sister, Flandre, hangs onto her back."
 
     $ remi.move(at=[center, sitheight])
     $ flan.move(at=[center_right, sitheight], transition=move_slow)
@@ -61,7 +61,7 @@ label day1_forest:
     r "Fine."
 
     call scene_transition_fade("bg_forest") from _call_scene_transition_fade_1
-    call dim_screen_forest
+    call dim_screen_forest from _call_dim_screen_forest
     play sound sfx_forest_land
 
     $ remi.show(at=[center_left, standheight])

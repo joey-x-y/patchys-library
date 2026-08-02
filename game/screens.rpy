@@ -30,7 +30,8 @@ style button:
 
 style button_text is gui_text:
     properties gui.text_properties("button")
-    yalign 0.5
+    yalign 0.55
+    outlines [(3, "#182B5A", 0, 0)]
 
 
 style label_text is gui_text:
@@ -62,8 +63,9 @@ style vscrollbar:
 
 style slider:
     ysize gui.slider_size
-    base_bar Frame("gui/slider/horizontal_[prefix_]bar.png", gui.slider_borders, tile=gui.slider_tile)
-    thumb "gui/slider/horizontal_[prefix_]thumb.png"
+    left_bar Frame("ui/horizontal_hover_bar.png")
+    right_bar Null()
+    thumb "ui/horizontal_idle_thumb.png"
 
 style vslider:
     xsize gui.slider_size
@@ -247,7 +249,7 @@ style choice_button_text is default:
 ## dedicated hover art exists.
 
 init python:
-    # temp hoveer until real files
+    
     def qmenu_hover(path):
         return Transform(path, matrixcolor=BrightnessMatrix(0.1))
 
@@ -279,8 +281,6 @@ screen quick_menu():
                 at qmenu_button_transform
                 idle "gui/qmenu_buttons/auto.png"
                 hover qmenu_hover("gui/qmenu_buttons/auto.png")
-                selected_idle "gui/qmenu_buttons/auto.png"
-                selected_hover qmenu_hover("gui/qmenu_buttons/auto.png")
                 action Preference("auto-forward", "toggle")
                 tooltip _("Auto")
 
@@ -345,20 +345,24 @@ style quick_button_text:
 ## This screen is included in the main and game menus, and provides navigation
 ## to other menus, and to start the game.
 
-screen navigation():
+screen navigation(title=False):
 
     vbox:
-        style_prefix "navigation"
-
-        if main_menu:
-            xalign 1.0
-            xoffset -60
-        else:
-            xpos gui.navigation_xpos
-
+        xalign 1.0
         yalign 0.5
+        
 
-        spacing gui.navigation_spacing
+        if title:
+            style_prefix "title_navigation"
+            
+            yoffset 180
+            xoffset -46
+        else:
+            style_prefix "navigation"
+            
+            xoffset 10
+
+        spacing 3
 
         if main_menu:
 
@@ -372,10 +376,16 @@ screen navigation():
 
         textbutton _("Load") action ShowMenu("load")
 
+        if main_menu:
+
+            textbutton _("Gallery") action ShowMenu("gallery")
+
         textbutton _("Preferences") action ShowMenu("preferences")
 
-        if persistent.beat_game and main_menu:
-            textbutton _("Gallery") action ShowMenu("gallery")
+        if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+
+            ## Help isn't necessary or relevant to mobile devices.
+            textbutton _("Help") action ShowMenu("help")
 
         if _in_replay:
 
@@ -387,27 +397,29 @@ screen navigation():
 
         # textbutton _("About") action ShowMenu("about")
 
-        if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+        # if renpy.variant("pc") and main_menu:
 
-            ## Help isn't necessary or relevant to mobile devices.
-            textbutton _("Help") action ShowMenu("help")
+        #     ## The quit button is banned on iOS and unnecessary on Android and
+        #     ## Web.
+        #     textbutton _("Quit") action Quit(confirm=not main_menu)
 
-        if renpy.variant("pc"):
-
-            ## The quit button is banned on iOS and unnecessary on Android and
-            ## Web.
-            textbutton _("Quit") action Quit(confirm=not main_menu)
-
-
-style navigation_button is gui_button
-style navigation_button_text is gui_button_text
 
 style navigation_button:
     size_group "navigation"
-    properties gui.button_properties("navigation_button")
+    hover_background "ui/title button hover.png"
+    
 
 style navigation_button_text:
-    properties gui.text_properties("navigation_button")
+    size 58
+    xalign 0.5
+    
+
+style title_navigation_button is navigation_button
+style title_navigation_button_text is navigation_button_text
+
+
+style title_navigation_button_text:
+    size 65
 
 
 ## Main Menu screen ############################################################
@@ -421,47 +433,28 @@ screen main_menu():
     ## This ensures that any other menu screen is replaced.
     tag menu
 
-    add ("images/title_completion.png" if persistent.beat_game else "images/title.png")
+    add gui.main_menu_background
 
-    ## This empty frame darkens the main menu.
+    # This empty frame darkens the main menu.
     frame:
         style "main_menu_frame"
 
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
-    use navigation
-
-    if gui.show_name:
-
-        vbox:
-            style "main_menu_vbox"
-
-            text "[config.name!t]":
-                style "main_menu_title"
-
-            text "[config.version]":
-                style "main_menu_version"
+    use navigation(title=True)
 
 
 style main_menu_frame is empty
-style main_menu_vbox is vbox
 style main_menu_text is gui_text
 style main_menu_title is main_menu_text
 style main_menu_version is main_menu_text
 
 style main_menu_frame:
-    xsize 420
-    xalign 0.0
-    yfill True
+    # xsize 420
+    # xalign 0.0
+    # yfill True
 
-    background "gui/overlay/main_menu.png"
-
-style main_menu_vbox:
-    xalign 1.0
-    xoffset -30
-    xmaximum 1200
-    yalign 1.0
-    yoffset -30
+    background "ui/title screen overlay.png"
 
 style main_menu_text:
     properties gui.text_properties("main_menu", accent=True)
@@ -486,10 +479,7 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
 
     style_prefix "game_menu"
 
-    if main_menu:
-        add gui.main_menu_background
-    else:
-        add gui.game_menu_background
+    add gui.game_menu_background
 
     frame:
         style "game_menu_outer_frame"
@@ -569,9 +559,9 @@ style return_button_text is navigation_button_text
 
 style game_menu_outer_frame:
     bottom_padding 45
-    top_padding 180
+    top_padding 120
 
-    background "gui/overlay/game_menu.png"
+    background "ui/ui base.png"
 
 style game_menu_navigation_frame:
     xsize 420
@@ -584,7 +574,7 @@ style game_menu_content_frame:
     top_margin 15
 
 style game_menu_viewport:
-    xsize 1380
+    xsize 1370
 
 style game_menu_vscrollbar:
     unscrollable gui.unscrollable
@@ -593,18 +583,23 @@ style game_menu_side:
     spacing 15
 
 style game_menu_label:
-    xpos 750
-    ysize 180
+    xalign 0.93
+    yoffset 25
 
 style game_menu_label_text:
-    size gui.title_text_size
+    size 75
     color gui.accent_color
-    yalign 0.5
+    yalign 1.0
+    xalign 0.5
 
 style return_button:
-    xpos gui.navigation_xpos
+    xalign 1.0
+    xoffset 15
     yalign 1.0
-    yoffset -45
+    yoffset -110
+
+style return_button_text:
+    size 50
 
 
 ## About screen ################################################################
@@ -723,14 +718,10 @@ screen file_slots(title):
             ## Buttons to access other pages.
             vbox:
                 style_prefix "page"
-
-                xalign 0.5
-                yalign 1.0
+                style "page_vbox"
 
                 hbox:
-                    xalign 0.5
-
-                    spacing gui.page_spacing
+                    style "page_hbox"
 
                     textbutton _("<") action FilePagePrevious()
                     key "save_page_prev" action FilePagePrevious()
@@ -779,11 +770,29 @@ style page_label_text:
     layout "subtitle"
     hover_color gui.hover_color
 
+## Keep the page row shrink-wrapped; as a Fixed child it otherwise
+## expands to the full slot-grid width and spaces the numbers out.
+style page_vbox:
+    xalign 0.5
+    yalign 1.0
+    xfill False
+    xmaximum None
+
+style page_hbox:
+    xalign 0.5
+    xfill False
+    spacing 18
+
 style page_button:
     properties gui.button_properties("page_button")
+    xfill False
+    xminimum 0
+    xpadding 12
 
 style page_button_text:
     properties gui.text_properties("page_button")
+    textalign 0.5
+    xalign 0.5
 
 style slot_button:
     properties gui.button_properties("slot_button")
@@ -805,10 +814,12 @@ screen preferences():
 
     use game_menu(_("Preferences"), scroll="viewport"):
 
-        vbox:
+        ## Two columns: Display + text sliders | Skip + volume
+        hbox:
+            style "pref_columns"
 
-            hbox:
-                box_wrap True
+            vbox:
+                style "pref_column"
 
                 if renpy.variant("pc") or renpy.variant("web"):
 
@@ -819,58 +830,38 @@ screen preferences():
                         textbutton _("Fullscreen") action Preference("display", "fullscreen")
 
                 vbox:
+                    style_prefix "slider"
+
+                    label _("Text Speed")
+                    use pref_bar("text speed")
+
+                    label _("Auto-Forward Time")
+                    use pref_bar("auto-forward time")
+
+            vbox:
+                style "pref_column"
+
+                vbox:
                     style_prefix "check"
                     label _("Skip")
                     textbutton _("Unseen Text") action Preference("skip", "toggle")
-                    textbutton _("After Choices") action Preference("after choices", "toggle")
                     textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
 
-                ## Additional vboxes of type "radio_pref" or "check_pref" can
-                ## be added here, to add additional creator-defined preferences.
-
-            null height (4 * gui.pref_spacing)
-
-            hbox:
-                style_prefix "slider"
-                box_wrap True
-
                 vbox:
-
-                    label _("Text Speed")
-
-                    bar value Preference("text speed")
-
-                    label _("Auto-Forward Time")
-
-                    bar value Preference("auto-forward time")
-
-                vbox:
+                    style_prefix "slider"
 
                     if config.has_music:
                         label _("Music Volume")
-
-                        hbox:
-                            bar value Preference("music volume")
+                        use pref_bar("music volume")
 
                     if config.has_sound:
-
                         label _("Sound Volume")
 
                         hbox:
-                            bar value Preference("sound volume")
+                            use pref_bar("sound volume")
 
                             if config.sample_sound:
                                 textbutton _("Test") action Play("sound", config.sample_sound)
-
-
-                    if config.has_voice:
-                        label _("Voice Volume")
-
-                        hbox:
-                            bar value Preference("voice volume")
-
-                            if config.sample_voice:
-                                textbutton _("Test") action Play("voice", config.sample_voice)
 
                     if config.has_music or config.has_sound or config.has_voice:
                         null height gui.pref_spacing
@@ -878,6 +869,22 @@ screen preferences():
                         textbutton _("Mute All"):
                             action Preference("all mute", "toggle")
                             style "mute_all_button"
+
+
+## Idle track under a preference bar (base_bar can't stack with left/right_bar).
+screen pref_bar(pref):
+    fixed:
+        style "pref_bar_fixed"
+
+        add Frame("gui/slider/horizontal_idle_bar.png", gui.slider_borders, tile=gui.slider_tile):
+            align (0.5, 0.5)
+            xysize (1.0, 1.0)
+
+        bar:
+            style "slider"
+            value Preference(pref)
+            xysize (1.0, 1.0)
+            yoffset -8
 
 
 style pref_label is gui_label
@@ -908,36 +915,49 @@ style mute_all_button_text is check_button_text
 
 style pref_label:
     top_margin gui.pref_spacing
-    bottom_margin 3
+    bottom_margin 6
 
 style pref_label_text:
     yalign 1.0
 
+style pref_columns:
+    spacing 100
+    xoffset 70
+
+style pref_column:
+    xsize 525
+    spacing 6
+
 style pref_vbox:
-    xsize 338
+    xfill True
 
 style radio_vbox:
-    spacing gui.pref_button_spacing
+    spacing 8
 
 style radio_button:
-    properties gui.button_properties("radio_button")
-    foreground "gui/button/radio_[prefix_]foreground.png"
+    xalign 0.0
+    
 
 style radio_button_text:
-    properties gui.text_properties("radio_button")
+    xalign 0.1
+
 
 style check_vbox:
-    spacing gui.pref_button_spacing
+    spacing 8
 
 style check_button:
     properties gui.button_properties("check_button")
     foreground "gui/button/check_[prefix_]foreground.png"
 
 style check_button_text:
-    properties gui.text_properties("check_button")
+    xalign 0.1
 
 style slider_slider:
     xsize 525
+
+style pref_bar_fixed:
+    xsize 525
+    ysize gui.slider_size
 
 style slider_button:
     properties gui.button_properties("slider_button")
@@ -948,7 +968,8 @@ style slider_button_text:
     properties gui.text_properties("slider_button")
 
 style slider_vbox:
-    xsize 675
+    xfill True
+    yoffset 100
 
 
 ## History screen ##############################################################

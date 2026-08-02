@@ -73,8 +73,7 @@ image cg_stare = cgp + "look.png"
 image cg_kiss_surprise = cgp + "kiss_surprise.png"
 image cg_kiss_gentle = cgp + "kiss_return.png"
 
-image cg_title = "images/title.png"
-image cg_title_completion = "images/title_completion.png"
+image cg_title = "ui/title screen.png"
 
 # image cg_wing_surprise = cgp + "wing_surprise.png"
 image cg_wingtouch = At(cgp + "wing_touch.png", bg_scale)
